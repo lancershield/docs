@@ -1,0 +1,15 @@
+# Default: all files require review by @lancershield
+
+- @lancershield
+
+# LSF scoring framework must be reviewed and approved by core
+
+/docs/severity-framework/\* @lancershield
+
+# Contributing rules should not be changed without oversight
+
+/docs/contributing/\* @lancershield
+
+# Allow community contributions for vulnerabilities
+
+/docs/vuln-db/\* @lancershield

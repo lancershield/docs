@@ -1,0 +1,74 @@
+site_name: Lancer-shield-docs
+site_url: https://lancershield.github.io/docs/
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+  language: en
+  # Remove comments above palette blocks
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+nav:
+  - Overview: index.md
+  - Severity Framework: severity-framework/index.md
+  - Vulnerability Database:
+      - Overview: vuln-db/index.md
+      - Template: vuln-db/template.md
+      - Critical:
+          - Classic Reentrancy: vuln-db/critical/reentrancy-classic.md
+      - High:
+          - Frontrunning: vuln-db/high/frontrunning.md
+  - Contributing Guide: contributing/index.md
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/lancershield
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/lancer-shield
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+copyright: |
+  &copy; 2025 <a href="https://github.com/lancershield"  target="_blank" rel="noopener">Lancer Shield</a>

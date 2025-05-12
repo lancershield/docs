@@ -36,6 +36,8 @@ Each entry should include:
 - A fixed **code snippet** (after)
 - Best practice advice or links (optional)
 
+- 🧩 You must follow the official [template](../vuln-db/template.md) when submitting any new vulnerability. This ensures consistency, proper indexing, and readability across the documentation.
+
 Example filename:  
 `vuln-db/critical/reentrancy-classic.md`
 

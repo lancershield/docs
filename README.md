@@ -2,7 +2,7 @@
 
 Welcome to the official open-source documentation for **LancerShield** — the AI-powered smart contract auditing and optimization platform.
 
-This repository powers the public knowledge base at [lancershield.github.io/lancershield-docs](https://lancershield.github.io/lancershield-docs), and contains:
+This repository powers the public knowledge base at [lancershield.github.io/lancershield-docs](https://lancershield.github.io/docs), and contains:
 
 - ✅ The **LancerShield Severity Framework (LSF)** — used to rank vulnerabilities in a consistent and explainable way.
 - 🔐 A curated **Vulnerability Database** — real-world issues, code patterns, and best practices.
@@ -57,5 +57,5 @@ See [contributing/index.md](docs/contributing/index.md) to get started.
 
 ## 📄 License
 
-- Documentation content: **Creative Commons Attribution 4.0 (CC BY 4.0)**
+- Documentation content: **MIT License**
 - Code and configuration (e.g., `mkdocs.yml`): **MIT License**

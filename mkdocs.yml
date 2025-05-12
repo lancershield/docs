@@ -37,10 +37,6 @@ nav:
   - Vulnerability Database:
       - Overview: vuln-db/index.md
       - Template: vuln-db/template.md
-      - Critical:
-          - Classic Reentrancy: vuln-db/critical/reentrancy-classic.md
-      - High:
-          - Frontrunning: vuln-db/high/frontrunning.md
   - Contributing Guide: contributing/index.md
 
 plugins:

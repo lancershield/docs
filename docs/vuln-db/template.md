@@ -98,3 +98,29 @@ Example:
 - [SWC Registry: Authorization Through tx.origin](https://swcregistry.io/docs/SWC-105)
 - [OpenZeppelin: Access Control Best Practices](https://example.com/post-mortem)
 -->
+
+---
+
+✅ Vulnerability Report Template
+
+id: <unique-vulnerability-id>
+title: <vulnerability-title>
+severity: <C | H | M | L | I | G>
+score:
+impact: <0-5>
+exploitability: <0-5>
+reachability: <0-5>
+complexity: <0-5>
+detectability: <0-5>
+finalScore: <calculated-weighted-score>
+
+---
+
+📄 Justifications & Analysis
+
+Provide technical rationales for each axis score here:
+• Impact: [Explain why this bug would (or wouldn’t) cause financial/state loss]
+• Exploitability: [Clarify the conditions under which this can be triggered]
+• Reachability: [Is the code path realistically invoked? Any blockers?]
+• Complexity: [How much attacker effort, knowledge, or setup is required?]
+• Detectability: [Would this be caught in a standard audit pipeline?]

@@ -17,9 +17,9 @@ The LancerShield Severity Framework (LSF) provides a structured, consistent, and
 
 ---
 
-## Scoring Criteria (Axes)
+## Scoring Criteria (Axis)
 
-Each issue is scored across five axes from 0–5, with weighted importance.
+Each issue is scored across five axis from 0–5, with weighted importance.
 
 | Axis               | Weight | Scope                                            |
 | ------------------ | ------ | ------------------------------------------------ |

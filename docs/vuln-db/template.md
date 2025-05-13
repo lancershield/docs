@@ -106,7 +106,7 @@ Example:
 ```markdown
 id: <unique-vulnerability-id>
 title: <vulnerability-title>
-severity: <C | H | M | L | I | G>
+severity: < H | M | L | I | G>
 score:
 impact: <0-5>
 exploitability: <0-5>

@@ -37,6 +37,26 @@ nav:
   - Vulnerability Database:
       - Overview: vuln-db/index.md
       - Template: vuln-db/template.md
+      - Critical:
+          - Overview: vuln-db/critical/Overview.md
+          - Price-Oracle: vuln-db/critical/Price-oracle.md
+          - Flash-Loan-Attack: vuln-db/critical/Flash-Loan-Attacks.md
+      - high:  
+          - Overview: vuln-db/high/Overview.md
+          - Denial of Service: vuln-db/high/denial-of-service.md
+          - Access Control: vuln-db/high/Access-control.md
+          - Reentrancy: vuln-db/high/Reentrancy.md
+          - Integer-Overflow: vuln-db/high/Integer-Overflow.md
+          - Improper-Upgrade: vuln-db/high/Improper-Upgradeability.md
+        
+      - medium:
+          - Overview: vuln-db/medium/Overview.md
+          - logical-errors: vuln-db/medium/logic-errors.md
+
+      - low: 
+          - Overview: vuln-db/low/Overview.md
+          - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
+
   - Contributing Guide: contributing/index.md
 
 plugins:

@@ -101,8 +101,9 @@ Example:
 
 ---
 
-✅ Vulnerability Report Template
+## ✅ Vulnerability Report Template
 
+```markdown
 id: <unique-vulnerability-id>
 title: <vulnerability-title>
 severity: <C | H | M | L | I | G>
@@ -113,14 +114,16 @@ reachability: <0-5>
 complexity: <0-5>
 detectability: <0-5>
 finalScore: <calculated-weighted-score>
+```
 
 ---
 
-📄 Justifications & Analysis
+## 📄 Justifications & Analysis
 
 Provide technical rationales for each axis score here:
-• Impact: [Explain why this bug would (or wouldn’t) cause financial/state loss]
-• Exploitability: [Clarify the conditions under which this can be triggered]
-• Reachability: [Is the code path realistically invoked? Any blockers?]
-• Complexity: [How much attacker effort, knowledge, or setup is required?]
-• Detectability: [Would this be caught in a standard audit pipeline?]
+
+- **Impact**: [Explain why this bug would (or wouldn’t) cause financial/state loss]
+- **Exploitability**: [Clarify the conditions under which this can be triggered]
+- **Reachability**: [Is the code path realistically invoked? Any blockers?]
+- **Complexity**: [How much attacker effort, knowledge, or setup is required?]
+- **Detectability**: [Would this be caught in a standard audit pipeline?]

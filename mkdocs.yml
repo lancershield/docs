@@ -41,6 +41,7 @@ nav:
           - Overview: vuln-db/critical/Overview.md
           - Price-Oracle: vuln-db/critical/Price-oracle.md
           - Flash-Loan-Attack: vuln-db/critical/Flash-Loan-Attacks.md
+          - Arbitrary Storage: vuln-db/critical/Arbitrary-Storage.md
       - high:  
           - Overview: vuln-db/high/Overview.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -48,14 +49,46 @@ nav:
           - Reentrancy: vuln-db/high/Reentrancy.md
           - Integer-Overflow: vuln-db/high/Integer-Overflow.md
           - Improper-Upgrade: vuln-db/high/Improper-Upgradeability.md
-        
+          - Insecure-Randomness: vuln-db/high/Insecure-Randomness.md
+          - Gas-Limit: vuln-db/high/Gas-Limit.md
+          - Ownership-Vulnerability: vuln-db/high/Ownership.md
+          - Insufficient-Signature-Verification: vuln-db/high/Insufficient.md
+          - Cross-Contract : vuln-db/high/cross-contract.md
+          - Uninitialized-Storage: vuln-db/high/Uninitialized-Storage.md
+          - Selfdestruct: vuln-db/high/Selfdestruct.md
+          - Signature Replay: vuln-db/high/Signature-Replay.md
+          - Blockhash Dependence: vuln-db/high/Blockhash-Dependence.md
+          - Proxy Pattern: vuln-db/high/Proxy-Pattern.md
+          - merkle-proof: vuln-db/high/Merkle-proof.md
+          - Async Withdraw: vuln-db/high/Async Withdraw.md
+          - Reward Inflation: vuln-db/high/Reward Inflation.md
+          - Upgrade Bricking: vuln-db/high/Upgrade-Bricking.md
+          - Emergency Function Abuse: vuln-db/high/Emergency-Function-Abuse.md
+          - Internal Accounting Drift: vuln-db/high/Internal-Accounting-Drif.md
+          - Delegatecall: vuln-db/high/Delegatecall.md
+          - User-Defined: vuln-db/high/User-Defined.md
+          - Math Underflow: vuln-db/high/Math-Underflow.md
+          - Faulty Permit: vuln-db/high/Faulty-Permit.md
+          - Oracle Feed Delay: vuln-db/high/Oracle-Feed-Delay.md
+          - Counter Overflow: vuln-db/high/Counter-Overflow.md
+          - Reused Hash Collision: vuln-db/high/Reused-Hash-Collision.md
       - medium:
           - Overview: vuln-db/medium/Overview.md
           - logical-errors: vuln-db/medium/logic-errors.md
+          - Timestamp-Dependence: vuln-db/medium/Timestamp-dependency.md
+          - Fallback-Function-Misuse: vuln-db/medium/Fallback-Function.md
+          - Gas Griefing: vuln-db/medium/Gas-Griefing.md
+          - Time Manipulation : vuln-db/medium/Time-Manipulation.md
+          - Event Emission: vuln-db/medium/Event-Emission.md
+          - Improper Error: vuln-db/medium/Improper-Error.md
+          - Contract Size Limit: vuln-db/medium/Contract-Size-Limit.md
+          - Unused Modifiers: vuln-db/medium/Unused-Modifiers.md
+
 
       - low: 
           - Overview: vuln-db/low/Overview.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
+          - Redundant Code Logic: vuln-db/low/Redundant-Code-Logic.md
 
   - Contributing Guide: contributing/index.md
 

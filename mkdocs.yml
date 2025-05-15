@@ -42,6 +42,10 @@ nav:
           - Price-Oracle: vuln-db/critical/Price-oracle.md
           - Flash-Loan-Attack: vuln-db/critical/Flash-Loan-Attacks.md
           - Arbitrary Storage: vuln-db/critical/Arbitrary-Storage.md
+          - Improperly Initialized: vuln-db/critical/Improperly-Initialized.md
+          - Admin Key Misuse : vuln-db/critical/Admin-Key-Misuse.md
+          - Unverified Upgrade: vuln-db/critical/Unverified-Upgrade.md
+          - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
       - high:  
           - Overview: vuln-db/high/Overview.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -72,6 +76,22 @@ nav:
           - Oracle Feed Delay: vuln-db/high/Oracle-Feed-Delay.md
           - Counter Overflow: vuln-db/high/Counter-Overflow.md
           - Reused Hash Collision: vuln-db/high/Reused-Hash-Collision.md
+          - Stale Price: vuln-db/high/Stale-Price.md
+          - Missing Nonce Checks : vuln-db/high/Missing-Nonce-Checks.md
+          - Unsafe tx.origin: vuln-db/high/Unsafe-tx.origin.md
+          - Unchecked Slippage: vuln-db/high/Unchecked-Slippage.md
+          - Token Approval: vuln-db/high/Token-Approval.md
+          - Token Migration: vuln-db/high/Token-Migration.md
+          - Ignoring ChainID : vuln-db/high/Ignoring-ChainID.md
+          - Contract Address Collision: vuln-db/high/Contract-Address-Collision.md
+          - Transfer Hook Abuse : vuln-db/high/Transfer-Hook-Abuse.md
+          - Flawed Migration: vuln-db/high/Flawed-Migration.md
+          - Front-Running NFT: vuln-db/high/Front-Running-NFT.md
+          - NFT Metadata Tampering : vuln-db/high/NFT-Metadata-Tampering.md
+          - Vesting Shortcut Exploits : vuln-db/high/Vesting.md
+          - Flawed Slashing: vuln-db/high/Flawed-Slashing.md
+          - Stuck Swap Pools : vuln-db/high/Stuck-Swap-Pools.md
+    
       - medium:
           - Overview: vuln-db/medium/Overview.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -83,12 +103,28 @@ nav:
           - Improper Error: vuln-db/medium/Improper-Error.md
           - Contract Size Limit: vuln-db/medium/Contract-Size-Limit.md
           - Unused Modifiers: vuln-db/medium/Unused-Modifiers.md
+          - Deprecated Solidity: vuln-db/medium/Deprecated-Solidity.md
+          - Overuse of Inline: vuln-db/medium/Overuse-of-Inline.md
+          - Lack of Circuit Breakers: vuln-db/medium/Lack-of-Circuit-Breakers.md
+          - Unoptimized Data: vuln-db/medium/Unoptimized.md
+          - Ignoring Chain: vuln-db/medium/Ignoring-Chain.md
+          - Inconsistent Decimal: vuln-db/medium/Inconsistent-Decimal.md
+          - Ignoring SafeERC20 : vuln-db/medium/Ignoring-SafeERC20.md
+          - Minting to Burn: vuln-db/medium/Minting-to-Burn.md
+          - Approval Reset Race Condition : vuln-db/medium/Approval-Reset-Race.md
+          - Gas Token Exploitation : vuln-db/medium/Gas-Token-Exploitation.md
+          - Broken Interface: vuln-db/medium/Broken-Interface.md
+          - Bribery: vuln-db/medium/Bribery.md
+          - Zero Fee Manipulation : vuln-db/medium/Zero-Fee.md
 
 
       - low: 
           - Overview: vuln-db/low/Overview.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
           - Redundant Code Logic: vuln-db/low/Redundant-Code-Logic.md
+          - Missing Events: vuln-db/low/Missing-Events.md
+          - Hardcoded: vuln-db/low/Hardcoded.md
+          - Incomplete Event Logging : vuln-db/low/Incomplete-Event.md
 
   - Contributing Guide: contributing/index.md
 

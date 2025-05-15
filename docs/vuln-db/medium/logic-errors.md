@@ -20,8 +20,8 @@ swc: SWC-124
 
 ## 📝 Description
 
-- Logic errors occur when the contract code executes successfully but the implemented logic does not match the intended behavior. 
-- These issues are often found in conditionals, arithmetic operations, loop boundaries, state updates, or access control. 
+- Logic errors occur when the contract code executes successfully but the implemented logic does not match the intended behavior.
+- These issues are often found in conditionals, arithmetic operations, loop boundaries, state updates, or access control.
 - Unlike syntax or runtime errors, logic flaws don’t revert—making them harder to detect but potentially harmful in production.
 
 ## 🚨 Vulnerable Code
@@ -83,37 +83,34 @@ function claimReward() external {
 - Slither: unused-return, incorrect-transfer-order, and logic detectors.
 - Symbolic execution via tools like Mythril or Manticore.
 
-
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi Early Ownership Bug 
-- **Date:** 2016-05-03 
+- **Name:** Rubixi Early Ownership Bug
+- **Date:** 2016-05-03
 - **Loss:** N/A
 - **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDevthe-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8)
-  
-- **Name:** YAM Finance Overflow Bug 
-- **Date:** 2020-08-13 
+- **Name:** YAM Finance Overflow Bug
+- **Date:** 2020-08-13
 - **Loss:** Protocol disabled, $750K lost
-- **Post-mortem:** [Link to post-mortem](https://medium.com/yam-finance/yam-post-mortem-39467ab8971f) -->
-
+- **Post-mortem:** [Link to post-mortem](https://medium.com/yam-finance/yam-post-mortem-39467ab8971f)
 
 ## 📚 Further Reading
 
 - [SWC-124: Incorrect Inheritance Order or Logic](https://swcregistry.io/docs/SWC-124)
-- [Trail of Bits: Logic Bugs in Smart Contracts](https://blog.trailofbits.com/2022/10/how-to-break-smart-contracts/) 
-- [OpenZeppelin – Avoiding Logic Errors](https://docs.openzeppelin.com/contracts/4.x/api/utils) 
+- [Trail of Bits: Logic Bugs in Smart Contracts](https://blog.trailofbits.com/2022/10/how-to-break-smart-contracts/)
+- [OpenZeppelin – Avoiding Logic Errors](https://docs.openzeppelin.com/contracts/4.x/api/utils)
 
-## ✅ Vulnerability Report 
+## ✅ Vulnerability Report
 
 ```markdown
-id: vuln__005
+id: vuln\_\_005
 title: Logic Errors in Contract Conditions or Calculations
 severity: M
 score:
-impact: 3         
+impact: 3  
 exploitability: 3
-reachability: 4   
-complexity: 2     
+reachability: 4  
+complexity: 2  
 detectability: 3  
 finalScore: 3.15
 ```

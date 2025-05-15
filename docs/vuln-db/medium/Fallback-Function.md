@@ -3,7 +3,7 @@
 ```YAML
 
 id: TBA
-title: Fallback Function Misuse Leading to Asset Loss 
+title: Fallback Function Misuse Leading to Asset Loss
 severity: M
 category: fallback-function
 language: solidity
@@ -20,7 +20,7 @@ swc: SWC-115
 
 ## 📝 Description
 
-- Fallback function misuse occurs when the contract's `fallback()` or `receive()` functions unintentionally accept Ether or execute logic due to missing or incorrect function selectors, misrouted calls, or default catch-all behavior. 
+- Fallback function misuse occurs when the contract's `fallback()` or `receive()` functions unintentionally accept Ether or execute logic due to missing or incorrect function selectors, misrouted calls, or default catch-all behavior.
 - This can lead to:
 - Accepting funds when not intended.
 - Unexpected logic execution via `delegatecall`.
@@ -90,23 +90,21 @@ receive() external payable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi (Dynamic Pyramid) Exploit 
-- **Date:** 2016-05 
-- **Loss:** N/A (Unintended ownership assignment via fallback) 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDev/the-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8) 
+- **Name:** Rubixi (Dynamic Pyramid) Exploit
+- **Date:** 2016-05
+- **Loss:** N/A (Unintended ownership assignment via fallback)
+- **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDev/the-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8)
 
-
-- **Name:** Upbit Token Proxy Admin Exposure 
-- **Date:** 2022-01-18 
-- **Loss:** N/A (Whitehat discovery) 
+- **Name:** Upbit Token Proxy Admin Exposure
+- **Date:** 2022-01-18
+- **Loss:** N/A (Whitehat discovery)
 - **Post-mortem:** [Link to post-mortem](https://twitter.com/pcaversaccio/status/1483800152813000705)
-
 
 ## 📚 Further Reading
 
-- [SWC-115: Misuse of Fallback Function](https://swcregistry.io/docs/SWC-115) 
-- [Solidity Docs – Fallback and Receive Functions](https://docs.soliditylang.org/en/latest/contracts.html#fallback-function) 
-- [OpenZeppelin Security Guidelines](https://docs.openzeppelin.com/contracts/4.x/api/security) -->
+- [SWC-115: Misuse of Fallback Function](https://swcregistry.io/docs/SWC-115)
+- [Solidity Docs – Fallback and Receive Functions](https://docs.soliditylang.org/en/latest/contracts.html#fallback-function)
+- [OpenZeppelin Security Guidelines](https://docs.openzeppelin.com/contracts/4.x/api/security)
 
 ---
 
@@ -114,17 +112,16 @@ receive() external payable {
 
 ```markdown
 id: TBA
-title: Fallback Function Misuse 
+title: Fallback Function Misuse
 severity: M
 score:
-impact: 3         
-exploitability: 3 
-reachability: 4   
-complexity: 2     
+impact: 3  
+exploitability: 3
+reachability: 4  
+complexity: 2  
 detectability: 4  
 finalScore: 3.15
 ```
-
 
 ---
 

@@ -19,9 +19,9 @@ swc: SWC-112
 
 ## 📝 Description
 
-- Improper upgradeability refers to flaws in upgradable smart contract systems (e.g., proxy patterns) where either the storage layout is misaligned between proxy and implementation, or the upgrade logic is left exposed to unauthorized parties. 
+- Improper upgradeability refers to flaws in upgradable smart contract systems (e.g., proxy patterns) where either the storage layout is misaligned between proxy and implementation, or the upgrade logic is left exposed to unauthorized parties.
 - This can cause **storage collisions**, **logic corruption**, or even **complete loss of control** over the proxy contract.
--Improper handling of `delegatecall` or `admin` storage slots is especially dangerous in patterns like UUPS and Transparent proxies if not implemented using hardened libraries.
+  -Improper handling of `delegatecall` or `admin` storage slots is especially dangerous in patterns like UUPS and Transparent proxies if not implemented using hardened libraries.
 
 ## 🚨 Vulnerable Code
 
@@ -47,6 +47,7 @@ contract Proxy {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -56,6 +57,7 @@ Step-by-step exploit process:
 3. Attacker can steal funds, disable the contract, or overwrite critical state.
 
 **Assumptions:**
+
 - Upgrade function is public or not gated with onlyOwner or onlyProxyAdmin.
 - Implementation contract has unaligned storage or logic.
 
@@ -94,34 +96,30 @@ contract SafeProxyAdmin is Ownable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Parity Wallet Library Self-Destruct 
-- **Date:** 2017-11-06 
-- **Loss:** ~$150M frozen 
-- **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
-
-  
--  **Name:** ProxyAdmin Exposure in Upbit Token 
--  **Date:** 2022-01-18 
--  **Loss:** N/A (whitehat discovered) 
--  **Post-mortem:** [Link to post-mortem](https://twitter.com/pcaversaccio/status/1483800152813000705)
-  
+- **Name:** Parity Wallet Library Self-Destruct
+- **Date:** 2017-11-06
+- **Loss:** ~$150M frozen
+- **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/)
+- **Name:** ProxyAdmin Exposure in Upbit Token
+- **Date:** 2022-01-18
+- **Loss:** N/A (whitehat discovered)
+- **Post-mortem:** [Link to post-mortem](https://twitter.com/pcaversaccio/status/1483800152813000705)
 
 ## 📚 Further Reading
 
-- [SWC-112: Delegatecall to Untrusted Callee](https://swcregistry.io/docs/SWC-112) 
-- [OpenZeppelin – Upgrades Plugins & Guides](https://docs.openzeppelin.com/upgrades-plugins) 
-- [Trail of Bits – Secure Upgrade Patterns](https://github.com/trailofbits/publications/blob/master/reviews/Compound-2018-10.pdf) -->
-
+- [SWC-112: Delegatecall to Untrusted Callee](https://swcregistry.io/docs/SWC-112)
+- [OpenZeppelin – Upgrades Plugins & Guides](https://docs.openzeppelin.com/upgrades-plugins)
+- [Trail of Bits – Secure Upgrade Patterns](https://github.com/trailofbits/publications/blob/master/reviews/Compound-2018-10.pdf)
 
 ```markdown
 id: TBA
-title: Improper Upgradeability 
+title: Improper Upgradeability
 severity: H
 score:
-impact: 5        
-exploitability: 4 
-reachability: 4   
-complexity: 3     
+impact: 5  
+exploitability: 4
+reachability: 4  
+complexity: 3  
 detectability: 3  
 finalScore: 4.3
 ```

@@ -1,12 +1,14 @@
-site_name: Lancer-shield-docs
+site_name: Lancer Shield Docs
 site_url: https://lancershield.github.io/docs/
+strict: true
 theme:
   name: material
   features:
     - navigation.tabs
-    - navigation.sections
-    - toc.integrate
     - navigation.top
+    - navigation.tracking
+    - navigation.indexes
+    - toc.integrate
     - search.suggest
     - search.highlight
     - content.tabs.link
@@ -38,16 +40,16 @@ nav:
       - Overview: vuln-db/index.md
       - Template: vuln-db/template.md
       - Critical:
-          - Overview: vuln-db/critical/Overview.md
+          - Overview: vuln-db/critical/index.md
           - Price-Oracle: vuln-db/critical/Price-oracle.md
           - Flash-Loan-Attack: vuln-db/critical/Flash-Loan-Attacks.md
           - Arbitrary Storage: vuln-db/critical/Arbitrary-Storage.md
           - Improperly Initialized: vuln-db/critical/Improperly-Initialized.md
-          - Admin Key Misuse : vuln-db/critical/Admin-Key-Misuse.md
+          - Admin Key Misuse: vuln-db/critical/Admin-Key-Misuse.md
           - Unverified Upgrade: vuln-db/critical/Unverified-Upgrade.md
           - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
-      - high:  
-          - Overview: vuln-db/high/Overview.md
+      - High:
+          - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
           - Access Control: vuln-db/high/Access-control.md
           - Reentrancy: vuln-db/high/Reentrancy.md
@@ -57,7 +59,7 @@ nav:
           - Gas-Limit: vuln-db/high/Gas-Limit.md
           - Ownership-Vulnerability: vuln-db/high/Ownership.md
           - Insufficient-Signature-Verification: vuln-db/high/Insufficient.md
-          - Cross-Contract : vuln-db/high/cross-contract.md
+          - Cross-Contract: vuln-db/high/cross-contract.md
           - Uninitialized-Storage: vuln-db/high/Uninitialized-Storage.md
           - Selfdestruct: vuln-db/high/Selfdestruct.md
           - Signature Replay: vuln-db/high/Signature-Replay.md
@@ -77,28 +79,27 @@ nav:
           - Counter Overflow: vuln-db/high/Counter-Overflow.md
           - Reused Hash Collision: vuln-db/high/Reused-Hash-Collision.md
           - Stale Price: vuln-db/high/Stale-Price.md
-          - Missing Nonce Checks : vuln-db/high/Missing-Nonce-Checks.md
+          - Missing Nonce Checks: vuln-db/high/Missing-Nonce-Checks.md
           - Unsafe tx.origin: vuln-db/high/Unsafe-tx.origin.md
           - Unchecked Slippage: vuln-db/high/Unchecked-Slippage.md
           - Token Approval: vuln-db/high/Token-Approval.md
           - Token Migration: vuln-db/high/Token-Migration.md
-          - Ignoring ChainID : vuln-db/high/Ignoring-ChainID.md
+          - Ignoring ChainID: vuln-db/high/Ignoring-ChainID.md
           - Contract Address Collision: vuln-db/high/Contract-Address-Collision.md
-          - Transfer Hook Abuse : vuln-db/high/Transfer-Hook-Abuse.md
+          - Transfer Hook Abuse: vuln-db/high/Transfer-Hook-Abuse.md
           - Flawed Migration: vuln-db/high/Flawed-Migration.md
           - Front-Running NFT: vuln-db/high/Front-Running-NFT.md
-          - NFT Metadata Tampering : vuln-db/high/NFT-Metadata-Tampering.md
-          - Vesting Shortcut Exploits : vuln-db/high/Vesting.md
+          - NFT Metadata Tampering: vuln-db/high/NFT-Metadata-Tampering.md
+          - Vesting Shortcut Exploits: vuln-db/high/Vesting.md
           - Flawed Slashing: vuln-db/high/Flawed-Slashing.md
-          - Stuck Swap Pools : vuln-db/high/Stuck-Swap-Pools.md
-    
-      - medium:
-          - Overview: vuln-db/medium/Overview.md
+          - Stuck Swap Pools: vuln-db/high/Stuck-Swap-Pools.md
+      - Medium:
+          - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
           - Timestamp-Dependence: vuln-db/medium/Timestamp-dependency.md
           - Fallback-Function-Misuse: vuln-db/medium/Fallback-Function.md
           - Gas Griefing: vuln-db/medium/Gas-Griefing.md
-          - Time Manipulation : vuln-db/medium/Time-Manipulation.md
+          - Time Manipulation: vuln-db/medium/Time-Manipulation.md
           - Event Emission: vuln-db/medium/Event-Emission.md
           - Improper Error: vuln-db/medium/Improper-Error.md
           - Contract Size Limit: vuln-db/medium/Contract-Size-Limit.md
@@ -109,27 +110,31 @@ nav:
           - Unoptimized Data: vuln-db/medium/Unoptimized.md
           - Ignoring Chain: vuln-db/medium/Ignoring-Chain.md
           - Inconsistent Decimal: vuln-db/medium/Inconsistent-Decimal.md
-          - Ignoring SafeERC20 : vuln-db/medium/Ignoring-SafeERC20.md
+          - Ignoring SafeERC20: vuln-db/medium/Ignoring-SafeERC20.md
           - Minting to Burn: vuln-db/medium/Minting-to-Burn.md
-          - Approval Reset Race Condition : vuln-db/medium/Approval-Reset-Race.md
-          - Gas Token Exploitation : vuln-db/medium/Gas-Token-Exploitation.md
+          - Approval Reset Race Condition: vuln-db/medium/Approval-Reset-Race.md
+          - Gas Token Exploitation: vuln-db/medium/Gas-Token-Exploitation.md
           - Broken Interface: vuln-db/medium/Broken-Interface.md
           - Bribery: vuln-db/medium/Bribery.md
-          - Zero Fee Manipulation : vuln-db/medium/Zero-Fee.md
-
-
-      - low: 
-          - Overview: vuln-db/low/Overview.md
+          - Zero Fee Manipulation: vuln-db/medium/Zero-Fee.md
+      - Low:
+          - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
           - Redundant Code Logic: vuln-db/low/Redundant-Code-Logic.md
           - Missing Events: vuln-db/low/Missing-Events.md
           - Hardcoded: vuln-db/low/Hardcoded.md
-          - Incomplete Event Logging : vuln-db/low/Incomplete-Event.md
-
+          - Incomplete Event Logging: vuln-db/low/Incomplete-Event.md
   - Contributing Guide: contributing/index.md
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\-\.]+'
+      lang: en
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+  - offline:
+      enabled: true
 
 extra:
   social:
@@ -137,6 +142,10 @@ extra:
       link: https://github.com/lancershield
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/lancer-shield
+  generator: false
+  git:
+    show_revision_date: true
+    show_revision_author: false
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -151,6 +160,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
+  - markdown.extensions.abbr
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

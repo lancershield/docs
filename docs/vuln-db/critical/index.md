@@ -19,5 +19,3 @@
 - May attract legal, regulatory, or reputational fallout.
 
 - Examples: reentrancy flaws, logic bugs in withdrawal functions, broken access control.
-
-

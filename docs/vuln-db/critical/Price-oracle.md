@@ -19,8 +19,8 @@ swc: SWC-114
 
 ## 📝 Description
 
-- Price Oracle Manipulation occurs when an attacker influences the data source a smart contract relies on for pricing assets. 
-- If the oracle uses manipulable inputs—such as on-chain DEX prices, thin liquidity pools, or manipulable off-chain data feeds—an attacker can trick the contract into believing an incorrect asset price. 
+- Price Oracle Manipulation occurs when an attacker influences the data source a smart contract relies on for pricing assets.
+- If the oracle uses manipulable inputs—such as on-chain DEX prices, thin liquidity pools, or manipulable off-chain data feeds—an attacker can trick the contract into believing an incorrect asset price.
 - This results in faulty calculations in lending protocols, AMMs, liquidations, and more.
 
 ## 🚨 Vulnerable Code
@@ -61,7 +61,6 @@ Step-by-step exploit process:
 
 - Borrow/loan logic relies directly on unverified price inputs.
 
-
 ## ✅ Fixed Code
 
 ```solidity
@@ -80,7 +79,6 @@ contract SaferLending {
     }
 }
 ```
-
 
 ## 🛡️ Prevention
 
@@ -104,30 +102,28 @@ contract SaferLending {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Synthetix sKRW Oracle Exploit 
-- **Date:** 2019-06-25 
-- **Loss:** $1B (reversed) 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/synthetix-blogsynthetix-exchange-oracle-incident-post-mortem-319d54f47c7c) 
-  
+- **Name:** Synthetix sKRW Oracle Exploit
+- **Date:** 2019-06-25
+- **Loss:** $1B (reversed)
+- **Post-mortem:** [Link to post-mortem](https://medium.com/synthetix-blogsynthetix-exchange-oracle-incident-post-mortem-319d54f47c7c)
 - **Name:** Harvest Finance Exploit
-- **Date:** 2020-10-26 
-- **Loss:** ~$33M 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/harvest-finance/harvest-incident-report-1c8e5c590920) 
- 
- 
-- **Name:** Mango Markets Manipulation 
-- **Date:** 2022-10-11 
-- **Loss:** ~$114M 
-- **Post-mortem:** [Link to post-mortem](https://twitter.com/MangoMarkets/status/1580041892085970945) -->
+- **Date:** 2020-10-26
+- **Loss:** ~$33M
+- **Post-mortem:** [Link to post-mortem](https://medium.com/harvest-finance/harvest-incident-report-1c8e5c590920)
 
+- **Name:** Mango Markets Manipulation
+- **Date:** 2022-10-11
+- **Loss:** ~$114M
+- **Post-mortem:** [Link to post-mortem](https://twitter.com/MangoMarkets/status/1580041892085970945)
 
 ## 📚 Further Reading
 
-- [SWC-114: Oracle Manipulation](https://swcregistry.io/docs/SWC-114) 
-- [Chainlink – Preventing Oracle Attacks](https://blog.chain.link/defi-attacks-smart-contract-vulnerabilities/) 
--  [Paradigm Research – Oracle Manipulation in DeFi](https://research.paradigm.xyz/OracleManipulation) 
+- [SWC-114: Oracle Manipulation](https://swcregistry.io/docs/SWC-114)
+- [Chainlink – Preventing Oracle Attacks](https://blog.chain.link/defi-attacks-smart-contract-vulnerabilities/)
+- [Paradigm Research – Oracle Manipulation in DeFi](https://research.paradigm.xyz/OracleManipulation)
 
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -135,10 +131,10 @@ id: TBA
 title: Price Oracle Manipulation
 severity: C
 score:
-impact: 5         
-exploitability: 5 
-reachability: 4   
-complexity: 3     
+impact: 5  
+exploitability: 5
+reachability: 4  
+complexity: 3  
 detectability: 3  
 finalScore: 4.5
 ```

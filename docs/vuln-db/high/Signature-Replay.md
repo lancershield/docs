@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Signature Replay Attacks due to Missing Nonce or Domain Separation
+title: Signature Replay Attacks due to Missing Nonce 
 severity: H
 category: signature-replay
 language: solidity
@@ -104,11 +104,10 @@ contract ReplaySafe {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Bee Token ICO Replay Phishing 
-- **Date:** 2018-02 
-- **Loss:** ~$1M in replayed/phished contributions 
-- **Post-mortem:** [Link to post-mortem](https://thehackernews.com/2018/02/bee-token-phishing-scam.html) 
-
+- **Name:** Wintermute's $OP Token Theft 
+- **Date:** 2022-06-09 
+- **Loss:** 20 million $OP tokens 
+- **Post-mortem:** [Wintermute Exploit Analysis](https://doc.confluxnetwork.org/docs/general/build/smart-contracts/contract-security/signature-replay) 
 
 
 ## 📚 Further Reading

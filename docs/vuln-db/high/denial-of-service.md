@@ -1,9 +1,8 @@
-
 # Denial of Service
 
 ```YAML
 id: TBA
-title: Denial of Service via Unbounded Loop 
+title: Denial of Service 
 severity: H
 category: denial-of-service
 language: solidity
@@ -22,7 +21,6 @@ swc: SWC-113
 
 - Denial of Service (DoS) in smart contracts occurs when an attacker can prevent legitimate users from interacting with a contract, either temporarily or permanently. 
 - This can be achieved by exploiting resource-intensive operations (e.g., unbounded loops), failing external calls, unexpected reverts, or storage manipulation that causes subsequent operations to fail.
-
 - In Ethereum, since each transaction has a gas limit, a common DoS vector is introducing logic that exceeds the block gas limit or causes reversion due to invalid assumptions (like looping through a growing array).
 
 ## 🚨 Vulnerable Code
@@ -44,17 +42,13 @@ function withdrawAll() external {
 Step-by-step exploit process:
 
 1. Attacker makes hundreds or thousands ...[msg.sender].
-
-2. Calls withdrawAll() which loops over all entries...
-
+2. Calls withdrawAll() which loops over all entries.
 3. The loop execution exceeds the block gas limit → reverts.
-
-4. The attacker is now permanently locked out... 
+4. The attacker is now permanently locked out. 
 
 **Assumptions:**
 
 - The contract allows unlimited or unbounded entries into arrays or mappings.
-
 - There is no gas-bound safety mechanism in looping constructs.
 
 ## ✅ Fixed Code
@@ -95,49 +89,35 @@ function withdrawBatch(uint start, uint end) external {
 
 ## 🕰️ Historical Exploits
 
-- GovernMental (2016): Attackers used large data insertion to block contract execution.
-- Parity Multisig (2017): Vulnerability in library handling resulted in contract lockout.
-- SpankChain (2018): DoS via unexpected reverts in fallback calls.
-
--  **Name:** GovernMental DoS Vulnerability  
--  **Date:** 2016-06-11  
--  **Loss:** N/A  
--  **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethereum/comments/4np972/governmental_dapp_scam_or_honeypot/)
-
-
+- **Name:** GovernMental DoS Vulnerability  
+- **Date:** 2016-06-11  
+- **Loss:** N/A  
+- **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethereum/comments/4np972/governmental_dapp_scam_or_honeypot/)
 
 ## 📚 Further Reading
 
-- SWC-113: DoS with Block Gas Limit
-
-- Ethereum Smart Contract Best Practices – Denial of Service
-
-- Slither Docs – Detecting DoS
-
-
 - [SWC-113: DoS with Block Gas Limit](https://swcregistry.io/docs/SWC-113)
-- [Ethereum Smart Contract Best Practices – Denial of Service](https://consensys.github.io/smart-contract-best-practices/attacks/denial-of-service/)
-- [Slither Docs – Detecting DoS](https://github.com/crytic/slither)
-
+- [Preventing Denial of Service Attacks in Solidity – Infuy](https://www.infuy.com/blog/preventing-denial-of-service-attacks-in-solidity/) 
+- [Slither Detector Documentation – crytic/slither Wiki](https://github.com/crytic/slither/wiki/Detector-Documentation) 
 
 ---
 
 ## ✅ Vulnerability Report 
 
 ```
-id: vuln__denial_of_service
+id: TBA
 title: Denial of Service
 severity: H
 score:
-impact: <5>        
-exploitability: <4> 
-reachability: <5>   
-complexity: <1>     
-detectability: <3>  
-finalScore: <4.3>
+impact: 5        
+exploitability: 4 
+reachability: 5   
+complexity: 1     
+detectability: 3  
+finalScore: 4.3
 ```
 
-  ---
+---
 
 ## 📄 Justifications & Analysis
 

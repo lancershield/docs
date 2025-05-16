@@ -21,10 +21,7 @@ swc: SWC-112
 ## 📝 Description
 
 - Unverified upgrade implementations** occur in upgradable contracts (e.g. UUPS or Transparent Proxies) when the admin or upgrade mechanism allows setting a new implementation address without validating:
-- The implementation’s code hash,
-- Interface compatibility,
-- authorization logic.
-- This can lead to:
+- The implementation’s code hash,Interface compatibility authorization logic.
 - Malicious logic injection (e.g., draining funds, disabling the protocol),
 - Storage layout mismatch, leading to undefined behavior or fund loss,
 - Takeover of proxy contracts via fake `authorizeUpgrade()` or self-destruct logic.
@@ -37,7 +34,6 @@ contract ProxyAdmin {
         TransparentUpgradeableProxy(proxy).upgradeTo(newImplementation); // ❌ No validation
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -52,7 +48,9 @@ selfdestruct(),transferAllTokensTo(attacker),authorizeUpgrade() that accepts any
 
 **Assumptions:**
 
-- A legitimate developer deploys an implementation with a mismatched storage layout, accidentally corrupting all state variables (e.g., turning balances into addresses).
+- Unverified upgrade implementations can introduce vulnerabilities if changes are not thoroughly reviewed or tested before deployment.
+- Unauthorized modifications or bypassed permission checks can occur, potentially leading to loss of funds or compromised contract integrity.
+
 
 ##✅ Fixed Code
 
@@ -99,7 +97,7 @@ contract SecureProxyAdmin is Ownable {
 - **Name:** Audius Upgrade Takeover 
 - **Date:** 2022 
 - **Impact:** ~$6M stolen by attacker upgrading proxy to malicious logic 
-- **Post-mortem:** [https://rekt.news/audius-rekt](https://rekt.news/audius-rekt) 
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/audius-rekt) 
 
 
 ## 📚 Further Reading

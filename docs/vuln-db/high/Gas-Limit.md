@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Gas Limit Vulnerabilities in Unbounded Loops or External Iterations
+title: Gas Limit Vulnerabilities in Unbounded Loops 
 severity: H
 category: gas-limit
 language: solidity
@@ -17,11 +17,10 @@ cwe: CWE-400
 swc: SWC-128
 ```
 
-
 ## 📝 Description
 
 - Gas limit vulnerabilities arise when functions can consume excessive gas due to unbounded operations like looping over dynamic storage arrays or performing too many writes. When the gas required to execute exceeds the block gas limit, transactions revert and critical functions become unusable. 
-- This leads to **denial of service**, especially in `withdraw`, `distribute`, or `claim` functions affecting user funds.
+- This leads to denial of service, especially in `withdraw`, `distribute`, or `claim` functions affecting user funds.
 
 ## 🚨 Vulnerable Code
 
@@ -35,7 +34,6 @@ function distribute() external {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -65,7 +63,6 @@ function distributeBatch(uint256 start, uint256 end) external {
 
 ```
 
-
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -92,22 +89,20 @@ function distributeBatch(uint256 start, uint256 end) external {
 - **Date:** 2018 
 - **Loss:** Jackpot stuck due to exceeding gas limit 
 - **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethtrader/comments/94y5ry/fomo3d_gas_limit_bug/)
-  
-  
--  **Name:** Akropolis Gas Limit Failure 
--  **Date:** 2020 
--  **Loss:** Users unable to withdraw 
--  **Post-mortem:** [Link to post-mortem](https://medium.com/akropolis/akropolis-post-mortem-b47c8f3f479e) 
-  
+- **Name:** Fomo3D Block Stuffing Attack 
+- **Date:** 2018-08-22 
+- **Loss:** Jackpot manipulation through gas limit exploitation 
+- **Post-mortem:** [Link to post-mortem](https://medium.com/@0xkaden/the-encyclopedia-of-smart-contract-attacks-vulnerabilities-dfc1129fdaac) 
 
 ## 📚 Further Reading
 
-- [SWC-128: Gas Limit and Loops](https://swcregistry.io/docs/SWC-128) 
-- [Ethereum StackExchange – Block Gas Limit Risks](https://ethereum.stackexchange.com/questions/43775)
-- [Consensys – Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/attacks/denial-of-service/) 
-  
+- [SWC-113: DoS with Block Gas Limit – SWC Registry](https://swcregistry.io/docs/SWC-113/) 
+- [Smart Contract Vulnerabilities Unveiled: Block Gas Limit Vulnerability](https://medium.com/coinmonks/smart-contract-vulnerabilities-unveiled-block-gas-limit-vulnerability-6499fd5c579b) 
+- [Smart Contract Security Risks: Today's 10 Top Vulnerabilities – Cobalt](https://www.cobalt.io/blog/smart-contract-security-risks) 
+
 ---
 ## ✅ Vulnerability Report 
+
 ```markdown
 id: TBA
 title: Gas Limit Vulnerabilities 

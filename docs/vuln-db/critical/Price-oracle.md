@@ -57,8 +57,7 @@ Step-by-step exploit process:
 
 **Assumptions:**
 
-- Oracle is based on TWAP or spot price of an AMM like Uniswap with low liquidity.
-
+- Oracle is based on TWAP or spot price of an AMM like Uniswap  with low liquidity.
 - Borrow/loan logic relies directly on unverified price inputs.
 
 ## ✅ Fixed Code
@@ -102,25 +101,25 @@ contract SaferLending {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Synthetix sKRW Oracle Exploit
-- **Date:** 2019-06-25
-- **Loss:** $1B (reversed)
-- **Post-mortem:** [Link to post-mortem](https://medium.com/synthetix-blogsynthetix-exchange-oracle-incident-post-mortem-319d54f47c7c)
-- **Name:** Harvest Finance Exploit
-- **Date:** 2020-10-26
-- **Loss:** ~$33M
-- **Post-mortem:** [Link to post-mortem](https://medium.com/harvest-finance/harvest-incident-report-1c8e5c590920)
-
-- **Name:** Mango Markets Manipulation
-- **Date:** 2022-10-11
-- **Loss:** ~$114M
-- **Post-mortem:** [Link to post-mortem](https://twitter.com/MangoMarkets/status/1580041892085970945)
+- **Name:** Synthetix sKRW Oracle Exploit 
+- **Date:** 2019-06-25 
+- **Loss:** Over $1 billion in synthetic assets (reversed) 
+- **Post-mortem:** [Link to post-mortem](https://blog.synthetix.io/response-to-oracle-incident/) 
+- **Name:** Harvest Finance Exploit 
+- **Date:** 2020-10-26 
+- **Loss:** Approximately $33.8 million 
+- **Post-mortem:** [Link to post-mortem](https://beincrypto.com/harvest-finance-releases-attack-postmortem-after-losing-24-million/) 
+- **Name:** Mango Markets Manipulation 
+- **Date:** 2022-10-11 
+- **Loss:** Approximately $114 million 
+- **Post-mortem:** [Link to post-mortem](https://www.trmlabs.com/resources/blog/mango-markets-exploiter-avi-eisenberg-convicted-of-market-manipulation-and-fraud) 
 
 ## 📚 Further Reading
 
-- [SWC-114: Oracle Manipulation](https://swcregistry.io/docs/SWC-114)
-- [Chainlink – Preventing Oracle Attacks](https://blog.chain.link/defi-attacks-smart-contract-vulnerabilities/)
-- [Paradigm Research – Oracle Manipulation in DeFi](https://research.paradigm.xyz/OracleManipulation)
+- [SWC-114: Uncontrolled Oracle Input – SWC Registry](https://swcregistry.io/docs/SWC-114) 
+- [Chainlink: Market Manipulation vs. Oracle Exploits](https://chain.link/education-hub/market-manipulation-vs-oracle-exploits)
+- [Paradigm: So You Want to Use a Price Oracle](https://www.paradigm.xyz/2020/11/so-you-want-to-use-a-price-oracle)
+- [Extropy.IO: Price Oracle Manipulation](https://extropy-io.medium.com/price-oracle-manipulation-d46fd413cc17) 
 
 ---
 

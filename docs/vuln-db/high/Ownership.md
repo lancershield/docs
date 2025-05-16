@@ -1,6 +1,6 @@
 # Ownership Vulnerabilities 
 
-```yaml
+```YAML
 id: TBA
 title: Ownership Vulnerabilities 
 severity: H
@@ -22,7 +22,7 @@ swc: SWC-100
 - Ownership vulnerabilities occur when smart contracts fail to properly assign, restrict, or validate the `owner` or admin role, allowing unauthorized actors to gain privileged access—or leaving no one able to manage the contract. 
 - This commonly includes uninitialized `owner`, wrong visibility on admin-only functions, or incorrect use of access control modifiers.
 
-##🚨 Vulnerable Code
+## 🚨 Vulnerable Code
 
 ```solidity
 contract InsecureAdmin {
@@ -39,7 +39,6 @@ contract InsecureAdmin {
 }
 ```
 
-
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -51,7 +50,7 @@ Step-by-step exploit process:
 
 **Assumptions:**
 
-- initialize() is not restricted to onlyOnce or constructor.
+- Improper handling during ownership transfers can result in unauthorized access or permanent loss of control over the contract.
 - Ownership is not properly set during deployment or proxy usage.
 
 ## ✅ Fixed Code
@@ -93,25 +92,20 @@ contract SecureAdmin is Ownable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi Ownership Bug 
-- **Date:** 2016-05-03 
-- **Loss:** N/A **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDev/the-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8) 
- 
-
-- **Name:** dYdX Funding Rate Ownership Incident 
-- **Date:** 2022-06-30 
-- **Loss:** Risk of unexpected funding rates due to misassigned admin 
-- **Post-mortem:** [Link to post-mortem](https://dydx.exchange/blog/funding-rate-bug-postmortem) 
-
+- **Name:** Bancor Network Hack 
+- **Date:** 2018-07-09 
+- **Loss:** Approximately $13.5 million 
+- **Post-mortem:** [Link to post-mortem](https://codeofcode.org/lessons/case-studies-of-real-world-smart-contract-vulnerabilities-and-exploits/) 
+  
 
 ## 📚 Further Reading
 
-- [SWC-100: Function Default Visibility](https://swcregistry.io/docs/SWC-100) 
-- [OpenZeppelin Docs – Ownable](https://docs.openzeppelin.com/contracts/4.x/api/access#Ownable) 
-- [Consensys – Access Control Best Practices](https://consensys.github.io/smart-contract-best-practices/known_attacks/#access-control) 
+- [SWC-115: Authorization Through tx.origin – SWC Registry](https://swcregistry.io/docs/SWC-115/) 
+- [OpenZeppelin Docs: AccessControl](https://docs.openzeppelin.com/contracts/4.x/access-control) 
+- [SigmaPrime: Solidity Security Pitfalls](https://blog.sigmaprime.io/solidity-security.html) 
 
 ---
-## ✅ Vulnerability Report Template
+## ✅ Vulnerability Report 
 
 ```markdown
 id: TBA

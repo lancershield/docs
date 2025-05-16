@@ -21,7 +21,7 @@ swc: SWC-100
 ## 📝 Description
 
 - Liquidity rug refers to a scenario in decentralized finance (DeFi) where liquidity providers or users deposit tokens into a protocol (e.g., DEX, staking contract, vault).
-- The contract owner, deployer, or privileged account **can remove all or a large portion of the pooled assets**, often without user consent or transparency. 
+- The contract owner, deployer, or privileged account can remove all or a large portion of the pooled assets, often without user consent or transparency. 
 - Loss of funds or token value collapse,Broken trading pairs and stuck LP tokens, Destroyed user trust and ecosystem credibility.
 
 ## 🚨 Vulnerable Code
@@ -90,19 +90,24 @@ function emergencyWithdraw() external onlyGovernance {
 ## 🕰️ Historical Exploits
 
 - **Name:** Squid Game Token Rug Pull 
-- **Date:** 2021 
-- **Loss:** ~$3.4M 
-- **Post-mortem:** [https://coinmarketcap.com/alexandria/article/squid-game-token-scam](https://coinmarketcap.com/alexandria/article/squid-game-token-scam) 
+- **Date:** 2021-11-01
+- **Loss:** Approximately $3.38 million 
+- **Post-mortem:** [Link to post-mortem](https://www.coindesk.com/markets/2021/11/01/squid-game-token-crashes-developers-say-theyve-left-the-project) 
+- **Name:** AnubisDAO Rug Pull 
+- **Date:** 2021-10-29
+- **Loss:** Approximately $60 million 
+- **Post-mortem:** [Link to post-mortem](https://www.binance.com/en/square/post/12028514221577) 
+  
 
+## 📚 Further Reading
 
-### 📚 Further Reading
-
-- [SWC-100: Function Default Visibility](https://swcregistry.io/docs/SWC-100) 
-- [DeFi Rug Pull Classification - Rekt](https://rekt.news/rugged/) 
-- [OpenZeppelin AccessControl](https://docs.openzeppelin.com/contracts/4.x/access-control) 
-
+- [SWC-136: Unexpected Behavior from External Calls – SWC Registry](https://swcregistry.io/docs/SWC-136/) 
+- [Chainalysis: 2021 Crypto Scam Revenues](https://www.chainalysis.com/blog/2021-crypto-scam-revenues/) 
+- [Cointelegraph: What is a rug pull in crypto and 6 ways to spot it?](https://cointelegraph.com/explained/crypto-rug-pulls-what-is-a-rug-pull-in-crypto-and-6-ways-to-spot-it) 
+- [SlowMist: Cryptocurrency Scams Unveiled – Insights and Prevention](https://slowmist.medium.com/cryptocurrency-scams-unveiled-insights-and-prevention-800d9dc1b0f1) 
 
 ---
+
 
 ## ✅ Vulnerability Report 
 

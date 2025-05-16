@@ -103,30 +103,27 @@ contract SecureVault is Ownable {
 
 - **Name:** Rubixi Ownership Bug 
 - **Date:** 2016-05-03 
-- **Loss:** N/A 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDevthe-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8) 
-  
-  
- 
-- **Name:** bZx Protocol Admin Misconfiguration 
-- **Date:** 2020-02-15 
-- **Loss:** $350K 
-- **Post-mortem:** [Link to post-mortem](https://bzx.network/blog/postmortem-incident-feb-15th)
-  
-
+- **Loss:** N/A (but allowed anyone to take ownership) 
+- **Post-mortem:** [Link to post-mortem](https://blog.sigmaprime.io/solidity-security.html#ownership-takeover-rubixi) 
+- **Name:** bZx Protocol Admin Key Compromise 
+- **Date:** 2021 
+- **Loss:** ~$55 million
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/bzx-rekt/) 
 
 
 ## 📚 Further Reading
 
 - [SWC-105: Unprotected Critical Function](https://swcregistry.io/docs/SWC-105)
 - [OpenZeppelin: Access Control Best Practices](https://docs.openzeppelin.com/contracts/4.x/access-control)
-- [Trail of Bits: Access Control Patterns](https://blog.trailofbits.com/2021/08/04/access-control-in-smart-contracts/) 
-  
+- [Trail of Bits: Access Control Patterns in Smart Contracts](https://www.trailofbits.com/services/software-assurance/blockchain/) 
+- [SigmaPrime: Solidity Security Pitfalls](https://blog.sigmaprime.io/solidity-security.html) 
+
 ---
 
+
 ## ✅ Vulnerability Report
-```YAML
-id: vuln__001
+```markdown
+id: TBA
 title: Access Control Vulnerabilities
 severity: H
 score:

@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Arbitrary Storage Write via Malicious Input or Unchecked Offset
+title: Arbitrary Storage Write 
 severity: C
 category: memory-corruption
 language: solidity
@@ -21,7 +21,7 @@ swc: SWC-124
 
 - Arbitrary Storage Write occurs when a smart contract allows a user to write to any storage slot, either due to:
 - Misused low-level operations like `assembly` or `delegatecall`,
-- Lack of bounds checking in `sstore`-like patterns,
+- Lack of bounds checking in `sstore`-like patterns
 - Improper deserialization of calldata or storage pointers.
 - This enables attackers to overwrite sensitive variables such as `owner`, `balances`, or `implementation` addresses in proxies, often leading to total contract compromise.
 
@@ -95,10 +95,8 @@ contract SafeStorage {
 - **Name:** Proxy Admin Takeover via Slot Overwrite 
 - **Date:** 2021 
 - **Loss:** Full proxy control takeover (whitehat)
--  **Post-mortem:** [Link to post-mortem](https://blog.openzeppelin.com/transparent-proxies-in-contracts) 
+- **Post-mortem:** [Link to post-mortem](https://blog.openzeppelin.com/transparent-proxies-in-contracts) 
   
-
-
 ## 📚 Further Reading
 
 - [SWC-124: Arbitrary Storage Write](https://swcregistry.io/docs/SWC-124) 
@@ -108,6 +106,7 @@ contract SafeStorage {
 
 
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -115,8 +114,8 @@ id: TBA
 title: Arbitrary Storage Write 
 severity: C
 score:
-impact: 5         
-exploitability: 4 
+impact: 5        
+exploitability: 4
 reachability: 4   
 complexity: 3     
 detectability: 4  
@@ -132,4 +131,4 @@ finalScore: 4.4
 - **Exploitability**: A single crafted slot and value combo can hijack the contract.
 - **Reachability**: Often exposed via developer backdoors or debug features.
 - **Complexity**: Medium – attacker must understand the storage slot layout.
--**Detectability**: Highly detectable in audits with proper Slither rules or grep-based search.
+- **Detectability**: Highly detectable in audits with proper Slither rules or grep-based search.

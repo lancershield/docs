@@ -91,7 +91,6 @@ contract SafeDestruct is Ownable {
 - **Loss:** ~$150M frozen 
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
 
-
 ## 📚 Further Reading
 
 - [SWC-106: Unprotected Selfdestruct](https://swcregistry.io/docs/SWC-106) 

@@ -20,8 +20,8 @@ swc: SWC-122
 ##📝 Description
 
 - Insufficient signature verification vulnerabilities arise when a contract improperly checks digital signatures, either by:
-- Failing to verify that the signer is the **authorized party**,
-- Omitting **replay protection** (e.g., nonce),
+- Failing to verify that the signer is the authorized party.
+- Omitting replay protection (e.g., nonce).
 - Allowing incorrect or incomplete message construction.
 - This flaw can result in unauthorized access, fund transfers, or malicious relays of signed messages. 
 - It commonly affects permit functions, off-chain authorization flows, and meta-transactions.
@@ -54,8 +54,8 @@ Step-by-step exploit process:
 
 **Assumptions:**
 
-- No whitelist/ownership verification on recovered signer.
-- No use of nonces or message scoping to prevent reuse.
+- Weak or incomplete signature verification can allow malicious actors to execute unauthorized transactions.
+- If the contract does not enforce nonce or timestamp validation, replay attacks become feasible.
 
 ## ✅ Fixed Code
 
@@ -103,11 +103,14 @@ contract SecureSigner {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Bee Token ICO Signature Replay 
-- **Date:** 2018 
-- **Loss:** ~$1M 
-- **Post-mortem:** [Link to post-mortem](https://thehackernews.com/2018/02/bee-token-phishing-scam.html) 
- 
+- **Name:** Odos Protocol Exploit 
+- **Date:** 2024-04-15 
+- **Loss:** Approximately $50,000 
+- **Post-mortem:** [Link to post-mortem](https://www.quillaudits.com/blog/hack-analysis/odos-protocol-arbitrary-call-vulnerability)  
+- **Name:** Wormhole Bridge Hack 
+- **Date:** 2022-02-02 
+- **Loss:** Over $320 million 
+- **Post-mortem:** [Link to post-mortem](https://www.nethermind.io/blog/smart-contract-vulnerabilities-and-mitigation-strategies) 
 
 ## 📚 Further Reading
 
@@ -129,7 +132,6 @@ complexity: 3
 detectability: 3  
 finalScore: 4.25
 ```
-
 
 ---
 

@@ -16,16 +16,17 @@ mitigation_difficulty: medium
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-732
 swc: SWC-105
+
 ```
 
 
 ## 📝 Description
 
 - Admin key misuse occurs when privileged accounts (commonly `owner`, `admin`, or `governance`) retain unchecked or overly broad control over critical contract functions such as:
-- Minting tokens,
-- Transferring user funds,
-- Changing logic contracts or configurations,
-- Pausing/unpausing,
+- Minting tokens.
+- Transferring user funds.
+- Changing logic contracts or configurations.
+- Pausing/unpausing.
 - Whitelisting arbitrary addresses.
 
 
@@ -50,9 +51,9 @@ Step-by-step risk:
 
 1. The contract deployer retains full owner control.
 2. There are no constraints on minting, burning, transferring funds, or upgrades.
-3. If the admin key is compromised or misused:
-4. Unlimited tokens can be minted,
-5. Funds can be redirected from users,
+3. If the admin key is compromised or misused.
+4. Unlimited tokens can be minted.
+5. Funds can be redirected from users.
 6. System logic can be maliciously upgraded.
 
 **Assumptions:**
@@ -112,16 +113,17 @@ contract SecureAdmin is Ownable {
 
 - **Name:** bZx Protocol Admin Key Compromise 
 - **Date:** 2021 
-- **Impact:** ~$55M drained by attacker after gaining access to admin key 
-- **Post-mortem:** [Link](https://rekt.news/bzx-rekt/) 
+- **Impact:** Approximately $55 million drained after attacker gained access to admin key 
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/bzx-rekt/) 
 
 
 ## 📚 Further Reading
 
-- [SWC-105: Unprotected Admin Function](https://swcregistry.io/docs/SWC-105) 
-- [OpenZeppelin AccessControl](https://docs.openzeppelin.com/contracts/4.x/access-control) 
-- [OpenZeppelin Governor – DAO Governance](https://docs.openzeppelin.com/contracts/4.x/governance) 
-- [Slither Access Control Detectors](https://github.com/crytic/slither) 
+
+- [SWC-105: Unprotected Critical Function – SWC Registry](https://swcregistry.io/docs/SWC-105/) 
+- [OpenZeppelin AccessControl Documentation](https://docs.openzeppelin.com/contracts/4.x/api/access)
+- [OpenZeppelin Governor – DAO Governance Documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance) 
+- [Slither: Static Analyzer for Solidity](https://github.com/crytic/slither) 
 
 
 ---

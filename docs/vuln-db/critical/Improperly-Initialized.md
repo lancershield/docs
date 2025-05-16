@@ -72,7 +72,6 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 
     function _authorizeUpgrade(address) internal override onlyOwner {}
 }
-
 ```
 ## 🛡️ Prevention
 
@@ -101,7 +100,7 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 - **Name:** Audius Governance Takeover 
 - **Date:** July 2022 
 - **Impact:** ~$6M stolen due to public initialize() on UUPS logic 
-- **Post-mortem:** [Link](https://rekt.news/audius-rekt/)
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/audius-rekt/)
 
 
 ## 📚 Further Reading

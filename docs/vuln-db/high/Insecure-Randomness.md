@@ -23,7 +23,6 @@ swc: SWC-120
 - Insecure randomness occurs when a contract attempts to generate "random" values using predictable on-chain inputs like `block.timestamp`, `blockhash`, `msg.sender`, or `block.number`. 
 - Since miners or attackers can influence or observe these values, the resulting "randomness" can be predicted or manipulated—leading to unfair outcomes in lotteries, games, reward distributions, and token mints.
 
-
 ## 🚨 Vulnerable Code
 
 ```solidity
@@ -40,7 +39,6 @@ contract Lottery {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -107,28 +105,21 @@ contract SecureLottery is VRFConsumerBase {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** FairWin Casino Randomness Exploit 
-- **Date:** 2019-09-21 
-- **Loss:** ~50,000+ ETH drained over time 
-- **Post-mortem:** [Link to post-mortem](https://rekt.news/fairwin/) 
-
-
-
-- **Name:** Fomo3D Jackpot Snipe 
-- **Date:** 2018-07-30 
-- **Loss:** N/A (Winner sniped jackpot using block manipulation) 
-- **Post-mortem:** [Link to post-mortem](https://www.coindesk.com/markets/2018/07/30/fomo3d-ethereum-gambling-game-sees-investor-win-3-million-prize/)
-
+- **Name:** Roast Football Protocol Exploit 
+- **Date:** 2022-12-05 
+- **Loss:** Undisclosed 
+- **Post-mortem:** [Link to post-mortem](https://www.hackerone.com/blog/smart-contracts-common-vulnerabilities-and-real-world-cases) 
 
 ## 📚 Further Reading
 
-- [SWC-120: Weak Sources of Randomness](https://swcregistry.io/docs/SWC-120) 
-- [Chainlink VRF Docs](https://docs.chain.link/vrf) 
-- [Trail of Bits – Randomness in Smart Contracts](https://blog.trailofbits.com/2022/07/11/how-to-generate-secure-random-numbers-in-ethereum/) 
+- [SC09: Insecure Randomness – OWASP Smart Contract Security](https://scs.owasp.org/sctop10/SC09-InsecureRandomness/) 
+- [Smart Contracts Vulnerability Explained: Insecure Randomness](https://simonbusch.medium.com/smart-contracts-vulnerability-explained-insecure-randomness-416d5fc4e731) 
+- [Insecure Randomness in Smart Contracts – Metana](https://metana.io/blog/insecure-randomness-in-smart-contracts/) 
 
 ---
 
 ## ✅ Vulnerability Report 
+
 ```markdown
 id: TBA
 title: Insecure Randomness 

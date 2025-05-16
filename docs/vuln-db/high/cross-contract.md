@@ -17,7 +17,6 @@ cwe: CWE-710
 swc: SWC-104
 ```
 
-
 ## 📝 Description
 
 - Cross-contract execution risks arise when a contract makes external calls to **untrusted contracts**, assuming they will behave safely. These risks include:
@@ -114,21 +113,22 @@ contract SafeAuction is ReentrancyGuard {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** The DAO Hack 
-- **Date:** 2016-06-17 
-- **Loss:** ~$60M 
-- **Post-mortem:** [Link to post-mortem](https://blog.slock.it/the-dao-hack-explained-62429dbabf62) 
-  
+- **Name:** Nomad Bridge Exploit 
+- **Date:** 2022-08-01 
+- **Loss:** Approximately $190 million 
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/nomad-rekt/) 
+- **Name:** Cross-Chain Bridge Exploits 
+- **Date:** 2023 
+- **Loss:** Over $2 billion across multiple incidents 
+- **Post-mortem:** [Link to post-mortem](https://coinlaw.io/smart-contract-security-risks-and-audits-statistics/) 
 
 ## 📚 Further Reading
 
-- [SWC-104: Unchecked Call Return Value](https://swcregistry.io/docs/SWC-104) 
-- [OpenZeppelin – ReentrancyGuard](https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard) 
-- [Trail of Bits – Cross-Contract Communication](https://github.com/trailofbits/publications/blob/master/reviews/Compound-2018-10.pdf)
-  
+- [CrossFuzz: Cross-Contract Fuzzing for Smart Contract Vulnerability Detection](https://www.sciencedirect.com/science/article/pii/S0167642323001582) 
+- [Smart Contracts Security Challenges Explained](https://www.lcx.com/smart-contracts-security-challenges-explained/) 
+ 
 --- 
 ## ✅ Vulnerability Report 
-
 
 ```markdown
 id: TBA
@@ -142,7 +142,6 @@ complexity: 2
 detectability: 3  
 finalScore: 4.15
 ```
-
 
 ---
 

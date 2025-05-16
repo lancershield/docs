@@ -35,14 +35,15 @@ contract Token {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
 
-- Attacker calls transfer() with amount > balances[msg.sender].
-- If overflow/underflow checks are not enforced, subtraction wraps around to a huge value.
-- balances[msg.sender] becomes very large; balances[to] also overflows.
-- Attacker gains an unintended balance or breaks accounting logic.
+1. Attacker calls transfer() with amount > balances[msg.sender].
+2. If overflow/underflow checks are not enforced, subtraction wraps around to a huge value.
+3. balances[msg.sender] becomes very large; balances[to] also overflows.
+4. Attacker gains an unintended balance or breaks accounting logic.
 
 **Assumptions:**
 
@@ -62,21 +63,6 @@ contract SafeToken {
             balances[msg.sender] -= amount;
             balances[to] += amount;
         }
-    }
-}
-```
-
-```solidity
-
-import "@openzeppelin/contracts/math/SafeMath.sol";
-
-contract SafeToken {
-    using SafeMath for uint256;
-    mapping(address => uint256) public balances;
-
-    function transfer(address to, uint256 amount) external {
-        balances[msg.sender] = balances[msg.sender].sub(amount);
-        balances[to] = balances[to].add(amount);
     }
 }
 ```
@@ -102,16 +88,14 @@ contract SafeToken {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** BeautyChain Token Overflow 
+- **Name:** Proof of Weak Hands Coin (PoWHCoin) Exploit 
+- **Date:** 2018-03-09 
+- **Loss:** Approximately 866 ETH 
+- **Post-mortem:** [Link to post-mortem](https://101blockchains.com/integer-overflow-attacks/) 
+- **Name:** BeautyChain (BEC) Token Exploit 
 - **Date:** 2018-04-22 
-- **Loss:** Unlimited tokens minted 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/coinmonks/beautychain-bec-token-integer-overflow-vulnerability-cb15fcddb5df) 
-  
- 
-- **Name:** SMT Token Overflow Exploit
-- **Date:** 2018-04-26 
-- **Loss:** Unlimited minting 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/coinmonks/smartmesh-smt-token-overflow-vulnerability-39d4d4c70772) 
+- **Loss:** Over $6 million 
+- **Post-mortem:** [Link to post-mortem](https://dreamlab.net/en/blog/post/ethereum-smart-contracts-vulnerabilities-integer-overflow-and-underflow/) 
   
 
 ## 📚 Further Reading
@@ -120,8 +104,10 @@ contract SafeToken {
 - [OpenZeppelin – SafeMath Documentation](https://docs.openzeppelin.com/contracts/2.x/api/math) 
 - [Solidity Docs – Arithmetic Safety in >=0.8.0](https://docs.soliditylang.org/en/v0.8.0/control-structures.html#checked-or-unchecked-arithmetic) 
 
+---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Integer Overflow and Underflow in Arithmetic Operations
@@ -134,6 +120,8 @@ complexity: 2
 detectability: 4  
 finalScore: 4.3
 ```
+
+---
 
 ## 📄 Justifications & Analysis
 

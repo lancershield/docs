@@ -1,7 +1,6 @@
 # Reentrancy Vulnerability
 
 ```YAML
-
 id: TBA
 title: Reentrancy on External Contract Calls
 severity: H
@@ -76,7 +75,6 @@ contract SafeWithdraw is ReentrancyGuard {
         balances[msg.sender] += msg.value;
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -99,26 +97,23 @@ contract SafeWithdraw is ReentrancyGuard {
 - Mythril: symbolic path analysis for reentrant logic.
 - Manual inspection of call, delegatecall, or fallback flows.
 
+
 ## 🕰️ Historical Exploits
 
-- **Name:** The DAO Hack
+- **Name:** The DAO Hack 
 - **Date:** 2016-06-17 
-- **Loss:** ~$60M 
-- **Post-mortem:** [Link to post-mortem](https://blog.slock.it/the-dao-hack-explained-62429dbabf62) -
-  
-  
-- **Name:** dForce/Lendf.Me Reentrancy Attack 
-- **Date:** 2020-04-19 
-- **Loss:** ~$25M
-- **Post-mortem:** [Link to post-mortem](https://medium.com/dforcenetofficial-announcement-regarding-lendf-me-incident-18c8995e4f17) 
-
+- **Loss:** Approximately $60 million 
+- **Post-mortem:** [Link to post-mortem](https://neptunemutual.com/blog/the-story-behind-the-dao-hack) 
 
 ## 📚 Further Reading
 
-- [SWC-107: Reentrancy](https://swcregistry.io/docs/SWC-107) 
+- [SWC-107: Reentrancy – SWC Registry](https://swcregistry.io/docs/SWC-107/) 
 - [OpenZeppelin Docs: ReentrancyGuard](https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard) 
-- [Trail of Bits: Understanding Reentrancy](https://blog.trailofbits.com/2022/07/18/reentrancy-illustrated/) 
+- [Trail of Bits: Bug Hunting with Crytic](https://blog.trailofbits.com/2020/05/15/bug-hunting-with-crytic/) 
 
+---
+
+## ✅ Vulnerability Report
 
 ```markdown
 id: TBA

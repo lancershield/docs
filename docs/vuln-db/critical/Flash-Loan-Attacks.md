@@ -51,11 +51,11 @@ contract VulnerableVault {
 
 Step-by-step exploit process:
 
-- Attacker takes a flash loan for a large amount of ETH.
-- Deposits the ETH into the vulnerable contract.
-- totalDeposits increases sharply, skewing share calculations.
-- Immediately withdraws with an inflated reward value.
-- Repays flash loan, keeping the profit.
+1. Attacker takes a flash loan for a large amount of ETH.
+2. Deposits the ETH into the vulnerable contract.
+3. totalDeposits increases sharply, skewing share calculations.
+4. Immediately withdraws with an inflated reward value.
+5. Repays flash loan, keeping the profit.
 
 **Assumptions:**
 
@@ -101,23 +101,23 @@ function withdraw() external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** bZx Protocol Flash Loan Attack
-- **Date:** 2020-02-15 
-- **Loss:** ~$350K 
-- **Post-mortem:** [Link to post-mortem](https://bzx.network/blog/postmortem-incident-feb-15th) - 
- 
-
-- **Name:** Alpha Homora / Cream Exploit 
+- **Name:** Alpha Homora / Cream Finance Exploit
 - **Date:** 2021-02-13 
-- **Loss:** ~$37.5M 
-- **Post-mortem:** [Link to post-mortem](https://rekt.news/alpha-homora-rekt/) 
-
+- **Loss:** Approximately $37.5 million 
+- **Post-mortem:** [Link to post-mortem](https://blog.alphaventuredao.io/alpha-homora-v2-post-mortem/) 
+- **Name:** C.R.E.A.M. Finance Exploit
+- **Date:** 2021-10-27 
+- **Loss:** Over $130 million 
+- **Post-mortem:** [Link to post-mortem](https://www.merklescience.com/blog/hack-track-analysis-of-c-r-e-a-m-finance-hack) 
 
 ## 📚 Further Reading
 
-- [SWC-108: Untrusted Delegate Call or Flash Loan](https://swcregistry.io/docs/SWC-108) 
-- [OpenZeppelin – Flash Loan Security](https://blog.openzeppelin.com/defending-defi-flash-loan-attacks/) 
-- [Certora – Flash Loan Vulnerability Modeling](https://blog.certora.com/why-do-flash-loans-keep-breaking-defi-22f4d93b6299) 
+- [SWC-108: Untrusted Delegate Call](https://swcregistry.io/docs/SWC-108/) 
+- [OpenZeppelin: Flash Loans and the Advent of Episodic Finance](https://blog.openzeppelin.com/flash-loans-and-the-advent-of-episodic-finance) 
+- [Certora: Proof of Optimality of Balancer V2's Flash Loan Bug](https://medium.com/certora/proof-of-optimality-of-balancer-v2s-flash-loan-bug-2eea00b908e2) - [Hacken: Flash Loan Attacks – Risks & Prevention](https://hacken.io/discover/flash-loan-attacks/) 
+- [Stader Labs: Understanding Flash Loan Attacks](https://www.staderlabs.com/blogs/staking-basics/flash-loan-attack/) 
+
+---
 
 ## ✅ Vulnerability Report 
 

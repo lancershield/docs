@@ -15,15 +15,13 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-706
 swc: SWC-127
-
 ```
-
 
 ## 📝 Description
 
 - Contract address collision refers to the predictable deployment of a contract to a known address, allowing an attacker to pre-deploy a malicious contract at that location before or after the legitimate contract is deployed. This occurs when:
 - A contract address is derived from a known deployer and nonce (`CREATE`),
-- Or from a salt and deployer (`CREATE2`),
+- From a salt and deployer (`CREATE2`),
 and the protocol logic or frontend assumes trust based on that address.
 - Implications include:
 - Hijacking initialization logic (`initialize()`),
@@ -36,7 +34,6 @@ and the protocol logic or frontend assumes trust based on that address.
 // Assumes trusted logic at precomputed address
 address logic = computeCreate2Address(salt, bytecodeHash);
 Proxy(proxy).upgradeTo(logic); // ❌ No verification of logic contract owner
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -64,7 +61,6 @@ require(keccak256(logic.code) == expectedHash, "Untrusted implementation");
 
 // Prefer deploying logic contract first, then passing actual address
 Proxy(proxy).upgradeTo(address(logic));
-
 ```
 
 ## 🛡️ Prevention
@@ -89,12 +85,12 @@ Proxy(proxy).upgradeTo(address(logic));
 - Manual audit of logic involving create2, upgradeTo(...), and precomputed addresses.
 - Deploy test contracts with same salt and verify deterministic address matches.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Parity Wallet Initialization Collision
-- **Date:** 2017 
-- **Impact:** >$150M locked due to reuse of init logic at same address 
-- **Post-mortem:** [Link](https://paritytech.io/blog/security-alert-2/) 
+- **Name:** Storage Collision Vulnerability in Ethereum Smart Contracts 
+- **Date:** 2024 
+- **Loss:** Potential financial damage exceeding $12 million 
+- **Post-mortem:** [Link to post-mortem](https://www.ndss-symposium.org/ndss-paper/not-your-type-detecting-storage-collision-vulnerabilities-in-ethereum-smart-contracts/) 
 
 
 ## 📚 Further Reading
@@ -119,10 +115,7 @@ reachability: 3
 complexity: 3     
 detectability: 5  
 finalScore: 4.2
-
-
 ```
-
 
 ---
 

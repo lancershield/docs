@@ -1,7 +1,6 @@
 # Vesting Shortcut Exploits 
 
 ```YAML
-
 id: TBA
 title: Vesting Shortcut Exploits 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-863
 swc: SWC-124
-
 ```
 
 ## 📝 Description
@@ -35,9 +33,7 @@ function claim() public {
     totalVested[msg.sender] = 0;
     token.transfer(msg.sender, amount);
 }
-
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -73,9 +69,7 @@ function vestedAmount(address user) public view returns (uint256) {
 
     return (totalVested[user] * elapsed) / duration[user];
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -97,20 +91,19 @@ function vestedAmount(address user) public view returns (uint256) {
 - Unit tests for multiple time checkpoints and boundary conditions.
 - Manual audit of claim() and vestedAmount() for time logic correctness.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Liquity Vesting Bug 
-- **Date:** 2021 
-- **Impact:** Users could claim full tokens before the vesting cliff 
-- **Post-mortem:** [Link](https://liquity.org) 
-
+- **Name:** Hedgey Finance Vesting Exploit 
+- **Date:** March 2024 
+- **Loss:** Undisclosed 
+- **Post-mortem:** [Link to post-mortem](https://medium.com/hedgey/hedgey-exploit-post-mortem-784e9860fd8d)
+  
 
 ## 📚 Further Reading
 
 - [SWC-124: Missing Time/Condition Check](https://swcregistry.io/docs/SWC-124) 
 - [OpenZeppelin Token Vesting Contract](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#TokenVesting) 
-- [Best Practices for Vesting](https://ethereum.org/en/developers/docs/standards/tokens/vesting/) 
-
+- [Implementing Vesting in Crypto Projects – Metalamp](https://metalamp.io/magazine/article/vesting-in-srypto-projects-why-its-needed-and-how-to-implement-it) 
 ---
 
 ## ✅ Vulnerability Report 
@@ -127,8 +120,6 @@ complexity: 2
 detectability: 5 
 finalScore: 4.1
 ```
-
-
 
 ---
 

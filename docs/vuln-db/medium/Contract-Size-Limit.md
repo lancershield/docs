@@ -17,14 +17,13 @@ cwe: CWE-406
 swc: SWC-128
 ```
 
-
 ## 📝 Description
 
-- Contract size limit violations occur when the deployed bytecode of a smart contract **exceeds the EVM maximum limit of 24,576 bytes (24 KB)**. 
+- Contract size limit violations occur when the deployed bytecode of a smart contract exceeds the EVM maximum limit of 24,576 bytes (24 KB). 
 - This results in:
-- **Failed deployments** (`exceeds EVM code size limit` error),
+- Failed deployments (`exceeds EVM code size limit` error),
 - Excessive gas usage and contract bloat,
-- Forced use of **proxy architectures** or unsafe splitting strategies.
+- Forced use of proxy architectures or unsafe splitting strategies.
 - Oversized contracts are difficult to test, maintain, and audit. Additionally, tightly packing logic into a single monolith may hide vulnerabilities across interconnected functions.
 
 ## 🚨 Vulnerable Scenario
@@ -36,7 +35,6 @@ contract MassiveContract is A, B, C, D, E {
     // Long inline assembly, embedded storage logic
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -53,7 +51,6 @@ Step-by-step scenario:
 - Critical business logic becomes unmanageable or fragmented post-failure.
 
 ## ✅ Fixed Approach
-
 
 ``` solidity
 
@@ -79,7 +76,6 @@ contract Proxy {
 }
 ```
 
-
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -100,12 +96,12 @@ contract Proxy {
 - CI pipelines should reject contracts exceeding safe limits.
 - Manual code inspection for bloated inheritance trees or unused inline code.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical 
 
 - **Name:** Uniswap V3 Core 
 - **Date:** 2021 
 - **Impact:** Code size limitations forced function selector optimizations and minimal proxies 
-- **Post-mortem:** [Link](https://uniswap.org/blog/uniswap-v3-core) 
+- **Post-mortem:** [Link to post-mortem](https://uniswap.org/blog/uniswap-v3-core) 
 
 
 ## 📚 Further Reading
@@ -115,7 +111,9 @@ contract Proxy {
 - [EIP-170: Contract Size Limit](https://eips.ethereum.org/EIPS/eip-170) - [Diamond Standard – Modular Smart Contracts](https://eips.ethereum.org/EIPS/eip-2535) 
 
 ---
+
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Contract Size Limit Violations 

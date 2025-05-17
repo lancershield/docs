@@ -45,7 +45,6 @@ contract LegacyContract {
         suicide(owner); // ❌ Deprecated; use selfdestruct
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -74,7 +73,6 @@ contract ModernContract {
         selfdestruct(payable(owner));
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -97,12 +95,13 @@ contract ModernContract {
 - solc compiler warnings (enable --allow-paths and --via-ir for better detection).
 - Static code linters like solhint, Solium, or hardhat plugins.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Early DAO Fork Migration Failure 
-- **Date:** 2016 
-- **Impact:** Usage of deprecated constructs caused difficulty porting logic to newer versions 
-- **Post-mortem:** [Link](https://blog.slock.it/the-dao-hack-explained-62429dbabf62)
+ - **Name:** Proof of Weak Hands Coin (PoWHCoin) Exploit 
+ - **Date:** 2018-03-09 
+ - **Loss:** Approximately 866 ETH 
+ - **Post-mortem:** [Link to post-mortem](https://101blockchains.com/integer-overflow-attacks/) 
+  
 
 ## 📚 Further Reading
 
@@ -126,7 +125,6 @@ complexity: 1
 detectability: 5  
 finalScore: 3.1
 ```
-
 
 ---
 

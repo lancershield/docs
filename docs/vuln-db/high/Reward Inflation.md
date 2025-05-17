@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Reward Inflation Bugs from Miscalculated or Unbounded Emissions
+title: Reward Inflation Bugs from Miscalculated 
 severity: H
 category: tokenomics
 language: solidity
@@ -106,17 +106,16 @@ function updatePool() public {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Pickle Finance Inflation Miscalculation 
-- **Date:** 2020 
-- **Loss:** Misallocation of yield rewards due to scaling error 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/pickle-finance/pickle-finance-post-mortem-74d5a4b4e489) 
-
+- **Name:** Mango Markets Exploit 
+- **Date:** 2022-10-11 
+- **Loss:** Approximately $114 million
+- **Post-mortem:** [Link to post-mortem](https://infotrend.com/mango-markets-madness-a-case-study-on-the-mango-markets-exploit/) 
 
 ## 📚 Further Reading
 
 - [SWC-135: Code With No Effects](https://swcregistry.io/docs/SWC-135) 
-- [Solidity Docs – Integer Math and Scaling](https://docs.soliditylang.org/en/latest/) 
-- [Delphi – How to Design Safe Staking Rewards](https://www.delphidigital.io/reports/) 
+- [Inflation Bugs: The Worst Smart Contract Vulnerability Imaginable](https://www.thecoinzone.com/blockchain/inflation-bug)
+- [Overview of the Inflation Attack – MixBytes](https://mixbytes.io/blog/overview-of-the-inflation-attack) 
 
 ---
 
@@ -124,7 +123,7 @@ function updatePool() public {
 
 ```markdown
 id: TBA
-title: Reward Inflation Bugs f
+title: Reward Inflation Bugs 
 severity: H
 score:
 impact: 5         
@@ -133,7 +132,6 @@ reachability: 4
 complexity: 3     
 detectability: 3  
 finalScore: 4.2
-
 ```
 
 ---

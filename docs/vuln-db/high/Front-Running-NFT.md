@@ -15,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-362
 swc: SWC-114
-
 ```
 
 ## 📝 Description
@@ -41,7 +40,6 @@ function mint(uint256 amount) public payable {
         totalMinted++;
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -80,9 +78,7 @@ function reveal(uint256 salt, uint256 amount) external {
     require(keccak256(abi.encodePacked(salt, amount)) == commitments[msg.sender], "Invalid reveal");
     // proceed to mint
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -104,18 +100,16 @@ function reveal(uint256 salt, uint256 amount) external {
 - Simulation of gas-race scenarios on testnets with multiple actors.
 - Mempool analysis of gas bidding behavior during NFT drops.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Meebits Minting Snipe 
-- **Date:** 2021 
-- **Impact:** Rare NFTs sniped by bot via gas escalation 
-- **Post-mortem:** [Link](https://nftnow.com/features/meebits-exploit/) 
-
+- **Name:** Magic Eden Ordibots Front-Running Incident 
+- **Date:** November 2023 
+- **Loss:** Unspecified financial losses due to failed NFT purchases 
+- **Post-mortem:** [Link to post-mortem](https://protos.com/how-a-quant-sniped-millions-from-bitcoin-ordinals/) 
 
 ## 📚 Further Reading
 
 - [SWC-114: Unrestricted Actions](https://swcregistry.io/docs/SWC-114) 
-- [Ethereum Best Practices – Fair Minting](https://consensys.github.io/smart-contract-best-practices/attacks/front-running/) 
 - [Chainlink VRF Docs](https://docs.chain.link/vrf) 
 - [Slither Front-Running Detectors](https://github.com/crytic/slither)
 
@@ -134,10 +128,7 @@ reachability: 3
 complexity: 3     
 detectability: 4  
 finalScore: 3.85
-
-
 ```
-
 
 ---
 

@@ -17,7 +17,6 @@ cwe: CWE-347
 swc: SWC-121
 ```
 
-
 ## 📝 Description
 
 - Merkle Proof Misuse occurs when smart contracts use Merkle trees for whitelisting, access control, or claim validation but implement the verification logic incorrectly. This includes:
@@ -47,6 +46,7 @@ contract InsecureMerkleAirdrop {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -107,7 +107,7 @@ function claim(bytes32[] calldata proof, uint256 amount) external {
 
 - [SWC-121: Incorrect Signature Verification](https://swcregistry.io/docs/SWC-121) 
 - [OpenZeppelin – MerkleProof Documentation](https://docs.openzeppelin.com/contracts/4.x/api/utils#MerkleProof) 
-- [Paradigm – Merkle Trees & Safe Usage](https://research.paradigm.xyz/MerkleDrop) 
+- [Misuse of Merkle Leaf Nodes – Zokyo Auditing Tutorials](https://zokyo-auditing-tutorials.gitbook.io/zokyo-tutorials/tutorial-32-merkle-leafs/misuse-of-merkle-leaf-nodes) 
 
 ---
 

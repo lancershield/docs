@@ -1,7 +1,6 @@
 # Flawed Migration Contracts
 
 ```YAML
-
 id: TBA
 title: Flawed Migration Contracts 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-640
 swc: SWC-135
-
 ```
 
 ## 📝 Description
@@ -41,7 +39,6 @@ contract BrokenMigrator {
         _mint(user, amount);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -74,7 +71,6 @@ contract SafeMigrator {
         _mint(user, amount);
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -97,24 +93,22 @@ contract SafeMigrator {
 - Manual audits of minting and migration logic with user-supplied inputs.
 - Integration and fuzz tests simulating repeated migration attempts.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** YAM Protocol Migration Bug 
-- **Date:** 2020 
-- **Impact:** Supply error due to broken migration formula
-- **Post-mortem:** [Link](https://medium.com/@yamfinance/yam-migration-summary-4c409f0dcdb4) 
-
+- **Name:** KiloEx TrustedForwarder Exploit 
+- **Date:** April 13, 2025 
+- **Loss:** Approximately $7 million 
+- **Post-mortem:** [Link to post-mortem](https://crypto.news/kiloex-reveals-7m-smart-contract-exploit-in-post-mortem-report/) 
 
 ## 📚 Further Reading
 
 - [SWC-135: Code With No Effects / Unsafe Migration Logic](https://swcregistry.io/docs/SWC-135) 
 - [Solidity Docs – Upgrade Patterns](https://docs.soliditylang.org/en/latest/) 
-- [Merkle Tree Migration Best Practices](https://mirror.xyz/0x8d.../merkle-claim-airdrops) 
 - [OpenZeppelin Safe Token Migration Guide](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-_mint-address-uint256-) 
 
 ---
-## ✅ Vulnerability Report 
 
+## ✅ Vulnerability Report 
 
 ```markdown
 id: TBA
@@ -128,12 +122,9 @@ complexity: 2
 detectability: 5  
 finalScore: 4.1
 
-
 ```
 
-
 ---
-
 
 ## 📄 Justifications & Analysis
 

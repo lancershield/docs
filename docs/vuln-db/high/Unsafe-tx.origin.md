@@ -1,7 +1,6 @@
 # Unsafe tx.origin Usage 
 
 ```YAML
-
 id: TBA
 title: Unsafe tx.origin Usage 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-640
 swc: SWC-115
-
 ```
 
 ## 📝 Description
@@ -43,7 +41,6 @@ contract UnsafeAuth {
         payable(msg.sender).transfer(address(this).balance);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -76,7 +73,6 @@ contract SafeAuth {
         payable(msg.sender).transfer(address(this).balance);
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -99,13 +95,12 @@ contract SafeAuth {
 - Compiler warnings if tx.origin is used.
 - Manual audit for any usage of tx.origin in require(...) or access checks.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Ethereum Wallet Phishing Exploit via `tx.origin` 
-- **Date:** 2016 
-- **Loss:** ~1000 ETH 
-- **Post-mortem:** [Link](https://vessenes.com/ethereum-griefing-wallets-with-tx-origin/) 
-
+- **Name:** Wallet Contract Phishing Attack 
+- **Date:** 2023 
+- **Loss:** Complete wallet drain 
+- **Post-mortem:** [Link to post-mortem](https://www.cyfrin.io/glossary/phishing-with-tx-origin-hack-solidity-code-example)  
 
 
 ## 📚 Further Reading
@@ -118,7 +113,7 @@ contract SafeAuth {
 
 ## ✅ Vulnerability Report 
 
-```YAML
+```markdown
 id: TBA
 title: Unsafe tx.origin Usage 
 severity: H
@@ -129,9 +124,7 @@ reachability: 3
 complexity: 2     
 detectability: 5  
 finalScore: 4.1
-
 ```
-
 
 ---
 

@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Emergency Function Abuse Enabling Unauthorized Asset Seizure or Control
+title: Emergency Function Abuse Enabling Unauthorized Asset Seizure 
 severity: H
 category: privileged-function
 language: solidity
@@ -44,7 +44,6 @@ contract EmergencyBackdoor {
         IERC20(token).transfer(msg.sender, amount);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -72,9 +71,7 @@ contract SafeEmergency is Ownable {
         IERC20(token).transfer(msg.sender, amount);
     }
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -103,15 +100,17 @@ contract SafeEmergency is Ownable {
 - **Loss:** ~$50M 
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/uranium-rekt/) 
 
-
 ## 📚 Further Reading
 
 - [SWC-105: Authorization Through tx.origin](https://swcregistry.io/docs/SWC-105) 
 - [OpenZeppelin – AccessControl and Ownable](https://docs.openzeppelin.com/contracts/4.x/access-control) 
-- [Consensys – Emergency Pause Function Best Practices](https://consensys.github.io/smart-contract-best-practices/general-security-considerations/#emergency-stop)
+- [SCWE-014: Lack of Emergency Stop Mechanism – OWASP Smart Contract Security](https://scs.owasp.org/SCWE/SCSVS-CODE/SCWE-014/) 
+- [Extorsionware: Exploiting Smart Contract Vulnerabilities for Fun and Profit](https://arxiv.org/pdf/2203.09843.pdf)
 
 ---
+
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Emergency Function Abuse Enabling Unauthorized Asset Seizure 
@@ -124,7 +123,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

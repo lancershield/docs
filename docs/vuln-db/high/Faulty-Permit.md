@@ -1,6 +1,5 @@
 # Faulty Permit Implementation Enabling Unauthorized Token Transfers
 
-
 ```YAML
 id: TBA
 title: Faulty Permit Implementation Enabling Unauthorized Token Transfers
@@ -22,12 +21,9 @@ swc: SWC-122
 
 - Faulty permit implementations occur when ERC-2612-style `permit()` functions are implemented incorrectly, particularly in:
 - Signature digest construction (EIP-712),
-- `nonce` tracking,
-- `domainSeparator` usage,
-- Or validation logic.
+- `nonce` tracking,`domainSeparator` usage,Or validation logic.
 - When `permit()` fails to properly validate the signed data or incorrectly handles replays or approvals, it enables:
-- **Unauthorized token approvals**, or
-- **Replay attacks**, letting attackers spend tokens repeatedly.
+- Unauthorized token approvals or Replay attacks, letting attackers spend tokens repeatedly.
 
 ## 🚨 Vulnerable Code
 
@@ -71,7 +67,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ``` solidity
-
 import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 
 contract SafePermitToken is ERC20Permit {
@@ -104,11 +99,10 @@ contract SafePermitToken is ERC20Permit {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** SushiSwap xSUSHI Permit Bypass 
-- **Date:** 2021 
-- **Loss:** N/A (mitigated pre-deployment) 
-- **Post-mortem:** [Link](https://twitter.com/0xfoobar/status/1384228458057744385) 
-
+- **Name:** Permit Signature Replay Attack 
+- **Date:** 2025-03 
+- **Loss:** Significant risk of unauthorized token transfers across chains 
+- **Post-mortem:** [Link to post-mortem](https://github.com/sherlock-audit/2025-02-usual-labs-judging/issues/14) 
 
 ## 📚 Further Reading
 
@@ -117,10 +111,9 @@ contract SafePermitToken is ERC20Permit {
 - [OpenZeppelin – ERC20Permit Docs](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20Permit)
 - [eth-permit tool](https://github.com/dmihal/eth-permit) 
 
-
 ---
-## ✅ Vulnerability Report 
 
+## ✅ Vulnerability Report 
 
 ```markdown
 id: TBA
@@ -134,7 +127,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

@@ -21,7 +21,7 @@ swc: SWC-112
 
 - Delegatecall to self occurs when a contract makes a `delegatecall` to its own address (i.e., `address(this)`) or an implementation contract does so within a proxy context. 
 - This breaks assumptions about access controls, context variables like `msg.sender`, and storage layout, because:
-- `delegatecall` preserves the caller’s context and storage
+`delegatecall` preserves the caller’s context and storage
 - But functions executed via `delegatecall(address(this), ...)` run against the proxy’s storage, not the logic contract’s.
 - Resulting in storage corruption, logic bypass, or privilege escalation.
 - This is particularly dangerous in upgradable contracts where the logic contract is reused across multiple proxies.
@@ -47,7 +47,6 @@ contract Vulnerable {
         require(success, "delegatecall failed");
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -67,7 +66,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 contract Safe {
     address public owner;
 
@@ -113,7 +111,6 @@ contract Safe {
 - **Loss:** ~$150M frozen 
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
 
-
 ## 📚 Further Reading
 
 - [SWC-112: Delegatecall to Untrusted Callee](https://swcregistry.io/docs/SWC-112) 
@@ -136,7 +133,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

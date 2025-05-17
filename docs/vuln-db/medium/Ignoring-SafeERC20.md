@@ -1,8 +1,6 @@
 # Ignoring SafeERC20 
 
-
 ```YAML
-
 id: TBA
 title: Ignoring SafeERC20 
 severity: M
@@ -17,9 +15,7 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-703
 swc: SWC-135
-
 ```
-
 
 ## 📝 Description
 
@@ -46,7 +42,6 @@ contract UnsafeTokenTransfer {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -79,9 +74,7 @@ contract SafeTokenTransfer {
         token.safeTransfer(msg.sender, amount);
     }
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -102,13 +95,13 @@ contract SafeTokenTransfer {
 - Manual code review of any IERC20 calls.
 - Automated linting and CI rules to enforce SafeERC20 usage.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** dForce/HecoBridge Stuck Funds 
+- **Name:** Uniswap V2 Liquidity Migration Issue 
 - **Date:** 2021 
-- **Impact:** $2M stuck due to silent transferFrom failure with USDT 
-- **Post-mortem:** [Link](https://slowmist.medium.com) 
-
+- **Loss:** Imbalanced liquidity pools 
+- **Post-mortem:** [Link to post-mortem](https://uniswap.org/blog/uniswap-v2/) 
+  
 
 ## 📚 Further Reading
 
@@ -132,9 +125,7 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 3.4
-
 ```
-
 
 ---
 
@@ -142,6 +133,6 @@ finalScore: 3.4
 
 - **Impact**: Moderate to severe if tokens fail silently or revert internally.
 - **Exploitability**: Limited — attacker must exploit non-standard behavior or frontend assumptions.
--  **Reachability**: Very common across DEXs, farms, and vaults.
+- **Reachability**: Very common across DEXs, farms, and vaults.
 - **Complexity**: Simple fix using SafeERC20.
 - **Detectability**: High — well-documented, and most static analyzers catch this.

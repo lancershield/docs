@@ -1,7 +1,6 @@
 # Transfer Hook Abuse
 
 ```YAML
-
 id: TBA
 title: Transfer Hook Abuse 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-610
 swc: SWC-135
-
 ```
 
 ## 📝 Description
@@ -38,8 +36,6 @@ contract HookedToken is ERC20 {
     }
 }
 ```
-
-
 
 ## 🧪 Exploit Scenario
 
@@ -70,7 +66,6 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
         return whitelistedReceivers[to];
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -93,13 +88,13 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
 - Manual audits of _beforeTokenTransfer, _afterTokenTransfer, onERC721Received, onERC1155Received.
 - Fuzz tests that simulate malicious receiver contracts.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** OpenSea ERC721 Hook Reentrancy Incident 
-- **Date:** 2021 
-- **Impact:** NFTs were re-sold before state updates completed 
-- **Post-mortem:** [Link](https://blog.openzeppelin.com) 
-
+- **Name:** C.R.E.A.M. Finance AMP Token Exploit 
+- **Date:** August 31, 2021 
+- **Loss:** Approximately $18.8 million (462 million AMP tokens and 2,804.96 ETH) 
+- **Post-mortem:** [Link to post-mortem](https://medium.com/cream-finance/c-r-e-a-m-finance-post-mortem-amp-exploit-6ceb20a630c5) 
+  
 
 ## 📚 Further Reading
 
@@ -107,7 +102,6 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
 - [Solidity Docs – Transfer Hooks](https://docs.soliditylang.org/en/latest/units-and-global-variables.html) 
 - [OpenZeppelin Transfer Hook Guidelines](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-_afterTokenTransfer-address-address-uint256-) 
 - [Slither Transfer Hook Detectors](https://github.com/crytic/slither) 
-
 
 ---
 
@@ -124,8 +118,6 @@ reachability: 4
 complexity: 2    
 detectability: 5  
 finalScore: 4.4
-
-
 ```
 
 ---

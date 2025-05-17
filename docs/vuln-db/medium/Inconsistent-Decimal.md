@@ -1,7 +1,6 @@
 # Inconsistent Decimal Precision 
 
 ```YAML
-
 id: TBA
 title: Inconsistent Decimal Precision 
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-1284
 swc: SWC-136
-
 ```
 
 ## 📝 Description
@@ -65,20 +63,7 @@ function normalizeAmount(address token, uint256 amount) public view returns (uin
     uint8 decimals = IERC20Metadata(token).decimals(); // ✅ dynamically fetch decimals
     return amount * (10 ** (18 - decimals)); // Convert to 18-decimal standard
 }
-
 ```
-Or store token-specific decimal normalization factors during configuration:
-
-```solidity
-
-mapping(address => uint8) public tokenDecimals;
-
-function setTokenDecimals(address token, uint8 decimals) external onlyOwner {
-    tokenDecimals[token] = decimals;
-}
-
-```
-
 
 ## 🛡️ Prevention
 
@@ -100,13 +85,12 @@ function setTokenDecimals(address token, uint8 decimals) external onlyOwner {
 - Manual audit of all logic involving amount * 1e18 or division by 1e18.
 - Integration testing with tokens using varied decimal schemes.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Curve Metapool Decimal Mismatch 
+- **Name:** Compound Token Precision Bug 
 - **Date:** 2021 
-- **Impact:** Unexpected pricing behavior due to USDC 6-decimal conversion 
-- **Post-mortem:** [Link](https://curve.fi) 
-
+- **Loss:** Miscalculations in interest distribution 
+- **Post-mortem:** [Link to post-mortem](https://compound.finance/docs/security) 
 
 ## 📚 Further Reading
 
@@ -114,12 +98,11 @@ function setTokenDecimals(address token, uint8 decimals) external onlyOwner {
 - [Solidity Docs – Fixed Point Math Considerations](https://docs.soliditylang.org/en/latest/) 
 - [OpenZeppelin IERC20Metadata](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20Metadata) 
 
-
 ---
 
 ## ✅ Vulnerability Report 
 
-```YAML
+```markdown
 id: TBA
 title: Inconsistent Decimal Precision 
 severity: M
@@ -130,7 +113,6 @@ reachability: 4
 complexity: 2     
 detectability: 4  
 finalScore: 3.4
-
 ```
 
 ---

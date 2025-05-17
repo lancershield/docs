@@ -1,7 +1,6 @@
 # Flawed Slashing Conditions
 
 ```YAML
-
 id: TBA
 title: Flawed Slashing Conditions 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: hard
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-697
 swc: SWC-132
-
 ```
 
 ## 📝 Description
@@ -35,7 +33,6 @@ function slash(address validator, bool evidence) external onlySlasher {
         emit Slashed(validator);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -71,9 +68,7 @@ function validateEvidence(bytes calldata data, address validator) internal view 
     // ✅ Use verifiable cryptographic checks
     return isValidProof(data, validator);
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -95,12 +90,12 @@ function validateEvidence(bytes calldata data, address validator) internal view 
 - Manual audit of all slashing conditions and roles.
 - Simulation of false positive slashing attacks in fuzz tests.
 
-##🕰️ Historical Exploits
+## 🕰️ Historical Exploits
 
-- **Name:** Lido Node Operator Slashing Risk 
-- **Date:** 2022 
-- **Impact:** Concerns about centralized control over slashing logic
-- **Post-mortem:** [https://lido.fi] 
+- **Name:** Beaconcha.in Slashing Misreporting Incident 
+- **Date:** April 2023 
+- **Loss:** Potential misinterpretation of validator behavior; no direct financial loss 
+- **Post-mortem:** [Link to post-mortem](https://dl.acm.org/doi/fullHtml/10.1145/3543873.3587555) 
 
 
 ## 📚 Further Reading
@@ -126,9 +121,7 @@ complexity: 4
 detectability: 4  
 finalScore: 4.15
 
-
 ```
-
 
 ---
 

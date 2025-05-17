@@ -1,7 +1,6 @@
 # Lack of Circuit Breakers for Secondary Features 
 
 ```YAML
-
 id: TBA
 title: Lack of Circuit Breakers for Secondary Features 
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-693
 swc: SWC-136
-
 ```
 
 ## 📝 Description
@@ -43,7 +41,6 @@ contract FeatureHeavy {
     }
     // ❌ No way to disable redeem or vote during bugs/emergencies
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -89,9 +86,7 @@ contract SafeFeatureControl is Pausable, Ownable {
         votePaused = true;
     }
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -113,12 +108,12 @@ contract SafeFeatureControl is Pausable, Ownable {
 - Manual audit of all externally callable functions to verify whenNotPaused or equivalents exist.
 - Coverage reports for require(!paused) or emergency triggers.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Ampleforth Rebase Pause Oversight 
-- **Date:** 2020 
-- **Impact:** Could not stop faulty rebase logic; needed hotfix 
-- **Post-mortem:** [Link](https://ampleforth.org/blog) 
+- **Name:** The DAO Hack 
+- **Date:** 2016-06-17 
+- **Loss:** Approximately $60 million 
+- **Post-mortem:** [Link to post-mortem](https://neptunemutual.com/blog/the-story-behind-the-dao-hack) 
 
 
 ## 📚 Further Reading
@@ -126,7 +121,6 @@ contract SafeFeatureControl is Pausable, Ownable {
 - [SWC-136: Unexpected Behavior / Missing Checks](https://swcregistry.io/docs/SWC-136) 
 - [Solidity Docs – Pausable Pattern](https://docs.openzeppelin.com/contracts/4.x/api/security#Pausable) 
 - [OpenZeppelin – Circuit Breakers](https://docs.openzeppelin.com/contracts/4.x/extending-contracts#using-hooks) 
-
 
 ---
 
@@ -143,8 +137,6 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 3.3
-
-
 ```
 
 ---

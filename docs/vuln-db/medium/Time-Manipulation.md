@@ -39,7 +39,6 @@ contract TimeLock {
 }
 ```
 
-
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -93,17 +92,16 @@ contract TimeLock {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Fomo3D Time-Based Jackpot Manipulation 
-- **Date:** 2018 
-- **Loss:** ~$3M 
-- **Post-mortem:** [Link to post-mortem](https://www.coindesk.com/markets/2018/07/30/fomo3d-ethereum-gambling-game-sees-investor-win-3-million-prize/) 
+- **Name:** Rubixi Ponzi Scheme
+- **Date:** 2016 
+- **Loss:** Unspecified 
+- **Post-mortem:** [Link to post-mortem](https://www.sciencedirect.com/science/article/pii/S1546221824002285)
   
-
 ## 📚 Further Reading
 
 - [SWC-116: Timestamp Dependence](https://swcregistry.io/docs/SWC-116) 
-- [Ethereum StackExchange – How much can a miner manipulate block.timestamp?](https://ethereum.stackexchange.com/questions/413/how-much-can-miners-influence-the-block-timestamp) 
-- [Consensys – Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/known_attacks/#timestamp-dependence) 
+- [Timestamp Dependency in Smart Contracts – GeeksforGeeks](https://www.geeksforgeeks.org/timestamp-dependency-in-smart-contracts/) 
+- [Smart Contract Vulnerability Dataset – GitHub](https://github.com/imranpollob/smart-contract-vulnerability-dataset) 
 
 ---
 
@@ -121,7 +119,6 @@ complexity: 2
 detectability: 4  
 finalScore: 3.15
 ```
-
 
 ---
 

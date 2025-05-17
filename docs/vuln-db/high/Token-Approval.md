@@ -1,7 +1,6 @@
 # Token Approval Without Spending Limits 
 
 ```YAML
-
 id: TBA
 title: Token Approval Without Spending Limits 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-275
 swc: SWC-114
-
 ```
 
 ## 📝 Description
@@ -35,7 +33,6 @@ swc: SWC-114
 function approveUnlimited(IERC20 token, address spender) external {
     token.approve(spender, type(uint256).max); // ❌ Dangerous unlimited approval
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -60,9 +57,7 @@ function safeApprove(IERC20 token, address spender, uint256 amount) external {
     require(amount > 0 && amount <= token.balanceOf(msg.sender), "Invalid amount");
     token.approve(spender, amount); // ✅ Approve only what’s needed
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -84,12 +79,12 @@ function safeApprove(IERC20 token, address spender, uint256 amount) external {
 - Manual audit of all approve(...) logic in contracts and dApp integration flows.
 - Integration testing to ensure minimum necessary approvals are enforced.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** bZx Phishing Wallet Drainer 
-- **Date:** 2021 
-- **Impact:** >$55M drained from users who had unlimited approvals to compromised wallet
-- **Post-mortem:** [Link](https://rekt.news/bzx-rekt/) 
+- **Name:** Badger DAO Exploit 
+- **Date:** December 2021 
+- **Loss:** Approximately $120 million 
+- **Post-mortem:** [Link to post-mortem](https://blog.fordefi.com/protect-against-token-approval-risks) 
 
 ## 📚 Further Reading
 
@@ -113,10 +108,7 @@ reachability: 4
 complexity: 1     
 detectability: 5  
 finalScore: 4.1
-
-
 ```
-
 
 ---
 

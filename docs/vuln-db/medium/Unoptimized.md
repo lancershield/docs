@@ -1,7 +1,6 @@
 # Unoptimized Data Structures
 
 ```YAML
-
 id: TBA
 title: Unoptimized Data Structures 
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-710
 swc: SWC-135
-
 ```
 
 ## 📝 Description
@@ -26,7 +24,6 @@ swc: SWC-135
 - Inefficient `struct` packing (misordered variables),
 - Storing frequently-read data in storage instead of memory or calldata,
 - Not using `mapping` for quick lookups in favor of linear iteration over arrays.
-
 
 ## 🚨 Vulnerable Code
 
@@ -46,7 +43,6 @@ contract Inefficient {
         }
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -64,7 +60,6 @@ contract Inefficient {
 
 ## ✅ Fixed Code
 
-
 ```solidity
 
 contract Efficient {
@@ -80,7 +75,6 @@ contract Efficient {
         return userInfo[user];
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -104,13 +98,12 @@ contract Efficient {
 - Manual audit for mappings vs. arrays, struct layout, and unnecessary storage access.
 - Benchmark tests using Hardhat or Foundry to identify costly patterns.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** Gas inefficiencies in early Uniswap router 
 - **Date:** 2019 
 - **Impact:** Requiring higher gas for trading; later optimized in V2 
-- **Post-mortem:** [Link](https://uniswap.org/blog/uniswap-v2) 
-
+- **Post-mortem:** [Link to post-mortem](https://uniswap.org/blog/uniswap-v2) 
 
 
 ## 📚 Further Reading
@@ -118,7 +111,6 @@ contract Efficient {
 - [SWC-135: Code With No Effects or Inefficient Logic](https://swcregistry.io/docs/SWC-135) 
 - [Solidity Docs – Storage Layout and Packing](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html) 
 - [Slither Optimization Detectors](https://github.com/crytic/slither) 
-- [Hardhat Gas Reporter](https://hardhat.org/hardhat-gas-reporter) 
 
 
 ---
@@ -136,9 +128,7 @@ reachability: 5
 complexity: 2     
 detectability: 5  
 finalScore: 2.9
-
 ```
-
 
 ---
 

@@ -19,11 +19,11 @@ swc: SWC-104
 
 ## 📝 Description
 
-- Improper error handling in smart contracts refers to **failing to check return values**, **suppressing reverts**, or **ignoring external call failures**. 
+- Improper error handling in smart contracts refers to failing to check return values, suppressing reverts, or ignoring external call failures. 
 - This can result in:
-- **Silent failures**, where the user assumes an operation succeeded.
-- **Inconsistent state**, where only part of a transaction executes.
-- **Security issues**, like skipped permission checks or failed token transfers.
+- Silent failures, where the user assumes an operation succeeded.
+- Inconsistent state, where only part of a transaction executes.
+- Security issues, like skipped permission checks or failed token transfers.
 - Common mistakes include ignoring the return value of `transfer()`, `send()`, or `call()` and continuing execution without validating success.
 
 ## 🚨 Vulnerable Code
@@ -39,7 +39,6 @@ contract ImproperErrorHandling {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -67,7 +66,6 @@ contract SafeErrorHandling {
     }
 }
 ```
-
 
 ## 🛡️ Prevention
 
@@ -97,7 +95,6 @@ contract SafeErrorHandling {
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert/) 
 
 
-
 ## 📚 Further Reading
 
 - [SWC-104: Unchecked Call Return Value](https://swcregistry.io/docs/SWC-104) 
@@ -105,8 +102,8 @@ contract SafeErrorHandling {
 - [Solidity Docs – External Function Calls](https://docs.soliditylang.org/en/latest/control-structures.html#error-handling-assert-require-revert-and-exceptions) 
 
 ---
-## ✅ Vulnerability Report
 
+## ✅ Vulnerability Report
 
 ```markdown
 id: TBA
@@ -121,9 +118,7 @@ detectability: 4
 finalScore: 3.15
 ```
 
-
 ---
-
 
 ## 📄 Justifications & Analysis
 

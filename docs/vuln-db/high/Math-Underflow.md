@@ -58,7 +58,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 contract SafeLoop {
     uint256[] public data;
 
@@ -71,7 +70,6 @@ contract SafeLoop {
         }
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -96,11 +94,10 @@ contract SafeLoop {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Akropolis Pool DoS 
-- **Date:** 2020 
-- **Loss:** $2M 
-- **Post-mortem:** [Link](https://medium.com/akropolis/akropolis-post-mortem-2cb570f4314d) 
-
+- **Name:** DecentralizedBank Underflow Exploit 
+- **Date:** 2024-01 
+- **Loss:** 5 ETH 
+- **Post-mortem:** [Link to post-mortem](https://www.kayssel.com/post/web3-8/)
 
 ## 📚 Further Reading
 
@@ -125,9 +122,7 @@ detectability: 4
 finalScore: 3.9
 ```
 
-
 ---
-
 
 ## 📄 Justifications & Analysis
 

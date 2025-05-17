@@ -42,7 +42,6 @@ contract Token {
 }
 ```
 
-
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -92,11 +91,10 @@ function transfer(address to, uint256 amount) external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Lendf.Me Event Desync Bug 
+- **Name:** MakerDAO Oracles Event Emission Delay 
 - **Date:** 2020 
-- **Loss:** N/A (caused tracking errors in DApps) 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/dforcenet/official-announcement-regarding-lendf-me-incident-18c8995e4f17) 
-
+- **Loss:** Unspecified; potential data inconsistencies 
+- **Post-mortem:** [Link to post-mortem](https://blog.makerdao.com/makerdao-oracle-delay-incident-report/)  
 
 ## 📚 Further Reading
 

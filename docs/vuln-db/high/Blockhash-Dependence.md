@@ -57,7 +57,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 // Use verifiable randomness via Chainlink VRF
 import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
@@ -102,11 +101,10 @@ contract SecureLottery is VRFConsumerBase {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Fomo3D Lottery Snipe via Blockhash 
-- **Date:** 2018-07 
-- **Loss:** ~$3M 
-- **Post-mortem:** [Link to post-mortem](https://www.coindesk.com/markets/2018/07/30/fomo3d-ethereum-gambling-game-sees-investor-win-3-million-prize/) 
-
+- **Name:** Roulette Smart Contract Exploit 
+- **Date:** 2018 
+- **Loss:** Potential manipulation of game outcomes 
+- **Post-mortem:** [Link to post-mortem](https://cypherpunks-core.github.io/ethereumbook/09smart-contracts-security.html) 
 
 ## 📚 Further Reading
 
@@ -129,7 +127,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.0
 ```
-
 
 ---
 

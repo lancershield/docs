@@ -1,7 +1,6 @@
 # Counter Overflow Allowing Unlimited Iteration
 
 ```YAML
-
 id: TBA
 title: Counter Overflow Allowing Unlimited Iteration or Bypass of Limit Checks
 severity: H
@@ -24,7 +23,6 @@ swc: SWC-101
 - Loop bounds to break,
 - Counters to reset,
 - ID values to duplicate or become unpredictable.
-
 - This can lead to minting duplicate tokens, infinite loops, or violations of uniqueness guarantees, especially in NFT, vault, and staking logic.
 
 ## 🚨 Vulnerable Code
@@ -38,7 +36,6 @@ contract VulnerableCounter {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -58,7 +55,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 pragma solidity ^0.8.0;
 
 contract SafeCounter {
@@ -70,27 +66,6 @@ contract SafeCounter {
     }
 }
 ```
-
-Or using OpenZeppelin’s SafeCounter:
-
-```solidity
-
-import "@openzeppelin/contracts/utils/Counters.sol";
-
-contract SafeCounter {
-    using Counters for Counters.Counter;
-    Counters.Counter private _counter;
-
-    function increment() public {
-        _counter.increment(); // Reverts on overflow (Solidity >=0.8.0)
-    }
-
-    function current() public view returns (uint256) {
-        return _counter.current();
-    }
-}
-```
-
 
 ## 🛡️ Prevention
 
@@ -114,11 +89,10 @@ contract SafeCounter {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** EOS-style NFT Mint Overflow 
-- **Date:** 2020 
-- **Loss:** Duplicated NFTs due to unchecked ID counter 
-- **Post-mortem:** [Link](https://rekt.news/nft-counter-overflow/) 
-
+- **Name:** BeautyChain (BEC) Token Overflow Exploit 
+- **Date:** 2018 
+- **Loss:** Massive token inflation leading to value collapse 
+- **Post-mortem:** [Link to post-mortem](https://smartstate.tech/blog/understanding-overflow-and-underflow-vulnerabilities-in-smart-contracts.html)
 
 
 ## 📚 Further Reading
@@ -126,7 +100,6 @@ contract SafeCounter {
 - [SWC-101: Integer Overflow and Underflow](https://swcregistry.io/docs/SWC-101) 
 - [OpenZeppelin Counters Library](https://docs.openzeppelin.com/contracts/4.x/api/utils#Counters) 
 - [Solidity Docs – Arithmetic Overflow](https://docs.soliditylang.org/en/v0.8.0/080-breaking-changes.html) 
-
 
 ---
 
@@ -144,8 +117,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.0
 ```
-
-
 
 ---
 

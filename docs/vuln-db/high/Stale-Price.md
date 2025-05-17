@@ -1,7 +1,6 @@
 # Stale Price Usage 
 
 ```YAML
-
 id: TBA
 title: Stale Price Usage Leading to Exploitable Financial Operations
 severity: H
@@ -98,19 +97,20 @@ function buy() external payable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** bZx Oracle Exploit 
-- **Date:** 2020 
-- **Loss:** ~$1M 
-- **Post-mortem:** [Link](https://blog.bzx.network/postmortem-2-15-20-2f37c4f28a5c) 
+- **Name:** Term Finance Oracle Exploit 
+- **Date:** April 2025 
+- **Loss:** Approximately $1.5 million 
+- **Post-mortem:** [Link to post-morte](https://getfailsafe.com/post-mortem-term-finance/) 
+
 
 ## 📚 Further Reading
 
 - [SWC-119: Unchecked Return Values for Oracle Data](https://swcregistry.io/docs/SWC-119) 
-- [Chainlink – Price Feed Security](https://docs.chain.link/data-feeds/security) 
-- [Vitalik – Oracle Risks in DeFi](https://vitalik.ca/general/2020/07/21/oracles.html) 
-
+- [Stale Prices – Zokyo Auditing Tutorials](https://zokyo-auditing-tutorials.gitbook.io/zokyo-tutorials/tutorial-15-oracles/found-vulnerabilities-in-oracle-implementations/stale-prices) 
+- [SC02:2025 Price Oracle Manipulation – OWASP Smart Contract Security](https://scs.owasp.org/sctop10/SC02-PriceOracleManipulation/) 
 
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -125,7 +125,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

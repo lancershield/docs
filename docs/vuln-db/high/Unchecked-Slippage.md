@@ -1,7 +1,6 @@
 #  Unchecked Slippage in Multi-Hop Swaps 
 
 ```YAML
-
 id: TBA
 title: Unchecked Slippage in Multi-Hop Swaps 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-20
 swc: SWC-118
-
 ```
 
 ## 📝 Description
@@ -50,7 +48,6 @@ contract SlippageUnsafe {
 }
 ```
 
-
 ## 🧪 Exploit Scenario
 
 Step-by-step attack:
@@ -81,9 +78,7 @@ function swap(address[] calldata path, uint256 amountIn, uint256 amountOutMin) e
         block.timestamp
     );
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -105,26 +100,23 @@ function swap(address[] calldata path, uint256 amountIn, uint256 amountOutMin) e
 - Manual audit of all swapExactTokensForTokens, swapExactETHForTokens, or similar functions.
 - Fuzz testing with manipulated DEX state to simulate low-liquidity attacks.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** Level Finance Router Slippage Bug 
 - **Date:** 2023 
 - **Impact:** $1.1M loss via multi-hop swap route with zero slippage protection 
-- **Post-mortem:** [Link](https://rekt.news/level-finance-rekt/) 
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/level-finance-rekt/) 
 
 
 ## 📚 Further Reading
 
 - [SWC-118: Incorrect Data Validation](https://swcregistry.io/docs/SWC-118) 
 - [Uniswap V2 Docs – Slippage Protection](https://docs.uniswap.org/protocol/V2/reference/smart-contracts/router-02#swapexacttokensfortokens) 
-- [Paradigm – MEV and Slippage](https://www.paradigm.xyz/2021/08/solving-mev) 
 - [Slither Slippage Check Rules](https://github.com/crytic/slither)
-
 
 ---
 
 ## ✅ Vulnerability Report 
-
 
 ```markdown
 id: TBA
@@ -137,7 +129,6 @@ reachability: 3
 complexity: 2     
 detectability: 4  
 finalScore: 4.1
-
 ```
 
 ---

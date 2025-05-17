@@ -1,4 +1,5 @@
-# NFT Metadata Tampering 
+# NFT Metadata Tampering
+
 ```YAML
 id: TBA
 title: NFT Metadata Tampering 
@@ -14,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-345
 swc: SWC-131
-
 ```
 
 ## 📝 Description
@@ -39,7 +39,6 @@ contract MutableNFT is ERC721 {
         return _tokenURIs[tokenId];
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -77,7 +76,6 @@ contract ImmutableNFT is ERC721 {
         return _tokenURIs[tokenId];
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -100,12 +98,12 @@ contract ImmutableNFT is ERC721 {
 - Manual audits for any setTokenURI, updateURI, or mutable metadata patterns.
 - Check for dynamic tokenURI() logic relying on off-chain variables.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Pixelmon Metadata Reveal Controversy 
-- **Date:** 2022 
-- **Impact:** Metadata switched post-reveal; misled buyers about quality 
-- **Post-mortem:** [Link](https://rekt.news/pixelmon-rekt/) 
+- **Name:** Bored Ape Yacht Club Metadata Tampering Incident 
+- **Date:** 2021 
+- **Loss:** Potential reputational damage and user trust erosion
+- **Post-mortem:** [Link to post-mortem](https://medium.com/%40NoamaSamreen/nft-security-6d3d8063c834) 
 
 
 ## 📚 Further Reading
@@ -113,8 +111,6 @@ contract ImmutableNFT is ERC721 {
 - [SWC-131: Incorrect Calculation or Relying on External Values](https://swcregistry.io/docs/SWC-131) 
 - [OpenZeppelin ERC721 Metadata Guidelines](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721) 
 - [Best Practices for NFT Metadata](https://docs.opensea.io/docs/metadata-standards) 
-- [IPFS + Arweave Hosting Guides](https://mirror.xyz/) 
-
 
 ---
 
@@ -131,11 +127,7 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 3.85
-
-
 ```
-
-
 
 ---
 

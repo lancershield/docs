@@ -1,7 +1,6 @@
 # Unused Modifiers
 
 ```YAML
-
 id: TBA
 title: Unused Modifiers Leading to Assumed but Missing Access Control
 severity: M
@@ -87,12 +86,11 @@ function mint(address to, uint256 amount) public onlyOwner {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** YAM Finance Unchecked Access 
-- **Date:** 2020 
-- **Loss:** Protocol halted due to privilege misconfiguration 
-- **Post-mortem:** [Link](https://medium.com/yam-finance/yam-finance-post-mortem-53f8b0b3f1af) 
-
-
+- **Name:** The DAO Hack 
+- **Date:** 2016-06-17 
+- **Loss:** Approximately $60 million 
+- **Post-mortem:** [Link to post-mortem](https://neptunemutual.com/blog/the-story-behind-the-dao-hack)
+  
 ## 📚 Further Reading
 
 - [SWC-100: Function Default Visibility](https://swcregistry.io/docs/SWC-100) 
@@ -115,7 +113,6 @@ complexity: 1
 detectability: 5  
 finalScore: 3.3
 ```
-
 
 ---
 

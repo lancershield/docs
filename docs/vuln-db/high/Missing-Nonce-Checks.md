@@ -1,7 +1,6 @@
 # Missing Nonce Checks in Meta Transactions
 
 ```YAML
-
 id: TBA
 title: Missing Nonce Checks in Meta Transactions 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-294
 swc: SWC-122
-
 ```
 
 ## 📝 Description
@@ -48,7 +46,6 @@ contract MetaTxBad {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -89,9 +86,7 @@ contract MetaTxGood {
         require(success, "Call failed");
     }
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -113,21 +108,18 @@ contract MetaTxGood {
 - Manual review of keccak256(...), ecrecover(...) usage without unique identifier binding.
 - Test cases using signature replay simulation.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Loopring Replay Exploit 
-- **Date:** 2020 
-- **Loss:** ~$50K 
-- **Post-mortem:** [Link](https://medium.com/loopring-protocol/loopring-3-6-security-incident-report-9e194b8b3b4e) 
-
-
+- **Name:** Ondo Finance KYC Signature Replay Vulnerability 
+- **Date:** 2023 
+- **Loss:** Potential for unauthorized KYC approvals 
+- **Post-mortem:** [Link to post-mortem](https://dacian.me/signature-replay-attacks) 
 
 ## 📚 Further Reading
 
 - [SWC-122: Signature Replay](https://swcregistry.io/docs/SWC-122) 
 - [EIP-2612: permit() with nonce](https://eips.ethereum.org/EIPS/eip-2612) 
 - [EIP-712: Typed Structured Data Signing](https://eips.ethereum.org/EIPS/eip-712) 
-- [OpenZeppelin MetaTx Patterns](https://docs.openzeppelin.com/contracts/4.x/guide#meta-transactions) 
 
 ---
 
@@ -144,10 +136,7 @@ reachability: 4
 complexity: 3    
 detectability: 4  
 finalScore: 4.3
-
-
 ```
-
 
 ---
 

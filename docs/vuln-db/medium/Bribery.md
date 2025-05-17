@@ -15,7 +15,6 @@ mitigation_difficulty: hard
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-732
 swc: SWC-133
-
 ```
 
 ## 📝 Description
@@ -31,7 +30,6 @@ swc: SWC-133
 function delegate(address delegatee) public {
     _delegate(msg.sender, delegatee); // Can be bribed off-chain
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -87,27 +85,25 @@ function delegate(address delegatee) public {
 - Analyze governance participation metrics for voter clustering or reuse.
 - Monitor on-chain bribe payout contracts and linked wallets.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Curve War Bribery (veCRV) 
-- **Date:** 2021–ongoing 
-- **Impact:** Protocol emissions skewed by vote buyers
--  **Post-mortem:** [https://curve.fi](https://curve.fi) 
-  
+- **Name:** Arbitrum DAO Governance Incident 
+- **Date:** April 2025 
+- **Loss:** Undisclosed influence over governance decisions 
+- **Post-mortem:** [Link to post-mortem](https://www.blocmates.com/news-posts/arbitrum-dao-governance-faces-scrutiny-following-vote-delegation-via-lobbyfi)
 
 
 ## 📚 Further Reading
 
 - [SWC-133: Governance Manipulation](https://swcregistry.io/docs/SWC-133) 
 - [Compound Governor Bravo Docs](https://docs.compound.finance/v2/governance/) 
-- [Curve Wars & Vote Markets](https://www.coindesk.com/markets/2022/01/11/what-are-curve-wars/) - [Votemarket & Hidden Hand Mechanisms](https://hiddenhand.xyz/) 
-
+- [A Game-Theoretic Analysis of Delegation Incentives in Blockchain Governance – IOHK](https://iohk.io/en/research/library/papers/a-game-theoretic-analysis-of-delegation-incentives-in-blockchain-governance/)
 
 ---
 
 ## ✅ Vulnerability Report
 
-```YAML
+```markdown
 id: TBA
 title: Bribery Through Vote Delegation 
 severity: M
@@ -118,7 +114,6 @@ reachability: 5
 complexity: 3     
 detectability: 4  
 finalScore: 3.85
-
 
 ```
 

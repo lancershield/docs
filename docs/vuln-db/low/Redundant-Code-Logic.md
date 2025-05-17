@@ -1,7 +1,6 @@
 # Redundant Code Logic 
 
 ```YAML
-
 id: TBA
 title: Redundant Code Logic Leading to Increased Gas Costs and Maintenance Risk
 severity: L
@@ -17,7 +16,6 @@ versions: [">=0.4.0", "<latest"]
 cwe: CWE-561
 swc: SWC-131
 ```
-
 
 ## 📝 Description
 
@@ -56,7 +54,7 @@ contract RedundantExample {
 
 - Developers or tooling failed to clean up unnecessary logic paths.
 - Contract is executed frequently, amplifying gas inefficiency.
-
+  
 ## ✅ Fixed Code
 
 ```solidity
@@ -69,7 +67,6 @@ contract OptimizedExample {
         // ✅ Clean and clear
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -92,21 +89,22 @@ contract OptimizedExample {
 - Hardhat Gas Reporter: Highlight functions with excess cost.
 - Manual audit and gas profiling of core functions.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** UniswapV1 Redundant Math in Slippage Check
--  **Date:** 2019 
--  **Impact:** Minor inefficiency and confusion in slippage calculation 
--  **Post-mortem:** [Link](https://uniswap.org/blog/uniswap-v1-launch/) 
-  
+- **Name:** The DAO Exploit 
+- **Date:** 2016 
+- **Loss:** $60 million 
+- **Post-mortem:** [Link to post-mortem](https://www.veritasprotocol.com/blog/analyzing-smart-contract-code-for-vulnerabilities)
+
+
 ## 📚 Further Reading
 
 - [SWC-131: Presence of Unused Code](https://swcregistry.io/docs/SWC-131) 
-- [Solidity Docs – Code Optimization](https://docs.soliditylang.org/en/latest/internals/optimizing-gas-costs.html) 
-- [Slither – Gas and Code Quality Tools](https://github.com/crytic/slither) 
+- [Policies, Procedures, and Code Management – OWASP Smart Contract Security](https://scs.owasp.org/SCSTG/tests/SCSVS-CODE/overview/) 
+- [Code Optimization in Solidity: Best Practices for Performance – SoliditySuite](https://www.soliditysuite.com/code-optimization-solidity-best-practices/) 
 
+--- 
 
----
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -121,7 +119,6 @@ complexity: 1
 detectability: 5  
 finalScore: 2.1
 ```
-
 
 ---
 

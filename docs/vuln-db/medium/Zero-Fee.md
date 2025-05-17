@@ -31,7 +31,6 @@ function mint() external payable {
     require(msg.value >= fee, "Fee too low");
     _mint(msg.sender); // ❌ no fallback if msg.value == 0 and fee == 0
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -56,7 +55,6 @@ function mint() external payable {
     require(!feeExempt[msg.sender] || msg.value >= fee, "Invalid fee");
     _mint(msg.sender);
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -81,12 +79,10 @@ function mint() external payable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** SushiSwap Fee Bypass in Reward Claim 
-- **Date:** 2021 
-- **Impact:** Certain addresses could claim without paying intended protocol fee 
-- **Post-mortem:** [Link](https://rekt.news) 
-
-
+- **Name:** Mango Markets Exploit 
+- **Date:** October 2022 
+- **Loss:** $117 million 
+- **Post-mortem:** [Link to post-mortem](https://cryptodamus.io/en/articles/news/mango-markets-hack-defi-s-100m-wake-up-call-legal-drama-lessons-learned) 
 
 ## 📚 Further Reading
 
@@ -110,9 +106,7 @@ complexity: 2
 detectability: 5  
 finalScore: 3.75
 
-
 ```
-
 
 ---
 

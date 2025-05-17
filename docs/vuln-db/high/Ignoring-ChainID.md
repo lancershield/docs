@@ -1,7 +1,6 @@
 # Ignoring ChainID in Signatures
 
 ```YAML
-
 id: TBA
 title: Ignoring ChainID in Signatures 
 severity: H
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-347
 swc: SWC-121
-
 ```
 
 ## 📝 Description
@@ -37,7 +35,6 @@ function executeMetaTx(address user, bytes calldata data, bytes calldata signatu
     (bool success, ) = address(this).call(data);
     require(success, "Execution failed");
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -68,9 +65,7 @@ function executeMetaTx(address user, bytes calldata data, uint256 nonce, bytes c
 
     // Execute logic
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -95,14 +90,12 @@ function executeMetaTx(address user, bytes calldata data, uint256 nonce, bytes c
 - Manual audit of all signature logic for keccak256(...) and ecrecover(...).
 - Test signature replay scenarios across forked chain environments.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Gas DAO Signature Replay 
-- **Date:** 2021 
-- **Impact:** Signatures replayed across testnet/mainnet caused claim inconsistencies 
-- **Post-mortem:** [Link](https://gasdao.medium.com/) 
-
-
+- **Name:** EPProgramManager Replay Vulnerability 
+- **Date:** November 2024 
+- **Loss:** Not publicly disclosed 
+- **Post-mortem:** [Link to post-mortem](https://github.com/sherlock-audit/2024-11-superfluid-locking-contract-judging/issues/6) 
 
 ## 📚 Further Reading
 
@@ -112,8 +105,8 @@ function executeMetaTx(address user, bytes calldata data, uint256 nonce, bytes c
 - [Slither – Signature Replay & Domain Detectors](https://github.com/crytic/slither) 
 
 ---
-## ✅ Vulnerability Report 
 
+## ✅ Vulnerability Report 
 
 ```markdown
 id: TBA
@@ -126,10 +119,7 @@ reachability: 3
 complexity: 2     
 detectability: 4  
 finalScore: 4.2
-
-
 ```
-
 
 ---
 

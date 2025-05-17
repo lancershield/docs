@@ -1,9 +1,8 @@
 # Async Withdraw Race Condition
 
 ```YAML
-
 id: TBA
-title: Async Withdraw Race Condition via Double Spend
+title: Async Withdraw Race Condition 
 severity: H
 category: race-condition
 language: solidity
@@ -16,12 +15,12 @@ mitigation_difficulty: medium
 versions: [">=0.4.0", "<0.8.21"]
 cwe: CWE-362
 swc: SWC-107
-
 ```
 
 ## 📝 Description
 
-- Double Spend via Async Withdraw refers to a race condition vulnerability where a user (or attacker) is able to call a `withdraw()` function multiple times before their balance is updated, especially when external calls (e.g., `transfer()`, `call()`) are made before state updates. This results in multiple successful withdrawals from the same balance or claim allocation.
+- Double Spend via Async Withdraw refers to a race condition vulnerability where a user (or attacker) is able to call a `withdraw()` function multiple times before their balance is updated, especially when external calls (e.g., `transfer()`, `call()`) are made before state updates. 
+- This results in multiple successful withdrawals from the same balance or claim allocation.
 - This often occurs in poorly ordered code in `withdraw()` or `claim()` functions, particularly when gas forwarding or reentrancy opportunities exist.
 
 ## 🚨 Vulnerable Code
@@ -46,6 +45,7 @@ contract AsyncVault {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -106,18 +106,16 @@ contract SecureVault is ReentrancyGuard {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** The DAO Hack 
-- **Date:** 2016-06 
-- **Loss:** ~$60M 
-- **Post-mortem:** [Link to post-mortem](https://blog.slock.it/the-dao-hack-explained-62429dbabf62) 
+- **Name:** Lendf.Me Exploit 
+- **Date:** 2020-04-19 
+- **Loss:** Approximately $25 million 
+- **Post-mortem:** [Link to post-mortem](https://blockapex.io/top-10-smart-contract-vulnerabilities/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-107: Reentrancy](https://swcregistry.io/docs/SWC-107)
--  [Solidity Docs – Checks-Effects-Interactions Pattern](https://soliditylang.org/security-considerations.html#use-the-checks-effects-interactions-pattern) 
--  [OpenZeppelin – ReentrancyGuard](https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard) 
-  
+- [Race Conditions in Smart Contracts – ImmuneBytes](https://immunebytes.com/blog/race-conditions-in-smart-contracts/) 
+- [ERC20 Approve Race Condition Vulnerability – Zokyo Auditing Tutorials](https://zokyo-auditing-tutorials.gitbook.io/zokyo-tutorials/tutorials/tutorial-3-approvals-and-safe-approvals/vulnerability-examples/erc20-approve-race-condition-vulnerability) 
 
 --- 
 
@@ -135,7 +133,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.2
 ```
-
 
 ---
 

@@ -1,7 +1,6 @@
 # Reused Hash Collision Leading to Authorization
 
 ```YAML
-
 id: TBA
 title: Reused Hash Collision Leading to Authorization or Data Forgery
 severity: H
@@ -24,7 +23,6 @@ swc: SWC-117
 - Forge or reuse an old signature or commitment,
 - Trick logic into verifying a hash for a different intent,
 - Trigger hash collisions between different inputs (e.g., `abi.encodePacked("ab", "c") == abi.encodePacked("a", "bc")`).
-
 - This is especially dangerous in permit systems, commit-reveal schemes, and Merkle roots where hash uniqueness is assumed.
 
 ## 🚨 Vulnerable Code
@@ -60,7 +58,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 function verify(string memory name, string memory role) public {
     bytes32 hash = keccak256(abi.encode(name, role)); // ✅ Safer encoding
     require(!used[hash], "Hash reused");
@@ -68,7 +65,6 @@ function verify(string memory name, string memory role) public {
     used[hash] = true;
     // Continue logic
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -93,11 +89,10 @@ function verify(string memory name, string memory role) public {
 
 ### 🕰️ Historical Exploits
 
-- **Name:** Pando Rings Permit Collision 
-- **Date:** 2021 
-- **Loss:** ~Unauthorized access (mitigated) 
-- **Post-mortem:** [Link](https://blog.pando.network/hash-collision-incident) 
-
+- **Name:** ABI Hash Collision in Royalty Distribution Contract
+- **Date:** 2023 
+- **Loss:** Unauthorized fund claims due to hash collision 
+- **Post-mortem:** [Link to post-mortem](https://scsfg.io/hackers/abi-hash-collisions/)
 
 ## 📚 Further Reading
 
@@ -121,7 +116,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.2
 ```
-
 
 ---
 

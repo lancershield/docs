@@ -17,14 +17,13 @@ cwe: CWE-665
 swc: SWC-112
 ```
 
-
 ## 📝 Description
 
 - Upgrade bricking occurs when a smart contract proxy is upgraded to a new implementation that:
 - Contains a constructor instead of initializer,
 - Lacks proper storage compatibility with the proxy,
 - Misses essential initializer logic (e.g., `initialize()` not called),
-- Or contains self-destructive logic or critical bugs.
+- contains self-destructive logic or critical bugs.
 - This renders the proxy  permanently unusable, locking funds or breaking functionality. In upgradeable systems (e.g., UUPS, Transparent), implementation logic must be meticulously audited and initialized before being assigned.
 
 ## 🚨 Vulnerable Code
@@ -113,11 +112,10 @@ contract SafeLogic is Initializable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Proxy Upgrade Brick – YAM Protocol 
-- **Date:** 2020 
-- **Loss:** Governance bricked due to missing initializer
--  **Post-mortem:** [Link to post-mortem](https://medium.com/yam-finance/yam-post-mortem-c6c08390b8e7) 
-  
+- **Name:** Parity Multisig Wallet Freeze 
+- **Date:** 2017-11-06 
+- **Loss:** Approximately 513,774 ETH (worth ~$150 million at the time) 
+- **Post-mortem:** [Link to post-mortem](https://codeofcode.org/lessons/case-studies-of-real-world-smart-contract-vulnerabilities-and-exploits/)
 
 ## 📚 Further Reading
 
@@ -126,12 +124,11 @@ contract SafeLogic is Initializable {
 - [EIP-1822: UUPS Proxy Standard](https://eips.ethereum.org/EIPS/eip-1822)
 - [Solidity Docs – Initializers](https://docs.soliditylang.org/en/latest/contracts.html#constructors) 
   
-
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
-
 id: TBA
 title: Upgrade Bricking Due to Faulty Implementation 
 severity: H
@@ -143,7 +140,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.2
 ```
-
 
 ---
 

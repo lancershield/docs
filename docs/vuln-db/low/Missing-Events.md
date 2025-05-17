@@ -68,7 +68,6 @@ contract Configurable {
         emit FeeUpdated(_fee); // ✅ Now observable
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -93,21 +92,18 @@ contract Configurable {
 - Manual code review for functions that modify storage without emit statements.
 - Testing off-chain apps to ensure completeness of on-chain logs.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Tornado Cash Parameter Update Transparency Issue 
+- **Name:** Wizards & Dragons Admin Event Omission 
 - **Date:** 2021 
-- **Impact:** Config change occurred without event logs, creating confusion 
-- **Post-mortem:** [Link](https://tornado.cash/post-mortem) 
-
-
+- **Loss:** N/A 
+- **Post-mortem:** [Link to post-mortem](https://blog.solidityscan.com/understanding-events-in-smart-contracts-26e8d50b3eef) 
 
 ## 📚 Further Reading
 
 - [SWC-136: Unchecked Return Values / Unexpected Behavior](https://swcregistry.io/docs/SWC-136) 
 - [Solidity Docs – Events](https://docs.soliditylang.org/en/latest/contracts.html#events) 
 - [The Graph – Event-Based Indexing](https://thegraph.com/docs/en/) 
-
 
 ---
 
@@ -126,7 +122,6 @@ detectability: 5
 finalScore: 2.1
 
 ```
-
 
 ---
 

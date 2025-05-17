@@ -15,7 +15,6 @@ mitigation_difficulty: hard
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-840
 swc: SWC-136
-
 ```
 
 ## 📝 Description
@@ -70,7 +69,6 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
     uint256 balanceAfter = IERC20(tokenOut).balanceOf(address(this));
     require(balanceBefore - balanceAfter == amountOut, "Token accounting mismatch");
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -97,18 +95,17 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** SashimiSwap LP Freeze 
-- **Date:** 2020 
-- **Loss:** $210,000
-- **Post-mortem:**[Link to post-mortem] [https://medium.com/@sashimiswap] 
-  
+- **Name:** SushiSwap Liquidity Pool Bug 
+- **Date:** April 9, 2023 
+- **Loss:** $3.3 million 
+- **Post-mortem:** [Link to post-mortem](https://www.certik.com/resources/blog/post-mortem-sushiswap)
+
 ## 📚 Further Reading
 
 - [SWC-136: Unexpected Behavior Due to Unverified Assumptions](https://swcregistry.io/docs/SWC-136) 
 - [OpenZeppelin SafeERC20 Guide](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#SafeERC20) 
 - [Balancer Technical Docs on Pool Accounting](https://docs.balancer.fi/)
 - [Uniswap V2 Math Audit Notes](https://uniswap.org) 
-
 
 ----
 
@@ -125,9 +122,7 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 4.1
-
 ```
-
 
 ---
 

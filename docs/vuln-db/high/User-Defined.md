@@ -60,7 +60,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 contract CallbackSafe {
     mapping(address => uint256) public staked;
     address public approvedCallback;
@@ -106,20 +105,19 @@ contract CallbackSafe {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** DAO Hack 
-- **Date:** 2016 
-- **Loss:** ~$60M 
-- **Post-mortem:** [Link to post-mortem](https://blog.slock.it/the-dao-hack-explained-62429dbabf62) 
-
+- **Name:** Unprotected Callback Exploit 
+- **Date:** 2021 
+- **Loss:** Undisclosed 
+- **Post-mortem:** [Link to post-mortem](https://github.com/0xspydoc/smart-contract-attack-vectors/blob/master/vulnerabilities/unprotected-callback.md) 
 
 ## 📚 Further Reading
 
 - [SWC-136: Unexpected State Changes via Callbacks](https://swcregistry.io/docs/SWC-136) 
-- [Consensys – Callback Pattern Dangers](https://consensys.github.io/smart-contract-best-practices/known_attacks/#reentrancy) 
-- [Solidity Docs – Low-Level Calls](https://docs.soliditylang.org/en/latest/control-structures.html#error-handling-assert-require-revert-and-exceptions) 
-
+- [Smart Contract Security Best Practices – Rapid Innovation](https://www.rapidinnovation.io/post/smart-contract-security-best-practices-common-vulnerabilities)
+- [Top 6 Smart Contract Vulnerabilities – InApp](https://inapp.com/blog/top-6-smart-contract-vulnerabilities/) 
 
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -134,7 +132,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

@@ -1,7 +1,6 @@
 # Ignoring Chain Reorgs in Non-Critical Logic
 
 ```YAML
-
 id: TBA
 title: Ignoring Chain Reorgs in Non-Critical Logic 
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-668
 swc: SWC-136
-
 ```
 
 ## 📝 Description
@@ -38,7 +36,6 @@ contract ReorgVulnerable {
         emit VoteCasted(msg.sender, block.number);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -69,7 +66,6 @@ contract ReorgSafe {
 }
 ```
 
-
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -90,23 +86,20 @@ contract ReorgSafe {
 - Manual audit of functions using block.number, block.timestamp, blockhash, etc.
 - Integration testing with forking tools to simulate reorgs.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Graph Protocol Reorg Indexing Gaps 
-- **Date:** 2021 
-- **Impact:** Misaligned event indexing due to short reorg
--  **Post-mortem:** [Link](https://thegraph.com/docs/faq#what-is-a-reorg) 
+- **Name:** Ethereum Chain Reorg Incident 
+- **Date:** 2016 
+- **Loss:** Network instability and transaction reversals 
+- **Post-mortem:** [Link to post-mortem](https://consensys.net/blog/blockchain-explained/understanding-ethereum-reorgs/) 
   
-
 
 ## 📚 Further Reading
 
 - [SWC-136: Unexpected Behavior due to Environmental Assumptions](https://swcregistry.io/docs/SWC-136) 
 - [Solidity Docs – Environment Variables](https://docs.soliditylang.org/en/latest/units-and-global-variables.html)
-- [The Graph Docs – Dealing with Reorgs](https://thegraph.com/docs/en/developer/definitions/#reorgs) 
 - [Chain Reorgs – How to Handle Them](https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/#chain-reorgs) 
   
-
 ---
 
 ## ✅ Vulnerability Report 
@@ -122,10 +115,7 @@ reachability: 5
 complexity: 2     
 detectability: 5  
 finalScore: 3.1
-
-
 ```
-
 
 ---
 

@@ -1,7 +1,6 @@
 # Minting to Burn Address 
 
 ```YAML
-
 id: TBA
 title: Minting to Burn Address 
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-707
 swc: SWC-136
-
 ```
 
 ## 📝 Description
@@ -33,7 +31,6 @@ swc: SWC-136
 function mintTo(address recipient, uint256 amount) external onlyMinter {
     _mint(recipient, amount); // ❌ recipient could be 0x0 or 0xdead
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -53,16 +50,13 @@ Step-by-step impact:
 ## ✅ Fixed Code
 
 ```solidity
-
 function mintTo(address recipient, uint256 amount) external onlyMinter {
     require(recipient != address(0), "Cannot mint to zero address");
     require(recipient != 0x000000000000000000000000000000000000dEaD, "Cannot mint to burn address");
 
     _mint(recipient, amount); // ✅ Safe mint
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -86,11 +80,10 @@ function mintTo(address recipient, uint256 amount) external onlyMinter {
 
 ## 🕰️ Historical Incidents
 
-- **Name:** AMPL Geyser Distribution Error 
-- **Date:** 2020 
-- **Impact:** AMPL tokens minted to `address(0)` due to a failed rewards update 
-- **Post-mortem:** [Link](https://www.ampleforth.org/) 
-
+- **Name:** Paid Network Exploit 
+- **Date:** 2021 
+- **Loss:** Approximately $180 million 
+- **Post-mortem:** [Link to post-mortem](https://heraldsheets.com/infinite-mint-attacks-all-you-need-to-know/)
 
 
 ## 📚 Further Reading
@@ -98,7 +91,6 @@ function mintTo(address recipient, uint256 amount) external onlyMinter {
 - [SWC-136: Unexpected Behavior (Burn Address Issues)](https://swcregistry.io/docs/SWC-136) 
 - [OpenZeppelin ERC20 _mint() Docs](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-_mint-address-uint256-) 
 - [Token Standards and Burn Semantics](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) 
-
 
 --- 
 
@@ -117,7 +109,6 @@ detectability: 5
 finalScore: 2.9
 
 ```
-
 
 ---
 

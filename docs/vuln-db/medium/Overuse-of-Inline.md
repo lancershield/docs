@@ -1,7 +1,6 @@
 # Overuse of Inline Assembly
 
 ```YAML
-
 id: TBA
 title: Overuse of Inline Assembly 
 severity: M
@@ -38,6 +37,7 @@ contract UnsafeAssembly {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step impact:
@@ -61,7 +61,6 @@ contract SafeMath {
         return a + b; // ✅ Solidity handles overflow in 0.8.0+
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -88,14 +87,12 @@ contract SafeMath {
 - Manual audit of all assembly {} blocks for bounds checks and memory alignment.
 - Coverage tools to ensure assembly paths are tested.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** Parity Wallet Selfdestruct Bug 
 - **Date:** 2017 
 - **Loss:** ~$150M frozen 
-- **Cause:** Low-level logic using `delegatecall` and `assembly` created a killable library 
-- **Post-mortem:** [Link](https://paritytech.io/blog/security-alert-2/) 
-
+- **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
 
 
 ## 📚 Further Reading
@@ -103,7 +100,6 @@ contract SafeMath {
 - [SWC-134: Message call with hardcoded gas amount](https://swcregistry.io/docs/SWC-134) 
 - [Solidity Docs – Inline Assembly](https://docs.soliditylang.org/en/latest/assembly.html) 
 - [Slither – Assembly Usage Detector](https://github.com/crytic/slither) 
-- [Trail of Bits – Unsafe Assembly Pitfalls](https://blog.trailofbits.com/2020/06/19/evm-assembly-pitfalls/) 
 
 ---
 
@@ -120,9 +116,7 @@ reachability: 4
 complexity: 4     
 detectability: 4  
 finalScore: 3.3
-
 ```
-
 
 ---
 

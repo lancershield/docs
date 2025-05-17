@@ -1,7 +1,6 @@
 # Fallback Function Misuse
 
 ```YAML
-
 id: TBA
 title: Fallback Function Misuse Leading to Asset Loss
 severity: M
@@ -36,7 +35,6 @@ contract MisusedFallback {
         owner = msg.sender; // ❌ dangerous logic in fallback
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -90,15 +88,10 @@ receive() external payable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi (Dynamic Pyramid) Exploit
-- **Date:** 2016-05
-- **Loss:** N/A (Unintended ownership assignment via fallback)
-- **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDev/the-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8)
-
-- **Name:** Upbit Token Proxy Admin Exposure
-- **Date:** 2022-01-18
-- **Loss:** N/A (Whitehat discovery)
-- **Post-mortem:** [Link to post-mortem](https://twitter.com/pcaversaccio/status/1483800152813000705)
+- **Name:** The DAO Hack 
+- **Date:** June 2016 
+- **Loss:** Approximately $60 million 
+- **Post-mortem:** [Link to post-mortem](https://crypto.news/the-dao-attack-understanding-what-happened/)
 
 ## 📚 Further Reading
 

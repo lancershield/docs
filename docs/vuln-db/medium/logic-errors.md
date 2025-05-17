@@ -1,7 +1,6 @@
 # Logic Errors in Contract Conditions
 
 ```YAML
-
 id: TBA
 title: Logic Errors in Contract Conditions or Calculations
 severity: M
@@ -85,19 +84,15 @@ function claimReward() external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi Early Ownership Bug
-- **Date:** 2016-05-03
-- **Loss:** N/A
-- **Post-mortem:** [Link to post-mortem](https://medium.com/@PracticalDevthe-rubixi-bug-a-smart-contract-vulnerability-with-an-interesting-history-c06c41f5a6b8)
-- **Name:** YAM Finance Overflow Bug
-- **Date:** 2020-08-13
-- **Loss:** Protocol disabled, $750K lost
-- **Post-mortem:** [Link to post-mortem](https://medium.com/yam-finance/yam-post-mortem-39467ab8971f)
+- **Name:** KiloEx TrustedForwarder Exploit 
+- **Date:** April 2025 
+- **Loss:** Approximately $7 million 
+- **Post-mortem:** [Link to post-mortem](https://thedailysun.co.za/2025/04/21/kiloex-reveals-details-of-7-million-smart-contract-exploit-in-post-mortem-report/) 
 
 ## 📚 Further Reading
 
 - [SWC-124: Incorrect Inheritance Order or Logic](https://swcregistry.io/docs/SWC-124)
-- [Trail of Bits: Logic Bugs in Smart Contracts](https://blog.trailofbits.com/2022/10/how-to-break-smart-contracts/)
+- [OWASP Smart Contract Top 10: Logic Errors – OWASP Foundation](https://owasp.org/www-project-smart-contract-top-10/2025/en/src/SC03-logic-errors.html) 
 - [OpenZeppelin – Avoiding Logic Errors](https://docs.openzeppelin.com/contracts/4.x/api/utils)
 
 ## ✅ Vulnerability Report

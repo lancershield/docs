@@ -16,16 +16,14 @@ versions: [">=0.6.0", "<0.8.21"]
 cwe: CWE-400
 swc: SWC-136
 ```
-
-
 ## 📝 Description
 
-- **Gas Griefing** occurs when an attacker exploits gas limitations or fallback behavior to make a function **unusable** or **undesirably expensive**. 
+- Gas Griefing occurs when an attacker exploits gas limitations or fallback behavior to make a function unusable or undesirably expensive. 
 - This can happen when:
-- A contract **calls untrusted external addresses** that revert or consume all gas.
-- **Gas stipends** (e.g., `2300` gas in `transfer`) are insufficient for smart contract recipients.
-- **Refunds, loops, or bulk processing** are blocked due to one recipient failing or consuming all gas.
-- This leads to **denial of service (DoS)** or **degraded user experience**, especially in payout or voting systems.
+- A contract calls untrusted external addresses that revert or consume all gas.
+- Gas stipends (e.g., `2300` gas in `transfer`) are insufficient for smart contract recipients.
+- Refunds, loops, or bulk processing are blocked due to one recipient failing or consuming all gas.
+- This leads to denial of service (DoS) or degraded user experience, especially in payout or voting systems.
 
 ## 🚨 Vulnerable Code
 
@@ -99,20 +97,20 @@ function claim(address[] calldata recipients) external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** King of the Ether Throne (DoS via revert)
-- **Date:** 2017 
-- **Loss:** Contract locked due to gas griefing
-- **Post-mortem:** [Link to post-mortem](https://programtheblockchain.com/posts/2017/12/18/king-of-the-ether-throne/) 
+- **Name:** Relayer Contract Gas Griefing 
+- **Date:** Unspecified 
+- **Loss:** Potential denial-of-service (DoS) impact 
+- **Post-mortem:** [Link to post-mortem](https://scsfg.io/hackers/griefing/) 
 
 
 ## 📚 Further Reading
 
-- [SWC-136: Gas Griefing](https://swcregistry.io/docs/SWC-136) 
-- [OpenZeppelin – PullPayment Pattern](https://docs.openzeppelin.com/contracts/4.x/api/utils#PullPayment)
-- [Consensys – Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/known_attacks/#denial-of-service) 
-
+- [Insufficient Gas Griefing walkthrough – Bailsec.io](https://bailsec.io/tpost/l9ga6uhe01-insufficient-gas-griefing-walkthrough)
+- [Understanding Smart Contract Gas Griefing Attacks – Orochi Network](https://orochi.network/blog/Understanding-Smart-Contract-Gas-Griefing-Attacks) 
+- [Secure Gas Forwarding in Smart Contracts: Preventing Insufficient Gas – Varkiwi](https://blog.varkiwi.com/2025/03/13/Check-Forwarded-Gas.html) 
 
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -127,7 +125,6 @@ complexity: 2
 detectability: 4  
 finalScore: 3.25
 ```
-
 
 ---
 

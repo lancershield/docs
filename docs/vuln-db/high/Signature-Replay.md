@@ -17,13 +17,12 @@ cwe: CWE-294
 swc: SWC-121
 ```
 
-
 ## 📝 Description
 
-- Signature replay attacks occur when a valid off-chain signature can be reused multiple times to trigger the same or similar actions across **time, chains, or contracts**. - This typically happens due to:
-- Lack of **nonces**,
-- Absence of **expiry timestamps**,
-- No use of **domain separation** (e.g., `chainId`, `contract address`).
+- Signature replay attacks occur when a valid off-chain signature can be reused multiple times to trigger the same or similar actions across time, chains, or contracts. - This typically happens due to:
+- Lack of nonces,
+- Absence of expiry timestamps,
+- No use of domain separation (e.g., `chainId`, `contract address`).
 - The attack allows unauthorized repetition of actions such as token approvals, withdrawals, or function executions with previously valid signatures.
 
 ## 🚨 Vulnerable Code
@@ -107,7 +106,7 @@ contract ReplaySafe {
 - **Name:** Wintermute's $OP Token Theft 
 - **Date:** 2022-06-09 
 - **Loss:** 20 million $OP tokens 
-- **Post-mortem:** [Wintermute Exploit Analysis](https://doc.confluxnetwork.org/docs/general/build/smart-contracts/contract-security/signature-replay) 
+- **Post-mortem:** [Link to post-mortem](https://doc.confluxnetwork.org/docs/general/build/smart-contracts/contract-security/signature-replay) 
 
 
 ## 📚 Further Reading
@@ -132,7 +131,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.0
 ```
-
 
 ---
 

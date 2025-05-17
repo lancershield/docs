@@ -17,14 +17,13 @@ cwe: CWE-284
 swc: SWC-112
 ```
 
-
 ## 📝 Description
 
-- Proxy pattern vulnerabilities arise when smart contracts use a **delegatecall-based proxy architecture** (e.g., UUPS, Transparent Proxy) and:
-- Misconfigure the **implementation address**,
-- Fail to restrict **upgrade/admin functions**,
-- Allow **storage layout collisions** between proxy and logic contracts,
-- Permit **selfdestruct** in the logic contract.
+- Proxy pattern vulnerabilities arise when smart contracts use a delegatecall-based proxy architecture (e.g., UUPS, Transparent Proxy) and:
+- Misconfigure the implementation address
+- Fail to restrict upgrade/admin functions,
+- Allow storage layout collisions between proxy and logic contracts,
+- Permit selfdestruct in the logic contract.
 - Such issues can result in:
 - Total logic override by unauthorized actors,
 - Destruction of the proxy contract,
@@ -89,7 +88,6 @@ contract SecureAdmin is Ownable {
     }
 }
 ```
-
 
 ## 🛡️ Prevention
 

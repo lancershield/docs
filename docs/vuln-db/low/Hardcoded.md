@@ -15,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-611
 swc: SWC-131
-
 ```
 
 ## 📝 Description
@@ -85,7 +84,6 @@ contract Configurable {
         return fee;
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -108,14 +106,12 @@ contract Configurable {
 - Manual audit to identify return <literal> in pure/view functions with constants.
 - Use grep or AST tools to find magic numbers or hardcoded literals.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** Compound Interest Rate Hardcoding 
-- **Date:** 2020 
-- **Impact:** Required contract redeployment for rate change 
-- **Post-mortem:** [Link](https://compound.finance/docs) 
-
-
+- **Date:** 2020  
+- **Loss:** No direct financial loss
+- **Post-mortem:** [Link to post-mortem](https://docs.compound.finance/interest-rates/)
 
 ## 📚 Further Reading
 
@@ -123,11 +119,9 @@ contract Configurable {
 - [Solidity Docs – Constants vs Variables](https://docs.soliditylang.org/en/latest/contracts.html#constants) 
 - [OpenZeppelin – Upgradeable Patterns](https://docs.openzeppelin.com/upgrades-plugins)
 
-
 ---
 
 ## ✅ Vulnerability Report
-
 
 ```markdown
 id: TBA
@@ -140,9 +134,8 @@ reachability: 5
 complexity: 1     
 detectability: 5  
 finalScore: 2.1
+
 ```
-
-
 
 ---
 

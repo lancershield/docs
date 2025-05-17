@@ -37,6 +37,7 @@ contract Inefficient {
     }
 }
 ```
+
 ## 🧪 Exploit Scenario
 
 Step-by-step inefficiency scenario:
@@ -62,6 +63,7 @@ function updateTotal(uint[] calldata nums) external {
     total = _total; // store once
 }
 ```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -83,27 +85,24 @@ function updateTotal(uint[] calldata nums) external {
 
 ## 🕰️ Historical Exploits
 
-
-  - **Name:** ZRX Token Transfer Loop Bug 
-  - **Date:** 2018-08-19 
-  - **Loss:** N/A (No hack, but excessive gas burned)  
-  - **Post-mortem:** [Link to post-mortem](https://medium.com/0xproject/bug-disclosure-token-transfer-loop-bug-cf63e3f2188e) 
+- **Name:** Gas-Inefficient Patterns in Deployed Contracts
+- **Date:** 2022 
+- **Loss:** Widespread inefficiencies in contract executions 
+- **Post-mortem:** [Link to post-mortem](https://link.springer.com/article/10.1007/s11390-021-1674-4)
+  
 
 ## 📚 Further Reading
 
-
 - [SWC-135: Code With No Effects](https://swcregistry.io/docs/SWC-135) 
--  [Solidity Docs – Gas Optimization Tips](https://docs.soliditylang.org/en/latest/internals/optimizing-gas-costs.html) 
--  [Slither – Gas Optimization Detectors](https://github.com/crytic/slither)
+- [Gas Optimization in Ethereum Smart Contracts: 10 Best Practices – CertiK](https://www.certik.com/resources/blog/gas-optimization-in-ethereum-smart-contracts-10-best-practices) 
+- [Gas Optimization in Ethereum Smart Contracts: Best Practices – Vibranium Audits](https://www.vibraniumaudits.com/post/gas-optimization-in-ethereum-smart-contracts-10-best-practices)
 
-
- ---
+---
 
 ## ✅ Vulnerability Report 
 
-
 ```markdown
-id: vuln__gas_inefficiencies
+id: TBA
 title: Gas Inefficiencies
 severity: L
 score:
@@ -119,12 +118,12 @@ finalScore: 2.0
 
 ## 📄 Justifications & Analysis
 
--**Impact**: Leads to high transaction costs and inefficiency, but no loss of funds or functionality.
+- **Impact**: Leads to high transaction costs and inefficiency, but no loss of funds or functionality.
 
--**Exploitability**: Cannot be exploited in the traditional sense; rather, it causes passive economic degradation.
+- **Exploitability**: Cannot be exploited in the traditional sense; rather, it causes passive economic degradation.
 
--**Reachability**: Affects regularly used public/external functions in most contracts.
+- **Reachability**: Affects regularly used public/external functions in most contracts.
 
--**Complexity**: No effort required by the user; impact is implicit in normal use.
+- **Complexity**: No effort required by the user; impact is implicit in normal use.
 
--**Detectability**: Readily caught by Slither, Remix, and manual gas profiling.
+- **Detectability**: Readily caught by Slither, Remix, and manual gas profiling.

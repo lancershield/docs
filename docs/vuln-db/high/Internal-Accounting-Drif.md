@@ -1,4 +1,4 @@
-#  Internal Accounting Drif
+#  Internal Accounting Drift
 
 ```YAML
 id: TBA
@@ -22,8 +22,7 @@ swc: SWC-135
 - Internal Accounting Drift occurs when a smart contract maintains internal variables (e.g., `totalSupply`, `totalDeposits`, `userBalances`) that are not consistently synchronized with actual on-chain token or ETH balances. This mismatch can result in:
 - Users receiving incorrect rewards or redemptions,
 - Contracts holding more or less than expected,
-- Critical invariants (e.g., sum of balances = total supply) being violated.
-  Such drift often occurs due to:
+- Critical invariants (e.g., sum of balances = total supply) being violated.Such drift often occurs due to:
 - Skipped updates on edge-case paths,
 - External token transfers bypassing accounting logic,
 - Failed transfer/revert paths not rolling back state updates.
@@ -105,10 +104,10 @@ function withdraw(uint256 amount) external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** SushiSwap Miso Crowdsale ETH Drift 
-- **Date:** 2021 
-- **Loss:** Funds incorrectly accounted in refund logic 
-- **Post-mortem:** [Link to post-mortem](https://rekt.news/miso-rekt/) 
+- **Name:** Compound Protocol Reward Distribution Bug 
+- **Date:** 2021-09-30 
+- **Loss:** Approximately $80 million 
+- **Post-mortem:** [Link to post-mortem](https://cryptoslate.com/how-the-tiniest-of-errors-resulted-in-an-80-million-loss-for-compound-finance/) 
 
 
 ## 📚 Further Reading
@@ -117,10 +116,10 @@ function withdraw(uint256 amount) external {
 - [Solidity Docs – Checks-Effects-Interactions](https://docs.soliditylang.org/en/latest/security-considerations.html#use-the-checks-effects-interactions-pattern) 
 - [Trail of Bits – How to Track Accounting Drift](https://blog.trailofbits.com/) 
 
-
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Internal Accounting Drift 

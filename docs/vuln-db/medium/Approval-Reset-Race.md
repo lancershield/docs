@@ -32,7 +32,6 @@ swc: SWC-114
 function updateApproval(IERC20 token, address spender, uint256 newAmount) external {
     token.approve(spender, newAmount); // ❌ Does not reset to zero first
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -42,7 +41,6 @@ Step-by-step attack:
 1. Alice has approved Bob for 100 tokens.
 2. Alice wants to change Bob’s allowance to 50 and calls approve(spender, 50).
 3. Bob sees the pending transaction and quickly calls transferFrom(alice, bob, 100) using the old allowance.
-
 
 **Assumptions:**
 
@@ -57,7 +55,6 @@ function safeUpdateApproval(IERC20 token, address spender, uint256 newAmount) ex
     require(token.approve(spender, 0), "Reset failed");           // ✅ Step 1: reset to 0
     require(token.approve(spender, newAmount), "Update failed");  // ✅ Step 2: set new value
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -79,12 +76,12 @@ function safeUpdateApproval(IERC20 token, address spender, uint256 newAmount) ex
 - Static review of contracts interacting with ERC-20 tokens using approve() directly.
 - Integration testing with transaction frontrunning simulations.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** ERC-20 Race Condition Disclosure 
 - **Date:** 2018 
 - **Impact:** Official ERC-20 known issue; mitigated in later libraries 
-- **Post-mortem:** [Link](https://github.com/ethereum/EIPs/issues/20) 
+- **Post-mortem:** [Link to post-mortem](https://github.com/ethereum/EIPs/issues/20) 
 
 
 ## 📚 Further Reading
@@ -111,7 +108,6 @@ detectability: 5
 finalScore: 3.75
 
 ```
-
 
 ---
 

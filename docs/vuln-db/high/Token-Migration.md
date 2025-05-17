@@ -15,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-641
 swc: SWC-135
-
 ```
 
 ## 📝 Description
@@ -41,7 +40,6 @@ contract TokenV2 is ERC20 {
         _mint(msg.sender, amount);
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -77,20 +75,7 @@ contract TokenV2 is ERC20 {
         _mint(msg.sender, amount); // ✅ One-time mint
     }
 }
-
 ```
-Or with burn:
-
-```solidity
-
-function migrate(uint256 amount) external {
-    oldToken.transferFrom(msg.sender, address(this), amount);
-    IERC20Burnable(address(oldToken)).burn(amount);
-    _mint(msg.sender, amount);
-}
-
-```
-
 
 ## 🛡️ Prevention
 
@@ -112,20 +97,18 @@ function migrate(uint256 amount) external {
 - Manual audits comparing oldToken.transferFrom() + newToken._mint() paths.
 - Test migration logic with edge cases (replay, partial balance, zero amounts).
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** YAM Token Migration Issue 
-- **Date:** 2020 
-- **Impact:** Inconsistent migration caused supply bugs and governance issues 
-- **Post-mortem:** [Link](https://medium.com/@yamfinance) 
-
+- **Name:** Prism Finance Migration Vulnerability 
+- **Date:** March 2024 
+- **Loss:** Approximately $10 million 
+- **Post-mortem:** [Link to post-mortem](https://audita.io/crypto-hacks-2024)
 
 ## 📚 Further Reading
 
 - [SWC-135: Inefficient or Unexpected Logic](https://swcregistry.io/docs/SWC-135) 
 - [OpenZeppelin Upgradeable Token Docs](https://docs.openzeppelin.com/upgrades-plugins) 
 - [Safe Token Upgrade/Migration Patterns](https://ethereum.org/en/developers/docs/standards/tokens/) 
-
 
 ---
 
@@ -143,7 +126,6 @@ complexity: 2
 detectability: 4  
 finalScore: 4.0
 ```
-
 
 ---
 

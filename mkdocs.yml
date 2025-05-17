@@ -48,6 +48,7 @@ nav:
           - Admin Key Misuse: vuln-db/critical/Admin-Key-Misuse.md
           - Unverified Upgrade: vuln-db/critical/Unverified-Upgrade.md
           - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
+          - Treasury Drain: vuln-db/critical/Treasury-Drain.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -93,6 +94,9 @@ nav:
           - Vesting Shortcut Exploits: vuln-db/high/Vesting.md
           - Flawed Slashing: vuln-db/high/Flawed-Slashing.md
           - Stuck Swap Pools: vuln-db/high/Stuck-Swap-Pools.md
+          - Gas Bombs: vuln-db/high/Gas-Bombs.md
+          - Whitelist Bypass: vuln-db/high/Whitelist-Bypass.md
+          - NFT Royalty Bypass: vuln-db/high/Royalty-Bypass.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md

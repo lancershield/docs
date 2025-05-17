@@ -23,8 +23,7 @@ swc: SWC-119
 - Trade on stale prices, executing arbitrage against the true market value,
 - Borrow against inflated collateral values,
 - Trigger liquidations, minting, or redemptions based on incorrect assumptions.
-
-This attack is especially effective when protocols fail to:
+- This attack is especially effective when protocols fail to:
 - Check oracle data freshness (`timestamp`),
 - Use time-weighted or resistant mechanisms,
 - Or gate high-impact actions during volatile updates.
@@ -67,7 +66,6 @@ Step-by-step exploit process:
 ## ✅ Fixed Code
 
 ```solidity
-
 uint256 public constant MAX_ORACLE_DELAY = 2 minutes;
 
 function buy() external payable {
@@ -77,9 +75,7 @@ function buy() external payable {
     require(msg.value >= price, "Insufficient payment");
     // Proceed with logic
 }
-
 ```
-
 
 ## 🛡️ Prevention
 
@@ -103,20 +99,16 @@ function buy() external payable {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** bZx Oracle Manipulation 
-- **Date:** 2020 
-- **Loss:** ~$1M 
-- **Post-mortem:** [Link](https://blog.bzx.network/postmortem-2-15-20-2f37c4f28a5c) 
-
-
+- **Name:** Mango Markets Exploit 
+- **Date:** 2022-10 
+- **Loss:** Approximately $114 million 
+- **Post-mortem:** [Link to post-mortem](https://www.cyfrin.io/blog/price-oracle-manipulation-attacks-with-examples) 
 
 ## 📚 Further Reading
 
-- [SWC-119: Shadowed State Variables (related to Oracle abuse)](https://swcregistry.io/docs/SWC-119) 
-- [Chainlink Docs – Timestamp & Round Check](https://docs.chain.link/data-feeds/api#round-id) 
-- [Vitalik – Oracle Problems](https://vitalik.ca/general/2020/07/21/oracles.html) 
-- [OpenZeppelin – Oracle Design Patterns](https://docs.openzeppelin.com/contracts/4.x/api/utils#PriceOracle) 
-
+- [Oracle Manipulation Attacks Rising: A Unique Concern for DeFi – Chainalysis](https://www.chainalysis.com/blog/oracle-manipulation-attacks-rising/) 
+- [Oracle Wars: The Rise of Price Manipulation Attacks – CertiK](https://www.certik.com/resources/blog/oracle-wars-the-rise-of-price-manipulation-attacks) 
+- [Solidity Security Part 2 - Oracle Manipulation – EatTheBlocks](https://eattheblocks.com/solidity-security-part-2-oracle-manipulation/)  
 
 ---
 
@@ -134,7 +126,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.3
 ```
-
 
 ---
 

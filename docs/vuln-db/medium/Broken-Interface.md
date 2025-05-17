@@ -15,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.6.0", "<latest"]
 cwe: CWE-706
 swc: SWC-111
-
 ```
 
 ## 📝 Description
@@ -33,7 +32,6 @@ function transfer(address to, uint256 amount) public {
     _transfer(msg.sender, to, amount); // Does not return (bool)
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -63,8 +61,8 @@ function safeTransferFrom(address from, address to, uint256 tokenId) public over
     _transfer(from, to, tokenId);
     require(_checkOnERC721Received(from, to, tokenId), "ERC721: transfer to non-ERC721Receiver");
 }
-
 ```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -84,12 +82,13 @@ function safeTransferFrom(address from, address to, uint256 tokenId) public over
 - Hardhat or Foundry tests using expectCall() to simulate DeFi usage.
 - supportsInterface() validation via ERC165 for all interface claims.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
 - **Name:** USDT (Tether) ERC20 Compatibility Issue 
 - **Date:** 2017–present 
 - **Impact:** Tether does not return `bool` in `transfer()`, breaking some DeFi logic 
-- **Post-mortem:** [Link](https://github.com/ethereum/EIPs/issues/20) 
+- **Post-mortem:** [Link to post-mortem](https://github.com/ethereum/EIPs/issues/20) 
+
 
 ## 📚 Further Reading
 
@@ -98,14 +97,11 @@ function safeTransferFrom(address from, address to, uint256 tokenId) public over
 - [ERC20, ERC721, ERC1155 Specs](https://eips.ethereum.org/) 
 - [Solidity Interface Design](https://docs.soliditylang.org/en/latest/contracts.html#interfaces)
 
-
 ---
 
 ## ✅ Vulnerability Report
 
-
 ```markdown
-
 id: TBA
 title: Broken Interface Compatibility 
 severity: M
@@ -116,7 +112,6 @@ reachability: 5
 complexity: 2     
 detectability: 5  
 finalScore: 3.6
-
 
 ```
 

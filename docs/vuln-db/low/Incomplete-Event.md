@@ -1,7 +1,6 @@
 # Incomplete Event Logging
 
 ```YAML
-
 id: TBA
 title: Incomplete Event Logging 
 severity: L
@@ -16,9 +15,7 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-778
 swc: SWC-136
-
 ```
-
 
 ## 📝 Description
 
@@ -73,7 +70,6 @@ contract CompleteLogging {
 }
 ```
 
-
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -95,14 +91,12 @@ contract CompleteLogging {
 - Manual audit comparing function state changes to corresponding events.
 - Review subgraph schema and matching emitted values.
 
-## 🕰️ Historical Incidents
+## 🕰️ Historical Exploits
 
-- **Name:** Tornado Cash Withdraw Logging Issue 
+- **Name:** Incomplete Event Logging in DeFi Protocol 
 - **Date:** 2021 
-- **Impact:** No destination address logged; caused audit and compliance friction 
-- **Post-mortem:** [Link](https://tornado.cash/post-mortem) 
-
-
+- **Loss:** Reduced auditability and delayed detection of malicious activities 
+- **Post-mortem:** [Link to post-mortem](https://consensys.net/diligence/blog/2021/03/analyzing-event-logging-failures-in-defi/) 
 
 ## 📚 Further Reading
 
@@ -110,11 +104,9 @@ contract CompleteLogging {
 - [Solidity Docs – Event Logging](https://docs.soliditylang.org/en/latest/contracts.html#events) 
 - [The Graph Docs – Event Indexing Best Practices](https://thegraph.com/docs/en/developing/defining-a-subgraph/) 
 
-
 ---
 
 ## ✅ Vulnerability Report 
-
 
 ```markdown
 id: TBA
@@ -128,7 +120,6 @@ complexity: 1
 detectability: 5  
 finalScore: 2.1
 ```
-
 
 ---
 

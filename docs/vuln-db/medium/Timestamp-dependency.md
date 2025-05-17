@@ -1,7 +1,6 @@
 # Timestamp Dependency 
 
 ```YAML
-
 id: TBA
 title: Timestamp Dependency in Critical Logic
 severity: M
@@ -16,7 +15,6 @@ mitigation_difficulty: easy
 versions: [">=0.4.0", "<0.8.21"]
 cwe: CWE-829
 swc: SWC-116
-
 ```
 
 ## 📝 Description
@@ -98,21 +96,15 @@ function drawWinner() public {
 - **Name:** GovernMental DApp 
 - **Date:** 2016 
 - **Loss:** ~1100 ETH (locked/unfair lottery) 
--  **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethereum/comments/4np972/governmental_dapp_scam_or_honeypot/) 
+- **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethereum/comments/4np972/governmental_dapp_scam_or_honeypot/) 
   
-  
-- **Name:** Fomo3D Game 
-- **Date:** 2018-07 
-- **Loss:** N/A (system abused via time manipulation) 
-- **Post-mortem:** [Link to post-mortem](https://www.coindesk.com/markets/2018/07/30/fomo3d-ethereum-gambling-game-sees-investor-win-3-million-prize/) 
-
-
 
 ## 📚 Further Reading
 
 - [SWC-116: Timestamp Dependency](https://swcregistry.io/docs/SWC-116) 
-- [Trail of Bits – Timestamp Pitfalls](https://blog.trailofbits.com/2018/09/05/why-block-timestamp-manipulation-still-matters/) 
-- [Consensys – Smart Contract Best Practices](https://consensys.github.io/smart-contract-best-practices/known_attacks/#timestamp-dependence) 
+- [Timestamp Dependency in Smart Contracts – GeeksforGeeks](https://www.geeksforgeeks.org/timestamp-dependency-in-smart-contracts/) 
+- [Vulnerability: Timestamp Dependence – OWASP Foundation](https://owasp.org/www-project-smart-contract-top-10/2023/en/src/SC03-timestamp-dependence.html) 
+- [Time Dependency in Smart Contracts – ImmuneBytes](https://immunebytes.com/blog/time-dependency-in-smart-contracts/)
 
 ---
 

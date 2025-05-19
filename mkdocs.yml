@@ -99,6 +99,14 @@ nav:
           - Whitelist Bypass: vuln-db/high/Whitelist-Bypass.md
           - NFT Royalty Bypass: vuln-db/high/Royalty-Bypass.md
           - Misconfigured Role-Based: vuln-db/high/Misconfigured-Role-Based.md
+          - Unsustainable Pump and Dump: vuln-db/high/Unsustainable.md
+          - Vote Escrow Exploits: vuln-db/high/vote.md
+          - Token URI Hijacking: vuln-db/high/Token-URI.md
+          - Storage ABIEncoderV2: vuln-db/high/Storage.md
+          - Arbitrary from in transferFrom: vuln-db/high/Arbitrary-from.md
+          - ABI encodePacked: vuln-db/high/ABI.md
+          - Incorrect Shift: vuln-db/high/Incorrect-shift.md
+          - Multiple Constructor: vuln-db/high/Multiple.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -124,6 +132,8 @@ nav:
           - Bribery: vuln-db/medium/Bribery.md
           - Zero Fee Manipulation: vuln-db/medium/Zero-Fee.md
           - Off-by-One Errors: vuln-db/medium/Off-by-One.md
+          - Modifying Storage: vuln-db/medium/Modifying.md
+          - Name Reuse: vuln-db/medium/Name-Reuse.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md

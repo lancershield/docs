@@ -1,7 +1,6 @@
 # Liquidity Rug Allowing Unauthorized 
 
 ```YAML
-
 id: TBA
 title: Liquidity Rug Allowing Unauthorized 
 severity: C
@@ -16,8 +15,8 @@ mitigation_difficulty: medium
 versions: [">=0.5.0", "<latest"]
 cwe: CWE-285
 swc: SWC-100
-
 ```
+
 ## 📝 Description
 
 - Liquidity rug refers to a scenario in decentralized finance (DeFi) where liquidity providers or users deposit tokens into a protocol (e.g., DEX, staking contract, vault).
@@ -36,7 +35,6 @@ contract LPVault {
         lpToken.transfer(owner, lpToken.balanceOf(address(this))); // ❌ Entire pool drained by admin
     }
 }
-
 ```
 
 ## 🧪 Exploit Scenario
@@ -64,7 +62,6 @@ function emergencyWithdraw() external onlyGovernance {
     uint256 ownerShare = lpToken.balanceOf(address(this)) / 10; // ✅ Limited withdrawal
     lpToken.transfer(governance, ownerShare);
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -105,9 +102,8 @@ function emergencyWithdraw() external onlyGovernance {
 - [Chainalysis: 2021 Crypto Scam Revenues](https://www.chainalysis.com/blog/2021-crypto-scam-revenues/) 
 - [Cointelegraph: What is a rug pull in crypto and 6 ways to spot it?](https://cointelegraph.com/explained/crypto-rug-pulls-what-is-a-rug-pull-in-crypto-and-6-ways-to-spot-it) 
 - [SlowMist: Cryptocurrency Scams Unveiled – Insights and Prevention](https://slowmist.medium.com/cryptocurrency-scams-unveiled-insights-and-prevention-800d9dc1b0f1) 
-
+  
 ---
-
 
 ## ✅ Vulnerability Report 
 
@@ -122,10 +118,7 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 4.1
-
-
 ```
-
 
 ---
 

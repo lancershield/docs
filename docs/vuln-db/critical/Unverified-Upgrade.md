@@ -107,8 +107,8 @@ contract SecureProxyAdmin is Ownable {
 - [Solidity Upgrade Patterns](https://docs.soliditylang.org/en/latest/contracts.html#contract-upgradeability) 
 - [Slither Upgrade Safety Rules](https://github.com/crytic/slither) 
 
-
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown
@@ -122,10 +122,7 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 4.4
-
 ```
-
-
 
 ---
 

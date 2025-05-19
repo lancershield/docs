@@ -1,7 +1,6 @@
 # Improperly Initialized UUPS Proxy 
 
 ```YAML
-
 id: TBA
 title: Improperly Initialized UUPS Proxy 
 severity: C
@@ -16,7 +15,6 @@ mitigation_difficulty: medium
 versions: [">=0.7.0", "<latest"]
 cwe: CWE-665
 swc: SWC-118
-
 ```
 
 ## 📝 Description
@@ -39,7 +37,6 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
     function _authorizeUpgrade(address) internal override onlyOwner {}
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -73,6 +70,7 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
     function _authorizeUpgrade(address) internal override onlyOwner {}
 }
 ```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -110,11 +108,9 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 - [OpenZeppelin Guide – Disable Initializers](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable#initializers) 
 - [Slither Detectors for Upgradeable Contracts](https://github.com/crytic/slither) 
 
-
 ---
 
 ## ✅ Vulnerability Report 
-
 
 ```YAML
 id: TBA
@@ -127,12 +123,9 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 4.5
-
 ```
 
-
 ---
-
 
 ## 📄 Justifications & Analysis
 

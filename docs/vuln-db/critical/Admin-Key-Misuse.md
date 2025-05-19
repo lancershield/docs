@@ -1,7 +1,6 @@
 # Admin Key Misuse
 
 ```YAML
-
 id: TBA
 title: Admin Key Misuse 
 severity: C
@@ -16,9 +15,7 @@ mitigation_difficulty: medium
 versions: [">=0.4.0", "<latest"]
 cwe: CWE-732
 swc: SWC-105
-
 ```
-
 
 ## 📝 Description
 
@@ -28,7 +25,6 @@ swc: SWC-105
 - Changing logic contracts or configurations.
 - Pausing/unpausing.
 - Whitelisting arbitrary addresses.
-
 
 
 ## 🚨 Vulnerable Code
@@ -43,7 +39,6 @@ contract AdminMint {
     }
 }
 ```
-
 
 ## 🧪 Exploit Scenario
 
@@ -83,7 +78,6 @@ contract SecureAdmin is Ownable {
         super.transferOwnership(newOwner); // ✅ Can be handed off to DAO or Gnosis Safe
     }
 }
-
 ```
 
 ## 🛡️ Prevention
@@ -119,12 +113,10 @@ contract SecureAdmin is Ownable {
 
 ## 📚 Further Reading
 
-
 - [SWC-105: Unprotected Critical Function – SWC Registry](https://swcregistry.io/docs/SWC-105/) 
 - [OpenZeppelin AccessControl Documentation](https://docs.openzeppelin.com/contracts/4.x/api/access)
 - [OpenZeppelin Governor – DAO Governance Documentation](https://docs.openzeppelin.com/contracts/4.x/api/governance) 
 - [Slither: Static Analyzer for Solidity](https://github.com/crytic/slither) 
-
 
 ---
 
@@ -144,9 +136,7 @@ finalScore: 4.2
 
 ```
 
-
 ---
-
 
 ## 📄 Justifications & Analysis
 

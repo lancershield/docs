@@ -77,7 +77,6 @@ contract SecureVault is Ownable {
 }
 ```
 
-
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -96,7 +95,6 @@ contract SecureVault is Ownable {
 - Slither: access-control, missing-authorization detectors.
 - MythX, Mythril: symbolic analysis of control flow and privilege escalations.
 - Manual auditing with threat modeling and function-level review.
-
 
 
 ## 🕰️ Historical Exploits

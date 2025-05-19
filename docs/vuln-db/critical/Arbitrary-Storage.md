@@ -104,7 +104,6 @@ contract SafeStorage {
 - [OpenZeppelin – Proxy Storage Slots](https://docs.openzeppelin.com/contracts/4.x/api/proxy#ERC1967Upgrade)
 - [EIP-1967 – Standard Proxy Storage Slots](https://eips.ethereum.org/EIPS/eip-1967) 
 
-
 ---
 
 ## ✅ Vulnerability Report
@@ -121,7 +120,6 @@ complexity: 3
 detectability: 4  
 finalScore: 4.4
 ```
-
 
 ---
 

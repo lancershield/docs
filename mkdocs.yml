@@ -49,6 +49,7 @@ nav:
           - Unverified Upgrade: vuln-db/critical/Unverified-Upgrade.md
           - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
           - Treasury Drain: vuln-db/critical/Treasury-Drain.md
+          - Backdoor Functionality: vuln-db/critical/Backdoor-Functionality.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -97,6 +98,7 @@ nav:
           - Gas Bombs: vuln-db/high/Gas-Bombs.md
           - Whitelist Bypass: vuln-db/high/Whitelist-Bypass.md
           - NFT Royalty Bypass: vuln-db/high/Royalty-Bypass.md
+          - Misconfigured Role-Based: vuln-db/high/Misconfigured-Role-Based.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -121,6 +123,7 @@ nav:
           - Broken Interface: vuln-db/medium/Broken-Interface.md
           - Bribery: vuln-db/medium/Bribery.md
           - Zero Fee Manipulation: vuln-db/medium/Zero-Fee.md
+          - Off-by-One Errors: vuln-db/medium/Off-by-One.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md

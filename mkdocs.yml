@@ -50,6 +50,9 @@ nav:
           - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
           - Treasury Drain: vuln-db/critical/Treasury-Drain.md
           - Backdoor Functionality: vuln-db/critical/Backdoor-Functionality.md
+          - Untrusted delegatecall: vuln-db/critical/Untrusted-delegatecall.md
+          - Classic Reentrancy: vuln-db/critical/Classic-Reentrancy.md
+          - Contract Destructible: vuln-db/critical/Contract-Destructible.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -121,7 +124,16 @@ nav:
           - Incorrect ERC-20: vuln-db/high/Incorrect-ERC-20.md
           - Incorrect ERC-721: vuln-db/high/Incorrect-ERC-721.md
           - Deprecated Pyth Functions: vuln-db/high/Pyth-Functions.md
-          - Chronicle Unchecked Price: vuln-db/high/Chronicle-Unchecked.md    
+          - Chronicle Unchecked Price: vuln-db/high/Chronicle-Unchecked.md  
+          - Gelato Unprotected: vuln-db/high/Gelato-Unprotected.md 
+          - Out-of-Order: vuln-db/high/Out-of-Order.md
+          - Chainlink Feed Registry: vuln-db/high/Chainlink-Feed-Registry.md
+          - Deprecated Optimism: vuln-db/high/Optimism-deprecated.md
+          - Void Constructor: vuln-db/high/Void-Constructor.md
+          - Return Bomb: vuln-db/high/Return-Bomb.md
+          - Unsafe Assembly: vuln-db/high/Unsafe-Assembly.md 
+          - Gas Fee Arbitrage: vuln-db/high/Gas-Fee-Arbitrage.md
+          - Unsafe Use of assert: vuln-db/high/Unsafe-Use-of-assert.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -154,6 +166,15 @@ nav:
           - Dangerous Strict Equalities: vuln-db/medium/Dangerous-Strict-Equalities.md
           - Contracts That Lock Ether: vuln-db/medium/Contracts.md
           - Deletion on Mapping: vuln-db/medium/Deletion-on-Mapping.md
+          - Unchecked send: vuln-db/medium/Unchecked-send.md
+          - Missing Events: vuln-db/medium/Missing-Events.md
+          - Dangerous Unary Expressions: vuln-db/medium/Dangerous-Unary-Expressions.md
+          - Block timestamp: vuln-db/medium/block-timestamp.md
+          - Unimplemented Functions: vuln-db/medium/Unimplemented-Functions.md
+          - Lack of Pausable: vuln-db/medium/Lack-of-Pausable.md
+          - Shadow Fork Confusion: vuln-db/medium/Shadow-Fork.md
+          - State Leakage: vuln-db/medium/State-Leakage.md
+          - Empty catch Blocks: vuln-db/medium/Empty-catch-blocks.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
@@ -162,6 +183,8 @@ nav:
           - Hardcoded: vuln-db/low/Hardcoded.md
           - Incomplete Event Logging: vuln-db/low/Incomplete-Event.md
           - Tautological: vuln-db/low/Tautological.md
+          - Builtin Symbol Shadowing: vuln-db/low/Builtin-Symbol-Shadowing.md
+          - Ambiguous Constant: vuln-db/low/Ambiguous-Constant.md
   - Contributing Guide: contributing/index.md
 
 plugins:

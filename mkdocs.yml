@@ -53,6 +53,11 @@ nav:
           - Untrusted delegatecall: vuln-db/critical/Untrusted-delegatecall.md
           - Classic Reentrancy: vuln-db/critical/Classic-Reentrancy.md
           - Contract Destructible: vuln-db/critical/Contract-Destructible.md
+          - Privileged Role Migration Loophole: vuln-db/critical/Privileged.md
+          - Overlapping Function: vuln-db/critical/Overlapping-Function.md
+          - Batch Reentrancy: vuln-db/critical/Batch-Reentrancy.md
+          - Flashloan-Reentrancy: vuln-db/critical/Flashloan-Reentrancy.md
+          - LayerZero Trusted: vuln-db/critical/LayerZero-Trusted.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -134,6 +139,18 @@ nav:
           - Unsafe Assembly: vuln-db/high/Unsafe-Assembly.md 
           - Gas Fee Arbitrage: vuln-db/high/Gas-Fee-Arbitrage.md
           - Unsafe Use of assert: vuln-db/high/Unsafe-Use-of-assert.md
+          - Miner Extractable Value: vuln-db/high/Miner-Extractable.md
+          - Sandwich Attack: vuln-db/high/Sandwich-Attack.md
+          - Unexpected Contract: vuln-db/high/Unexpected-Contract.md
+          - Conflicting Modifiers: vuln-db/high/Conflicting-Modifiers.md
+          - Signature Malleability: vuln-db/high/Signature-Malleability.md
+          - ERC4626 Calculation Bugs: vuln-db/high/ERC4626.md
+          - ERC1155 Unsafe BatchTransfer: vuln-db/high/ERC1155.md
+          - ERC721 Unsafe Minting: vuln-db/high/ERC721-unsafe-minting.md
+          - Non-Reverting: vuln-db/high/Non-Reverting.md
+          - Oracle Liveness Drift: vuln-db/high/Oracle-Liveness-Drift.md
+          - Unbounded Proposal Gas: vuln-db/high/Unbounded-Proposal-Gas.md
+          - Imbalanced Liquidity: vuln-db/high/Imbalanced-Liquidity.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -175,6 +192,8 @@ nav:
           - Shadow Fork Confusion: vuln-db/medium/Shadow-Fork.md
           - State Leakage: vuln-db/medium/State-Leakage.md
           - Empty catch Blocks: vuln-db/medium/Empty-catch-blocks.md
+          - Boolean Short-Circuit: vuln-db/medium/Boolean-Short-Circuit.md
+          - Missing Fallback Gas: vuln-db/medium/Missing-Fallback-Gas.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
@@ -185,6 +204,7 @@ nav:
           - Tautological: vuln-db/low/Tautological.md
           - Builtin Symbol Shadowing: vuln-db/low/Builtin-Symbol-Shadowing.md
           - Ambiguous Constant: vuln-db/low/Ambiguous-Constant.md
+          - Missing NatSpec: vuln-db/low/Missing-NatSpec.md
   - Contributing Guide: contributing/index.md
 
 plugins:

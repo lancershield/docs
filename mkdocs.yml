@@ -39,6 +39,9 @@ nav:
   - Vulnerability Database:
       - Overview: vuln-db/index.md
       - Template: vuln-db/template.md
+      - Gas: 
+          - Overview: vuln-db/Gas/index.md
+          - ReentrancyGuard: vuln-db/Gas/ReentrancyGuard.md
       - Critical:
           - Overview: vuln-db/critical/index.md
           - Price-Oracle: vuln-db/critical/Price-oracle.md
@@ -151,6 +154,19 @@ nav:
           - Oracle Liveness Drift: vuln-db/high/Oracle-Liveness-Drift.md
           - Unbounded Proposal Gas: vuln-db/high/Unbounded-Proposal-Gas.md
           - Imbalanced Liquidity: vuln-db/high/Imbalanced-Liquidity.md
+          - Insecure RewardDistributor: vuln-db/high/Insecure-RewardDistributor.md
+          - Lack of Trader Signature Validation: vuln-db/high/Lack-of-Trader.md
+          - Admin Can Lock Funds: vuln-db/high/Admin-Can-Lock-Funds.md
+          - Missing Input Validation: vuln-db/high/Missing-Input-Validation.md
+          - Inflation Amplification: vuln-db/high/Inflation-Amplification.md
+          - Excessive Gas Refund: vuln-db/high/Excessive-Gas-Refund.md
+          - EmissionScheduler: vuln-db/high/EmissionScheduler.md
+          - Inconsistent ETH Handling: vuln-db/high/Inconsistent-ETH-Handling.md
+          - Permit Replay Across: vuln-db/high/Permit-Replay-Across.md
+          - Malicious Third-Party Vulnerabilities: vuln-db/high/Malicious-Third-Party.md
+          - Unprotected SelfDestruct: vuln-db/high/Unprotected-SelfDestruct.md
+          - Weak Encryption: vuln-db/high/Weak-Encryption.md
+          - Read-Only Reentrancy: vuln-db/high/Read-Only-Reentrancy.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -194,6 +210,11 @@ nav:
           - Empty catch Blocks: vuln-db/medium/Empty-catch-blocks.md
           - Boolean Short-Circuit: vuln-db/medium/Boolean-Short-Circuit.md
           - Missing Fallback Gas: vuln-db/medium/Missing-Fallback-Gas.md
+          - Precision Loss: vuln-db/medium/Precision-Loss.md
+          - Force-Feeding Attacks: vuln-db/medium/Force-Feeding-Attacks.md
+          - Sybil Attack Vectors: vuln-db/medium/Sybil-Attack-Vectors.md
+          - Early Claiming: vuln-db/medium/Early-Claiming.md
+          - Incentive Misalignment: vuln-db/medium/Incentive-Misalignment.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
@@ -205,6 +226,9 @@ nav:
           - Builtin Symbol Shadowing: vuln-db/low/Builtin-Symbol-Shadowing.md
           - Ambiguous Constant: vuln-db/low/Ambiguous-Constant.md
           - Missing NatSpec: vuln-db/low/Missing-NatSpec.md
+          - setMintFeeRecipient: vuln-db/low/setMintFeeRecipient.md
+          - Incorrect Event Emissions: vuln-db/low/Incorrect-Event-Emissions.md
+          - Inefficient Gas Usage: vuln-db/low/Inefficient-Gas-Usage.md
   - Contributing Guide: contributing/index.md
 
 plugins:

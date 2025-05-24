@@ -61,6 +61,10 @@ nav:
           - Batch Reentrancy: vuln-db/critical/Batch-Reentrancy.md
           - Flashloan-Reentrancy: vuln-db/critical/Flashloan-Reentrancy.md
           - LayerZero Trusted: vuln-db/critical/LayerZero-Trusted.md
+          - Unintended Reentrancy: vuln-db/critical/Unintended-Reentrancy.md
+          - ERC777: vuln-db/critical/ERC777.md
+          - Insecure executeTransaction: vuln-db/critical/Insecure-executeTransaction.md
+          - Unrestricted Withdrawals: vuln-db/critical/Unrestricted-Withdrawals.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
@@ -167,6 +171,14 @@ nav:
           - Unprotected SelfDestruct: vuln-db/high/Unprotected-SelfDestruct.md
           - Weak Encryption: vuln-db/high/Weak-Encryption.md
           - Read-Only Reentrancy: vuln-db/high/Read-Only-Reentrancy.md
+          - Transaction Ordering: vuln-db/high/Transaction-Ordering.md
+          - Gasless Send: vuln-db/high/Gasless-Send.md
+          - Integer Truncation: vuln-db/high/Integer-Truncation.md
+          - Inadherence to Standards: vuln-db/high/Inadherence-to-Standards.md
+          - LP Token Burn: vuln-db/high/LP-Token-Burn.md
+          - Unbounded Loops: vuln-db/high/Unbounded-Loops.md
+          - Token Whitelisting: vuln-db/high/Token-Whitelisting.md
+          - Insufficient Fee Logic: vuln-db/high/Insufficient-Fee-Logic.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -215,6 +227,12 @@ nav:
           - Sybil Attack Vectors: vuln-db/medium/Sybil-Attack-Vectors.md
           - Early Claiming: vuln-db/medium/Early-Claiming.md
           - Incentive Misalignment: vuln-db/medium/Incentive-Misalignment.md
+          - Reward Accumulator Drift: vuln-db/medium/Reward-Accumulator-Drift.md
+          - Recursive Internal: vuln-db/medium/Recursive-Internal.md
+          - ERC2981 Royalty Bypass: vuln-db/medium/ERC2981.md
+          - Unsafe Mint: vuln-db/medium/Unsafe-Mint.md
+          - Gas Price Dependent: vuln-db/medium/Gas-Price.md
+          - Mutable On-Chain Metadata: vuln-db/medium/Mutable-On-Chain.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md

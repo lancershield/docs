@@ -3,8 +3,8 @@
 ```YAML
 id: TBA
 title: Arbitrary Storage Write 
-severity: C
-category: memory-corruption
+baseSeverity: C
+category: storage-corruption
 language: solidity
 blockchain: [ethereum]
 impact: Overwrite critical contract variables (e.g., owner, balances, logic pointers)
@@ -69,6 +69,19 @@ contract SafeStorage {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```Yaml
+- context: "Default"
+  severity: C
+  reasoning: "Attacker can rewrite admin, logic, or balances—complete takeover or corruption."
+- context: "Upgradeable proxy system with no access control"
+  severity: C
+  reasoning: "System can be hijacked or bricked instantly."
+- context: "Properly scoped internal admin-only call"
+  severity: L
+  reasoning: "Still dangerous, but controlled internally with limits."
+```
 
 ## 🛡️ Prevention
 
@@ -92,10 +105,10 @@ contract SafeStorage {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Proxy Admin Takeover via Slot Overwrite 
-- **Date:** 2021 
-- **Loss:** Full proxy control takeover (whitehat)
-- **Post-mortem:** [Link to post-mortem](https://blog.openzeppelin.com/transparent-proxies-in-contracts) 
+- **Name:** Multichain Storage Collision 
+- **Date:** 2023 
+- **Loss:** ~$1.9M 
+- **Post-mortem:** [Link to post-mortem](https://slowmist.medium.com) 
   
 ## 📚 Further Reading
 

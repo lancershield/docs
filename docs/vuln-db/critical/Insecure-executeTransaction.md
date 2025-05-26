@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Insecure executeTransaction
-severity: C
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -59,6 +59,20 @@ function executeTransaction(address target, uint256 value, bytes calldata data) 
     (bool success, ) = target.call{value: value}(data);
     require(success, "Tx failed");
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Public contract with unrestricted executeTransaction"
+  severity: C
+  reasoning: "Allows full takeover or fund theft with one transaction."
+- context: "Governance-gated execution with hashing or delay"
+  severity: M
+  reasoning: "Mitigated by proper proposal queueing and voting flow."
+- context: "Internal tool or dev-only testnet function"
+  severity: L
+  reasoning: "Low exposure if not publicly callable or deployed with funds."
 ```
 
 ## 🛡️ Prevention
@@ -118,5 +132,3 @@ finalScore: 4.25
 - **Reachability**: Found in many governance or dev tooling contracts.
 - **Complexity**: Low to moderate—any attacker can craft calldata.
 - **Detectability**: Highly visible in code reviews and static analysis.
-
-

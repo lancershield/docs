@@ -2,8 +2,8 @@
 
 ``` YAML
 id: TBA
-title:  Access Control on Sensitive Functions
-severity: H
+title: Access Control Vulnerabilities
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -44,7 +44,6 @@ contract Vault {
 }
 ```
 
-
 ## 🧪 Exploit Scenario
 
 Step-by-step exploit process:
@@ -77,9 +76,24 @@ contract SecureVault is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Public access to token mint or logic upgrade"
+  severity: C
+  reasoning: "Leads to unlimited inflation or takeover of contract logic."
+- context: "Access control exists but poorly implemented"
+  severity: H
+  reasoning: "Modifiers present but ineffective or misused."
+- context: "Owner-controlled but no emergency pause or multisig"
+  severity: M
+  reasoning: "Impact confined to trusted actor misuse, not external threats."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
+
 - Use OpenZeppelin’s Ownable or AccessControl libraries.
 - Enforce onlyOwner or onlyRole modifiers on privileged functions.
 - Validate msg.sender against trusted addresses before sensitive actions.
@@ -96,18 +110,12 @@ contract SecureVault is Ownable {
 - MythX, Mythril: symbolic analysis of control flow and privilege escalations.
 - Manual auditing with threat modeling and function-level review.
 
-
 ## 🕰️ Historical Exploits
 
-- **Name:** Rubixi Ownership Bug 
-- **Date:** 2016-05-03 
-- **Loss:** N/A (but allowed anyone to take ownership) 
-- **Post-mortem:** [Link to post-mortem](https://blog.sigmaprime.io/solidity-security.html#ownership-takeover-rubixi) 
 - **Name:** bZx Protocol Admin Key Compromise 
 - **Date:** 2021 
 - **Loss:** ~$55 million
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/bzx-rekt/) 
-
 
 ## 📚 Further Reading
 
@@ -118,12 +126,12 @@ contract SecureVault is Ownable {
 
 ---
 
-
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Access Control Vulnerabilities
-severity: H
+severity: C
 score:
 impact: 5         
 exploitability: 4 
@@ -138,11 +146,7 @@ finalScore: 4.2
 ## 📄 Justifications & Analysis
 
 - **Impact**: Loss of control, unauthorized withdrawals, or contract destruction.
-
 - **Exploitability**: One call to an unprotected admin function can cause catastrophic failure.
-
 - **Reachability**: Admin-like functions are usually public or external.
-
 - **Complexity**: Little to no complexity if permission checks are missing.
-
 - **Detectability**: Well-known tools like Slither and Mythril detect most access issues, but subtle logic bugs may evade detection.

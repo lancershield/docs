@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Untrusted delegatecall 
-severity: C
+baseSeverity: C
 category: delegatecall
 language: solidity
 blockchain: [ethereum]
@@ -101,6 +101,20 @@ contract SecureProxy {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Public delegatecall with user-supplied target"
+  severity: C
+  reasoning: "Complete takeover of caller's contract possible via arbitrary storage overwrite."
+- context: "delegatecall to immutable address set at deployment"
+  severity: M
+  reasoning: "Risk mitigated by immutability and prior audit of logic."
+- context: "Proxy logic with ownership and upgrade restrictions"
+  severity: L
+  reasoning: "Control surfaces are tightly gated; exploit unlikely unless upgrade key is compromised."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,7 +139,7 @@ contract SecureProxy {
 
 - **Name:** Parity Multisig Wallet Hack #2 
 - **Date:** 2017 
-- **Loss:** ~$280M permanently frozen 
+- **Loss:** ~$280M 
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert.html) 
 
 📚 Further Reading

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unrestricted Withdrawals
-severity: C
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -66,6 +66,20 @@ function withdraw() external {
     balances[msg.sender] = 0;
     payable(msg.sender).transfer(amount);
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DeFi vault or fundraising contract with open withdrawals"
+  severity: C
+  reasoning: "Allows anyone to drain protocol funds immediately."
+- context: "Owner-only function missing modifier"
+  severity: H
+  reasoning: "High severity if deployed and callable on mainnet."
+- context: "Function unused or unreachable due to constructor logic"
+  severity: L
+  reasoning: "Lower severity if dead code or access unreachable."
 ```
 
 ## 🛡️ Prevention

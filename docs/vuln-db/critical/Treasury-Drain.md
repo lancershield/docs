@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Treasury Drain via Governance Exploit
-severity: C
+baseSeverity: C
 category: governance-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -71,6 +71,20 @@ function execute(uint proposalId) external onlyGovernance {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DAO with direct treasury access via proposal executor"
+  severity: C
+  reasoning: "Attack enables immediate theft of all funds on proposal execution."
+- context: "Governance protected by timelock, multisig, or review delay"
+  severity: M
+  reasoning: "Exploitability reduced due to execution guardrails."
+- context: "Proposal flow decoupled from fund-moving authority"
+  severity: L
+  reasoning: "Treasury cannot be drained directly; voting triggers approval only."
+```
+
 ## 🛡️ Prevention
 
 ## Primary Defenses
@@ -107,7 +121,6 @@ function execute(uint proposalId) external onlyGovernance {
 
 - [SWC-136: Unchecked External Call](https://swcregistry.io/docs/SWC-136/) 
 - [Metana: Governance Attacks in Smart Contracts](https://metana.io/blog/governance-attacks-in-smart-contracts/) 
-- [Neptune Mutual: Understanding Tornado Cash Exploit](https://neptunemutual.com/blog/understanding-tornado-cash-exploit/) 
 - [OpenZeppelin: Governor Pattern Documentation](https://docs.openzeppelin.com/contracts/4.x/governance) 
 
 ---
@@ -136,5 +149,3 @@ finalScore: 4.2
 - **Reachability**: Common in protocols with on-chain governance and token-based proposals.
 - **Complexity**: Medium; requires some understanding of proposal formatting.
 - **Detectability**: Static tools may not catch economic governance risks without human review.
-
-

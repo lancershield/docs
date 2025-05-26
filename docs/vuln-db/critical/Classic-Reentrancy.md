@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Classic Reentrancy
-severity: C
+baseSeverity: C
 category: reentrancy
 language: solidity
 blockchain: [ethereum]
@@ -84,6 +84,19 @@ contract SafeVault {
         require(sent, "Failed to send Ether");
     }
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: C
+  reasoning: "Allows attacker to drain contract completely under realistic assumptions."
+- context: "ReentrancyGuard in place"
+  severity: L
+  reasoning: "Attack vector mitigated if guarded appropriately."
+- context: "Only non-value-returning external calls"
+  severity: M
+  reasoning: "Risk reduced if external calls don’t affect user balances or privileges."
 ```
 
 ## 🛡️ Prevention

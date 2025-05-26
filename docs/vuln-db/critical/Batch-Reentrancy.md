@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Batch Reentrancy with Incomplete State 
-severity: C
+baseSeverity: C
 category: reentrancy
 language: solidity
 blockchain: [ethereum]
@@ -93,6 +93,19 @@ contract SafeBatchPayout is ReentrancyGuard {
 
     receive() external payable {}
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: C
+  reasoning: "Allows attacker to drain funds through repeated claims."
+- context: "Single-asset claim system without loop logic"
+  severity: M
+  reasoning: "Still vulnerable but less impactful if called one asset at a time."
+- context: "System with `nonReentrant` modifier and pull-based payout"
+  severity: L
+  reasoning: "Reentrancy vectors blocked by design."
 ```
 
 ## 🛡️ Prevention

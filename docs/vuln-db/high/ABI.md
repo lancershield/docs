@@ -1,9 +1,9 @@
-#  ABI encodePacked Collision Allows Hash Collisions and Forged Signatures
+#  ABI encodePacked Collision
 
 ```YAML
 id: TBA
-title: ABI encodePacked Collision Allows Hash Collisions and Forged Signatures
-severity: H
+title: ABI encodePacked Collision 
+baseSeverity: H
 category: encoding
 language: solidity
 blockchain: [ethereum]
@@ -74,6 +74,20 @@ contract SafeHasher {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Hash used in signature validation, claim ID, or unique key"
+  severity: H
+  reasoning: "Hash collision allows spoofing, multi-claiming, or key overwrites."
+- context: "Hash used for low-risk UI or analytics"
+  severity: L
+  reasoning: "Impact minimal if not tied to security or fund movement."
+- context: "abi.encode() or hashed single arguments only"
+  severity: I
+  reasoning: "Collision risk negligible—well-structured input."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -95,23 +109,24 @@ contract SafeHasher {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** DOSNetwork ABI encodePacked Collision 
-- **Date:** 2020 
-- **Loss:** Potential for unauthorized data manipulation 
-- **Post-mortem:** [Link to post-mortem](https://blog.trailofbits.com/2020/05/15/bug-hunting-with-crytic/)
-
+- **Name:** Poly Network Exploit
+- **Date:** 2021-08-10
+- **Loss:** $610 million
+- **Post-mortem:** [Link to post-mortem](https://blog.gopluslabs.io/vulnerabilities-cases/smart-contract/hash-collision/poly-network)
 
 ## 📚 Further Reading
 
 - [SWC-136: Unencrypted Sensitive Data](https://swcregistry.io/docs/SWC-136/) 
 - [Understanding Hash Collisions: abi.encodePacked in Solidity – Nethermind](https://www.nethermind.io/blog/understanding-hash-collisions-abi-encodepacked-in-solidity) 
-- [The trap of using encodePacked in Solidity – OpenZeppelin Forum](https://forum.openzeppelin.com/t/the-trap-of-using-encodepacked-in-solidity/1052) 
+- [The trap of using encodePacked in Solidity – OpenZeppelin Forum](https://forum.openzeppelin.com/t/the-trap-of-using-encodepacked-in-solidity/1052)
+   
 ---
 
-## ✅ Vulnerability Report 
+## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: ABI encodePacked Collision Allows Hash Collisions and Forged Signatures
+title: ABI encodePacked Collision 
 severity: H
 score:
 impact: 4         
@@ -126,7 +141,7 @@ finalScore: 3.75
 
 ## 📄 Justifications & Analysis
 
--**Impact**: Can break uniqueness guarantees, signature schemes, and lead to fund duplication or misuse.
+- **Impact**: Can break uniqueness guarantees, signature schemes, and lead to fund duplication or misuse.
 - **Exploitability**: Attackers only need to identify a collision pair to exploit weak encodePacked usage.
 - **Reachability**: Hashes and signatures are typically user-input dependent and publicly callable.
 - **Complexity**: Low complexity exploit, but requires input crafting or brute-force collisions.

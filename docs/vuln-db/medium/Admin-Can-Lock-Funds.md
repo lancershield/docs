@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Admin Can Lock Funds 
-severity: H
+baseSeverity: M
 category: access-control
 language: solidity
 blockchain: [ethereum, bsc, arbitrum, optimism, polygon]
@@ -110,6 +110,20 @@ contract SafeVault is Ownable, Pausable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Admin pause with no unpause or fallback path"
+  severity: M
+  reasoning: "Funds can be locked indefinitely due to central control."
+- context: "Admin pause with public unpause or time-bound recovery"
+  severity: L
+  reasoning: "Low severity if safety mechanisms exist and are transparent."
+- context: "Pause uses DAO-based multisig or timelock for execution"
+  severity: I
+  reasoning: "Governance-based pause is unlikely to be abused."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -129,14 +143,10 @@ contract SafeVault is Ownable, Pausable {
 - Tools: Slither (unrestricted-write, centralized-control), manual review
 
 ## 🕰️ Historical Exploits
-
-- **Name:** Akutars NFT Contract Lock 
-- **Date:** 2022-04 
-- **Loss:** ~$34 million in ETH permanently locked due to flawed access control logic 
-- **Post-mortem:** [Link to post-mortem](https://www.rareskills.io/post/smart-contract-security) 
+ 
 - **Name:** Parity Multisig Wallet Freeze 
 - **Date:** 2017-11 
-- **Loss:** ~$300 million in ETH rendered inaccessible due to accidental invocation of `self-destruct` by an unauthorized user
+- **Loss:** ~$300 
 - **Post-mortem:** [Link to post-mortem](https://metaschool.so/articles/access-control-vulnerabilities-in-smart-contracts) 
   
 ## 📚 Further Reading
@@ -145,13 +155,14 @@ contract SafeVault is Ownable, Pausable {
 - [CWE-732: Incorrect Permission Assignment](https://cwe.mitre.org/data/definitions/732.html) 
 - [OpenZeppelin – Pausable](https://docs.openzeppelin.com/contracts/4.x/api/security#Pausable) 
    
+---
 
 ## ✅ Vulnerability Report
 
 ```markdown
 id: TBA
 title: Admin Can Lock Funds 
-severity: H
+severity: M
 score:
 impact: 5       
 exploitability: 3 

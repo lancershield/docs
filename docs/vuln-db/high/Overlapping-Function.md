@@ -1,9 +1,8 @@
-# Overlapping Function Selectors in Diamond Proxies
-
+# Overlapping Function 
 ```YAML
 id: TBA
-title: Overlapping Function Selectors in Diamond Proxies 
-severity: C
+title: Overlapping Function  
+baseSeverity: H
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -73,6 +72,21 @@ function diamondCut(
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Transparent Proxy with selector collision"
+  severity: H
+  reasoning: "Users or contracts calling logic function may break proxy or trigger admin logic."
+- context: "UUPS Proxy with authorization guard"
+  severity: L
+  reasoning: "Logic isolated; collision risk reduced due to delegation structure."
+- context: "Non-proxy contract or externally deployed implementation"
+  severity: L
+  reasoning: "No impact unless used in proxy setup."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -94,7 +108,7 @@ function diamondCut(
 
 - **Name:** NFT Game Diamond Update Error 
 - **Date:** 2023-07 
-- **Loss:** ~$47,000 in revenue loss due to disabled game logic after facet selector collision 
+- **Loss:** ~$47,000 
 - **Post-mortem:** [Link to post-mortem](https://louper.dev/)
 
 ## 📚 Further Reading
@@ -109,8 +123,8 @@ function diamondCut(
 
 ```markdown
 id: TBA
-title: Overlapping Function Selectors in Diamond Proxies 
-severity: C 
+title: Overlapping Function 
+severity: H
 score:
 impact: 5    
 exploitability: 4 

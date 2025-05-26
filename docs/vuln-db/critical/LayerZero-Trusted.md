@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: LayerZero Trusted Remote Not Locked 
-severity: C
+baseSeverity: C
 category: cross-chain
 language: solidity
 blockchain: [ethereum, bsc, arbitrum, optimism, polygon]
@@ -104,6 +104,20 @@ contract SecureBridge is NonblockingLzApp {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "LayerZero bridge contract on mainnet with unlocked remotes"
+  severity: C
+  reasoning: "Enables full cross-chain spoofing and fund theft."
+- context: "Testnet or dev-only deployments"
+  severity: L
+  reasoning: "No real value at risk, but pattern should be corrected."
+- context: "Contract uses one-time initialization or `lockRemote()`"
+  severity: M
+  reasoning: "Exposure window exists but mitigated post-setup."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -129,7 +143,7 @@ contract SecureBridge is NonblockingLzApp {
 - **Post-mortem:** [Link to post-mortem](https://docs.layerzero.network/v1/developers/evm/evm-guides/set-trusted-remotes) 
 - **Name:** Maia Protocol DoS via LayerZero Unlocked Remotes
 - **Date:** 2023-09 
-- **Loss:** ~$50,000 in transaction disruption and protocol downtime caused by unverified remote callers 
+- **Loss:** ~$50,000  
 - **Post-mortem:** [Link to post-mortem](https://github.com/code-423n4/2023-09-maia-findings/issues/883)  
   
 ## 📚 Further Reading

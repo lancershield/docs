@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Contract Destructible 
-severity: C
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -70,6 +70,21 @@ contract SafeKillable is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Mainnet contract with user funds"
+  severity: C
+  reasoning: "A selfdestruct call would render the entire contract and all assets irretrievable."
+- context: "Upgradeable contract behind proxy"
+  severity: M
+  reasoning: "Only implementation logic is destroyed; proxy contract survives."
+- context: "Testnet or internal-use contract"
+  severity: L
+  reasoning: "Low impact if not used in production or holding funds."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -92,7 +107,7 @@ contract SafeKillable is Ownable {
 - **Name:** Rubixi Selfdestruct Scam 
 - **Date:** 2016 
 - **Loss:** ~50 ETH 
-- **Post-mortem:** [Rubixi Solidity Bug Explained](https://theethereum.wiki/w/index.php/Rubixi) 
+- **Post-mortem:** [Link to post-mortem](https://theethereum.wiki/w/index.php/Rubixi) 
   
 ## 📚 Further Reading
 

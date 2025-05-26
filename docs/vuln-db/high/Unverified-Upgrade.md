@@ -1,10 +1,9 @@
 # Unverified Upgrade Implementations
 
 ```YAML
-
 id: TBA
 title: Unverified Upgrade Implementations 
-severity: C
+baseSeverity: H
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -48,11 +47,11 @@ selfdestruct(),transferAllTokensTo(attacker),authorizeUpgrade() that accepts any
 
 **Assumptions:**
 
-- Unverified upgrade implementations can introduce vulnerabilities if changes are not thoroughly reviewed or tested before deployment.
-- Unauthorized modifications or bypassed permission checks can occur, potentially leading to loss of funds or compromised contract integrity.
+- Upgrades can occur without timelock or verification requirement.
+- No check exists to enforce that newImplementation is verified on Etherscan.
+- The community or multisig is unaware of the underlying logic change.
 
-
-##✅ Fixed Code
+## ✅ Fixed Code
 
 ```solidity
 
@@ -71,6 +70,19 @@ contract SecureProxyAdmin is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Upgradeable proxy with centralized admin and no verification process"
+  severity: H
+  reasoning: "Admin can push malicious code silently without user visibility."
+- context: "Upgrades gated by DAO + off-chain verification enforced"
+  severity: M
+  reasoning: "Some risk remains if off-chain processes are bypassed or rushed."
+- context: "Immutable logic contracts or constructor-deployed apps"
+  severity: I
+  reasoning: "No upgrade surface; risk not applicable."
+```
 
 ## 🛡️ Prevention
 
@@ -96,9 +108,8 @@ contract SecureProxyAdmin is Ownable {
 
 - **Name:** Audius Upgrade Takeover 
 - **Date:** 2022 
-- **Impact:** ~$6M stolen by attacker upgrading proxy to malicious logic 
+- **Impact:** ~$6M 
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/audius-rekt) 
-
 
 ## 📚 Further Reading
 
@@ -114,7 +125,7 @@ contract SecureProxyAdmin is Ownable {
 ```markdown
 id: TBA
 title: Unverified Upgrade Implementations 
-severity: C
+severity: H
 score:
 impact: 5         
 exploitability: 4 

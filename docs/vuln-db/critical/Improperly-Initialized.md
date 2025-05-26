@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Improperly Initialized UUPS Proxy 
-severity: C
+baseSeverity: C
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -71,6 +71,20 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Mainnet deployed UUPS proxy without initialize() call"
+  severity: C
+  reasoning: "Allows full contract takeover and fund loss within one transaction."
+- context: "Proxy uses `onlyProxy` + constructor disables initializer"
+  severity: L
+  reasoning: "Initialization protected; no takeover possible."
+- context: "Development/test deployment with no funds"
+  severity: M
+  reasoning: "Dangerous if forgotten during migration to mainnet."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -112,7 +126,7 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 
 ## ✅ Vulnerability Report 
 
-```YAML
+```markdown
 id: TBA
 title: Improperly Initialized UUPS Proxy 
 severity: C

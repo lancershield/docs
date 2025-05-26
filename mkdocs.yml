@@ -39,36 +39,29 @@ nav:
   - Vulnerability Database:
       - Overview: vuln-db/index.md
       - Template: vuln-db/template.md
-      - Gas: 
-          - Overview: vuln-db/Gas/index.md
-          - ReentrancyGuard: vuln-db/Gas/ReentrancyGuard.md
       - Critical:
           - Overview: vuln-db/critical/index.md
           - Price-Oracle: vuln-db/critical/Price-oracle.md
           - Flash-Loan-Attack: vuln-db/critical/Flash-Loan-Attacks.md
           - Arbitrary Storage: vuln-db/critical/Arbitrary-Storage.md
           - Improperly Initialized: vuln-db/critical/Improperly-Initialized.md
-          - Admin Key Misuse: vuln-db/critical/Admin-Key-Misuse.md
-          - Unverified Upgrade: vuln-db/critical/Unverified-Upgrade.md
           - Liquidity Rug: vuln-db/critical/Liquidity-Rug.md
           - Treasury Drain: vuln-db/critical/Treasury-Drain.md
           - Backdoor Functionality: vuln-db/critical/Backdoor-Functionality.md
           - Untrusted delegatecall: vuln-db/critical/Untrusted-delegatecall.md
           - Classic Reentrancy: vuln-db/critical/Classic-Reentrancy.md
           - Contract Destructible: vuln-db/critical/Contract-Destructible.md
-          - Privileged Role Migration Loophole: vuln-db/critical/Privileged.md
-          - Overlapping Function: vuln-db/critical/Overlapping-Function.md
           - Batch Reentrancy: vuln-db/critical/Batch-Reentrancy.md
-          - Flashloan-Reentrancy: vuln-db/critical/Flashloan-Reentrancy.md
           - LayerZero Trusted: vuln-db/critical/LayerZero-Trusted.md
           - Unintended Reentrancy: vuln-db/critical/Unintended-Reentrancy.md
           - ERC777: vuln-db/critical/ERC777.md
           - Insecure executeTransaction: vuln-db/critical/Insecure-executeTransaction.md
           - Unrestricted Withdrawals: vuln-db/critical/Unrestricted-Withdrawals.md
+          - Access Control: vuln-db/critical/Access-Control.md
+          - Arbitrary from in transferFrom: vuln-db/critical/Arbitrary-from.md
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
-          - Access Control: vuln-db/high/Access-control.md
           - Reentrancy: vuln-db/high/Reentrancy.md
           - Integer-Overflow: vuln-db/high/Integer-Overflow.md
           - Improper-Upgrade: vuln-db/high/Improper-Upgradeability.md
@@ -118,7 +111,6 @@ nav:
           - Vote Escrow Exploits: vuln-db/high/vote.md
           - Token URI Hijacking: vuln-db/high/Token-URI.md
           - Storage ABIEncoderV2: vuln-db/high/Storage.md
-          - Arbitrary from in transferFrom: vuln-db/high/Arbitrary-from.md
           - ABI encodePacked: vuln-db/high/ABI.md
           - Incorrect Shift: vuln-db/high/Incorrect-shift.md
           - Multiple Constructor: vuln-db/high/Multiple.md
@@ -160,7 +152,6 @@ nav:
           - Imbalanced Liquidity: vuln-db/high/Imbalanced-Liquidity.md
           - Insecure RewardDistributor: vuln-db/high/Insecure-RewardDistributor.md
           - Lack of Trader Signature Validation: vuln-db/high/Lack-of-Trader.md
-          - Admin Can Lock Funds: vuln-db/high/Admin-Can-Lock-Funds.md
           - Missing Input Validation: vuln-db/high/Missing-Input-Validation.md
           - Inflation Amplification: vuln-db/high/Inflation-Amplification.md
           - Excessive Gas Refund: vuln-db/high/Excessive-Gas-Refund.md
@@ -179,6 +170,10 @@ nav:
           - Unbounded Loops: vuln-db/high/Unbounded-Loops.md
           - Token Whitelisting: vuln-db/high/Token-Whitelisting.md
           - Insufficient Fee Logic: vuln-db/high/Insufficient-Fee-Logic.md
+          - Admin Key Misuse: vuln-db/high/Admin-Key-Misuse.md
+          - Overlapping Function: vuln-db/high/Overlapping-Function.md
+          - Privileged Role Migration Loophole: vuln-db/high/Privileged.md
+          - Unverified Upgrade: vuln-db/high/Unverified-Upgrade.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -212,7 +207,6 @@ nav:
           - Contracts That Lock Ether: vuln-db/medium/Contracts.md
           - Deletion on Mapping: vuln-db/medium/Deletion-on-Mapping.md
           - Unchecked send: vuln-db/medium/Unchecked-send.md
-          - Missing Events: vuln-db/medium/Missing-Events.md
           - Dangerous Unary Expressions: vuln-db/medium/Dangerous-Unary-Expressions.md
           - Block timestamp: vuln-db/medium/block-timestamp.md
           - Unimplemented Functions: vuln-db/medium/Unimplemented-Functions.md
@@ -233,6 +227,7 @@ nav:
           - Unsafe Mint: vuln-db/medium/Unsafe-Mint.md
           - Gas Price Dependent: vuln-db/medium/Gas-Price.md
           - Mutable On-Chain Metadata: vuln-db/medium/Mutable-On-Chain.md
+          - Admin Can Lock Funds: vuln-db/medium/Admin-Can-Lock-Funds.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
@@ -247,6 +242,8 @@ nav:
           - setMintFeeRecipient: vuln-db/low/setMintFeeRecipient.md
           - Incorrect Event Emissions: vuln-db/low/Incorrect-Event-Emissions.md
           - Inefficient Gas Usage: vuln-db/low/Inefficient-Gas-Usage.md
+      - Gas: 
+          - Overview: vuln-db/Gas/index.md
   - Contributing Guide: contributing/index.md
 
 plugins:

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Price Oracle Manipulation
-severity: C
+baseSeverity: C
 category: oracle-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -77,6 +77,20 @@ contract SaferLending {
         // Collateral logic...
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DeFi protocol using DEX spot price for collateralization"
+  severity: C
+  reasoning: "Attacker can drain funds using temporary price manipulation."
+- context: "Protocol uses Chainlink or TWAPs with update delay"
+  severity: M
+  reasoning: "Risk reduced by average pricing and delayed updates."
+- context: "Price only used for UI or non-critical analytics"
+  severity: L
+  reasoning: "Low impact if not involved in fund-moving logic."
 ```
 
 ## 🛡️ Prevention

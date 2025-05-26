@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Privileged Role Migration Loophole 
-severity: C
+baseSeverity: H
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -74,8 +74,9 @@ contract RoleManager {
 
 **Assumptions:**
 
-- Role transfer does not revoke old privileges.
-- Admin permissions are not audited or centrally managed.
+- The role migration function is callable without delay or acceptance.
+- The role grants permission to critical functions.
+- No pendingGovernance / acceptGovernance() pattern is used
 
 ## ✅ Fixed Code
 
@@ -109,6 +110,20 @@ contract SecureRoleManager is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Mainnet protocol with owner-accessible role migration"
+  severity: H
+  reasoning: "High impact—roles can be reassigned or hijacked by insider or attacker."
+- context: "Governance-controlled contracts with timelocks"
+  severity: M
+  reasoning: "Downgraded severity due to delay and visibility."
+- context: "Contracts using accept-based role transfers"
+  severity: L
+  reasoning: "Loophole closed; safe migration flow."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -131,7 +146,7 @@ contract SecureRoleManager is Ownable {
 
 - **Name:** Lendf.Me DeFi Access Mismanagement 
 - **Date:** 2020-04 
-- **Loss:** ~$25M withdrawn due to improper admin and proxy role handling 
+- **Loss:** ~$25M 
 - **Post-mortem:** [Link to post-mortem](https://dforce.network/blog/post-mortem-analysis-of-lendfme-incident) 
   
 ## 📚 Further Reading
@@ -139,7 +154,6 @@ contract SecureRoleManager is Ownable {
 - [SWC-105: Unprotected Function](https://swcregistry.io/docs/SWC-105/) 
 - [Solidity Docs – Ownable](https://docs.openzeppelin.com/contracts/4.x/api/access#Ownable) 
 - [OpenZeppelin AccessControl](https://docs.openzeppelin.com/contracts/4.x/api/access#AccessControl)
-- [Best Practices – Role-Based Access](https://consensys.github.io/smart-contract-best-practices/recommendations/#restrict-access-to-sensitive-functions)
 
 ---
 
@@ -148,7 +162,7 @@ contract SecureRoleManager is Ownable {
 ```markdown
 id: TBA
 title: Privileged Role Migration Loophole 
-severity: C
+severity: H
 score:
 impact: 5    
 exploitability: 4 

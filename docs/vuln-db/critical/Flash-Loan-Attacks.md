@@ -1,9 +1,9 @@
-# Flash Loan Attacks
+# Flash Loan Exploit
 
 ```YAML
 id: TBA
-title: Flash Loan Exploit on Atomic Lending Operations
-severity: C
+title: Flash Loan Exploit 
+baseSeverity: C
 category: flash-loan
 language: solidity
 blockchain: [ethereum]
@@ -78,6 +78,20 @@ function withdraw() external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DeFi protocol using DEX price as collateral input"
+  severity: C
+  reasoning: "Critical – attacker can drain pool using one-block price swing."
+- context: "Protocol using Chainlink or TWAP oracles"
+  severity: M
+  reasoning: "Risk mitigated, but flash loans may still affect liquidity or timing."
+- context: "Testnet or simulation"
+  severity: L
+  reasoning: "No real loss unless deployed in production with real value."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -123,7 +137,7 @@ function withdraw() external {
 
 ```markdown
 id: TBA
-title: Flash Loan Attacks
+title: Flash Loan Exploit
 severity: C
 score:
 impact: 5         

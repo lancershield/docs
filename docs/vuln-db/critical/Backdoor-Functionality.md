@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Hidden or Unauthorized Backdoor Functionality in Smart Contracts
-severity: C
+title: Backdoor Functionality 
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -81,6 +81,19 @@ contract Token {
     // No rug pull, no reset logic
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: C
+  reasoning: "Violates trust, allows silent theft or sabotage of user funds."
+- context: "Privately deployed tool with disclosed emergency controls"
+  severity: M
+  reasoning: "Still risky but users are aware and consent to the design."
+- context: "DAO-managed contract with on-chain audits"
+  severity: L
+  reasoning: "Unlikely, as transparency and governance limit misuse."
+```
 
 ## 🛡️ Prevention
 
@@ -121,7 +134,7 @@ contract Token {
 
 ```markdown
 id: TBA
-title: Hidden or Unauthorized Backdoor Functionality in Smart Contracts
+title: Backdoor Functionality
 severity: C
 score:
 impact: 5         

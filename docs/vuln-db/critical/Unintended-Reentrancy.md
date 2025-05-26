@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unintended Reentrancy
-severity: C
+baseSeverity: C
 category: reentrancy
 language: solidity
 blockchain: [ethereum, bsc, polygon, arbitrum, optimism]
@@ -50,7 +50,11 @@ Step-by-step exploit process:
 4. Because balances[msg.sender] is not yet updated, the attacker can call withdraw() multiple times.
 5. Contract balance is drained before the internal balance is updated.
 
+**Assumptions:**
 
+- The contract sends ETH or tokens to user addresses using low-level calls.
+- Internal state (like balances) is updated after external calls.
+- No reentrancy guard (nonReentrant) or pull-pattern is used.
 
 ## ✅ Fixed Code
 
@@ -62,6 +66,20 @@ function withdraw(uint256 amount) external {
     (bool sent, ) = msg.sender.call{value: amount}("");
     require(sent, "Failed");
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DeFi protocol with external calls and balances"
+  severity: C
+  reasoning: "Reentrancy can lead to total loss of funds if balances are manipulated."
+- context: "ReentrancyGuard applied or logic refactored"
+  severity: L
+  reasoning: "Risk removed by proper protections."
+- context: "Only internal logic or read-only function reentry"
+  severity: M
+  reasoning: "Can still cause corruption but not fund loss directly."
 ```
 
 ## 🛡️ Prevention
@@ -98,6 +116,7 @@ function withdraw(uint256 amount) external {
 - [OpenZeppelin ReentrancyGuard](https://docs.openzeppelin.com/contracts/4.x/api/security#ReentrancyGuard) 
 - [Solidity Security Patterns – Checks-Effects-Interactions](https://docs.soliditylang.org/en/latest/security-considerations.html#use-the-checks-effects-interactions-pattern) 
 
+---
 
 ## ✅ Vulnerability Report
 

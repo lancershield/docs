@@ -1,9 +1,9 @@
-# Liquidity Rug Allowing Unauthorized 
+# Liquidity Rug  
 
 ```YAML
 id: TBA
-title: Liquidity Rug Allowing Unauthorized 
-severity: C
+title: Liquidity Rug  
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -64,6 +64,20 @@ function emergencyWithdraw() external onlyGovernance {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Retail-facing token with centralized liquidity control"
+  severity: C
+  reasoning: "Owner can remove liquidity at any time, causing total loss for users."
+- context: "Liquidity burned or locked in time-locked contract"
+  severity: L
+  reasoning: "Risk significantly reduced if proper lock mechanism is in place."
+- context: "DAO-controlled liquidity pool"
+  severity: M
+  reasoning: "DAO may still vote to rug, but it's visible and time-delayed."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -109,7 +123,7 @@ function emergencyWithdraw() external onlyGovernance {
 
 ```markdown
 id: TBA
-title: Liquidity Rug Allowing Unauthorized 
+title: Liquidity Rug  
 severity: C
 score:
 impact: 5         

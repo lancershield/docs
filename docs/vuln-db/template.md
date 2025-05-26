@@ -3,7 +3,7 @@
 ```YAML
 id: TBA  # Leave this as "TBA"; the team will assign the official ID
 title: Example Vulnerability Title
-severity: M # Options: C | H | M | L | I | G
+baseSeverity: M # Worst-case severity; Options: C | H | M | L | I | G
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -58,6 +58,20 @@ function withdraw(uint amount) public {
     (bool sent, ) = msg.sender.call{value: amount}("");
     require(sent);
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Assumes average-case scenario without strong mitigations."
+- context: "Public DeFi Protocol without reentrancy guards"
+  severity: H
+  reasoning: "Widespread impact likely due to external contract call patterns."
+- context: "Private contract with access-controlled functions"
+  severity: L
+  reasoning: "Risk significantly reduced due to limited user access and internal-only interactions."
 ```
 
 ## 🛡️ Prevention

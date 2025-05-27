@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: NFT Metadata Tampering 
-severity: H
+baseSeverity: H
 category: metadata-integrity
 language: solidity
 blockchain: [ethereum]
@@ -76,6 +76,20 @@ contract ImmutableNFT is ERC721 {
         return _tokenURIs[tokenId];
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Public NFT project with mutable metadata after mint"
+  severity: H
+  reasoning: "Severe user deception and financial harm possible"
+- context: "Private or artistic project with disclosed mutability"
+  severity: M
+  reasoning: "Impact depends on transparency and buyer expectations"
+- context: "NFT metadata and images fully content-addressed and immutable"
+  severity: I
+  reasoning: "Vulnerability mitigated by design"
 ```
 
 ## 🛡️ Prevention

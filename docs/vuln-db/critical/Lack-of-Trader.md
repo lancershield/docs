@@ -3,18 +3,18 @@
 ```YAML
 id: TBA
 title: Lack of Trader Signature Validation
-severity: H
+baseSeverity: C
 category: authentication
 language: solidity
-blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
-impact: Unauthorized trade, front-running, or user fund manipulation
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Unauthorized trade execution, fund theft, or order spoofing
 status: draft
 complexity: medium
 attack_vector: external
-mitigation_difficulty: easy
+mitigation_difficulty: medium
 versions: [">=0.6.0", "<=0.8.25"]
-cwe: CWE-306
-swc: SWC-131
+cwe: CWE-347
+swc: SWC-117
 ```
 
 ## 📝 Description
@@ -113,6 +113,20 @@ contract SecureTrading {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Off-chain signed DEX orders or permit-style authorization"
+  severity: C
+  reasoning: "Enables total user fund loss without consent"
+- context: "On-chain-only trading system with msg.sender as trader"
+  severity: L
+  reasoning: "Vulnerability not applicable in direct call context"
+- context: "Signature-based system with nonce, expiry, and replay protection"
+  severity: I
+  reasoning: "Fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -151,7 +165,7 @@ contract SecureTrading {
 ```markdown
 id: TBA
 title: Lack of Trader Signature Validation
-severity: H
+severity: C
 score:
 impact: 5    
 exploitability: 4 

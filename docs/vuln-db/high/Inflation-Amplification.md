@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Inflation Amplification 
-severity: H
+baseSeverity: H
 category: tokenomics
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -95,6 +95,20 @@ contract CappedStaking {
         // Transfer reward (omitted)
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Rewards minted in real tokens with economic value"
+  severity: H
+  reasoning: "Unbounded inflation causes economic damage and ecosystem risk"
+- context: "Testnet or cosmetic reward logic only"
+  severity: L
+  reasoning: "No real loss, only display issue"
+- context: "Rewards use pull-based capped emission model"
+  severity: I
+  reasoning: "Fully mitigated with enforced caps and vesting"
 ```
 
 ## 🛡️ Prevention

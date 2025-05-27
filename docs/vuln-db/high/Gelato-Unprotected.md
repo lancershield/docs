@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Gelato Unprotected Randomness Enables Predictable Outcomes and Game Manipulation
-severity: H
+title: Gelato Unprotected Randomness 
+baseSeverity: H
 category: randomness
 language: solidity
 blockchain: [ethereum]
@@ -96,6 +96,20 @@ contract SecureRandomGame {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Randomness tied to reward, winner selection, or economic logic"
+  severity: H
+  reasoning: "Attackers can predict or manipulate outcomes, draining incentives"
+- context: "Randomness used for low-value cosmetic effects"
+  severity: L
+  reasoning: "Impact minimal; only affects UI or animations"
+- context: "Randomness sourced from secure oracle or VRF"
+  severity: I
+  reasoning: "Vulnerability fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -137,7 +151,7 @@ contract SecureRandomGame {
 
 ```markdown 
 id: TBA
-title: Gelato Unprotected Randomness Enables Predictable Outcomes and Game Manipulation
+title: Gelato Unprotected Randomness
 severity: H
 score:
 impact: 4         

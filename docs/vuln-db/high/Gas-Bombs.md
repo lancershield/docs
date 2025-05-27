@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Gas Bombs in Unbounded State Changes
-severity: H
+baseSeverity: H
 category: denial-of-service
 language: solidity
 blockchain: [ethereum]
@@ -64,6 +64,20 @@ function deleteUserTxsInRange(address user, uint256 start, uint256 end) external
         delete userTxs[user][i];
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Critical user withdrawals or admin-only actions blocked"
+  severity: H
+  reasoning: "Funds or state permanently inaccessible due to gas limits"
+- context: "Rewards can be claimed via pull model instead of loop"
+  severity: M
+  reasoning: "Users can bypass central DoS but may suffer UX issues"
+- context: "Gas-bounded batch logic with checkpoints in place"
+  severity: L
+  reasoning: "Low risk of gas exhaustion under normal use"
 ```
 
 ## 🛡️ Prevention

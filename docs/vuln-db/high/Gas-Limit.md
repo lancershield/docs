@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Gas Limit Vulnerabilities in Unbounded Loops 
-severity: H
+baseSeverity: H
 category: gas-limit
 language: solidity
 blockchain: [ethereum]
@@ -60,7 +60,20 @@ function distributeBatch(uint256 start, uint256 end) external {
         payable(recipients[i]).transfer(share);
     }
 }
+```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Funds are distributed via unbounded loops on-chain"
+  severity: H
+  reasoning: "Large user base permanently locks protocol state"
+- context: "Batch-based reward logic with user-triggered actions"
+  severity: M
+  reasoning: "Can be mitigated through frontend or retry logic"
+- context: "Pull-only claim logic based on Merkle proofs or snapshots"
+  severity: L
+  reasoning: "No risk of hitting gas limit in centralized function"
 ```
 
 ## 🛡️ Prevention
@@ -101,6 +114,7 @@ function distributeBatch(uint256 start, uint256 end) external {
 - [Smart Contract Security Risks: Today's 10 Top Vulnerabilities – Cobalt](https://www.cobalt.io/blog/smart-contract-security-risks) 
 
 ---
+
 ## ✅ Vulnerability Report 
 
 ```markdown

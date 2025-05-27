@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Improper Upgradeability Leading to Storage Corruption 
-severity: H
+title: Improper Upgradeability
+baseSeverity: H
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -74,6 +74,20 @@ contract SafeProxyAdmin is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Upgrade function publicly exposed or weakly guarded"
+  severity: H
+  reasoning: "Enables complete hijack or destruction of logic and storage"
+- context: "Upgrade restricted to multisig or timelock"
+  severity: M
+  reasoning: "Still susceptible to social engineering or governance errors"
+- context: "Non-upgradeable or locked implementation"
+  severity: I
+  reasoning: "No upgrade path exposed"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,7 +112,7 @@ contract SafeProxyAdmin is Ownable {
 
 - **Name:** Parity Wallet Library Selfdestruct 
 - **Date:** 2017-11-06 
-- **Loss:** ~$150M locked 
+- **Loss:** ~$150M 
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
 
 ## 📚 Further Reading

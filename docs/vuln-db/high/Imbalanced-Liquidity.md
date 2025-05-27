@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Imbalanced Liquidity 
-severity: H
+baseSeverity: H
 category: amm-liquidity
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, avalanche, polygon, bsc]
@@ -102,6 +102,20 @@ contract BalancedPool {
         // send daiOut and usdcOut to user (omitted)
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DEX or oracle system relies on pool balance for price feeds"
+  severity: H
+  reasoning: "Attackers can manipulate price and extract profit or oracle control"
+- context: "Liquidity pool not connected to external price systems"
+  severity: M
+  reasoning: "Users suffer slippage, but no oracle exposure"
+- context: "Only cosmetic imbalance or managed via rebalance bots"
+  severity: L
+  reasoning: "No direct impact on functionality"
 ```
 
 ## 🛡️ Prevention

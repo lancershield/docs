@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Merkle Proof Misuse Allowing Unauthorized Claims 
-severity: H
+title: Merkle Proof Misuse 
+baseSeverity: H
 category: merkle-proof
 language: solidity
 blockchain: [ethereum]
@@ -76,6 +76,20 @@ function claim(bytes32[] calldata proof, uint256 amount) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Airdrop, token claim, or whitelist-based access"
+  severity: H
+  reasoning: "Repeat claims can drain treasury or break allocation logic"
+- context: "Merkle tree used for off-chain proofs or read-only UI filters"
+  severity: L
+  reasoning: "No impact on contract state or fund safety"
+- context: "Proper claim tracking and root validation implemented"
+  severity: I
+  reasoning: "Fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -101,7 +115,6 @@ function claim(bytes32[] calldata proof, uint256 amount) external {
 - **Date:** 2022 
 - **Loss:** Users claimed multiple times by replaying proofs 
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/audius-rekt/) 
-
 
 ## 📚 Further Reading
 

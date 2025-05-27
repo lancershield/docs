@@ -1,20 +1,20 @@
-# Non-Reverting 
+# Non-Reverting Functions 
 
 ```YAML
 id: TBA
-title: Non-Reverting 
-severity: H
-category: erc20-compatibility
+title: Non-Reverting Functions 
+baseSeverity: M
+category: error-handling
 language: solidity
-blockchain: [ethereum]
-impact: Token loss, broken dApp logic, or spoofed approvals
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Unreliable execution, user fund loss, logic inconsistency
 status: draft
-complexity: medium
+complexity: low
 attack_vector: external
-mitigation_difficulty: hard
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-670
-swc: SWC-135
+mitigation_difficulty: easy
+versions: [">=0.6.0", "<=0.8.25"]
+cwe: CWE-252
+swc: SWC-123
 ```
 
 ## 📝 Description
@@ -75,7 +75,19 @@ contract SafeVault {
     }
 }
 ```
+## 🧭 Contextual Severity
 
+```yaml
+- context: "Financial logic relying on unchecked return values"
+  severity: M
+  reasoning: "Can lead to partial failures, fund loss, and broken state"
+- context: "Low-risk view or logging function"
+  severity: I
+  reasoning: "No financial or state impact"
+- context: "Function fully protected with `require()` and SafeERC20"
+  severity: I
+  reasoning: "Vulnerability mitigated"
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -109,10 +121,11 @@ contract SafeVault {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Non-Reverting 
-severity: H
+title: Non-Reverting Functions
+severity: M
 score:
 impact: 4    
 exploitability: 3 

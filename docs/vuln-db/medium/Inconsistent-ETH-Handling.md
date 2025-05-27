@@ -2,19 +2,19 @@
 
 ```YAML
 id: TBA
-title: Inconsistent ETH Handling 
-severity: H
-category: proxy-design
+title: Inconsistent ETH Handling
+baseSeverity: M
+category: ether-transfer
 language: solidity
-blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
-impact: ETH stuck in proxy, failed calls, or loss of payable functionality
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Inadvertent ETH loss, unclaimable funds, or logic bypass
 status: draft
 complexity: medium
-attack_vector: internal
+attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.5.0", "<=0.8.25"]
+versions: [">=0.6.0", "<=0.8.25"]
 cwe: CWE-703
-swc: SWC-104
+swc: SWC-113
 ```
 
 ## 📝 Description
@@ -88,6 +88,19 @@ contract SafeProxy {
         }
     }
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DeFi protocol with refund, claim, or treasury logic tied to raw ETH balance"
+  severity: M
+  reasoning: "Leads to unclaimable funds or logic breakage"
+- context: "Contract has strict internal accounting and rejects unsolicited ETH"
+  severity: L
+  reasoning: "Risk significantly mitigated"
+- context: "Non-payable contract with no ETH handling features"
+  severity: I
+  reasoning: "Vulnerability irrelevant"
 ```
 
 ## 🛡️ Prevention

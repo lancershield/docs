@@ -1,9 +1,9 @@
-# Domain Separator Collision Enables Signature Replay Across Contracts
+# Domain Separator Collision 
 
 ```YAML
 id: TBA
-title: Domain Separator Collision Enables Signature Replay Across Contracts or Chains
-severity: H
+title: Domain Separator Collision 
+baseSeverity: H
 category: cryptography
 language: solidity
 blockchain: [ethereum]
@@ -78,6 +78,20 @@ contract SecurePermit {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Cross-chain signature validation for token transfers or approvals"
+  severity: H
+  reasoning: "May lead to replayed approvals or asset loss across chains"
+- context: "Local-only domain with no cross-chain replay risk"
+  severity: M
+  reasoning: "Impact limited to fork scenarios or redeploys"
+- context: "Uses EIP712.sol or dynamic domain separator with full context"
+  severity: I
+  reasoning: "Proper implementation; no practical exploit path"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -116,7 +130,7 @@ contract SecurePermit {
 ## ✅ Vulnerability Report
 ```markdown
 id: TBA
-title: Domain Separator Collision Enables Signature Replay Across Contracts or Chains
+title: Domain Separator Collision 
 severity: H
 score:
 impact: 4        

@@ -2,17 +2,17 @@
 
 ```YAML
 id: TBA
-title: Misconfigured Role-Based Access Control (RBAC) in Smart Contracts
-severity: H
+title: Misconfigured Role-Based Access Control (RBAC)
+baseSeverity: C
 category: access-control
 language: solidity
-blockchain: [ethereum]
-impact: Unauthorized access or privilege escalation
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Unauthorized privilege escalation or permanent loss of control
 status: draft
-complexity: medium
-attack_vector: internal
-mitigation_difficulty: medium
-versions: [">=0.4.0", "<0.8.21"]
+complexity: low
+attack_vector: external
+mitigation_difficulty: easy
+versions: [">=0.6.0", "<=0.8.25"]
 cwe: CWE-269
 swc: SWC-105
 ```
@@ -61,6 +61,7 @@ Step-by-step exploit process:
 - Admin role controls other roles (MINTER_ROLE, PAUSER_ROLE, etc.).
 
 ## ✅ Fixed Code
+
 ```solidity
 
 contract Token is AccessControl {
@@ -75,6 +76,20 @@ contract Token is AccessControl {
         _mint(to, amount);
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Production contract with exposed mint, upgrade, or withdraw logic"
+  severity: C
+  reasoning: "Complete compromise of contract's state or funds possible"
+- context: "Testnet contract or function gated by non-sensitive role"
+  severity: L
+  reasoning: "Impact isolated or non-critical"
+- context: "Role correctly assigned and access restricted to known multisig"
+  severity: I
+  reasoning: "Mitigated by governance controls"
 ```
 
 ## 🛡️ Prevention
@@ -116,8 +131,8 @@ contract Token is AccessControl {
 
 ```markdown
 id: TBA
-title: Misconfigured Role-Based Access Control (RBAC) in Smart Contracts
-severity: H
+title: Misconfigured Role-Based Access Control (RBAC) 
+severity: C
 score:
 impact: 5         
 exploitability: 4 
@@ -136,3 +151,4 @@ finalScore: 4.1
 - **Reachability**: High — often exposed via public grantRole() calls.
 - **Complexity**: Low — just one wrong role assignment is enough.
 - **Detectability**: Detectable via audit, but common in quick deployments or forks.
+

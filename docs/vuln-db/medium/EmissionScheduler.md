@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: EmissionScheduler 
-severity: H
+baseSeverity: M
 category: emission-logic
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -107,6 +107,20 @@ contract SafeEmissionScheduler is Ownable {
         // Mint logic here
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Emission logic governs reward tokens or liquidity incentives"
+  severity: M
+  reasoning: "Over or under-rewarding users leads to economic imbalance"
+- context: "Emission affects governance voting weight"
+  severity: H
+  reasoning: "Over-minting leads to takeover risks"
+- context: "Internal-only or capped logic with governance gating"
+  severity: L
+  reasoning: "Low risk if emissions are restricted and bounded"
 ```
 
 ## 🛡️ Prevention

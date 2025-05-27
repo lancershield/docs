@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Flawed Migration Contracts 
-severity: H
+baseSeverity: H
 category: migration
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,19 @@ contract SafeMigrator {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Migration allows minting based on unverified or reentrant state"
+  severity: H
+  reasoning: "Leads to fund inflation or protocol state corruption"
+- context: "Only admin-initiated migrations, manually validated"
+  severity: M
+  reasoning: "Risk is lower but still present in poorly tested flows"
+- context: "State-proof-based or Merkle-audited migration"
+  severity: L
+  reasoning: "Risk minimal with verified snapshot-based migration"
+```
 
 ## 🛡️ Prevention
 
@@ -121,7 +134,6 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 4.1
-
 ```
 
 ---

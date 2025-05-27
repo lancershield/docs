@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Block timestamp
-severity: M
+baseSeverity: H
 category: time-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -84,6 +84,19 @@ contract SafeTimelock {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Timestamp used for randomness or critical access logic"
+  severity: H
+  reasoning: "Miners can abuse the value to manipulate results or extract value."
+- context: "Unlocks and claims that depend on timestamp with no margin"
+  severity: M
+  reasoning: "Early access or front-running is possible within ±15 seconds."
+- context: "Timestamp used for non-critical display or logging"
+  severity: I
+  reasoning: "Informational usage only; no security implications."
+```
 
 ## 🛡️ Prevention
 
@@ -123,7 +136,7 @@ contract SafeTimelock {
 ```markdown
 id: TBA
 title: Block timestamp
-severity: M
+severity: H
 score:
 impact: 3 
 exploitability: 3 
@@ -142,5 +155,3 @@ finalScore: 3.15
 - **Reachability**: Very common in lockups, auctions, and vesting contracts.
 - **Complexity**: Simple mistake; typically results from misunderstanding time variance.
 - **Detectability**: Obvious to static analyzers like Slither and MythX.
-
-

@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Chronicle Unchecked Price Usage Enables Stale Feed Exploits and Incorrect Valuations
-severity: H
+title: Chronicle Unchecked Price 
+baseSeverity: H
 category: oracle
 language: solidity
 blockchain: [ethereum]
@@ -91,6 +91,20 @@ contract SafeOracle {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Price used in mint, liquidation, or swap execution"
+  severity: H
+  reasoning: "Stale or malicious data leads to real fund loss"
+- context: "Price used in internal calculations or display"
+  severity: L
+  reasoning: "No impact unless used in external logic"
+- context: "Oracle guarded by updatedAt and non-zero checks"
+  severity: I
+  reasoning: "Pattern is safe if implemented defensively"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,9 +139,10 @@ contract SafeOracle {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Chronicle Unchecked Price Usage Enables Stale Feed Exploits and Incorrect Valuations
+title: Chronicle Unchecked Price 
 severity: H
 score:
 impact: 4         

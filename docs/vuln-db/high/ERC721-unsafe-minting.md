@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: ERC721 Unsafe Minting 
-severity: H
+baseSeverity: H
 category: minting
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,20 @@ contract SafeERC721 is ERC721, Ownable {
         _safeMint(to, tokenId); // ✅ calls onERC721Received for contracts
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Minting NFTs to unknown or user-supplied addresses"
+  severity: H
+  reasoning: "Tokens can be permanently locked and lost, affecting protocol credibility"
+- context: "Minting only to trusted EOAs or verified contract addresses"
+  severity: L
+  reasoning: "Risk is mitigated if all recipients are known to be compatible"
+- context: "Use of safeMint with receiver validation"
+  severity: I
+  reasoning: "Implementation is secure and in line with ERC721 standards"
 ```
 
 ## 🛡️ Prevention

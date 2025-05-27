@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Insecure RewardDistributor 
-severity: H
+baseSeverity: H
 category: reward-accounting
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -17,7 +17,7 @@ cwe: CWE-703
 swc: SWC-136
 ```
 
-##📝 Description
+## 📝 Description
 
 - Reward distribution contracts often allow users to claim rewards based on stake duration, balance, or share of a global pool. If implemented incorrectly, they are vulnerable to:
 - Overclaiming rewards by repeatedly calling claim()
@@ -90,6 +90,19 @@ contract SafeRewardDistributor is ReentrancyGuard {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Live DeFi protocol using token rewards without state-reset logic"
+  severity: H
+  reasoning: "Attackers can drain entire reward pool through repeated claims"
+- context: "Claim system protected via Merkle proofs or one-time withdrawal"
+  severity: M
+  reasoning: "Impact limited; exploit prevented through proof verification"
+- context: "Testing/staging environment or limited distribution scope"
+  severity: L
+  reasoning: "Impact contained and recoverable"
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -113,7 +126,7 @@ contract SafeRewardDistributor is ReentrancyGuard {
 
 - **Name:** Synthetix Inflation Reward Bug 
 - **Date:** 2020-07 
-- **Loss:** ~$50,000 in SNX misallocated due to late entry into pool 
+- **Loss:** ~$50,000 
 - **Post-mortem:** [Link to post-mortem](https://blog.synthetix.io) 
    
 ## 📚 Further Reading

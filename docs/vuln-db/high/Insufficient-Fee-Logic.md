@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Insufficient Fee Logic in DEXs
-severity: H
+baseSeverity: H
 category: economic
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -65,6 +65,20 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "DEX operating on mainnet without enforced fees or slippage protection"
+  severity: H
+  reasoning: "Sustainable protocol revenue model is broken; exploitable by arbitrage"
+- context: "DEX in private testnet or sandboxed environment"
+  severity: L
+  reasoning: "No economic impact outside developer context"
+- context: "DEX uses dynamic fee model with governance limits"
+  severity: M
+  reasoning: "Impact reduced via circuit breakers or treasury safeguards"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -87,7 +101,6 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 
 ## 🕰️ Historical Exploits
 
-   
 - **Name:** SushiSwap Fee Logic Error (Dust Rounding) 
 - **Date:** 2020-12 
 - **Loss:** Fee calculation for small trades failed to charge users appropriately 

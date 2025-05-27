@@ -1,10 +1,9 @@
 # Insecure Randomness
 
 ```YAML
-
 id: TBA
-title: Insecure Randomness via Block Data and Predictable Inputs
-severity: H
+title: Insecure Randomness 
+baseSeverity: H
 category: randomness
 language: solidity
 blockchain: [ethereum]
@@ -82,6 +81,20 @@ contract SecureLottery is VRFConsumerBase {
         randomResult = randomness;
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Randomness used for reward distribution, winner selection, or access control"
+  severity: H
+  reasoning: "Allows attacker to manipulate economic outcomes"
+- context: "Used only for cosmetic effects (e.g., UI colors)
+  severity: L
+  reasoning: "Low or no economic risk"
+- context: "Verifiable randomness or commit-reveal used"
+  severity: I
+  reasoning: "No vulnerability present"
 ```
 
 ## 🛡️ Prevention

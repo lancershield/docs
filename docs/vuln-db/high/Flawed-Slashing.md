@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Flawed Slashing Conditions 
-severity: H
+baseSeverity: H
 category: consensus-mechanism
 language: solidity
 blockchain: [ethereum]
@@ -70,6 +70,20 @@ function validateEvidence(bytes calldata data, address validator) internal view 
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Anyone can slash using loosely defined uptime logic"
+  severity: H
+  reasoning: "Leads to griefing and full stake loss"
+- context: "Slashing requires governance or multisig approval"
+  severity: M
+  reasoning: "Impact contained by oversight"
+- context: "Slashing disabled or only used for reputation"
+  severity: L
+  reasoning: "No asset loss, minimal impact"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -120,7 +134,6 @@ reachability: 3
 complexity: 4     
 detectability: 4  
 finalScore: 4.15
-
 ```
 
 ---

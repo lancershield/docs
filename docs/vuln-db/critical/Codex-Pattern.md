@@ -1,9 +1,9 @@
-# Codex Pattern Vulnerability Enables Unauthorized Data Access
+# Codex Pattern Vulnerability
 
 ```YAML
 id: TBA
-title: Codex Pattern Vulnerability Enables Unauthorized Data Access or Mutation
-severity: H
+title: Codex Pattern Vulnerability 
+baseSeverity: C
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -19,11 +19,14 @@ swc: SWC-135
 
 ## 📝 Description
 
-- The Codex pattern is a storage abstraction design commonly used in modular Solidity architectures where one or more contracts interact with a shared "Codex" storage contract (e.g., Codex.sol). While modular and gas-efficient, improper design or access control within the Codex contract can result in:
-- Unrestricted access to critical mappings or structs
-- Unauthorized updates to protocol state (e.g., vaults, balances, positions)
-- Logic separation assumptions being broken
-- This often happens when the Codex exposes public state mutation functions (e.g., modifyBalance, setDebt) without checking msg.sender, or fails to restrict writes to a known list of trusted modules.
+- The Codex Pattern—popularized in systems like MakerDAO—uses a centralized "Codex" contract to manage shared state across modules (e.g., vault balances, permissions, or collateral settings). 
+- Modules interact with this central Codex using delegatecall to manipulate the calling contract’s storage using the Codex’s logic.
+- While powerful, this pattern is highly dangerous if:
+- Codex contract addresses are not hardcoded or immutable
+- No access control exists on who can call delegatecall()
+- Codex logic is upgradeable or externally managed
+- Storage layouts differ between caller and delegate
+- This leads to critical risk of storage corruption, arbitrary writes, or privilege escalation, especially if a malicious module or address becomes the target of a delegatecall.
 
 ## 🚨 Vulnerable Code
 
@@ -84,6 +87,20 @@ contract Codex {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Codex address is upgradable or externally controlled"
+  severity: C
+  reasoning: "Allows total control of storage—critical protocol compromise."
+- context: "Codex is immutable but logic differs in layout"
+  severity: H
+  reasoning: "Storage corruption possible even without malicious intent."
+- context: "Codex is audited, immutable, and layout-aligned"
+  severity: L
+  reasoning: "Pattern is safe if strictly enforced and tested."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -118,16 +135,16 @@ contract Codex {
 
 - [SWC-135: Incorrect Authorization](https://swcregistry.io/docs/SWC-135/) 
 - [OpenZeppelin AccessControl Docs](https://docs.openzeppelin.com/contracts/4.x/access-control) 
-- [Smart Contract Access Control Best Practices – Krayon Digital](https://www.krayondigital.com/blog/smart-contract-access-control-best-practices) 
 - [OWASP Reveals Top 10 Smart Contract Vulnerabilities For 2025 – LinkedIn](https://www.linkedin.com/pulse/owasp-reveals-top-10-smart-contract-vulnerabilities-eyfte) 
   
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Codex Pattern Vulnerability Enables Unauthorized Data Access or Mutation
-severity: H
+title: Codex Pattern Vulnerability 
+severity: C
 score:
 impact: 4         
 exploitability: 3 

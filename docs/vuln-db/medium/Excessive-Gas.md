@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Excessive Gas Refund Abuse 
-severity: H
+baseSeverity: M
 category: gas-refund
 language: solidity
 blockchain: [ethereum, optimism, arbitrum, polygon, bsc]
@@ -82,6 +82,20 @@ contract SafeStorage {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Gas refund used to game transaction fee systems or rewards"
+  severity: M
+  reasoning: "Unfair advantage, but no direct asset theft"
+- context: "Used in conjunction with block stuffing or relayer DoS"
+  severity: H
+  reasoning: "May prevent user transactions or drain gas subsidy pool"
+- context: "Refunds disabled (e.g., post-EIP-3529, no selfdestruct)"
+  severity: I
+  reasoning: "Abuse no longer viable in current gas model"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,7 +139,7 @@ contract SafeStorage {
 ```markdown
 id: TBA
 title: Excessive Gas Refund Abuse 
-severity: H
+severity: M
 score:
 impact: 4   
 exploitability: 4 

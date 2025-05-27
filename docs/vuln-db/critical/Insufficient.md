@@ -1,23 +1,23 @@
-#  Insufficient Signature Verification
+# Insufficient Signature Verification
 
 ```YAML
 id: TBA
-title: Insufficient Signature Verification Leading to Unauthorized Access
-severity: H
-category: signature-verification
+title: Insufficient Signature Verification
+baseSeverity: C
+category: authentication
 language: solidity
-blockchain: [ethereum]
-impact: Unauthorized execution of privileged or user-specific actions
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Unauthorized access, forged approvals, stolen funds
 status: draft
 complexity: medium
 attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.4.0", "<0.8.21"]
+versions: [">=0.6.0", "<=0.8.25"]
 cwe: CWE-347
-swc: SWC-122
+swc: SWC-117
 ```
 
-##📝 Description
+## 📝 Description
 
 - Insufficient signature verification vulnerabilities arise when a contract improperly checks digital signatures, either by:
 - Failing to verify that the signer is the authorized party.
@@ -81,6 +81,20 @@ contract SecureSigner {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Permit-based approval, meta-transactions, or bridge authentication"
+  severity: C
+  reasoning: "Leads to total compromise of user assets or impersonation"
+- context: "Testnet demo or UI-only logic"
+  severity: L
+  reasoning: "No meaningful risk beyond demonstration scope"
+- context: "System uses EIP-712 with domain separation and nonce"
+  severity: I
+  reasoning: "Fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -119,7 +133,9 @@ contract SecureSigner {
 - [EIP-712: Structured Data Hashing and Signing](https://eips.ethereum.org/EIPS/eip-712) 
   
 ---
+
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Insufficient Signature Verification 

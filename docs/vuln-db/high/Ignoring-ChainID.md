@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Ignoring ChainID in Signatures 
-severity: H
+baseSeverity: H
 category: signature-verification
 language: solidity
 blockchain: [ethereum]
@@ -65,6 +65,20 @@ function executeMetaTx(address user, bytes calldata data, uint256 nonce, bytes c
 
     // Execute logic
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Permit or approval logic used across multiple chains"
+  severity: H
+  reasoning: "Allows unauthorized replay and token manipulation on unintended chains"
+- context: "Only used for internal chain logic or EOA-bound tx"
+  severity: M
+  reasoning: "Risk lower but still affects forked chains or users switching networks"
+- context: "Proper EIP-712 implementation with chainId bound"
+  severity: I
+  reasoning: "No signature replay risk"
 ```
 
 ## 🛡️ Prevention

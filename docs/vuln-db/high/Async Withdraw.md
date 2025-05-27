@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Async Withdraw Race Condition 
-severity: H
+baseSeverity: H
 category: race-condition
 language: solidity
 blockchain: [ethereum]
@@ -84,6 +84,19 @@ contract SecureVault is ReentrancyGuard {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Async withdrawal logic exposed to reentrancy"
+  severity: H
+  reasoning: "Leads to total fund loss if attacker loops reentry."
+- context: "Claim function is rate-limited or uses delayed execution"
+  severity: M
+  reasoning: "Timing mitigates mass exploitation, but race still exists."
+- context: "State locked before external calls"
+  severity: I
+  reasoning: "Pattern correctly mitigated, not exploitable."
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses

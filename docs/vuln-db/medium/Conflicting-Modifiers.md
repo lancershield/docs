@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Conflicting Modifiers 
-severity: H
+baseSeverity: M
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -111,6 +111,20 @@ contract SafeModifiers is Ownable, Pausable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Modifiers silently cancel each other causing logic bypass or function lock"
+  severity: M
+  reasoning: "Can freeze core functions or silently reduce authorization boundaries"
+- context: "Modifiers just overlap logically but do not block access"
+  severity: L
+  reasoning: "Redundant but not harmful unless code changes"
+- context: "Well-documented modifier interactions with explicit tests"
+  severity: I
+  reasoning: "Safe if intentional and verified"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -133,14 +147,12 @@ contract SafeModifiers is Ownable, Pausable {
 
 - **Name:** DIA Data NFT Audit 
 - **Date:** 2021 
-- **Loss:** ~$100,000 in additional audit and refactoring costs due to lack of NatSpec comments 
+- **Loss:** ~$100,000 
 - **Post-mortem:** [Link to post-mortem](https://content.diadata.org/wp-content/uploads/2021/09/02_Smart-Contract-Audit_DIA_DRMNFT.pdf)
 - **Name:** Plume Protocol Audit 
 - **Date:** 2024 
-- **Loss:** ~$30,000 in added audit delays and code misinterpretation risk 
+- **Loss:** ~$30,000 
 - **Post-mortem:** [Link to post-mortem](https://www.halborn.com/audits/plume/plume-contracts)
-  
----
 
 ## 📚 Further Reading
 
@@ -155,7 +167,7 @@ contract SafeModifiers is Ownable, Pausable {
 ```markdown
 id: TBA
 title: Conflicting Modifiers 
-severity: H
+severity: M
 score:
 impact: 4      
 exploitability: 2 

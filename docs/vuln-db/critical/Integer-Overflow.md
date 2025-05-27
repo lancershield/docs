@@ -2,12 +2,12 @@
 
 ```YAML
 id: TBA
-title: Integer Overflow and Underflow in Arithmetic Operations
-severity: H
-category: arithmetic
+title: Integer Overflow and Underflow
+baseSeverity: C
+category: arithmetic-error
 language: solidity
-blockchain: [ethereum]
-impact: Incorrect state updates or fund miscalculations
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Token supply inflation, locked funds, balance corruption
 status: draft
 complexity: low
 attack_vector: external
@@ -67,6 +67,21 @@ contract SafeToken {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Pre-0.8.0 contract managing real user funds"
+  severity: C
+  reasoning: "Full protocol compromise possible via overflow"
+- context: "Solidity ^0.8.0 with unchecked math used for gas optimization"
+  severity: H
+  reasoning: "High risk if unchecked logic fails boundary assumptions"
+- context: "Post-0.8.0 with no unchecked math"
+  severity: I
+  reasoning: "Vulnerability fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -111,7 +126,7 @@ contract SafeToken {
 ```markdown
 id: TBA
 title: Integer Overflow and Underflow in Arithmetic Operations
-severity: H
+severity: C
 score:
 impact: 5         
 exploitability: 4 

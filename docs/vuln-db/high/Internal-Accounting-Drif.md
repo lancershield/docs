@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Internal Accounting Drift Between Contract State and Actual Balances
-severity: H
+title: Internal Accounting Drift 
+baseSeverity: H
 category: accounting
 language: solidity
 blockchain: [ethereum]
@@ -80,6 +80,20 @@ function withdraw(uint256 amount) external {
     balances[msg.sender] -= amount;
     totalDeposits -= amount;
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Vault, pool, or staking contract using dual accounting"
+  severity: H
+  reasoning: "Fund recovery, redemptions, or payouts can break permanently"
+- context: "Cosmetic logic (e.g., dashboard or view-only)"
+  severity: L
+  reasoning: "No financial loss occurs"
+- context: "Force-send and token sweep logic explicitly handled"
+  severity: I
+  reasoning: "Fully mitigated"
 ```
 
 ## 🛡️ Prevention

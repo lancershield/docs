@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Blockhash Dependence for Randomness 
-severity: H
+baseSeverity: H
 category: randomness
 language: solidity
 blockchain: [ethereum]
@@ -79,6 +79,20 @@ contract SecureLottery is VRFConsumerBase {
         randomResult = randomness;
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Lottery or game using blockhash for prize logic"
+  severity: H
+  reasoning: "Predictable randomness allows rigged wins."
+- context: "Blockhash used for NFT trait randomization"
+  severity: M
+  reasoning: "User experience degraded but no financial loss."
+- context: "Blockhash used for timestamps or logging only"
+  severity: I
+  reasoning: "No exploitability—informational only."
 ```
 
 ## 🛡️ Prevention

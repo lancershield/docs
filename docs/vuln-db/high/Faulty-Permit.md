@@ -1,9 +1,9 @@
-# Faulty Permit Implementation Enabling Unauthorized Token Transfers
+# Faulty Permit Implementation 
 
 ```YAML
 id: TBA
-title: Faulty Permit Implementation Enabling Unauthorized Token Transfers
-severity: H
+title: Faulty Permit Implementation 
+baseSeverity: H
 category: signature-verification
 language: solidity
 blockchain: [ethereum]
@@ -74,6 +74,20 @@ contract SafePermitToken is ERC20Permit {
 
     // Uses OpenZeppelin's validated implementation of EIP-2612
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Permit used for core token approval or paymaster integration"
+  severity: H
+  reasoning: "Replay or spoofing can lead to full user balance drain"
+- context: "Permit optional and fallback to approval model exists"
+  severity: M
+  reasoning: "Impact is lower due to alternatives"
+- context: "Permit protected with strong nonce and domain validation"
+  severity: I
+  reasoning: "Secure implementation; no known vector"
 ```
 
 ## 🛡️ Prevention

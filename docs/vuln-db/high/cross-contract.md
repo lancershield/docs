@@ -1,9 +1,9 @@
-# Cross-Contract Execution Risks
+# Cross-Contract Execution 
 
 ```YAML
 id: TBA
-title: Cross-Contract Execution Risks from Untrusted External Calls
-severity: H
+title: Cross-Contract Execution 
+baseSeverity: H
 category: external-call
 language: solidity
 blockchain: [ethereum]
@@ -91,6 +91,20 @@ contract SafeAuction is ReentrancyGuard {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Unvalidated call to arbitrary target with full calldata"
+  severity: H
+  reasoning: "Allows attacker to control execution, escalate privileges, or drain funds"
+- context: "Whitelisted call targets but unchecked return values"
+  severity: M
+  reasoning: "Logic may still be corrupted due to silent call failure"
+- context: "Call target is immutable and audited"
+  severity: L
+  reasoning: "Low risk if trust boundaries are respected"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -128,11 +142,12 @@ contract SafeAuction is ReentrancyGuard {
 - [Smart Contracts Security Challenges Explained](https://www.lcx.com/smart-contracts-security-challenges-explained/) 
  
 --- 
+
 ## ✅ Vulnerability Report 
 
 ```markdown
 id: TBA
-title: Cross-Contract Execution Risks 
+title: Cross-Contract Execution
 severity: H
 score:
 impact: 5         

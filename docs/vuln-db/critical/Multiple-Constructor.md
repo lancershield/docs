@@ -3,16 +3,16 @@
 ```YAML
 id: TBA
 title: Multiple Constructor Schemes Bypass Initialization Logic
-severity: H
-category: initialization
+baseSeverity: C
+category: upgradeability
 language: solidity
-blockchain: [ethereum]
-impact: Uninitialized state, unauthorized ownership, or takeover
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Privilege takeover, uninitialized contract state, unauthorized control
 status: draft
 complexity: medium
 attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.4.0", "<=0.8.25"]
+versions: [">=0.5.0", "<=0.8.25"]
 cwe: CWE-665
 swc: SWC-118
 ```
@@ -89,6 +89,20 @@ contract Token is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "UUPS/Proxy-based contract with constructor-only access setup"
+  severity: C
+  reasoning: "Full takeover or permanent privilege loss possible"
+- context: "Constructor used only for view state, not authorization"
+  severity: M
+  reasoning: "Data inconsistency but no direct security risk"
+- context: "OpenZeppelin Initializable + proper initialize() used"
+  severity: I
+  reasoning: "Fully mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -114,7 +128,7 @@ contract Token is Ownable {
 - **Name:** Akropolis Pool Initialization Bug 
 - **Date:** 2020 
 - **Loss:** ~$2M 
-- **Post-mortem:** [Akropolis Hack Root Cause](https://rekt.news/akropolis-rekt/) 
+- **Post-mortem:** [Link to post-mortem](https://rekt.news/akropolis-rekt/) 
 
 ## 📚 Further Reading
 
@@ -125,10 +139,11 @@ contract Token is Ownable {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Multiple Constructor Schemes Bypass Initialization Logic
-severity: H
+severity: C
 score:
 impact: 4         
 exploitability: 4 
@@ -147,5 +162,3 @@ finalScore: 3.75
 - **Reachability**: Proxy-based systems make this reachable post-deployment.
 - **Complexity**: Moderate—developers may forget one super.initialize() call.
 - **Detectability**: Requires understanding full inheritance chain, often missed in fast-paced development.
-
-

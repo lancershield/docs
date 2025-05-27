@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: LP Token Burn 
-severity: H
+baseSeverity: H
 category: liquidity
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -68,6 +68,20 @@ function burnLiquidity() external {
     require(msg.sender == lpTimelock, "Locked");
     // Execute only after timelock delay or governance vote
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Mainnet AMM or LP staking contract with public LP token burns"
+  severity: H
+  reasoning: "Severe fund mismanagement, price distortion, or locked value"
+- context: "Private system with admin-controlled burns"
+  severity: M
+  reasoning: "Damage scope limited to internal operations"
+- context: "LP token burn always accompanied by reserve sync or redemption"
+  severity: I
+  reasoning: "Properly mitigated"
 ```
 
 ## 🛡️ Prevention

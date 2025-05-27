@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Denial of Service 
-severity: H
+baseSeverity: H
 category: denial-of-service
 language: solidity
 blockchain: [ethereum]
@@ -66,6 +66,20 @@ function withdrawBatch(uint start, uint end) external {
         delete userDeposits[msg.sender];
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Reward, withdrawal, or governance functions blocked by one user"
+  severity: H
+  reasoning: "Entire system availability is compromised"
+- context: "Batch loops in admin-only or optional functions"
+  severity: M
+  reasoning: "Can be circumvented but affects UX"
+- context: "Non-critical DoS affecting display or logging"
+  severity: L
+  reasoning: "No impact on funds or control flow"
 ```
 
 ### 🛡️ Prevention

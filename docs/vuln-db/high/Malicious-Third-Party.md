@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Malicious Third-Party Vulnerabilities
-severity: H
+baseSeverity: H
 category: third-party
 language: solidity
 blockchain: [ethereum, polygon, arbitrum, optimism, bsc]
@@ -86,6 +86,20 @@ contract SafeVault {
 
     receive() external payable {}
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Protocol accepting arbitrary tokens, NFTs, or oracles"
+  severity: H
+  reasoning: "Grants execution privileges to potentially hostile contracts"
+- context: "Third-party calls wrapped in reentrancy guard and strict allowlist"
+  severity: M
+  reasoning: "Exposure reduced but still externally influenced"
+- context: "Fully internal system or statically linked contracts"
+  severity: I
+  reasoning: "Vulnerability not applicable"
 ```
 
 ## 🛡️ Prevention

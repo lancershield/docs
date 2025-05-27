@@ -3,17 +3,17 @@
 ```YAML
 id: TBA
 title: Gasless Send
-severity: H
+baseSeverity: M
 category: ether-transfer
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
-impact: ETH transfers may silently fail or revert due to limited gas forwarding
+impact: Incomplete ETH transfers, logic bypass, stuck funds
 status: draft
-complexity: low
+complexity: medium
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-754
+versions: [">=0.6.0", "<=0.8.25"]
+cwe: CWE-755
 swc: SWC-113
 ```
 
@@ -66,6 +66,20 @@ function refund(address payable recipient) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Funds sent to unknown user contracts with fallback logic"
+  severity: M
+  reasoning: "May fail for legitimate users, blocking key protocol functions"
+- context: "All recipients are EOAs or known minimal contracts"
+  severity: L
+  reasoning: "Low risk; recipients unlikely to consume >2300 gas"
+- context: "ETH transfers done via pull model"
+  severity: I
+  reasoning: "Vulnerability does not apply"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -106,7 +120,7 @@ function refund(address payable recipient) external {
 ```markdown
 id: TBA
 title: Gasless Send
-severity: H
+severity: M
 score:
 impact: 4  
 exploitability: 4  

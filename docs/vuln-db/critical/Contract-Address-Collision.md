@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Contract Address Collision 
-severity: H
+baseSeverity: C
 category: deployment
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +63,20 @@ require(keccak256(logic.code) == expectedHash, "Untrusted implementation");
 Proxy(proxy).upgradeTo(address(logic));
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Upgradable proxy system with deterministic admin or logic addresses"
+  severity: C
+  reasoning: "An attacker can hijack proxy paths or governance entry points."
+- context: "User-specific vaults or wallets via predictable CREATE2"
+  severity: H
+  reasoning: "Attacker can impersonate contracts and steal funds."
+- context: "Testing or isolated networks with low deployment risk"
+  severity: L
+  reasoning: "Impact is minimal in controlled environments."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -89,7 +103,7 @@ Proxy(proxy).upgradeTo(address(logic));
 
 - **Name:** Storage Collision Vulnerability in Ethereum Smart Contracts 
 - **Date:** 2024 
-- **Loss:** Potential financial damage exceeding $12 million 
+- **Loss:** $12 million 
 - **Post-mortem:** [Link to post-mortem](https://www.ndss-symposium.org/ndss-paper/not-your-type-detecting-storage-collision-vulnerabilities-in-ethereum-smart-contracts/) 
 
 
@@ -107,7 +121,7 @@ Proxy(proxy).upgradeTo(address(logic));
 ```markdown
 id: TBA
 title: Contract Address Collision 
-severity: H
+severity: C
 score:
 impact: 5         
 exploitability: 4 

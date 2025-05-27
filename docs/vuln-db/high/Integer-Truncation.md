@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Integer Truncation
-severity: H
+baseSeverity: H
 category: arithmetic
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -60,6 +60,20 @@ function distributeReward(uint256 amount) external {
     require(amount <= type(uint8).max, "Reward overflow");
     rewardToken.transfer(msg.sender, amount); // ✅ or avoid casting entirely
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Used in token transfers, permission levels, or reward logic"
+  severity: H
+  reasoning: "Allows privilege escalation or fund misallocation"
+- context: "Only used in cosmetic frontend logic"
+  severity: L
+  reasoning: "No actual impact on on-chain behavior"
+- context: "Downcasting guarded with explicit bounds check"
+  severity: I
+  reasoning: "Fully mitigated"
 ```
 
 ## 🛡️ Prevention

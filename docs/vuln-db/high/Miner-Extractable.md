@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Miner Extractable Value
-severity: H
+baseSeverity: H
 category: mev
 language: solidity
 blockchain: [ethereum]
@@ -88,6 +88,20 @@ contract AntiMEVDEX {
         // Token mint or transfer logic
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "AMM or DEX without slippage or deadline protection"
+  severity: H
+  reasoning: "Widespread MEV extraction leads to unfair execution and user loss"
+- context: "Protocol using commit-reveal or encrypted tx batching"
+  severity: L
+  reasoning: "MEV significantly reduced or mitigated"
+- context: "Private mempool integration (Flashbots, etc.)"
+  severity: M
+  reasoning: "Effect depends on relay reliability and user participation"
 ```
 
 ## 🛡️ Prevention

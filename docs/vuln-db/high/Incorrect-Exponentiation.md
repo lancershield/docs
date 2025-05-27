@@ -1,8 +1,8 @@
-# Incorrect Exponentiation Causes Logic Errors and Fund Miscalculation
+# Incorrect Exponentiation 
 
 ```YAML
 id: TBA
-title: Incorrect Exponentiation Causes Logic Errors and Fund Miscalculation
+title: Incorrect Exponentiation 
 severity: H
 category: arithmetic
 language: solidity
@@ -77,6 +77,20 @@ contract CorrectPower {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Used in token emission, interest rates, or staking logic"
+  severity: H
+  reasoning: "Leads to protocol-wide reward inflation or breakage"
+- context: "Used for non-critical cosmetic logic (e.g., display only)"
+  severity: L
+  reasoning: "Minimal impact if not tied to funds or rewards"
+- context: "Library-based exponentiation with proper precision"
+  severity: I
+  reasoning: "No vulnerability present"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -117,7 +131,7 @@ contract CorrectPower {
 
 ```markdown
 id: TBA
-title: Incorrect Exponentiation Causes Logic Errors and Fund Miscalculation
+title: Incorrect Exponentiation 
 severity: H
 score:
 impact: 4         

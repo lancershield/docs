@@ -2,21 +2,20 @@
 
 ```YAML
 id: TBA
-title: Missing Nonce Checks in Meta Transactions 
-severity: H
-category: signature-verification
+title: Missing Nonce Checks in Meta Transactions
+baseSeverity: C
+category: authentication
 language: solidity
-blockchain: [ethereum]
-impact: Reusable signatures allow duplicate execution of user-authorized actions
+blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
+impact: Replay attacks, duplicate execution, and fund theft
 status: draft
 complexity: medium
 attack_vector: external
-mitigation_difficulty: medium
-versions: [">=0.6.0", "<latest"]
+mitigation_difficulty: easy
+versions: [">=0.6.0", "<=0.8.25"]
 cwe: CWE-294
 swc: SWC-122
 ```
-
 ## 📝 Description
 
 - Missing nonce checks in meta transactions allows signatures to be replayed multiple times by anyone who sees them. 
@@ -88,6 +87,20 @@ contract MetaTxGood {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Gasless wallet or permit-based approval system"
+  severity: C
+  reasoning: "Enables infinite replay of a valid signature; total fund loss possible"
+- context: "Non-financial or UI-only meta-transaction"
+  severity: L
+  reasoning: "Impact is limited to UI inconsistency"
+- context: "System uses nonces and deadlines per EIP-712"
+  severity: I
+  reasoning: "Vulnerability mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -128,7 +141,7 @@ contract MetaTxGood {
 ```markdown
 id: TBA
 title: Missing Nonce Checks in Meta Transactions 
-severity: H
+severity: C
 score:
 impact: 5         
 exploitability: 4 

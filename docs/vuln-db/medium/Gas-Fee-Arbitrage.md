@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Gas Fee Arbitrage Enables Profit Extraction Through Block Congestion and Refund Exploits
-severity: H
+title: Gas Fee Arbitrage 
+baseSeverity: M
 category: economic
 language: solidity
 blockchain: [ethereum]
@@ -90,6 +90,20 @@ contract SafeGasReward {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Protocol uses gas reimbursement with no refund or abuse protection"
+  severity: M
+  reasoning: "Abuse results in token drain or unsustainable incentive model"
+- context: "Gas reimbursements capped, validated, or audited"
+  severity: L
+  reasoning: "Exposure significantly reduced by proper accounting"
+- context: "No gas-based rewards or all txs use `msg.sender` payment"
+  severity: I
+  reasoning: "No vector for abuse exists"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,9 +139,10 @@ contract SafeGasReward {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Gas Fee Arbitrage Enables Profit Extraction Through Block Congestion and Refund Exploits
+title: Gas Fee Arbitrage 
 severity: H
 score:
 impact: 4  

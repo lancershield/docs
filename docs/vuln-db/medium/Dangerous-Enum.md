@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Dangerous Enum Conversion Causes Undefined Behavior and Privilege Escalation
-severity: H
+title: Dangerous Enum Conversion 
+baseSeverity: M
 category: type-conversion
 language: solidity
 blockchain: [ethereum]
@@ -85,6 +85,20 @@ contract SafeEnumExample {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Enum governs access control or phase-critical logic"
+  severity: M
+  reasoning: "May bypass security checks or trigger wrong state logic"
+- context: "Enum values stored or passed externally"
+  severity: H
+  reasoning: "Attacker may inject invalid enum states"
+- context: "Enum fully internal and validated on every assignment"
+  severity: I
+  reasoning: "No exposure if casting is controlled and bounded"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -120,10 +134,11 @@ contract SafeEnumExample {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Dangerous Enum Conversion Causes Undefined Behavior and Privilege Escalation
-severity: H
+title: Dangerous Enum Conversion
+severity: M
 score:
 impact: 4         
 exploitability: 3 

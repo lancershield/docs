@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Front-Running NFT Minting 
-severity: H
+baseSeverity: H
 category: front-running
 language: solidity
 blockchain: [ethereum]
@@ -78,6 +78,20 @@ function reveal(uint256 salt, uint256 amount) external {
     require(keccak256(abi.encodePacked(salt, amount)) == commitments[msg.sender], "Invalid reveal");
     // proceed to mint
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Public mint with known tokenId sequencing and valuable traits"
+  severity: H
+  reasoning: "High-value tokens can be sniped by attackers"
+- context: "Minting is randomized or uses commit-reveal"
+  severity: M
+  reasoning: "Attack surface reduced significantly"
+- context: "Whitelist or gating prevents front-running"
+  severity: L
+  reasoning: "Minimal or no exposure to public mempool race"
 ```
 
 ## 🛡️ Prevention

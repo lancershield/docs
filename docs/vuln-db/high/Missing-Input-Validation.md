@@ -70,6 +70,21 @@ contract Registry {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Token or fund management logic without recipient/amount validation"
+  severity: H
+  reasoning: "Can lead to loss of funds or broken state"
+- context: "Read-only or testnet context"
+  severity: L
+  reasoning: "Impact is limited or negligible"
+- context: "Inputs fully validated with domain checks"
+  severity: I
+  reasoning: "Vulnerability mitigated"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -93,11 +108,11 @@ contract Registry {
 
 - **Name:** Poly Network Cross-Chain Exploit 
 - **Date:** 2021-08 
-- **Loss:** ~$600 million stolen due to missing input validation in cross-chain message handling 
+- **Loss:** ~$600  
 - **Post-mortem:** [Link to post-mortem](https://coinmetro.com/learning-lab/smart-contract-vulnerabilities-case-studies) 
 - **Name:** Wormhole Bridge Signature Forgery 
 - **Date:** 2022-02 
-- **Loss:** ~$324 million minted via forged guardian signatures due to lack of input validation 
+- **Loss:** ~$324 
 - **Post-mortem:** [Link to post-mortem](https://www.hackerone.com/blog/smart-contracts-common-vulnerabilities-and-real-world-cases) 
 
 ## 📚 Further Reading

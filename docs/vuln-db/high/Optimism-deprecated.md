@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Deprecated Optimism Interfaces Lead to Insecure or Broken Cross-Domain Messaging
+title: Deprecated Optimism Interfaces Lead to Insecure 
 severity: H
 category: l2-interop
 language: solidity
@@ -81,6 +81,19 @@ contract UpdatedBridge {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Bridge or access control relying on deprecated Optimism context"
+  severity: H
+  reasoning: "Attackers can spoof origin and bypass security logic"
+- context: "Deprecated interface used for logging or analytics"
+  severity: L
+  reasoning: "No security-critical behavior affected"
+- context: "Proper LibOptimism / Bedrock interface with fallback checks"
+  severity: I
+  reasoning: "Fully mitigated"
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,7 +138,7 @@ contract UpdatedBridge {
 
 ```markdown
 id: TBA
-title: Deprecated Optimism Interfaces Lead to Insecure or Broken Cross-Domain Messaging
+title: Deprecated Optimism Interfaces Lead to Insecure 
 severity: H
 score:
 impact: 4         

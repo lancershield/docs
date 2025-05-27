@@ -3,18 +3,18 @@
 ```YAML
 id: TBA
 title: Inadherence to Standards
-severity: H
-category: standards-violation
+baseSeverity: M
+category: interoperability
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
-impact: Breaks integration with tooling and protocols; results in lost funds or incorrect behavior
+impact: Ecosystem incompatibility, broken integrations, loss of utility
 status: draft
-complexity: medium
-attack_vector: internal
-mitigation_difficulty: medium
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-693
-swc: SWC-135
+complexity: low
+attack_vector: external
+mitigation_difficulty: easy
+versions: [">=0.6.0", "<=0.8.25"]
+cwe: CWE-749
+swc: SWC-112
 ```
 
 ## 📝 Description
@@ -62,6 +62,20 @@ function transfer(address to, uint256 amount) public returns (bool) {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Token or protocol fails standard return values, affecting integrations"
+  severity: M
+  reasoning: "Leads to silent failures, funds stuck, or broken integrations"
+- context: "Used internally only, not exposed to ecosystem"
+  severity: L
+  reasoning: "Minimal risk if scope is isolated"
+- context: "Verified standards-compliant code used"
+  severity: I
+  reasoning: "No standard mismatch"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -82,19 +96,11 @@ function transfer(address to, uint256 amount) public returns (bool) {
 - Tools: Slither (erc20-interface, incorrect-erc20), MythX, OpenZeppelin test harnesses
 
 ## 🕰️ Historical Exploits
-
-- **Name:** Lendf.Me ERC20 Return Value Breakage 
-- **Date:** 2020-04 
-- **Loss:** ~$25,000,000 
-- **Post-mortem:** [Link to post-mortem](https://peckshield.medium.com/dforce-attack-root-cause-analysis-50b3fefef6a3) 
+ 
 - **Name:** Swerve Finance Token Bug 
 - **Date:** 2020-09 
 - **Loss:** ~$1,500,000 
-- **Post-mortem:** [Link to post-mortem](https://discord.gg/swerve) 
-- **Name:** HotPot Finance Token Malfunction 
-- **Date:** 2021-03 
-- **Loss:** ~$600,000  
-- **Post-mortem:** [Link to post-mortem](https://github.com/) 
+- **Post-mortem:** [Link to post-mortem](https://discord.gg/swerve)  
   
 📚 Further Reading
 

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Chainlink Feed Registry 
-severity: H
+baseSeverity: H
 category: oracle
 language: solidity
 blockchain: [ethereum]
@@ -103,6 +103,20 @@ contract SafeOracleConsumer {
         return uint256(price) * 1e18 / (10 ** decimals); // Normalize to 18 decimals
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Feed used for lending, liquidation, or synthetic minting"
+  severity: H
+  reasoning: "Incorrect price can cause insolvency or manipulation"
+- context: "Feed used for UI, display, or non-critical analytics"
+  severity: L
+  reasoning: "May degrade experience but doesn't impact funds"
+- context: "Feed registry queried with freshness and validity checks"
+  severity: I
+  reasoning: "Proper validation makes the pattern safe"
 ```
 
 ## 🛡️ Prevention

@@ -1,9 +1,9 @@
-# Counter Overflow Allowing Unlimited Iteration
+# Counter Overflow 
 
 ```YAML
 id: TBA
-title: Counter Overflow Allowing Unlimited Iteration or Bypass of Limit Checks
-severity: H
+title: Counter Overflow 
+baseSeverity: H
 category: arithmetic
 language: solidity
 blockchain: [ethereum]
@@ -67,6 +67,20 @@ contract SafeCounter {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Unique ID generation, token minting, or voting"
+  severity: H
+  reasoning: "Can cause duplicated identities, logic corruption, or stolen assets"
+- context: "Gas metering or unused counter with no impact on access or storage"
+  severity: L
+  reasoning: "Wraparound has no critical effect on protocol logic"
+- context: "Contract uses Solidity ≥0.8.0 with overflow protection"
+  severity: I
+  reasoning: "No issue present due to native safety checks"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -107,7 +121,7 @@ contract SafeCounter {
 
 ```markdown
 id: TBA
-title: Counter Overflow Allowing Unlimited Iteration or Bypass of Limit Checks
+title: Counter Overflow 
 severity: H
 score:
 impact: 5         

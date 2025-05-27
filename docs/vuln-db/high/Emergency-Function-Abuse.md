@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Emergency Function Abuse Enabling Unauthorized Asset Seizure 
-severity: H
+title: Emergency Function Abuse 
+baseSeverity: H
 category: privileged-function
 language: solidity
 blockchain: [ethereum]
@@ -71,6 +71,20 @@ contract SafeEmergency is Ownable {
         IERC20(token).transfer(msg.sender, amount);
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Emergency function allows global withdrawal or fund movement"
+  severity: H
+  reasoning: "Leads to potential rugpull, loss of protocol funds"
+- context: "Function scoped per-user but lacks rate limiting or review"
+  severity: M
+  reasoning: "Moderate risk of abuse in panic scenarios"
+- context: "Function guarded by strong access roles and scoped logic"
+  severity: L
+  reasoning: "Pattern is secure if combined with RBAC and limits"
 ```
 
 ## 🛡️ Prevention

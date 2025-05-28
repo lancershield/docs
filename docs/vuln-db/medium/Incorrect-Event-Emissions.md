@@ -3,17 +3,17 @@
 ```YAML
 id: TBA
 title: Incorrect Event Emissions
-severity: L
-category: event-logging
+severity: M
+category: observability
 language: solidity
-blockchain: [ethereum, polygon, optimism, arbitrum, bsc]
-impact: Off-chain systems desync, logs misrepresent state, governance or accounting errors
+blockchain: [ethereum]
+impact: Inconsistent off-chain state / misreported user actions
 status: draft
-complexity: medium
-attack_vector: external
+complexity: low
+attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-778
+versions: [">=0.6.0", "<=0.8.25"]
+cwe: CWE-627
 swc: SWC-136
 ```
 
@@ -80,6 +80,20 @@ contract SafeToken {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Assumes frontend and analytics rely on events, leading to user-facing bugs."
+- context: "DeFi Protocol with subgraph dependency"
+  severity: H
+  reasoning: "Inaccurate event emissions can break critical tracking like staking, balances, or votes."
+- context: "Isolated backend contract with no external log usage"
+  severity: L
+  reasoning: "Issue may go unnoticed if logs are unused or internal-only."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -101,11 +115,11 @@ contract SafeToken {
 
 - **Name:** Lendf.Me Event-Driven Liquidation Drift 
 - **Date:** 2020-04 
-- **Loss:** ~$25M indirectly impacted by incorrect `Liquidate()` logs during an exploit 
+- **Loss:** ~$25M 
 - **Post-mortem:** [Link to post-mortem](https://dforce.network/blog/post-mortem-analysis-of-lendfme-incident) 
 - **Name:** Custom DEX Aggregator Emitted Wrong Token Address
 - **Date:** 2022-07 
-- **Loss:** ~$90,000 in misrouted swap accounting due to invalid logs 
+- **Loss:** ~$90,000 
 - **Post-mortem:** [Link to post-mortem](https://immunefi.com)
   
 ## 📚 Further Reading

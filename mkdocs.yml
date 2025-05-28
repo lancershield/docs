@@ -72,15 +72,12 @@ nav:
       - High:
           - Overview: vuln-db/high/index.md
           - Denial of Service: vuln-db/high/denial-of-service.md
-          - Reentrancy: vuln-db/high/Reentrancy.md
           - Improper-Upgrade: vuln-db/high/Improper-Upgradeability.md
           - Insecure-Randomness: vuln-db/high/Insecure-Randomness.md
           - Gas-Limit: vuln-db/high/Gas-Limit.md
           - Ownership-Vulnerability: vuln-db/high/Ownership.md
           - Cross-Contract: vuln-db/high/cross-contract.md
           - Uninitialized-Storage: vuln-db/high/Uninitialized-Storage.md
-          - Selfdestruct: vuln-db/high/Selfdestruct.md
-          - Signature Replay: vuln-db/high/Signature-Replay.md
           - Blockhash Dependence: vuln-db/high/Blockhash-Dependence.md
           - Proxy Pattern: vuln-db/high/Proxy-Pattern.md
           - merkle-proof: vuln-db/high/Merkle-proof.md
@@ -95,8 +92,6 @@ nav:
           - Stale Price: vuln-db/high/Stale-Price.md
           - Unsafe tx.origin: vuln-db/high/Unsafe-tx.origin.md
           - Unchecked Slippage: vuln-db/high/Unchecked-Slippage.md
-          - Token Approval: vuln-db/high/Token-Approval.md
-          - Token Migration: vuln-db/high/Token-Migration.md
           - Ignoring ChainID: vuln-db/high/Ignoring-ChainID.md
           - Transfer Hook Abuse: vuln-db/high/Transfer-Hook-Abuse.md
           - Flawed Migration: vuln-db/high/Flawed-Migration.md
@@ -104,35 +99,25 @@ nav:
           - NFT Metadata Tampering: vuln-db/high/NFT-Metadata-Tampering.md
           - Vesting Shortcut Exploits: vuln-db/high/Vesting.md
           - Flawed Slashing: vuln-db/high/Flawed-Slashing.md
-          - Stuck Swap Pools: vuln-db/high/Stuck-Swap-Pools.md
           - Gas Bombs: vuln-db/high/Gas-Bombs.md
           - Whitelist Bypass: vuln-db/high/Whitelist-Bypass.md
-          - NFT Royalty Bypass: vuln-db/high/Royalty-Bypass.md
           - Unsustainable Pump and Dump: vuln-db/high/Unsustainable.md
           - Vote Escrow Exploits: vuln-db/high/vote.md
           - Token URI Hijacking: vuln-db/high/Token-URI.md
-          - Storage ABIEncoderV2: vuln-db/high/Storage.md
           - ABI encodePacked: vuln-db/high/ABI.md
-          - Protected Variables: vuln-db/high/Protected-Variables.md
-          - Right-to-Left: vuln-db/high/Right-to-Left.md
           - Uninitialized State Variables: vuln-db/high/Uninitialized-State-Variables.md
           - Incorrect Exponentiation: vuln-db/high/Incorrect-Exponentiation.md
-          - Unchecked transfer: vuln-db/high/Unchecked-transfer.md
           - Weak PRNG: vuln-db/high/Weak-PRNG.md
           - Domain Separator Collision: vuln-db/high/Domain-Separator.md
-          - Deprecated Pyth Functions: vuln-db/high/Pyth-Functions.md
           - Chronicle Unchecked Price: vuln-db/high/Chronicle-Unchecked.md  
           - Gelato Unprotected: vuln-db/high/Gelato-Unprotected.md 
           - Out-of-Order: vuln-db/high/Out-of-Order.md
           - Chainlink Feed Registry: vuln-db/high/Chainlink-Feed-Registry.md
           - Deprecated Optimism: vuln-db/high/Optimism-deprecated.md
-          - Void Constructor: vuln-db/high/Void-Constructor.md
           - Return Bomb: vuln-db/high/Return-Bomb.md
           - Unsafe Assembly: vuln-db/high/Unsafe-Assembly.md 
-          - Unsafe Use of assert: vuln-db/high/Unsafe-Use-of-assert.md
           - Miner Extractable Value: vuln-db/high/Miner-Extractable.md
           - Sandwich Attack: vuln-db/high/Sandwich-Attack.md
-          - Unexpected Contract: vuln-db/high/Unexpected-Contract.md
           - Signature Malleability: vuln-db/high/Signature-Malleability.md
           - ERC4626 Calculation Bugs: vuln-db/high/ERC4626.md
           - ERC721 Unsafe Minting: vuln-db/high/ERC721-unsafe-minting.md
@@ -144,7 +129,6 @@ nav:
           - Inflation Amplification: vuln-db/high/Inflation-Amplification.md
           - Permit Replay Across: vuln-db/high/Permit-Replay-Across.md
           - Malicious Third-Party Vulnerabilities: vuln-db/high/Malicious-Third-Party.md
-          - Unprotected SelfDestruct: vuln-db/high/Unprotected-SelfDestruct.md
           - Weak Encryption: vuln-db/high/Weak-Encryption.md
           - Read-Only Reentrancy: vuln-db/high/Read-Only-Reentrancy.md
           - Transaction Ordering: vuln-db/high/Transaction-Ordering.md
@@ -154,10 +138,10 @@ nav:
           - Token Whitelisting: vuln-db/high/Token-Whitelisting.md
           - Insufficient Fee Logic: vuln-db/high/Insufficient-Fee-Logic.md
           - Admin Key Misuse: vuln-db/high/Admin-Key-Misuse.md
-          - Overlapping Function: vuln-db/high/Overlapping-Function.md
           - Privileged Role Migration Loophole: vuln-db/high/Privileged.md
           - Unverified Upgrade: vuln-db/high/Unverified-Upgrade.md
           - Block timestamp: vuln-db/high/Block-timestamp.md
+          - Selfdestruct: vuln-db/high/Selfdestruct.md
       - Medium:
           - Overview: vuln-db/medium/index.md
           - logical-errors: vuln-db/medium/logic-errors.md
@@ -222,22 +206,31 @@ nav:
           - Inconsistent ETH Handling: vuln-db/medium/Inconsistent-ETH-Handling.md
           - Inadherence to Standards: vuln-db/medium/Inadherence-to-Standards.md
           - Non-Reverting Functions: vuln-db/medium/Non-Reverting.md
+          - Overlapping Function: vuln-db/medium/Overlapping-Function.md
+          - Protected Variables: vuln-db/medium/Protected-Variables.md
+          - Deprecated Pyth: vuln-db/medium/Deprecated-Pyth.md
+          - NFT Royalty: vuln-db/medium/NFT-Royalty.md
+          - Stuck Swap Pools: vuln-db/medium/Stuck-Swap-Pools.md
+          - Token Approval: vuln-db/medium/Token-Approval.md
+          - Token Migration: vuln-db/medium/Token-Migration.md
+          - Unchecked transfer: vuln-db/medium/Unchecked-transfer.md
+          - Unsafe Use of assert: vuln-db/medium/Unsafe-Use-of-assert.md
+          - Incorrect Event Emissions: vuln-db/medium/Incorrect-Event-Emissions.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
-          - Redundant Code Logic: vuln-db/low/Redundant-Code-Logic.md
-          - Missing Events: vuln-db/low/Missing-Events.md
           - Hardcoded: vuln-db/low/Hardcoded.md
-          - Incomplete Event Logging: vuln-db/low/Incomplete-Event.md
           - Tautological: vuln-db/low/Tautological.md
           - Builtin Symbol Shadowing: vuln-db/low/Builtin-Symbol-Shadowing.md
           - Ambiguous Constant: vuln-db/low/Ambiguous-Constant.md
-          - Missing NatSpec: vuln-db/low/Missing-NatSpec.md
           - setMintFeeRecipient: vuln-db/low/setMintFeeRecipient.md
-          - Incorrect Event Emissions: vuln-db/low/Incorrect-Event-Emissions.md
-          - Inefficient Gas Usage: vuln-db/low/Inefficient-Gas-Usage.md
+          - Incomplete Event: vuln-db/low/Incomplete-Event.md
       - Gas: 
           - Overview: vuln-db/Gas/index.md
+      - Informational:
+          - Overview: vuln-db/Informational/index.md 
+          - Missing NatSpec: vuln-db/Informational/Missing-NatSpec.md
+          - Redundant Code Logic: vuln-db/Informational/Redundant-Code-Logic.md
   - Contributing Guide: contributing/index.md
 
 plugins:

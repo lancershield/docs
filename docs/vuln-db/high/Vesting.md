@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Vesting Shortcut Exploits 
-severity: H
+baseSeverity: H
 category: tokenomics
 language: solidity
 blockchain: [ethereum]
@@ -71,6 +71,21 @@ function vestedAmount(address user) public view returns (uint256) {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: H
+  reasoning: "Unrestricted early claims result in vesting collapse and potential tokenomics damage."
+- context: "Manually Managed Private Vesting"
+  severity: M
+  reasoning: "Smaller scope, more monitoring, and trusted parties reduce risk."
+- context: "DAO-controlled Multisig Vesting Contracts"
+  severity: L
+  reasoning: "Upgrades and revocations are possible under collective oversight."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,7 +113,6 @@ function vestedAmount(address user) public view returns (uint256) {
 - **Loss:** Undisclosed 
 - **Post-mortem:** [Link to post-mortem](https://medium.com/hedgey/hedgey-exploit-post-mortem-784e9860fd8d)
   
-
 ## 📚 Further Reading
 
 - [SWC-124: Missing Time/Condition Check](https://swcregistry.io/docs/SWC-124) 
@@ -122,7 +136,6 @@ finalScore: 4.1
 ```
 
 ---
-
 
 ## 📄 Justifications & Analysis
 

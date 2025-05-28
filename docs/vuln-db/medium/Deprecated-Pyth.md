@@ -1,22 +1,21 @@
-# Deprecated Pyth Functions 
+# Deprecated Pyth Functions
 
 ```YAML
 id: TBA
-title: Deprecated Pyth Functions  
-severity: H
-category: oracle
+title: Deprecated Pyth Functions
+baseSeverity: M
+category: oracle-integrity
 language: solidity
-blockchain: [ethereum]
-impact: Incorrect pricing, failed updates, or exploitable economic assumptions
+blockchain: [ethereum, solana, other]
+impact: Inaccurate or untrusted oracle data
 status: draft
 complexity: medium
 attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.6.0", "<=0.8.25"]
-cwe: CWE-477
-swc: SWC-136
+versions: [">=0.7.0", "<0.9.0"]
+cwe: CWE-755
+swc: SWC-124
 ```
-
 ## 📝 Description
 
 - The Pyth Network provides real-time price feeds to smart contracts via on-chain pull or push mechanisms.
@@ -74,6 +73,20 @@ function updatePrice(bytes[] calldata priceUpdateData) external payable {
     require(priceFeeds[0].price.conf > 0, "Invalid confidence");
     // Use price safely
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Failure to update interfaces can lead to mispriced operations in average use cases."
+- context: "Public lending protocol relying on Pyth"
+  severity: H
+  reasoning: "Manipulated pricing can trigger bad liquidations or mispriced debt."
+- context: "Private analytics or off-chain aggregator"
+  severity: L
+  reasoning: "Data integrity risk is low due to limited execution consequences."
 ```
 
 ## 🛡️ Prevention

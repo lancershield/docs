@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Uninitialized Storage Pointers 
-severity: H
+baseSeverity: H
 category: storage-pointer
 language: solidity
 blockchain: [ethereum]
@@ -69,6 +69,19 @@ function initUser() public {
     users[msg.sender] = user; // save to actual storage mapping
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Allows overwriting of critical storage slots leading to privilege or logic corruption."
+- context: "Contracts using proxy patterns"
+  severity: C
+  reasoning: "Storage slot overwrites can break upgradeable logic or admin controls."
+- context: "Contracts with tight manual storage layout"
+  severity: M
+  reasoning: "Less likely if design ensures sensitive slots are isolated."
+```
 
 ## 🛡️ Prevention
 
@@ -99,7 +112,6 @@ function initUser() public {
  - **Loss:** Potential overwriting of critical contract storage 
  - **Post-mortem:** [Link to post-mortem](https://immunebytes.com/blog/a-complete-breakdown-of-uninitialized-storage-parameters/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-109: Uninitialized Storage Pointer](https://swcregistry.io/docs/SWC-109) 
@@ -107,6 +119,7 @@ function initUser() public {
 - [Sigma Prime – Solidity Security Blog](https://blog.sigmaprime.io/solidity-security.html) 
   
 ---
+
 ## ✅ Vulnerability Report
 
 ```markdown

@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Manipulative or Unsustainable Pump and Dump Tokenomics
-severity: H
+title: Unsustainable Pump and Dump Tokenomics
+baseSeverity: H
 category: economic-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -26,6 +26,7 @@ swc: SWC-136
 - Such structures are often paired with hidden backdoors or poor decentralization to enable quick developer exits.
 
 ## 🚨 Vulnerable Code
+
 ```solidity
 
 uint256 public buyTax = 3;
@@ -61,6 +62,7 @@ Step-by-step exploit process:
 - Retail users unaware of centralized risk or lack of time lock.
 
 ## ✅ Fixed Code
+
 ```solidity
 
 bool public taxesLocked = false;
@@ -75,6 +77,19 @@ function setTaxes(uint256 _buy, uint256 _sell) external onlyOwner {
 function lockTaxes() external onlyOwner {
     taxesLocked = true;
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "The protocol’s economic model causes investor loss and token collapse over time."
+- context: "DeFi Yield Farm with High Emissions and No Buyback"
+  severity: C
+  reasoning: "Massive losses across retail users and liquidity vacuum post-hype."
+- context: "Governance DAO with Controlled Emissions"
+  severity: M
+  reasoning: "Governance can adjust incentives and slow emissions if detected early."
 ```
 
 ## 🛡️ Prevention
@@ -120,7 +135,7 @@ function lockTaxes() external onlyOwner {
 
 ```markdown
 id: TBA
-title: Manipulative or Unsustainable Pump and Dump Tokenomics
+title: Unsustainable Pump and Dump Tokenomics
 severity: H
 score:
 impact: 4         

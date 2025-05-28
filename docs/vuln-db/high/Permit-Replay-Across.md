@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Permit Replay Across Chains 
-severity: H
+baseSeverity: H
 category: signature-authentication
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc, avalanche]
@@ -90,6 +90,20 @@ function DOMAIN_SEPARATOR() public view returns (bytes32) {
         address(this)
     ));
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Tokens can be drained or misused across multiple chains if replayable permits are accepted."
+- context: "Tokens deployed on single chain only"
+  severity: M
+  reasoning: "Risk is limited to a single environment, reducing likelihood of exploit."
+- context: "Cross-chain bridges and multi-chain deployments"
+  severity: C
+  reasoning: "Highly critical in ecosystems where same contracts exist across chains. Replay results in 
 ```
 
 ## 🛡️ Prevention

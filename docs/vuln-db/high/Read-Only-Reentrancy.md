@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Read-Only Reentrancy
-severity: H
+baseSeverity: H
 category: reentrancy
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -68,6 +68,19 @@ function claimReward() external {
     uint256 reward = balance * 100;
     rewardToken.transfer(msg.sender, reward);
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "If external contract allows reentrancy via view calls, this could manipulate system logic significantly."
+- context: "DeFi Governance or DAO Voting System"
+  severity: C
+  reasoning: "Could be used to pass malicious proposals or rig governance outcomes."
+- context: "Read-only oracle in a private or whitelisted environment"
+  severity: M
+  reasoning: "Lower impact if the caller set is trusted and access is controlled."
 ```
 
 ## 🛡️ Prevention

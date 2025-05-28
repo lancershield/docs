@@ -41,7 +41,6 @@ contract IncompleteLogging {
     }
 }
 ```
-
 ## 🧪 Exploit Scenario
 
 Step-by-step impact:
@@ -68,6 +67,21 @@ contract CompleteLogging {
         emit TokensTransferred(msg.sender, to, amount);
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: L
+  reasoning: "Transparency and operational tooling are degraded, but core assets are not at risk."
+- context: "High-frequency DeFi protocol"
+  severity: M
+  reasoning: "Indexing and subgraph failures can cascade into severe UX or trading bugs."
+- context: "Private or internal-only contract"
+  severity: I
+  reasoning: "No dependency on logs for external observability."
 ```
 
 ## 🛡️ Prevention
@@ -130,4 +144,3 @@ finalScore: 2.1
 - **Reachability**: Found in many contracts that use events carelessly or minimally.
 - **Complexity**: Very low — results from human error or neglect.
 - **Detectability**: High — audit tools and event schema mismatches catch it easily.
-

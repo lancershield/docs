@@ -2,19 +2,19 @@
 
 ```YAML
 id: TBA
-title: Token Migration Inconsistency 
-severity: H
-category: migration
+title: Token Migration Inconsistency
+baseSeverity: M
+category: tokenomics
 language: solidity
 blockchain: [ethereum]
-impact: User funds may be lost or duplicated during upgrade/migration
+impact: Loss of user funds or inconsistent token balances
 status: draft
 complexity: medium
-attack_vector: internal
+attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.6.0", "<latest"]
-cwe: CWE-641
-swc: SWC-135
+versions: [">0.6.0", "<0.8.25"]
+cwe: CWE-284
+swc: SWC-136
 ```
 
 ## 📝 Description
@@ -76,6 +76,19 @@ contract TokenV2 is ERC20 {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Limited impact unless migration is broadly used without supply checks."
+- context: "Public token upgrade for major protocol"
+  severity: H
+  reasoning: "Incorrect migration can affect total supply and market perception."
+- context: "Manual migration for private or testnet tokens"
+  severity: L
+  reasoning: "User-controlled migration with oversight reduces risk exposure."
+```
 
 ## 🛡️ Prevention
 
@@ -117,7 +130,7 @@ contract TokenV2 is ERC20 {
 ```markdown
 id: TBA
 title: Token Migration Inconsistency 
-severity: H
+severity: M
 score:
 impact: 5         
 exploitability: 3 

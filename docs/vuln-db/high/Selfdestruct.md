@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Selfdestruct Vulnerabilities in Destructible Contracts
-severity: H
+title: Selfdestruct Vulnerabilities 
+baseSeverity: H
 category: selfdestruct
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +63,20 @@ contract SafeDestruct is Ownable {
         selfdestruct(payable(owner()));
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Allows permanent contract removal and ETH loss without recovery."
+- context: "Contract behind a proxy or upgradeable"
+  severity: M
+  reasoning: "Logic deletion can be patched if proxy survives and storage is intact."
+- context: "Internal-only function with proper access control"
+  severity: L
+  reasoning: "Controlled execution; less likely to be triggered maliciously."
 ```
 
 ## 🛡️ Prevention

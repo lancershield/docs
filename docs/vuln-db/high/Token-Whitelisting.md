@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Token Whitelisting Flaws
-severity: H
+baseSeverity: H
 category: validation
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -64,6 +64,20 @@ function deposit(address token, uint256 amount) external {
     uint256 after_ = IERC20(token).balanceOf(address(this));
     require(after_ - before == amount, "Token transfer mismatch");
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Improper token validation can break accounting and enable fake liquidity."
+- context: "DeFi yield farm or DEX"
+  severity: C
+  reasoning: "Attacker can drain liquidity or mint rewards with invalid tokens."
+- context: "Private app with strict onboarding"
+  severity: L
+  reasoning: "If access is tightly controlled, risk is significantly reduced."
 ```
 
 ## 🛡️ Prevention

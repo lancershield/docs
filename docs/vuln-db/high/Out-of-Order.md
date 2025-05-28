@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Out-of-Order Retryable Transactions 
-severity: H
+baseSeverity: H
 category: l2-behavior
 language: solidity
 blockchain: [arbitrum, optimism, ethereum]
@@ -76,6 +76,20 @@ contract SafeL2BridgeReceiver {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Arbitrum-based DeFi bridge"
+  severity: H
+  reasoning: "Out-of-order retryables could bypass fund gating and enable withdrawal abuse."
+- context: "General retryable system with revalidation"
+  severity: M
+  reasoning: "If contract explicitly rechecks state, risk is mitigated but logic can still be abused."
+- context: "App using strict L1 sequencing or timestamp guards"
+  severity: L
+  reasoning: "Explicit sequencing or time-based lockout makes the issue unlikely."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,10 +112,8 @@ contract SafeL2BridgeReceiver {
 
 - **Name:** Offchain Labs Out-of-Order Replay Warning 
 - **Date:** 2021 
-- **Loss:** None (acknowledged in L2 whitepaper) 
+- **Loss:** None 
 - **Post-mortem:** [Link to post-mortem](https://developer.arbitrum.io/arbos/l1-to-l2-messaging/#retryable-transactions) 
-
----
 
 ## 📚 Further Reading
 

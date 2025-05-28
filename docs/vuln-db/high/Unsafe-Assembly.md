@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unsafe Assembly Usage 
-severity: H
+baseSeverity: H
 category: low-level
 language: solidity
 blockchain: [ethereum]
@@ -76,6 +76,20 @@ contract SafeStorage {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Unsafe assembly can result in serious but developer-dependent vulnerabilities."
+- context: "Highly optimized protocol (gas-focused)"
+  severity: C
+  reasoning: "Widespread use of assembly increases risk of critical bugs or misuse."
+- context: "Simple contracts with minimal inline assembly"
+  severity: L
+  reasoning: "Minimal use of assembly reduces likelihood of major issues."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -97,7 +111,7 @@ contract SafeStorage {
 
 - **Name:** Parity Wallet `delegatecall` Bug 
 - **Date:** 2017 
-- **Loss:** ~$280M permanently locked 
+- **Loss:** ~$280M  
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert.html) 
   
 ## 📚 Further Reading
@@ -110,6 +124,7 @@ contract SafeStorage {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Unsafe Assembly Usage 

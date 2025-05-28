@@ -1,21 +1,21 @@
-# Overlapping Function 
+# Overlapping Function
+
 ```YAML
 id: TBA
-title: Overlapping Function  
-baseSeverity: H
-category: upgradeability
+title: Overlapping Function
+baseSeverity: M
+category: compiler-misinterpretation
 language: solidity
 blockchain: [ethereum]
-impact: Function hijacking, shadowed logic, or irreversible proxy corruption
+impact: Unintended function execution
 status: draft
-complexity: high
-attack_vector: internal
-mitigation_difficulty: hard
-versions: [">=0.7.0", "<=0.8.25"]
+complexity: medium
+attack_vector: external
+mitigation_difficulty: medium
+versions: [">=0.4.22", "<0.8.20"]
 cwe: CWE-706
 swc: SWC-135
 ```
-
 ## 📝 Description
 
 - The Diamond Standard (EIP-2535) enables modular smart contracts where functionality is distributed across multiple facets, with a central diamond proxy routing calls using function selectors. However, if multiple facets define the same function selector (intentionally or accidentally), and selector clashes are not validated during updates, it results in:
@@ -75,16 +75,15 @@ function diamondCut(
 ## 🧭 Contextual Severity
 
 ```yaml
-
-- context: "Transparent Proxy with selector collision"
+- context: "Default"
+  severity: M
+  reasoning: "Selector collision creates moderate risk when not combined with proxy patterns."
+- context: "Public DeFi Protocol with upgradeable proxies"
   severity: H
-  reasoning: "Users or contracts calling logic function may break proxy or trigger admin logic."
-- context: "UUPS Proxy with authorization guard"
+  reasoning: "Selector overlap can lead to critical execution of unintended functions via delegatecall."
+- context: "Internal system without proxy or call-based routing"
   severity: L
-  reasoning: "Logic isolated; collision risk reduced due to delegation structure."
-- context: "Non-proxy contract or externally deployed implementation"
-  severity: L
-  reasoning: "No impact unless used in proxy setup."
+  reasoning: "Collision is less likely to be exploitable in simple monolithic contracts."
 ```
 
 ## 🛡️ Prevention
@@ -124,7 +123,7 @@ function diamondCut(
 ```markdown
 id: TBA
 title: Overlapping Function 
-severity: H
+severity: M
 score:
 impact: 5    
 exploitability: 4 

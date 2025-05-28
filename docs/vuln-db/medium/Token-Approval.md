@@ -1,22 +1,21 @@
-# Token Approval Without Spending Limits 
+# Token Approval Without Spending Limits
 
 ```YAML
 id: TBA
-title: Token Approval Without Spending Limits 
-severity: H
-category: token-approval
+title: Token Approval Without Spending Limits
+baseSeverity: M
+category: approvals
 language: solidity
 blockchain: [ethereum]
-impact: Attacker can drain entire token balances if an approved spender is compromised
+impact: Unlimited asset drain by approved party
 status: draft
 complexity: low
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<latest"]
+versions: [">0.6.0", "<0.8.25"]
 cwe: CWE-275
 swc: SWC-114
 ```
-
 ## 📝 Description
 
 - Token approval without spending limits occurs when a user or contract approves another address (e.g., DEX, vault, spender) for the maximum `uint256` value (`2^256 - 1`), rather than a limited or session-specific amount. 
@@ -57,6 +56,20 @@ function safeApprove(IERC20 token, address spender, uint256 amount) external {
     require(amount > 0 && amount <= token.balanceOf(msg.sender), "Invalid amount");
     token.approve(spender, amount); // ✅ Approve only what’s needed
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Common approval pattern but depends on the safety of the approved contract."
+- context: "DeFi protocol with router approvals"
+  severity: H
+  reasoning: "Widespread use of infinite approval multiplies blast radius."
+- context: "Private wallet use with trusted spender"
+  severity: L
+  reasoning: "Risk minimal if spender is secure and trusted."
 ```
 
 ## 🛡️ Prevention
@@ -100,7 +113,7 @@ function safeApprove(IERC20 token, address spender, uint256 amount) external {
 ```markdown
 id: TBA
 title: Token Approval Without Spending Limits 
-severity: H
+severity: M
 score:
 impact: 5         
 exploitability: 3 

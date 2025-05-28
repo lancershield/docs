@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Reward Inflation Bugs from Miscalculated 
-severity: H
+title: Reward Inflation Bugs 
+baseSeverity: H
 category: tokenomics
 language: solidity
 blockchain: [ethereum]
@@ -82,6 +82,20 @@ function updatePool() public {
         lastRewardTime = currentTime;
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Inflated token supply harms protocol economics and trust."
+- context: "DeFi protocol with governance token rewards"
+  severity: C
+  reasoning: "Governance control and tokenomics may be irreparably harmed."
+- context: "Centralized reward distributor with capped pool"
+  severity: M
+  reasoning: "Limits and manual oversight may mitigate ongoing inflation."
 ```
 
 ## 🛡️ Prevention

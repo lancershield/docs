@@ -1,9 +1,9 @@
-# Weak PRNG Enables Predictable Outcomes in Randomness-Dependent Logic
+# Weak PRNG 
 
 ```YAML
 id: TBA
-title: Weak PRNG Enables Predictable Outcomes in Randomness-Dependent Logic
-severity: H
+title: Weak PRNG  
+baseSeverity: H
 category: randomness
 language: solidity
 blockchain: [ethereum]
@@ -68,6 +68,21 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
         // use VRF output
     }
  }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: H
+  reasoning: "Randomness predictability results in critical protocol abuse like lottery or gaming manipulation."
+- context: "NFT mint randomizer"
+  severity: M
+  reasoning: "Attackers can target rare trait outcomes, but overall protocol may survive."
+- context: "Governance random delegate selection"
+  severity: L
+  reasoning: "Minor manipulation without direct financial incentive."
 ```
 
 ## 🛡️ Prevention

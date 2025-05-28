@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: Whitelist Bypass via Faulty Authorization Logic
+title: Whitelist Bypass 
 severity: H
 category: access-control
 language: solidity
@@ -62,6 +62,19 @@ function participateInPresale() external {
     _processPurchase(msg.sender);
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Grants unauthorized users access to restricted functions, like token mints or governance votes."
+- context: "Whitelist-based NFT presale"
+  severity: H
+  reasoning: "Attackers can mint rare NFTs unfairly or drain allocation."
+- context: "Private governance settings"
+  severity: M
+  reasoning: "Impact depends on what functionality is behind the whitelist."
+```
 
 ## 🛡️ Prevention
 
@@ -89,7 +102,6 @@ function participateInPresale() external {
 - **Loss:** ~$24 million 
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/xtoken-rekt/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-105: Unprotected Critical Function – SWC Registry](https://swcregistry.io/docs/SWC-105/) 

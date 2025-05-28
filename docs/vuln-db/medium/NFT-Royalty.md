@@ -1,20 +1,20 @@
-# NFT Royalty Bypass
+# NFT Royalty Enforcement Bypass 
 
 ```YAML
 id: TBA
-title: NFT Royalty Bypass via External Transfers or Unchecked Marketplaces
-severity: H
-category: economic-manipulation
+title: NFT Royalty Enforcement Bypass 
+baseSeverity: M
+category: economic-attack
 language: solidity
 blockchain: [ethereum]
-impact: Creator royalty loss and economic manipulation
+impact: Circumvention of creator royalties
 status: draft
-complexity: medium
+complexity: low
 attack_vector: external
-mitigation_difficulty: hard
-versions: [">=0.5.0", "<0.8.21"]
-cwe: CWE-285
-swc: SWC-135
+mitigation_difficulty: medium
+versions: [">0.6.0", "<0.9.0"]
+cwe: CWE-284
+swc: SWC-114
 ```
 
 ## 📝 Description
@@ -24,6 +24,7 @@ swc: SWC-135
 - This issue is especially problematic in decentralized or unregulated secondary marketplaces that ignore EIP-2981 or don’t implement enforcement logic for royalties.
 
 ## 🚨 Vulnerable Code
+
 ```solidity
 // Royalty is not enforced in contract
 function transferNFT(address from, address to, uint256 tokenId) external {
@@ -59,6 +60,20 @@ function royaltyEnforcedTransfer(address from, address to, uint256 tokenId) exte
     _transfer(from, to, tokenId);
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Moderate financial impact for most NFT collections; depends on royalty rates and trading volume."
+- context: "High-profile NFT collection with royalty-dependent revenue"
+  severity: H
+  reasoning: "Severe impact on creator income and ecosystem incentives."
+- context: "On-chain royalty-enforced NFT contract"
+  severity: L
+  reasoning: "Mitigated by smart contract-enforced mechanisms."
+```
 
 ## 🛡️ Prevention
 
@@ -87,7 +102,6 @@ function royaltyEnforcedTransfer(address from, address to, uint256 tokenId) exte
 - **Loss:** Undisclosed losses due to royalty circumvention
 - **Post-mortem:** [Link to post-mortem](https://markaicode.com/opensea-pro-v3-royalty-enforcement-bypass-protection/)
 
-
 ## 📚 Further Reading
 
 - [EIP-2981: NFT Royalty Standard](https://eips.ethereum.org/EIPS/eip-2981) 
@@ -100,7 +114,7 @@ function royaltyEnforcedTransfer(address from, address to, uint256 tokenId) exte
 
 ```markdown
 id: TBA
-title: NFT Royalty Bypass via External Transfers or Unchecked Marketplaces
+title: NFT Royalty Bypass 
 severity: H
 score:
 impact: 4         

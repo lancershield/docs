@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Transaction Ordering Dependence 
-severity: H
+baseSeverity: H
 category: ordering
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -70,6 +70,19 @@ function claim() external {
     hasClaimed[msg.sender] = true;
     rewardToken.transfer(msg.sender, 100 * 1e18);
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Outcome is influenced by mempool visibility and ordering."
+- context: "Public DeFi protocol with shared state logic"
+  severity: C
+  reasoning: "Highly exploitable via MEV searchers or validator frontrunning."
+- context: "Private contracts or batch-queued execution"
+  severity: L
+  reasoning: "Limited exposure due to controlled execution context."
 ```
 
 ## 🛡️ Prevention

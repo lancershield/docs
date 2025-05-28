@@ -1,22 +1,21 @@
-# Stuck Swap Pools 
+# Stuck Swap Pools
 
-```YAML 
+```YAML
 id: TBA
-title: Stuck Swap Pools 
-severity: H
-category: liquidity-mechanism
+title: Stuck Swap Pools
+baseSeverity: M
+category: liquidity
 language: solidity
 blockchain: [ethereum]
-impact: Users cannot withdraw liquidity or complete swaps due to broken pool state
+impact: Permanent or prolonged trading disablement
 status: draft
-complexity: medium
+complexity: low
 attack_vector: external
-mitigation_difficulty: hard
-versions: [">=0.6.0", "<latest"]
-cwe: CWE-840
-swc: SWC-136
+mitigation_difficulty: medium
+versions: [">0.6.0", "<0.8.25"]
+cwe: CWE-664
+swc: SWC-131
 ```
-
 ## 📝 Description
 
 - Stuck swap pools occur when Automated Market Makers (AMMs) or liquidity contracts enter a state where further swaps, deposits, or withdrawals are impossible, typically due to:
@@ -71,6 +70,20 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Common risk in AMMs but often recoverable with admin/manual rebalance."
+- context: "High-volume public DEX"
+  severity: H
+  reasoning: "Traders may get stuck, harming UX and possibly enabling manipulation."
+- context: "Private swap pool with few users"
+  severity: L
+  reasoning: "Limited harm, but could still disrupt liquidity provision."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -114,7 +127,7 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 ```markdown
 id: TBA
 title: Stuck Swap Pools 
-severity: H
+severity: M
 score:
 impact: 5         
 exploitability: 3 

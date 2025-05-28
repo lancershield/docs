@@ -96,6 +96,19 @@ contract ResilientGovernor {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Proposal execution failure causes disruption to governance."
+- context: "DeFi protocol relying on proposals for fund streaming"
+  severity: C
+  reasoning: "Critical treasury operations can become permanently stuck."
+- context: "Permissioned governance or execution with admin fallback"
+  severity: L
+  reasoning: "Admins or multisig can recover from failed proposals."
+```
 
 ## 🛡️ Prevention
 
@@ -120,7 +133,7 @@ contract ResilientGovernor {
 
 - **Name:** Aragon Multicall Overflow Bug 
 - **Date:** 2023-03 
-- **Loss:** N/A (bug caught during internal simulation)
+- **Loss:** N/A
 - **Post-mortem:** [Link to post-mortem](https://blog.aragon.org)
   
 ## 📚 Further Reading
@@ -154,5 +167,3 @@ finalScore: 4.0
 - **Reachability**: Most governance frameworks allow batched execution
 - **Complexity**: Requires understanding gas limits and proposal crafting
 - **Detectability**: Readily detected by audit or simulation tooling
-
-

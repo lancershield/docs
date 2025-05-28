@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Stale Price Usage Leading to Exploitable Financial Operations
-severity: H
+title: Stale Price Usage 
+baseSeverity: H
 category: oracle-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -75,6 +75,20 @@ function buy() external payable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Without freshness checks, oracles can drift and enable economic exploits."
+- context: "High-volume lending protocol with volatile assets"
+  severity: C
+  reasoning: "Stale prices can be leveraged to drain reserves or trigger mass liquidations."
+- context: "Private vault with manual price update controls"
+  severity: M
+  reasoning: "Limited reach; exposure depends on update cadence and access control."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -101,7 +115,6 @@ function buy() external payable {
 - **Date:** April 2025 
 - **Loss:** Approximately $1.5 million 
 - **Post-mortem:** [Link to post-morte](https://getfailsafe.com/post-mortem-term-finance/) 
-
 
 ## 📚 Further Reading
 

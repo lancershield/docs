@@ -1,9 +1,9 @@
-# Uninitialized State Variables Lead to Undefined Behavior and Access Control Risks
+# Uninitialized State Variables 
 
 ```YAML
 id: TBA
-title: Uninitialized State Variables Lead to Undefined Behavior and Access Control Risks
-severity: H
+title: Uninitialized State Variables 
+baseSeverity: H
 category: initialization
 language: solidity
 blockchain: [ethereum]
@@ -78,6 +78,20 @@ contract SecureVault {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Privilege escalation or denial of function access via unset admin or owner."
+- context: "OpenZeppelin-based upgradeable contracts"
+  severity: C
+  reasoning: "If `initialize()` is never called, contract is completely takeover-able by first caller."
+- context: "Manually audited contract with constructor usage"
+  severity: M
+  reasoning: "Risk mitigated if proper constructor initialization is enforced."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -116,7 +130,7 @@ contract SecureVault {
 
 ```markdown
 id: TBA
-title: Uninitialized State Variables Lead to Undefined Behavior and Access Control Risks
+title: Uninitialized State Variables 
 severity: H
 score:
 impact: 4         

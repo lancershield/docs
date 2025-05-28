@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Ownership Vulnerabilities 
-severity: H
+baseSeverity: H
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -68,6 +68,19 @@ contract SecureAdmin is Ownable {
         // mint logic
     }
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Ownership flaws often result in full control loss over critical protocol operations."
+- context: "DAO with on-chain governance overrides"
+  severity: M
+  reasoning: "Governance can limit damage if owner functions are rarely used or gated by proposals."
+- context: "Private contracts or low-value assets"
+  severity: L
+  reasoning: "Low impact if the contract is not externally accessible or not holding valuable assets."
 ```
 
 ## 🛡️ Prevention

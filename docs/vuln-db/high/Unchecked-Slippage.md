@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unchecked Slippage in Multi-Hop Swaps 
-severity: H
+baseSeverity: H
 category: dex-integrations
 language: solidity
 blockchain: [ethereum]
@@ -80,6 +80,20 @@ function swap(address[] calldata path, uint256 amountIn, uint256 amountOutMin) e
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Loss of value through multi-hop slippage can go undetected by users."
+- context: "Aggregator contract with dynamic routing"
+  severity: C
+  reasoning: "Exploiters can insert illiquid tokens into path to drain value stealthily."
+- context: "Trusted frontend with enforced slippage checks"
+  severity: M
+  reasoning: "User loss minimized when frontend or SDK sets tight bounds."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -106,7 +120,6 @@ function swap(address[] calldata path, uint256 amountIn, uint256 amountOutMin) e
 - **Date:** 2023 
 - **Impact:** $1.1M loss via multi-hop swap route with zero slippage protection 
 - **Post-mortem:** [Link to post-mortem](https://rekt.news/level-finance-rekt/) 
-
 
 ## 📚 Further Reading
 

@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Builtin Symbol Shadowing Introduces Hidden Bugs and Misleading Logic
-severity: L
+title: Builtin Symbol Shadowing 
+baseSeverity: L
 category: naming
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +63,20 @@ contract SafeNaming {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Unlikely to result in direct loss, but may introduce confusing logic or silent bugs."
+- context: "Large-scale protocol with custom libraries"
+  severity: M
+  reasoning: "Symbol collision in complex inheritance trees can be critical and hard to trace."
+- context: "Small or well-reviewed contracts"
+  severity: I
+  reasoning: "Issue is likely caught during review or compilation."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -91,7 +105,6 @@ contract SafeNaming {
 - **Loss:** Unexpected behavior due to shadowed state variables in inheritance 
 - **Post-mortem:** [Link to post-mortem](https://medium.com/@joichiro.sai/solidity-attack-vector-25-shadowed-state-variables-c5ccc2944c16) 
   
-
 📚 Further Reading
 
 - [SWC-135: Incorrect Logic](https://swcregistry.io/docs/SWC-135/) 
@@ -104,7 +117,7 @@ contract SafeNaming {
 
 ```markdown
 id: TBA
-title: Builtin Symbol Shadowing Introduces Hidden Bugs and Misleading Logic
+title: Builtin Symbol Shadowing 
 severity: L
 score:
 impact: 2  

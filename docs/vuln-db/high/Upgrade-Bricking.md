@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Upgrade Bricking Due to Faulty Implementation or Incompatible Storage
-severity: H
+title: Upgrade Bricking 
+baseSeverity: H
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -89,6 +89,20 @@ contract SafeLogic is Initializable {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: H
+  reasoning: "Permanent loss of upgradeability or usability is severe, even without fund loss."
+- context: "Protocol with Time-Locked Governance Upgrades"
+  severity: M
+  reasoning: "Time delay and peer review reduce the risk, but not impact."
+- context: "Manually Upgraded Private App"
+  severity: L
+  reasoning: "Errors likely to be detected during direct testing before deployment."
+```
 
 ## 🛡️ Prevention
 
@@ -114,7 +128,7 @@ contract SafeLogic is Initializable {
 
 - **Name:** Parity Multisig Wallet Freeze 
 - **Date:** 2017-11-06 
-- **Loss:** Approximately 513,774 ETH (worth ~$150 million at the time) 
+- **Loss:** Approximately 513,774 ETH 
 - **Post-mortem:** [Link to post-mortem](https://codeofcode.org/lessons/case-studies-of-real-world-smart-contract-vulnerabilities-and-exploits/)
 
 ## 📚 Further Reading
@@ -130,7 +144,7 @@ contract SafeLogic is Initializable {
 
 ```markdown
 id: TBA
-title: Upgrade Bricking Due to Faulty Implementation 
+title: Upgrade Bricking  
 severity: H
 score:
 impact: 5         

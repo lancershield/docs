@@ -1,9 +1,9 @@
-# Reused Hash Collision Leading to Authorization
+# Reused Hash Collision 
 
 ```YAML
 id: TBA
-title: Reused Hash Collision Leading to Authorization or Data Forgery
-severity: H
+title: Reused Hash Collision 
+baseSeverity: H
 category: hashing
 language: solidity
 blockchain: [ethereum]
@@ -67,6 +67,20 @@ function verify(string memory name, string memory role) public {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Enables unauthorized reveal or claim in systems using unscoped hashes."
+- context: "Commit-Reveal Bidding System"
+  severity: C
+  reasoning: "Can fully undermine auction fairness and redirect funds."
+- context: "Off-chain Signature Auth Flow with replay prevention"
+  severity: M
+  reasoning: "Risk mitigated via EIP-712 domain separation and nonce tracking."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -106,7 +120,7 @@ function verify(string memory name, string memory role) public {
 
 ```markdown
 id: TBA
-title: Reused Hash Collision Leading to Authorization 
+title: Reused Hash Collision 
 severity: H
 score:
 impact: 5        

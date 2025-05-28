@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Return Bomb 
-severity: H
+baseSeverity: H
 category: denial-of-service
 language: solidity
 blockchain: [ethereum]
@@ -68,6 +68,20 @@ contract ReturnBombSafeCaller {
         return data;
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Allows DoS via gas griefing if external calls are allowed."
+- context: "Oracle wrapper or aggregation contracts"
+  severity: C
+  reasoning: "Critical data feeds could be frozen, halting protocol logic."
+- context: "Access-controlled or internal-only function"
+  severity: L
+  reasoning: "Impact significantly reduced if the external call is restricted."
 ```
 
 ## 🛡️ Prevention

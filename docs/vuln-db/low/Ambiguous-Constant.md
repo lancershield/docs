@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Ambiguous Constant Names 
-severity: L
+baseSeverity: L
 category: naming
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,20 @@ contract ClearConstants {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Unlikely to cause critical issues unless tied to sensitive access or limits."
+- context: "Complex tokenomics or multi-role protocols"
+  severity: M
+  reasoning: "Increases risk of semantic misconfiguration or privilege escalation."
+- context: "Well-audited and documented enterprise codebase"
+  severity: I
+  reasoning: "Proper review and documentation mitigate naming risk."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -97,7 +111,6 @@ contract ClearConstants {
 - **Loss:** Contract charged excessive fees due to misinterpreted `MAX` constant 
 - **Post-mortem:** [Link to post-mortem](https://web.archive.org/web/*/redacted.example.com) 
   
-
 ## 📚 Further Reading
 
 - [SWC-135: Incorrect Logic](https://swcregistry.io/docs/SWC-135/) 
@@ -107,6 +120,7 @@ contract ClearConstants {
 ---
   
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Ambiguous Constant Names 

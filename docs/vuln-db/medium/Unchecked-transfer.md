@@ -1,20 +1,20 @@
-# Unchecked transfer() Allows Silent Ether Loss or Execution Failures
+# Unchecked transfer
 
 ```YAML
 id: TBA
-title: Unchecked transfer() Allows Silent Ether Loss or Execution Failures
-severity: H
-category: unchecked-return
+title: Unchecked transfer
+baseSeverity: M
+category: ether-transfer
 language: solidity
 blockchain: [ethereum]
-impact: Ether transfer failure without revert, causing fund loss or denial of service
+impact: Funds may be lost or logic may silently fail
 status: draft
 complexity: low
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-252
-swc: SWC-104
+versions: [">=0.4.0", "<0.8.0"]
+cwe: CWE-755
+swc: SWC-134
 ```
 
 ## 📝 Description
@@ -72,6 +72,20 @@ contract SafeTransfer {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Can silently fail Ether transfers without warning or rollback."
+- context: "Public protocol handling open recipient lists"
+  severity: H
+  reasoning: "Attackers can cause denial of funds or corrupt payment logic."
+- context: "Internal system with known addresses"
+  severity: L
+  reasoning: "Risk is lower if all recipient contracts are audited and predictable."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,7 +112,6 @@ contract SafeTransfer {
 - **Loss:** $10K permanently locked 
 - **Post-mortem:** [Link to post-mortem](https://ethereum.stackexchange.com/questions/19341/what-happened-with-the-king-of-the-ether-throne-contract) 
 
-
 ## 📚 Further Reading
 
 - [SWC-104: Unchecked Call Return Value](https://swcregistry.io/docs/SWC-104/) 
@@ -111,8 +124,8 @@ contract SafeTransfer {
 
 ```markdown
 id: TBA
-title: Unchecked transfer() Allows Silent Ether Loss or Execution Failures
-severity: H
+title: Unchecked transfer
+severity: M
 score:
 impact: 4         
 exploitability: 3 
@@ -131,4 +144,3 @@ finalScore: 3.55
 - **Reachability**: Any contract using low-level Ether transfers is exposed.
 - **Complexity**: Very easy to introduce; one-line mistake.
 - **Detectability**: Often overlooked due to over-trust in call.
-

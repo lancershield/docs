@@ -3,20 +3,19 @@
 ```YAML
 id: TBA
 title: Unsafe Use of assert 
-severity: H
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum]
-impact: Contract failure, locked funds, or unusable state
+impact: Permanent denial of service
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.4.10", "<=0.8.25"]
-cwe: CWE-670
+versions: [">=0.4.0", "<0.8.20"]
+cwe: CWE-617
 swc: SWC-123
 ```
-
 ## 📝 Description
 
 - The assert() keyword in Solidity is meant to detect internal logic errors and impossible conditions. If an assert() fails:
@@ -79,6 +78,19 @@ contract SafeVault {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Can permanently halt execution paths if triggered, but does not allow unauthorized actions."
+- context: "DeFi contract with vault strategies"
+  severity: H
+  reasoning: "Unexpected assert failure in core logic can freeze funds or interrupt investment flows."
+- context: "Private contract with low user interaction"
+  severity: L
+  reasoning: "Limited vectors for reaching assert; mostly safe if assert guards internal invariants."
+```
 
 ## 🛡️ Prevention
 
@@ -104,8 +116,6 @@ contract SafeVault {
 - **Loss:** ETH locked due to failed `assert` and logic bugs
 - **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethereum/comments/4np972/governmental_dapp_scam_or_honeypot/) 
 
----
-
 ## 📚 Further Reading
 
 - [SWC-123: Requirement Violation](https://swcregistry.io/docs/SWC-123/) 
@@ -119,7 +129,7 @@ contract SafeVault {
 ```markdown
 id: TBA
 title: Unsafe Use of assert 
-severity: H
+severity: M
 score:
 impact: 4   
 exploitability: 2 

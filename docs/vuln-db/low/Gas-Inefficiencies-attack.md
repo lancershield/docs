@@ -1,10 +1,9 @@
 # Gas Inefficiencies 
 
-
 ```YAML
 id: TBA
-title: Gas Inefficiencies via Suboptimal Solidity Patterns
-severity: L
+title: Gas Inefficiencies 
+baseSeverity: L
 category: gas-optimization
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +62,20 @@ function updateTotal(uint[] calldata nums) external {
     total = _total; // store once
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: L
+  reasoning: "Increases gas cost but does not affect correctness or security directly."
+- context: "High-frequency DeFi dApp"
+  severity: M
+  reasoning: "Significant cumulative gas loss for users and protocol."
+- context: "Low-traffic internal tool"
+  severity: I
+  reasoning: "Minor concern unless scalability is required."
+```
 
 ## 🛡️ Prevention
 
@@ -90,7 +103,6 @@ function updateTotal(uint[] calldata nums) external {
 - **Loss:** Widespread inefficiencies in contract executions 
 - **Post-mortem:** [Link to post-mortem](https://link.springer.com/article/10.1007/s11390-021-1674-4)
   
-
 ## 📚 Further Reading
 
 - [SWC-135: Code With No Effects](https://swcregistry.io/docs/SWC-135) 
@@ -119,11 +131,7 @@ finalScore: 2.0
 ## 📄 Justifications & Analysis
 
 - **Impact**: Leads to high transaction costs and inefficiency, but no loss of funds or functionality.
-
 - **Exploitability**: Cannot be exploited in the traditional sense; rather, it causes passive economic degradation.
-
 - **Reachability**: Affects regularly used public/external functions in most contracts.
-
 - **Complexity**: No effort required by the user; impact is implicit in normal use.
-
 - **Detectability**: Readily caught by Slither, Remix, and manual gas profiling.

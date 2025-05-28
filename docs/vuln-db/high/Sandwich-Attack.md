@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Sandwich Attack
-severity: H
+baseSeverity: H
 category: mev
 language: solidity
 blockchain: [ethereum]
@@ -101,6 +101,20 @@ contract SafeDEX {
 
     receive() external payable {}
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Applicable across all AMM-based DeFi transactions where slippage is poorly configured."
+- context: "Sophisticated users using Flashbots RPC"
+  severity: L
+  reasoning: "Attack surface greatly reduced through private mempool routing."
+- context: "Mobile/web frontend auto-generated swaps"
+  severity: H
+  reasoning: "These systems often set loose slippage by default, making users vulnerable."
 ```
 
 ## 🛡️ Prevention

@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Vote Escrow Exploits via Flash Voting or Vote Boosting
-severity: H
+title: Vote Escrow Exploits 
+baseSeverity: H
 category: governance
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,20 @@ function lockTokens(uint256 amount, uint256 duration) external {
     locked[msg.sender] = amount;
     votePower[msg.sender] = amount * (unlockTime - block.timestamp) / MAX_DURATION;
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: H
+  reasoning: "Unrestricted voting abuse can shift protocol control unfairly."
+- context: "Tightly controlled DAO with multisig proposal approvals"
+  severity: M
+  reasoning: "Requires on-chain voting plus multisig execution, reducing impact."
+- context: "Centralized governance with off-chain votes"
+  severity: L
+  reasoning: "Actual vote execution is off-chain; abuse is informational only."
 ```
 
 ## 🛡️ Prevention

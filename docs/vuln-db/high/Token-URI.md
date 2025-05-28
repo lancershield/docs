@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Token URI Hijacking Enables Metadata Manipulation
-severity: H
+title: Token URI Hijacking 
+baseSeverity: H
 category: nft-metadata
 language: solidity
 blockchain: [ethereum]
@@ -57,6 +57,7 @@ Step-by-step exploit process:
 - Off-chain metadata is mutable or hosted on insecure servers.
 
 ## ✅ Fixed Code
+
 ```solidity
 
 contract NFT is ERC721 {
@@ -76,6 +77,20 @@ contract NFT is ERC721 {
         return _tokenURIs[tokenId];
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Token integrity and value perception are easily compromised."
+- context: "Deployed NFT project with admin access post-sale"
+  severity: H
+  reasoning: "Mass metadata alteration can rug collectors or redirect revenue."
+- context: "Fully on-chain or IPFS-based NFT with fixed URI"
+  severity: L
+  reasoning: "Immutable data prevents hijacking and lowers risk surface."
 ```
 
 ## 🛡️ Prevention
@@ -105,7 +120,6 @@ contract NFT is ERC721 {
 - **Loss:** Potential compromise of NFT ownership 
 - **Post-mortem:** [Link to post-mortem](https://netsec.ethz.ch/publications/papers/2023-FC-NFT.pdf)
   
-
 ## 📚 Further Reading
 
 - [SWC-117: Signature Malleability – SWC Registry](https://swcregistry.io/docs/SWC-117/) 

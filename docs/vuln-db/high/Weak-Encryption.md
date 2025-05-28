@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Weak Encryption
-severity: H
+baseSeverity: H
 category: cryptography
 language: solidity
 blockchain: [ethereum, bsc, polygon, arbitrum, optimism]
@@ -63,6 +63,20 @@ function unlock(bytes32 messageHash, bytes memory signature) public {
     require(signer == authorizedSigner, "Unauthorized");
     // grant access
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Allows reconstruction of sensitive data such as sealed bids or encrypted messages."
+- context: "Bidding mechanism for public auction"
+  severity: C
+  reasoning: "Leads to frontrunning, bid manipulation, and corrupted auction results."
+- context: "Private data stored off-chain and verified via hash"
+  severity: L
+  reasoning: "Minimal risk if only hashes are stored and encryption is not used for protection."
 ```
 
 ## 🛡️ Prevention

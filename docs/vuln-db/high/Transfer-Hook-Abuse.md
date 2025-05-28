@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Transfer Hook Abuse 
-severity: H
+baseSeverity: H
 category: token-logic
 language: solidity
 blockchain: [ethereum]
@@ -68,6 +68,20 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Protocol behavior can be manipulated through overlooked transfer scenarios."
+- context: "DeFi protocol relying on hooks for taxation or voting"
+  severity: C
+  reasoning: "Severe financial or governance impact if exploited."
+- context: "Simple token with no extended logic in hooks"
+  severity: L
+  reasoning: "No critical impact if the hook is misused."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -92,7 +106,7 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
 
 - **Name:** C.R.E.A.M. Finance AMP Token Exploit 
 - **Date:** August 31, 2021 
-- **Loss:** Approximately $18.8 million (462 million AMP tokens and 2,804.96 ETH) 
+- **Loss:** Approximately $18.8 million 
 - **Post-mortem:** [Link to post-mortem](https://medium.com/cream-finance/c-r-e-a-m-finance-post-mortem-amp-exploit-6ceb20a630c5) 
   
 

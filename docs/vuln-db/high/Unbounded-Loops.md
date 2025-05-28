@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unbounded Loops
-severity: H
+baseSeverity: H
 category: gas
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -62,6 +62,20 @@ function distributeRewardsBatch(uint256 start, uint256 end) external onlyOwner {
         rewards[stakers[i]] += 100;
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Likely to cause stuck functionality in moderate-to-large user scenarios."
+- context: "Public staking or reward contract"
+  severity: C
+  reasoning: "Critical functions like withdrawals or rewards can become non-functional."
+- context: "Private or fixed-size user base"
+  severity: L
+  reasoning: "Unlikely to exceed gas limits with capped usage."
 ```
 
 ## 🛡️ Prevention

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Oracle Liveness Drift 
-severity: H
+baseSeverity: H
 category: oracle
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, avalanche, bsc]
@@ -87,6 +87,22 @@ contract SafeOracleVault {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Stablecoin protocol or lending platform"
+  severity: H
+  reasoning: "Delayed updates lead to real financial losses via mispriced actions"
+
+- context: "Read-only dashboard or historical viewer"
+  severity: L
+  reasoning: "No financial consequences from stale display"
+
+- context: "Oracle with bounded round liveness checks + freshness threshold"
+  severity: M
+  reasoning: "Partially mitigated, but still exploitable during drift windows"
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -109,15 +125,15 @@ contract SafeOracleVault {
 
 - **Name:** KiloEX Oracle Manipulation Exploit 
 - **Date:** 2025-04-16 
-- **Loss:** ~$7.5 million stolen by manipulating ETH/USD oracle feed with artificial price entries 
+- **Loss:** ~$7.5 million  
 - **Post-mortem:** [Link to post-mortem](https://dig.watch/updates/kiloex-loses-7-5-million-in-oracle-hack) 
 - **Name:** Drift Protocol Oracle Desynchronization Bug 
 - **Date:** 2022-05-11 
-- **Loss:** ~$11.75 million hypothetically withdrawable due to stale oracle data bypassing divergence checks 
+- **Loss:** ~$11.75 million  
 - **Post-mortem:** [Link to post-mortem](https://driftprotocol.medium.com/drift-protocol-technical-incident-report-2022-05-11-eedea078b6d4)
 -  **Name:** Radiant Capital Cross-Chain Oracle Drift Attack
 -  **Date:** 2024-10 
--  **Loss:** ~$58 million drained via cross-chain oracle manipulation and UI spoofing 
+-  **Loss:** ~$58 million 
 -  **Post-mortem:** [Link to post-mortem](https://getfailsafe.com/failsafe-web3-security-report-2025/)
   
 ## 📚 Further Reading
@@ -152,4 +168,3 @@ finalScore: 4.1
 - **Reachability**: Widespread across lending, AMMs, derivatives
 - **Complexity**: Simple — just wait for oracle to stall
 - **Detectability**: Easily flagged by monitoring or testing for stale timestamps
-

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unsafe tx.origin Usage 
-severity: H
+baseSeverity: H
 category: access-control
 language: solidity
 blockchain: [ethereum]
@@ -73,6 +73,20 @@ contract SafeAuth {
         payable(msg.sender).transfer(address(this).balance);
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Exploitable by phishing; bypasses basic access control."
+- context: "High-profile admin-only contracts"
+  severity: C
+  reasoning: "Admin privilege loss can cause total fund drain or protocol compromise."
+- context: "Contracts with no user interaction"
+  severity: L
+  reasoning: "If no EOAs interact externally, phishing risk is reduced."
 ```
 
 ## 🛡️ Prevention

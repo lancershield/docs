@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Hardcoded Non-Essential Parameters 
-severity: L
+baseSeverity: L
 category: maintainability
 language: solidity
 blockchain: [ethereum]
@@ -86,6 +86,20 @@ contract Configurable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Inflexibility introduces governance or UX issues but not security-critical."
+- context: "Protocols with dynamic tokenomics"
+  severity: M
+  reasoning: "Hardcoded variables may lead to economic inefficiencies over time."
+- context: "Upgradable governance-enabled contract"
+  severity: I
+  reasoning: "Issue is irrelevant if parameters are modifiable via governance."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -134,7 +148,6 @@ reachability: 5
 complexity: 1     
 detectability: 5  
 finalScore: 2.1
-
 ```
 
 ---

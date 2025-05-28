@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Redundant Code Logic Leading to Increased Gas Costs and Maintenance Risk
-severity: L
+title: Redundant Code Logic 
+baseSeverity: I
 category: code-quality
 language: solidity
 blockchain: [ethereum]
@@ -69,6 +69,20 @@ contract OptimizedExample {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: I
+  reasoning: "Increases gas usage and code complexity but not directly exploitable."
+- context: "High-frequency function in public DeFi protocol"
+  severity: M
+  reasoning: "Gas inefficiency could affect user experience and aggregate costs."
+- context: "Internal or low-traffic admin-only function"
+  severity: I
+  reasoning: "Impact is negligible due to limited usage and access."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -109,8 +123,8 @@ contract OptimizedExample {
 
 ```markdown
 id: TBA
-title: Redundant Code Logic Leading to Increased Gas Costs and Maintenance Risk
-severity: L
+title: Redundant Code Logic 
+severity: I
 score:
 impact: 2         
 exploitability: 0 

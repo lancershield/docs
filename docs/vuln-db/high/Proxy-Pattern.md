@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Proxy Pattern Vulnerabilities 
-severity: H
+baseSeverity: H
 category: upgradeability
 language: solidity
 blockchain: [ethereum]
@@ -87,6 +87,19 @@ contract SecureAdmin is Ownable {
         proxyAdmin.upgrade(TransparentUpgradeableProxy(payable(proxy)), newImpl);
     }
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Without protection, proxy upgrades can be hijacked or disabled."
+- context: "Public protocol using OpenZeppelin Transparent Proxy"
+  severity: M
+  reasoning: "Mitigations via OpenZeppelin ProxyAdmin reduce risk, but still exploitable if misconfigured."
+- context: "Private DAO-managed upgradeable system"
+  severity: L
+  reasoning: "DAO voting or multisig gate makes accidental or malicious upgrade less likely."
 ```
 
 ## 🛡️ Prevention

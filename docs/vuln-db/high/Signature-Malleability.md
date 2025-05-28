@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Signature Malleability 
-severity: H
+baseSeverity: H
 category: cryptography
 language: solidity
 blockchain: [ethereum]
@@ -107,6 +107,20 @@ contract SafeSignatureVerifier {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Replay or unauthorized execution risk in systems relying on signature uniqueness."
+- context: "Cross-chain permit system without chainId binding"
+  severity: C
+  reasoning: "Critical systemic exploit risk due to chain replay possibility."
+- context: "Closed system with enforced nonces and low s checks"
+  severity: L
+  reasoning: "Proper protections mitigate most exploit paths."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -128,11 +142,11 @@ contract SafeSignatureVerifier {
 
 - **Name:** Mt. Gox Bitcoin Exchange Collapse 
 - **Date:** 2014 
-- **Loss:** Approximately 850,000 BTC (~$450 million at the time) lost due to transaction malleability exploits 
+- **Loss:** Approximately 850,000 BTC 
 - **Post-mortem:** [Link to post-mortem](https://arxiv.org/abs/1403.6676) 
 - **Name:** Ethereum Parity Wallet Hack 
 - **Date:** 2017 
-- **Loss:** Approximately $30 million in Ether stolen due to signature malleability vulnerability in multisig wallets
+- **Loss:** Approximately $30 million 
 - **Post-mortem:** [Link to post-mortem](https://metana.io/blog/how-do-signatures-and-malleability-impact-web3-security/) 
   
 ## 📚 Further Reading

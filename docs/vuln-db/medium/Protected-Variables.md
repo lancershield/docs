@@ -1,22 +1,21 @@
-# Protected Variables Misused Due to Incorrect Access Control
+# Protected Variables Misused
 
 ```YAML
 id: TBA
-title: Protected Variables Misused Due to Incorrect Access Control
-severity: H
+title: Protected Variables Misused
+baseSeverity: M
 category: access-control
 language: solidity
 blockchain: [ethereum]
-impact: Unauthorized state manipulation or fund loss
+impact: Privileged state corruption
 status: draft
-complexity: medium
+complexity: low
 attack_vector: internal
-mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
+mitigation_difficulty: medium
+versions: [">=0.6.0", "<0.9.0"]
 cwe: CWE-284
-swc: SWC-105
+swc: SWC-124
 ```
-
 ## 📝 Description
 
 - In Solidity, declaring a variable as protected (e.g., internal or protected by a modifier) does not automatically enforce strict access control.
@@ -88,6 +87,20 @@ contract SecureVault {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Moderate risk under standard inheritance patterns."
+- context: "Public DeFi Protocol with derived contracts"
+  severity: H
+  reasoning: "Critical protected state can be silently altered by child contracts."
+- context: "Private system with limited contract extension"
+  severity: L
+  reasoning: "Limited inheritance scope reduces risk of exposure."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -149,10 +162,3 @@ finalScore: 3.55
 - **Reachability**: Anyone can call public functions unless restricted by modifier.
 - **Complexity**: Relies on incorrect assumptions about visibility implying protection.
 - **Detectability**: Often missed unless explicitly reviewing setter functions.
-
-
-
-
-
-
-

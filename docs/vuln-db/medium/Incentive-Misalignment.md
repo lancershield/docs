@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Incentive Misalignment in Staking
-severity: M
+baseSeverity: M
 category: economic
 language: solidity
 blockchain: [ethereum, polygon, arbitrum, optimism, bsc]
@@ -72,6 +72,19 @@ function claimReward() external {
     stakes[msg.sender].timestamp = block.timestamp;
     rewardToken.transfer(msg.sender, reward);
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Reward imbalance can reduce participation and allow reward sniping."
+- context: "High-value DeFi staking protocol"
+  severity: H
+  reasoning: "Can lead to centralization or drain of protocol rewards."
+- context: "Private staking with off-chain distribution"
+  severity: L
+  reasoning: "Protocol controls rewards manually, less risk of abuse."
 ```
 
 ## 🛡️ Prevention

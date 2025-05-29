@@ -1,9 +1,9 @@
-# Boolean Short-Circuit  Logic Flaws Can Bypass Security Conditions 
+# Boolean Short-Circuit  Logic Flaws 
 
 ```YAML
 id: TBA
-title: Boolean Short-Circuit Logic Flaws Can Bypass Security Conditions 
-severity: M
+title: Boolean Short-Circuit Logic Flaws 
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum]
@@ -89,6 +89,21 @@ contract BooleanSafeAccess {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Common logic bug with potential authorization side effects."
+- context: "Access control or authentication logic"
+  severity: H
+  reasoning: "Flawed short-circuit may lead to privilege escalation."
+- context: "Non-critical condition (e.g., UI toggles)"
+  severity: I
+  reasoning: "Impact is minimal when not tied to critical logic."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -129,7 +144,7 @@ contract BooleanSafeAccess {
 
 ```markdown
 id: TBA
-title: Boolean Short-Circuit Logic Flaws Can Bypass Security Conditions 
+title: Boolean Short-Circuit Logic Flaws 
 severity: M
 score:
 impact: 3 

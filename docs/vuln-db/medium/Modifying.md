@@ -1,9 +1,9 @@
-# Modifying Storage Array by Value Causes Disconnected State Updates
+# Modifying Storage Array 
 
 ```YAML
 id: TBA
-title: Modifying Storage Array by Value Causes Disconnected State Updates
-severity: M
+title: Modifying Storage Array 
+baseSeverity: M
 category: storage
 language: solidity
 blockchain: [ethereum]
@@ -87,6 +87,20 @@ contract SafeUserRegistry {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Moderate risk of functional inconsistency or wasted gas."
+- context: "Voting or reward logic relying on array indexing"
+  severity: H
+  reasoning: "Critical impact on system behavior due to miscounting or skipped users."
+- context: "One-off configuration array"
+  severity: L
+  reasoning: "Low risk since admin-only functions and known array sizes are involved."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -125,7 +139,7 @@ contract SafeUserRegistry {
 
 ```markdown
 id: TBA
-title: Modifying Storage Array by Value Causes Disconnected State Updates
+title: Modifying Storage Array
 severity: M
 score:
 impact: 3         

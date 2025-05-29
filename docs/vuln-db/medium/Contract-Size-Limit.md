@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Contract Size Limit Violations 
-severity: M
+baseSeverity: M
 category: deployment
 language: solidity
 blockchain: [ethereum]
@@ -74,6 +74,21 @@ contract Proxy {
         }
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Blocks deployment but doesn’t affect running systems."
+- context: "Upgrade-based protocols using UUPS"
+  severity: H
+  reasoning: "Upgrade path can be permanently blocked, bricking logic."
+- context: "Simple single-purpose contracts"
+  severity: L
+  reasoning: "Unlikely to hit size limits in practice."
 ```
 
 ## 🛡️ Prevention

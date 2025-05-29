@@ -1,22 +1,21 @@
-# Ignoring SafeERC20 
+# Ignoring SafeERC20
 
 ```YAML
 id: TBA
-title: Ignoring SafeERC20 
-severity: M
+title: Ignoring SafeERC20
+baseSeverity: H
 category: token-integration
 language: solidity
 blockchain: [ethereum]
-impact: Token transfers may silently fail, leading to stuck funds or logic errors
+impact: Lost tokens or stuck state due to non-standard ERC20 behavior
 status: draft
-complexity: medium
+complexity: low
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<latest"]
-cwe: CWE-703
+versions: [">=0.4.0", "<0.8.24"]
+cwe: CWE-754
 swc: SWC-135
 ```
-
 ## 📝 Description
 
 - Ignoring SafeERC20 refers to using raw `IERC20.transfer()` or `IERC20.transferFrom()` calls directly without handling return values or using OpenZeppelin's SafeERC20 wrapper. While some tokens follow the ERC-20 standard strictly, others:
@@ -76,6 +75,20 @@ contract SafeTokenTransfer {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Any ERC20 interaction may silently fail if token is non-compliant."
+- context: "Well-audited DeFi protocol using only known standard tokens"
+  severity: M
+  reasoning: "Assumes audited compliance but remains vulnerable to edge tokens."
+- context: "Protocol integrating user-supplied tokens (e.g., DEXs)"
+  severity: C
+  reasoning: "High probability of incompatible token interaction and lost funds."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -117,7 +130,7 @@ contract SafeTokenTransfer {
 ```markdown
 id: TBA
 title: Ignoring SafeERC20 
-severity: M
+severity: H
 score:
 impact: 4        
 exploitability: 2 

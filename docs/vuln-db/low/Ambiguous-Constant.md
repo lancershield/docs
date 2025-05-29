@@ -106,10 +106,10 @@ contract ClearConstants {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Forked Token Misconfigured Fee Rate 
-- **Date:** 2021 
-- **Loss:** Contract charged excessive fees due to misinterpreted `MAX` constant 
-- **Post-mortem:** [Link to post-mortem](https://web.archive.org/web/*/redacted.example.com) 
+- **Name:** Parity Wallet Multi-Sig Hack
+- **Date:** 2017-07   
+- **Loss:** ~$30 million  
+- **Post-mortem:** [Link to post-mortem](https://www.vidma.io/blog/the-silent-killer-unraveling-the-typographical-error-vulnerability-in-smart-contracts) 
   
 ## 📚 Further Reading
 

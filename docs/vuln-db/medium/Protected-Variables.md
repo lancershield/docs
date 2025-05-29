@@ -143,7 +143,7 @@ contract SecureVault {
 ```markdown
 id: TBA
 title: Protected Variables Misused Due to Incorrect Access Control
-severity: H
+severity: M
 score:
 impact: 4         
 exploitability: 4 

@@ -107,10 +107,10 @@ contract CompleteLogging {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Incomplete Event Logging in DeFi Protocol 
-- **Date:** 2021 
-- **Loss:** Reduced auditability and delayed detection of malicious activities 
-- **Post-mortem:** [Link to post-mortem](https://consensys.net/diligence/blog/2021/03/analyzing-event-logging-failures-in-defi/) 
+- **Name:** Level Finance Claim Multiple Bug 
+- **Date:** 2023-05
+- **Loss:** ~$1 million  
+- **Post-mortem:** [Link to post-mortem](https://cointelegraph.com/news/level-finance-confirms-1m-exploit-due-to-buggy-smart-contract) 
 
 ## 📚 Further Reading
 

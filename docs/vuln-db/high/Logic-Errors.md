@@ -1,22 +1,21 @@
-# Logic Errors in Contract Conditions
+# Logic Errors in Contract
 
 ```YAML
 id: TBA
-title: Logic Errors in Contract Conditions or Calculations
-severity: M
-category: logic-error
+title: Logic Errors in Contract
+baseSeverity: H
+category: logic
 language: solidity
 blockchain: [ethereum]
-impact: Unintended behavior or incorrect fund/state handling
+impact: Unexpected or incorrect behavior of core business logic
 status: draft
 complexity: medium
-attack_vector: internal
+attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.4.0", "<0.8.21"]
+versions: [">=0.4.0", "<latest"]
 cwe: CWE-840
-swc: SWC-124
+swc: SWC-135
 ```
-
 ## 📝 Description
 
 - Logic errors occur when the contract code executes successfully but the implemented logic does not match the intended behavior.
@@ -62,6 +61,20 @@ function claimReward() external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Impacts user-facing functions and may cause financial miscalculations."
+- context: "DAO-managed vault with reward logic"
+  severity: C
+  reasoning: "Misdistribution can result in systemic governance failures."
+- context: "Internal-only logic with limited user interaction"
+  severity: M
+  reasoning: "Limited damage but still requires correction."
+```
+
 ## 🛡️ Prevention
 
 ## Primary Defenses
@@ -95,12 +108,14 @@ function claimReward() external {
 - [OWASP Smart Contract Top 10: Logic Errors – OWASP Foundation](https://owasp.org/www-project-smart-contract-top-10/2025/en/src/SC03-logic-errors.html) 
 - [OpenZeppelin – Avoiding Logic Errors](https://docs.openzeppelin.com/contracts/4.x/api/utils)
 
+---
+
 ## ✅ Vulnerability Report
 
 ```markdown
-id: vuln\_\_005
-title: Logic Errors in Contract Conditions or Calculations
-severity: M
+id: TBA
+title: Logic Errors in Contract 
+severity: H
 score:
 impact: 3  
 exploitability: 3

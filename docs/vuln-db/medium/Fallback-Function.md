@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Fallback Function Misuse Leading to Asset Loss
-severity: M
+title: Fallback Function Misuse
+baseSeverity: M
 category: fallback-function
 language: solidity
 blockchain: [ethereum]
@@ -64,6 +64,21 @@ fallback() external payable {
 receive() external payable {
     // Accept ETH only
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Can result in unexpected value or control flow changes."
+- context: "Public contract accepting ETH donations"
+  severity: L
+  reasoning: "Expected behavior, but still must emit events and log properly."
+- context: "Proxy logic or high-value governance vault"
+  severity: H
+  reasoning: "Attackers can exploit fallback to hijack ownership or upgrade logic."
 ```
 
 ## 🛡️ Prevention

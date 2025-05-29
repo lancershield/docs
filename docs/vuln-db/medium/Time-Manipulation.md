@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Time Manipulation Vulnerabilities 
-severity: M
+baseSeverity: M
 category: time-manipulation
 language: solidity
 blockchain: [ethereum]
@@ -70,6 +70,20 @@ contract TimeLock {
     }
 }
 ``` 
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Moderate risk due to small window and miner control."
+- context: "Protocol uses timestamp for randomness or auction logic"
+  severity: H
+  reasoning: "Miner or MEV control can directly affect fairness or profit outcome."
+- context: "Delayed claims, loose checks, or buffered logic"
+  severity: L
+  reasoning: "Timestamp variance has negligible effect on protocol outcome."
+```
 
 ## 🛡️ Prevention
 

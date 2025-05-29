@@ -1,9 +1,9 @@
-# Public Mappings with Nested Variables Leak Internal State
+# Public Mappings 
 
 ```YAML
 id: TBA
-title: Public Mappings with Nested Variables Leak Internal State
-severity: M
+title: Public Mappings
+baseSeverity: M
 category: data-leakage
 language: solidity
 blockchain: [ethereum]
@@ -75,6 +75,20 @@ contract SecureVoteTracker {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Can lead to sensitive data exposure and governance manipulation in common use cases."
+- context: "Public DeFi Protocol with token-based voting"
+  severity: H
+  reasoning: "Vote buying, stake-based manipulation, or airdrop sybil attacks possible."
+- context: "Private/internal app with low user count"
+  severity: L
+  reasoning: "Limited damage; user addresses likely known or non-sensitive."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -101,7 +115,6 @@ contract SecureVoteTracker {
 - **Loss:** No funds lost, but targeted sybil attacks observed
 - **Post-mortem:** [Link to post-mortem](https://www.reddit.com/r/ethdev/comments/mymt7x/security_risks_of_public_struct_mappings/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-136: Unencrypted Sensitive Data](https://swcregistry.io/docs/SWC-136/) 
@@ -114,7 +127,7 @@ contract SecureVoteTracker {
 
 ```markdown
 id: TBA
-title: Public Mappings with Nested Variables Leak Internal State
+title: Public Mappings 
 severity: M
 score:
 impact: 3         

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Inconsistent Decimal Precision 
-severity: M
+baseSeverity: M
 category: precision
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +63,20 @@ function normalizeAmount(address token, uint256 amount) public view returns (uin
     uint8 decimals = IERC20Metadata(token).decimals(); // ✅ dynamically fetch decimals
     return amount * (10 ** (18 - decimals)); // Convert to 18-decimal standard
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Leads to inaccurate math and silent over/under-crediting."
+- context: "DeFi reward vaults or rebasing systems"
+  severity: H
+  reasoning: "Major impact due to misaccounting of user balances and liquidity."
+- context: "Private systems with single-token usage"
+  severity: L
+  reasoning: "Only one token with known decimals is used; risk is low."
 ```
 
 ## 🛡️ Prevention

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Mutable On-Chain Metadata
-severity: M
+baseSeverity: M
 category: metadata
 language: solidity
 blockchain: [ethereum, polygon, arbitrum, optimism, bsc]
@@ -68,6 +68,20 @@ function freezeMetadata() external onlyOwner {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Trust is affected, but no direct asset loss."
+- context: "NFT project with post-sale metadata updates"
+  severity: H
+  reasoning: "Metadata tampering leads to reputational damage and user loss."
+- context: "Verified immutable metadata with freeze option"
+  severity: L
+  reasoning: "Only legacy misuse cases remain due to freezing mechanism."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,7 +112,7 @@ function freezeMetadata() external onlyOwner {
 ## 📚 Further Reading
 
 - [EIP-721: Non-Fungible Token Standard](https://eips.ethereum.org/EIPS/eip-721)
-- [OpenZeppelin – Metadata URI Freezing](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721#ERC721URIStorage) - [CryptoNatty – NFT Metadata Explained](https://cryptonatty.com/what-is-nft-metadata/)
+- [OpenZeppelin – Metadata URI Freezing](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721#ERC721URIStorage) 
 - [OpenSea Metadata Standards](https://docs.opensea.io/docs/metadata-standards)
 - [Slither Static Analyzer](https://github.com/crytic/slither)
 

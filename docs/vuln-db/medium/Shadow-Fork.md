@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Shadow Fork Confusion 
-severity: M
+baseSeverity: M
 category: environment-confusion
 language: solidity
 blockchain: [ethereum]
@@ -81,6 +81,20 @@ contract SafeTestSender {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Can lead to faulty assumptions or fragile deployments."
+- context: "Production contract relying on CREATE2 determinism"
+  severity: H
+  reasoning: "May brick upgradable paths or lead to loss of control."
+- context: "Non-critical simulations or test-only deployments"
+  severity: L
+  reasoning: "Harmless in isolated testing environments."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -112,7 +126,6 @@ contract SafeTestSender {
 
 - [SWC-136: Unobservable Behavior](https://swcregistry.io/docs/SWC-136/) 
 - [Hardhat Shadow Forking Guide](https://hardhat.org/hardhat-network/docs/guides/forking-other-networks)
-- [Foundry Cheatcodes – `vm.createSelectFork`](https://book.getfoundry.sh/cheatcodes/create-select-fork)
   
 ## ✅ Vulnerability Report
 

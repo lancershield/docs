@@ -107,11 +107,7 @@ function initUser() public {
  - **Date:** 2019-01-16 
  - **Loss:** Exploitation of contract logic via uninitialized storage pointer 
  - **Post-mortem:** [Link to post-mortem](https://x9453.github.io/2020/01/16/Balsn-CTF-2019-Bank/) 
- - **Name:** Uninitialized Storage Pointer Exploit Example 
- - **Date:** 2020-12-31 
- - **Loss:** Potential overwriting of critical contract storage 
- - **Post-mortem:** [Link to post-mortem](https://immunebytes.com/blog/a-complete-breakdown-of-uninitialized-storage-parameters/) 
-  
+ 
 ## 📚 Further Reading
 
 - [SWC-109: Uninitialized Storage Pointer](https://swcregistry.io/docs/SWC-109) 

@@ -1,18 +1,18 @@
-# setMintFeeRecipient
+# Unprotected setMintFeeRecipient
 
 ```YAML
 id: TBA
-title: setMintFeeRecipient
-severity: L
+title: Unprotected setMintFeeRecipient 
+baseSeverity: H
 category: access-control
 language: solidity
-blockchain: [ethereum, bsc, arbitrum, optimism, polygon]
-impact: Mint fees siphoned to attacker-controlled address
+blockchain: [ethereum]
+impact: Unauthorized fee redirection
 status: draft
 complexity: low
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.6.0", "<=0.8.25"]
+versions: [">=0.6.0"]
 cwe: CWE-284
 swc: SWC-105
 ```
@@ -82,6 +82,21 @@ contract SecureNFTMinter is Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: H
+  reasoning: "Allows external redirection of core protocol revenue."
+- context: "Protocol that collects high minting fees"
+  severity: C
+  reasoning: "Massive financial impact from misrouted or stolen fees."
+- context: "Internal test contract"
+  severity: I
+  reasoning: "No meaningful risk when used in controlled environments."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -118,8 +133,8 @@ contract SecureNFTMinter is Ownable {
 
 ```markdown
 id: TBA
-title: setMintFeeRecipient
-severity: L
+title: Unprotected setMintFeeRecipient
+severity: H
 score:
 impact: 5   
 exploitability: 4 

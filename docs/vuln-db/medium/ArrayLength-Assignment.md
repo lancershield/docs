@@ -113,10 +113,10 @@ contract SafeArray {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Array Length Overwrite Exploit
+- **Name:** Paradigm CTF Bank Challenge
 - **Date:** 2021
-- **Loss:** Potential for data loss and unauthorized access
-- **Post-mortem:** [Link to post-mortem](https://immunebytes.com/blog/smart-contract-vulnerabilities/)
+- **Loss:** Simulated exploit in CTF environment 
+- **Post-mortem:** [Link to post-mortem](https://smarx.com/posts/2021/02/writeup-of-paradigm-ctf-bank/)
   
 ## 📚 Further Reading
 

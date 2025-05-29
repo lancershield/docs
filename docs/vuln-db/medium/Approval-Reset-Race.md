@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Approval Reset Race Condition 
-severity: M
+baseSeverity: M
 category: token-approval
 language: solidity
 blockchain: [ethereum]
@@ -57,6 +57,20 @@ function safeUpdateApproval(IERC20 token, address spender, uint256 newAmount) ex
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Standard ERC20 vulnerability if not handled explicitly."
+- context: "Widely-used token in external DeFi ecosystem"
+  severity: H
+  reasoning: "High impact due to scale and likelihood of malicious bots exploiting mempool."
+- context: "ERC20 token with `increaseAllowance()`/`decreaseAllowance()`"
+  severity: L
+  reasoning: "Safer interfaces mitigate the race window risk."
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses

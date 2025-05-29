@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Minting to Burn Address 
-severity: M
+baseSeverity: M
 category: tokenomics
 language: solidity
 blockchain: [ethereum]
@@ -58,6 +58,20 @@ function mintTo(address recipient, uint256 amount) external onlyMinter {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Tokens are unrecoverable but damage is limited to accounting inconsistencies."
+- context: "DeFi protocol with dynamic supply"
+  severity: H
+  reasoning: "Minting errors can distort LP ratios, governance weights, or vault strategies."
+- context: "Governance token with voting power from totalSupply"
+  severity: C
+  reasoning: "Burned tokens may tilt decisions or cause vote inflation."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -85,7 +99,6 @@ function mintTo(address recipient, uint256 amount) external onlyMinter {
 - **Loss:** Approximately $180 million 
 - **Post-mortem:** [Link to post-mortem](https://heraldsheets.com/infinite-mint-attacks-all-you-need-to-know/)
 
-
 ## 📚 Further Reading
 
 - [SWC-136: Unexpected Behavior (Burn Address Issues)](https://swcregistry.io/docs/SWC-136) 
@@ -107,7 +120,6 @@ reachability: 5
 complexity: 1    
 detectability: 5  
 finalScore: 2.9
-
 ```
 
 ---

@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Recursive Internal Function Calls
-severity: M
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -69,6 +69,20 @@ function _getReferrals(address user, uint256 depth, uint256 maxDepth) internal v
         count += _getReferrals(refs[i], depth + 1, maxDepth); // ✅ recursion bounded
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Recursive logic introduces unnecessary gas risk if unbounded."
+- context: "High-throughput staking protocol"
+  severity: H
+  reasoning: "Staker inputs could cause cascading DoS across reward functions."
+- context: "Static-use or dev-only contract"
+  severity: L
+  reasoning: "Recursive path unlikely to be triggered in production usage."
 ```
 
 ## 🛡️ Prevention

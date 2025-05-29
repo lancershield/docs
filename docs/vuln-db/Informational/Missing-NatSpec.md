@@ -68,7 +68,7 @@ function calculateFee(uint256 amount) public pure returns (uint256) {
 
 ```yaml
 - context: "Default"
-  severity: L
+  severity: I
   reasoning: "May introduce misunderstanding but not immediately exploitable."
 - context: "Public forked protocol or token clone"
   severity: M
@@ -117,7 +117,7 @@ function calculateFee(uint256 amount) public pure returns (uint256) {
 ```markdown
 id: TBA
 title: Ambiguous Constant Names
-severity: L
+severity: I
 score:
 impact: 2
 exploitability: 2

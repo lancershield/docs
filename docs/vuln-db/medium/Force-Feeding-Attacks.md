@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Force-Feeding Attacks 
-severity: M
+baseSeverity: M
 category: ether-injection
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -76,6 +76,19 @@ contract SafeVault {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Causes logic inconsistencies but no direct loss unless logic fails critically."
+- context: "DeFi pool using `address(this).balance`"
+  severity: H
+  reasoning: "May result in incorrect rewards, loss of funds, or manipulation."
+- context: "Donation address with no logic tied to balance"
+  severity: L
+  reasoning: "No harm if logic does not rely on contract balance."
+```
 
 ## 🛡️ Prevention
 
@@ -99,7 +112,7 @@ contract SafeVault {
 
 - **Name:** Parity Wallet Refund Lock 
 - **Date:** 2017-11 
-- **Loss:** ~$150M permanently locked due to fallback + balance assumptions 
+- **Loss:** ~$150M  
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert.html)  
 - **Name:** Gnosis Safe Misunderstood Refund Logic 
 - **Date:** 2021-12 

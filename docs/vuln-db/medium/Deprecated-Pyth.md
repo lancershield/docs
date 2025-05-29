@@ -128,7 +128,7 @@ function updatePrice(bytes[] calldata priceUpdateData) external payable {
 ```markdown
 id: TBA
 title: Usage of Deprecated Pyth Functions Leads to Broken Oracle Integrations and Stale Price Feeds
-severity: H
+severity: M
 score:
 impact: 4        
 exploitability: 3 

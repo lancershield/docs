@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Bribery Through Vote Delegation 
-severity: M
+baseSeverity: M
 category: governance
 language: solidity
 blockchain: [ethereum]
@@ -65,6 +65,21 @@ function delegate(address delegatee) public {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Requires coordination but has meaningful influence on protocol control."
+- context: "Governance system controlling treasury or protocol logic"
+  severity: H
+  reasoning: "Attackers can pass malicious proposals via vote-buying."
+- context: "Pure signaling governance"
+  severity: L
+  reasoning: "Less impactful due to non-binding votes."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -114,7 +129,6 @@ reachability: 5
 complexity: 3     
 detectability: 4  
 finalScore: 3.85
-
 ```
 
 ---

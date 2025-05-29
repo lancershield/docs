@@ -1,22 +1,21 @@
-# Empty catch Blocks
+# Empty Catch Blocks
 
 ```YAML
 id: TBA
-title: Empty catch Blocks 
-severity: M
-category: exception-handling
+title: Empty Catch Blocks
+baseSeverity: L
+category: error-handling
 language: solidity
 blockchain: [ethereum]
-impact: Failure masking, broken invariants, or invisible vulnerabilities
+impact: Silent failure of important logic
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.6.0", "<=0.8.25"]
+versions: [">=0.6.0", "<latest"]
 cwe: CWE-391
 swc: SWC-134
 ```
-
 ## 📝 Description
 
 - Since Solidity v0.6.0, try/catch blocks can be used to handle failures from external function calls and contract creation.
@@ -85,6 +84,19 @@ contract SafeVault {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "May reduce observability but doesn’t break core logic."
+- context: "Protocol with critical external calls"
+  severity: M
+  reasoning: "Can hide serious errors in price feeds, upgrades, or transfers."
+- context: "Development-phase contracts with logging enabled"
+  severity: I
+  reasoning: "Low severity if debugging tools or logs capture failures elsewhere."
+```
 
 ## 🛡️ Prevention
 
@@ -114,17 +126,17 @@ contract SafeVault {
 ## 📚 Further Reading
 
 - [SWC-134: Unhandled Exceptions](https://swcregistry.io/docs/SWC-134/) 
-- [Solidity Docs – Try/Catch](https://docs.soliditylang.org/en/latest/control-structures.html#try-catch) 
-- [Solhint Rule – no-empty-blocks](https://protofire.github.io/solhint/rules/best-practices/no-empty-blocks/) 
+- [Solidity Docs – Try/Catch](https://docs.soliditylang.org/en/latest/control-structures.html#try-catch)  
 - [Trail of Bits: Solidity Anti-Patterns](https://blog.trailofbits.com/) 
   
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Empty catch Blocks 
-severity: M
+severity: L
 score:
 impact: 3 
 exploitability: 2 

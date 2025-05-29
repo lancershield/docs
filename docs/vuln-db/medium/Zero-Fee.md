@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Zero Fee Manipulation 
-severity: M
+baseSeverity: M
 category: fee-evasion
 language: solidity
 blockchain: [ethereum]
@@ -57,6 +57,20 @@ function mint() external payable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Leads to lost revenue but not catastrophic failure."
+- context: "Minting protocol with high transaction volume"
+  severity: H
+  reasoning: "Significant economic loss due to unchecked minting."
+- context: "Testnet or non-economic access controls"
+  severity: L
+  reasoning: "No meaningful value tied to execution."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -105,7 +119,6 @@ reachability: 4
 complexity: 2     
 detectability: 5  
 finalScore: 3.75
-
 ```
 
 ---

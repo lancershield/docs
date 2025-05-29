@@ -1,9 +1,9 @@
-# Off-by-One Errors in Index
+# Off-by-One Errors 
 
 ```YAML
 id: TBA
-title: Off-by-One Errors in Index or Length Calculations
-severity: M
+title: Off-by-One Errors 
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum]
@@ -65,6 +65,20 @@ function distributeRewards() external payable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Could revert or behave unexpectedly on boundary conditions."
+- context: "Financial loop (e.g., reward or debt payment)"
+  severity: H
+  reasoning: "Single index error may cause payment failure or asset mismanagement."
+- context: "Internal-only loop over fixed array"
+  severity: L
+  reasoning: "Low risk as input and loop range are tightly controlled."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -103,7 +117,7 @@ function distributeRewards() external payable {
 
 ```markdown
 id: TBA
-title: Off-by-One Errors in Index or Length Calculations
+title: Off-by-One Errors 
 severity: M
 score:
 impact: 3         

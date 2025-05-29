@@ -112,7 +112,7 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 - **Name:** First Flight NFT Puppy Raffle Exploit 
 - **Date:** 2023 
 - **Loss:** Prize logic manipulated via predictable randomness
-- **Post-mortem:** [Link to post-mortem](https://ethereum.stackexchange.com/questions/156027/weak-rng-vulnerability-proving) -->
+- **Post-mortem:** [Link to post-mortem](https://ethereum.stackexchange.com/questions/156027/weak-rng-vulnerability-proving)
 
 ## 📚 Further Reading
 
@@ -127,7 +127,7 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 
 ```markdown
 id: TBA
-title: Weak PRNG Enables Predictable Outcomes in Randomness-Dependent Logic
+title: Weak PRNG 
 severity: H
 score:
 impact: 4         

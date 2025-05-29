@@ -1,20 +1,20 @@
-# Tautological Compare
+# Tautological
 
 ```YAML
 id: TBA
-title: Tautological Compare Results in Dead Code and Logic Misrepresentation
-severity: L
+title: Tautological 
+baseSeverity: I
 category: logic
 language: solidity
 blockchain: [ethereum]
-impact: Inert conditions, developer confusion, or unoptimized execution
+impact: Ineffective checks, audit confusion, gas waste
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
+versions: [">=0.6.0"]
 cwe: CWE-570
-swc: SWC-135
+swc: SWC-131
 ```
 
 ## 📝 Description
@@ -68,6 +68,21 @@ contract FixedCompare {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: I
+  reasoning: "No direct impact, but adds noise to logic and gas usage."
+- context: "High-frequency DeFi function"
+  severity: M
+  reasoning: "Can lead to measurable gas inefficiency at scale."
+- context: "Testnet or internal utility contract"
+  severity: I
+  reasoning: "Negligible impact when not used in production flows."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -104,8 +119,8 @@ contract FixedCompare {
 ## ✅ Vulnerability Report
 ```markdown
 id: TBA
-title: Tautological Compare Results in Dead Code and Logic Misrepresentation
-severity: L
+title: Tautological 
+severity: I
 score:
 impact: 2         
 exploitability: 1 

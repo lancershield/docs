@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unsafe Mint to Non-Receiver
-severity: M
+baseSeverity: M
 category: erc721
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -57,6 +57,20 @@ Step-by-step exploit process:
 function safeMint(address to, uint256 tokenId) public onlyOwner {
     _safeMint(to, tokenId); // ✅ checks for ERC721Receiver compatibility
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Permanent asset lock without financial loss to the protocol."
+- context: "NFT minting platform with unverified user contracts"
+  severity: H
+  reasoning: "Large user base increases chances of accidental loss and support burden."
+- context: "Controlled environment with internal contract whitelist"
+  severity: L
+  reasoning: "Mitigated by pre-approved receiver contracts only."
 ```
 
 ## 🛡️ Prevention

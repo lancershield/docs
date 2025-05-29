@@ -1,22 +1,21 @@
-# Deletion on Mapping Containing a Struct May Leave Stale Data
+# Deletion on Mapping
 
 ```YAML
 id: TBA
-title: Deletion on Mapping Containing a Struct May Leave Stale Data or Corrupt Logic
-severity: M
+title: Deletion on Mapping
+baseSeverity: L
 category: storage
 language: solidity
 blockchain: [ethereum]
-impact: Stale state, bypassed checks, or logic errors
+impact: Inconsistent state, gas griefing, or minor DoS
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-703
+versions: [">=0.5.0", "<latest"]
+cwe: CWE-704
 swc: SWC-135
 ```
-
 ## 📝 Description
 
 - In Solidity, deleting a mapping entry that contains a struct via delete mapping[key] resets all fields of the struct to their default values (e.g., 0, false, address(0)). 
@@ -96,6 +95,20 @@ contract SafeStructDelete {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Logical confusion, but unlikely to cause major loss."
+- context: "Governance or staking-based system"
+  severity: M
+  reasoning: "Can be abused to reclaim rewards or bypass eligibility checks."
+- context: "Private use contract with full control"
+  severity: I
+  reasoning: "Has no impact under full admin control and no logic tied to deletion."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -131,10 +144,11 @@ contract SafeStructDelete {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Deletion on Mapping Containing a Struct May Leave Stale Data or Corrupt Logic
-severity: M
+title: Deletion on Mapping 
+severity: L
 score:
 impact: 3         
 exploitability: 3 

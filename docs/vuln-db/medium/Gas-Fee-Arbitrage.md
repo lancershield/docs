@@ -143,7 +143,7 @@ contract SafeGasReward {
 ```markdown
 id: TBA
 title: Gas Fee Arbitrage 
-severity: H
+severity: M
 score:
 impact: 4  
 exploitability: 3 

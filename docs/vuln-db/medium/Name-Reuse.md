@@ -1,9 +1,9 @@
-# Name Reuse Causes Token
+# Contract Name Reuse Confusion
 
 ```YAML
 id: TBA
-title: Name Reuse Causes Token or Contract Confusion
-severity: M
+title: Contract Name Reuse Confusion
+baseSeverity: M
 category: naming
 language: solidity
 blockchain: [ethereum]
@@ -65,6 +65,20 @@ contract ERC20TokenB {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "No direct exploit path, but misleading behavior can confuse integrators."
+- context: "Protocol mimicking major token or router names"
+  severity: H
+  reasoning: "High potential for phishing, fraud, or UX deception."
+- context: "Internal-use contracts with unique names"
+  severity: L
+  reasoning: "Minimal confusion if naming is consistent and internal."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -89,7 +103,7 @@ contract ERC20TokenB {
 
 - **Name:** Uniswap Fake Token Phishing Scam
 - **Date:** July 2022 
-- **Loss:** Over $4.7 million in Ether (ETH) stolen from liquidity providers through a phishing campaign involving fake tokens
+- **Loss:** Over $4.7 million 
 - **Post-mortem:** [Link to post-mortem](https://cointelegraph.com/news/more-than-4-7m-stolen-in-uniswap-fake-token-phishing-attack)
   
 ## 📚 Further Reading
@@ -101,9 +115,10 @@ contract ERC20TokenB {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
-title: Name Reuse Causes Token or Contract Confusion
+title: Contract Name Reuse Confusion
 severity: M
 score:
 impact: 3         

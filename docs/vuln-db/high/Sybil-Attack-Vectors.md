@@ -1,20 +1,20 @@
-# Sybil Attack Vectors
+# Sybil Attack Vectors 
 
 ```YAML
 id: TBA
-title: Sybil Attack Vectors
-severity: M
-category: identity-manipulation
+title: Sybil Attack Vectors 
+baseSeverity: H
+category: economic-attack
 language: solidity
-blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
-impact: Manipulation of multi-account systems or reward mechanisms
+blockchain: [ethereum]
+impact: Manipulation of governance, rewards, or fairness
 status: draft
 complexity: medium
 attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.6.0", "<=0.8.25"]
-cwe: CWE-287: Improper Authentication
-swc: SWC-133: Hash Collisions With Multiple Inputs
+versions: [">0.6.0", "<latest"]
+cwe: CWE-302
+swc: SWC-114
 ```
 📝 Description
 
@@ -69,6 +69,20 @@ function claimAirdrop(bytes32 zkProofRoot) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Lack of Sybil resistance enables identity forgery and manipulation."
+- context: "Token claim, whitelist, or reward protocol"
+  severity: H
+  reasoning: "Protocol value directly extracted through mass fake identities."
+- context: "Sybil-resistant protocol (e.g., POH, staking)"
+  severity: L
+  reasoning: "Proper design reduces exploitability through identity proofs or costs."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -108,7 +122,7 @@ function claimAirdrop(bytes32 zkProofRoot) external {
 ```markdown
 id: TBA
 title: Sybil Attack Vectors
-severity: M
+severity: H
 score:
 impact: 3  
 exploitability: 4  

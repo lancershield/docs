@@ -142,24 +142,22 @@ nav:
           - Unverified Upgrade: vuln-db/high/Unverified-Upgrade.md
           - Block timestamp: vuln-db/high/Block-timestamp.md
           - Selfdestruct: vuln-db/high/Selfdestruct.md
+          - Unprotected setMintFeeRecipient: vuln-db/high/Unprotected-setMintFeeRecipient.md
+          - Ignoring Chain Reorgs: vuln-db/high/Ignoring-Chain-Reorgs.md
+          - Ignoring SafeERC20: vuln-db/high/Ignoring-SafeERC20.md
+          - Lack of Circuit Breakers: vuln-db/high/Lack-of-Circuit-Breakers.md
+          - Lack of Pausable Functionality: vuln-db/high/Lack-of-Pausable-Functionality.md
+          - Logic Errors: vuln-db/high/Logic-Errors.md
+          - Sybil Attack Vectors: vuln-db/high/Sybil-Attack-Vectors.md
       - Medium:
           - Overview: vuln-db/medium/index.md
-          - logical-errors: vuln-db/medium/logic-errors.md
-          - Timestamp-Dependence: vuln-db/medium/Timestamp-dependency.md
           - Fallback-Function-Misuse: vuln-db/medium/Fallback-Function.md
           - Gas Griefing: vuln-db/medium/Gas-Griefing.md
           - Time Manipulation: vuln-db/medium/Time-Manipulation.md
-          - Event Emission: vuln-db/medium/Event-Emission.md
           - Improper Error: vuln-db/medium/Improper-Error.md
           - Contract Size Limit: vuln-db/medium/Contract-Size-Limit.md
-          - Unused Modifiers: vuln-db/medium/Unused-Modifiers.md
-          - Deprecated Solidity: vuln-db/medium/Deprecated-Solidity.md
           - Overuse of Inline: vuln-db/medium/Overuse-of-Inline.md
-          - Lack of Circuit Breakers: vuln-db/medium/Lack-of-Circuit-Breakers.md
-          - Unoptimized Data: vuln-db/medium/Unoptimized.md
-          - Ignoring Chain: vuln-db/medium/Ignoring-Chain.md
           - Inconsistent Decimal: vuln-db/medium/Inconsistent-Decimal.md
-          - Ignoring SafeERC20: vuln-db/medium/Ignoring-SafeERC20.md
           - Minting to Burn: vuln-db/medium/Minting-to-Burn.md
           - Approval Reset Race Condition: vuln-db/medium/Approval-Reset-Race.md
           - Gas Token Exploitation: vuln-db/medium/Gas-Token-Exploitation.md
@@ -173,19 +171,14 @@ nav:
           - Storage Signed: vuln-db/medium/Storage-Signed.md
           - Dangerous Strict Equalities: vuln-db/medium/Dangerous-Strict-Equalities.md
           - Contracts That Lock Ether: vuln-db/medium/Contracts.md
-          - Deletion on Mapping: vuln-db/medium/Deletion-on-Mapping.md
-          - Unchecked send: vuln-db/medium/Unchecked-send.md
           - Dangerous Unary Expressions: vuln-db/medium/Dangerous-Unary-Expressions.md
           - Unimplemented Functions: vuln-db/medium/Unimplemented-Functions.md
-          - Lack of Pausable: vuln-db/medium/Lack-of-Pausable.md
           - Shadow Fork Confusion: vuln-db/medium/Shadow-Fork.md
           - State Leakage: vuln-db/medium/State-Leakage.md
-          - Empty catch Blocks: vuln-db/medium/Empty-catch-blocks.md
           - Boolean Short-Circuit: vuln-db/medium/Boolean-Short-Circuit.md
           - Missing Fallback Gas: vuln-db/medium/Missing-Fallback-Gas.md
           - Precision Loss: vuln-db/medium/Precision-Loss.md
           - Force-Feeding Attacks: vuln-db/medium/Force-Feeding-Attacks.md
-          - Sybil Attack Vectors: vuln-db/medium/Sybil-Attack-Vectors.md
           - Early Claiming: vuln-db/medium/Early-Claiming.md
           - Incentive Misalignment: vuln-db/medium/Incentive-Misalignment.md
           - Reward Accumulator Drift: vuln-db/medium/Reward-Accumulator-Drift.md
@@ -215,22 +208,25 @@ nav:
           - Token Migration: vuln-db/medium/Token-Migration.md
           - Unchecked transfer: vuln-db/medium/Unchecked-transfer.md
           - Unsafe Use of assert: vuln-db/medium/Unsafe-Use-of-assert.md
-          - Incorrect Event Emissions: vuln-db/medium/Incorrect-Event-Emissions.md
       - Low:
           - Overview: vuln-db/low/index.md
           - Gas-Inefficient: vuln-db/low/Gas-Inefficiencies-attack.md
           - Hardcoded: vuln-db/low/Hardcoded.md
-          - Tautological: vuln-db/low/Tautological.md
           - Builtin Symbol Shadowing: vuln-db/low/Builtin-Symbol-Shadowing.md
           - Ambiguous Constant: vuln-db/low/Ambiguous-Constant.md
-          - setMintFeeRecipient: vuln-db/low/setMintFeeRecipient.md
           - Incomplete Event: vuln-db/low/Incomplete-Event.md
-      - Gas: 
-          - Overview: vuln-db/Gas/index.md
+          - Deletion on Mapping: vuln-db/low/Deletion-on-Mapping.md
+          - Deprecated Solidity Functions: vuln-db/low/Deprecated-Solidity-Functions.md
+          - Empty Catch Blocks: vuln-db/low/Empty-catch-Blocks.md
+          - Event Emission Flaws: vuln-db/low/Event-Emission-Flaws.md
+          - Unoptimized Data Structures: vuln-db/low/Unoptimized-Data-Structures.md
       - Informational:
           - Overview: vuln-db/Informational/index.md 
           - Missing NatSpec: vuln-db/Informational/Missing-NatSpec.md
           - Redundant Code Logic: vuln-db/Informational/Redundant-Code-Logic.md
+          - Tautological: vuln-db/Informational/Tautological.md
+      - Gas:
+          - Overview: vuln-db/Gas/index.md
   - Contributing Guide: contributing/index.md
 
 plugins:

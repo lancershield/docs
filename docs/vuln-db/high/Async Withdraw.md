@@ -126,8 +126,7 @@ contract SecureVault is ReentrancyGuard {
   
 ## 📚 Further Reading
 
-- [SWC-107: Reentrancy](https://swcregistry.io/docs/SWC-107)
-- [Race Conditions in Smart Contracts – ImmuneBytes](https://immunebytes.com/blog/race-conditions-in-smart-contracts/) 
+- [SWC-107: Reentrancy](https://swcregistry.io/docs/SWC-107) 
 - [ERC20 Approve Race Condition Vulnerability – Zokyo Auditing Tutorials](https://zokyo-auditing-tutorials.gitbook.io/zokyo-tutorials/tutorials/tutorial-3-approvals-and-safe-approvals/vulnerability-examples/erc20-approve-race-condition-vulnerability) 
 
 --- 

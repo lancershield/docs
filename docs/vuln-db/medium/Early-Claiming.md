@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Early Claiming of Rewards
-severity: M
+baseSeverity: M
 category: timing
 language: solidity
 blockchain: [ethereum, arbitrum, optimism, polygon, bsc]
@@ -73,6 +73,21 @@ function claim() external {
     hasClaimed[msg.sender] = true;
     rewardToken.transfer(msg.sender, 100 * 1e18);
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Enables unfair reward extraction, but no immediate fund loss to others."
+- context: "DeFi yield farm with emissions"
+  severity: H
+  reasoning: "Early claimers can drain emissions and affect protocol tokenomics."
+- context: "Private staking contract with whitelist"
+  severity: L
+  reasoning: "Limited to a few participants with known identities."
 ```
 
 ## 🛡️ Prevention

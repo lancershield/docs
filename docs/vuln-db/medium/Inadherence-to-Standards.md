@@ -116,7 +116,7 @@ function transfer(address to, uint256 amount) public returns (bool) {
 ```markdown
 id: TBA
 title: Inadherence to Standards
-severity: H
+severity: M
 score:
 impact: 4 
 exploitability: 3  

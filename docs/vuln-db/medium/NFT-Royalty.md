@@ -115,7 +115,7 @@ function royaltyEnforcedTransfer(address from, address to, uint256 tokenId) exte
 ```markdown
 id: TBA
 title: NFT Royalty Bypass 
-severity: H
+severity: M
 score:
 impact: 4         
 exploitability: 4 

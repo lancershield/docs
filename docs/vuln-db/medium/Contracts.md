@@ -1,9 +1,9 @@
-# Contracts That Lock Ether Permanently Due to Missing Withdrawal Logic
+# Contracts That Lock Ether Permanently 
 
 ```YAML
 id: TBA
-title: Contracts That Lock Ether Permanently Due to Missing Withdrawal Logic
-severity: M
+title: Contracts That Lock Ether Permanently
+baseSeverity: M
 category: funds-locking
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,21 @@ contract RecoverableEther {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Permanent fund loss can harm users, even if accidental."
+- context: "Protocols where users interact by sending Ether"
+  severity: H
+  reasoning: "Many users may unknowingly send ETH and lose it."
+- context: "Internal utility contract with no public interface"
+  severity: L
+  reasoning: "Low risk as no external Ether expected."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -94,7 +109,7 @@ contract RecoverableEther {
 
 - **Name:** King of the Ether Throne 
 - **Date:** 2016 
-- **Loss:** ~10,000 ETH permanently locked due to contract logic 
+- **Loss:** ~10,000 ETH 
 - **Post-mortem:** [Link to post-mortem](https://ethereum.stackexchange.com/questions/19341/what-happened-with-the-king-of-the-ether-throne-contract) 
   
 ## 📚 Further Reading
@@ -106,6 +121,7 @@ contract RecoverableEther {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Contracts That Lock Ether Permanently Due to Missing Withdrawal Logic

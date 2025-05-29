@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Overuse of Inline Assembly 
-severity: M
+baseSeverity: M
 category: code-quality
 language: solidity
 blockchain: [ethereum]
@@ -63,6 +63,20 @@ contract SafeMath {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Moderate risk due to audit difficulty and bypassing safety checks."
+- context: "Protocol upgradeability or low-level storage logic"
+  severity: H
+  reasoning: "Can easily break upgrade logic, proxy patterns, or state layout."
+- context: "Well-documented, tested inline assembly with clear purpose"
+  severity: L
+  reasoning: "Assembly is justified and constrained in scope, with mitigations."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -93,7 +107,6 @@ contract SafeMath {
 - **Date:** 2017 
 - **Loss:** ~$150M frozen 
 - **Post-mortem:** [Link to post-mortem](https://paritytech.io/blog/security-alert-2/) 
-
 
 ## 📚 Further Reading
 

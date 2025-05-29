@@ -2,21 +2,20 @@
 
 ```YAML
 id: TBA
-title: Lack of Pausable Functionality 
-severity: M
-category: circuit-breaker
+title: Lack of Pausable Functionality
+baseSeverity: H
+category: emergency-control
 language: solidity
 blockchain: [ethereum]
-impact: Inability to respond to threats, exploits, or critical bugs
+impact: Protocol cannot be halted during critical failures
 status: draft
 complexity: low
-attack_vector: internal
+attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<=0.8.25"]
-cwe: CWE-696
-swc: SWC-136
+versions: [">=0.5.0", "<latest"]
+cwe: CWE-693
+swc: SWC-131
 ```
-
 ## 📝 Description
 
 - Smart contracts deployed without a pausable mechanism (also known as a circuit breaker) lack the ability to halt critical functions during emergencies such as:
@@ -91,6 +90,20 @@ contract SafeLendingPool is Pausable, Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Assets and core functions remain active during emergencies."
+- context: "Public DeFi protocol with no time-lock or guardian"
+  severity: C
+  reasoning: "Unmitigated risk of mass exploitation if a bug is found."
+- context: "Private contract with controlled access"
+  severity: L
+  reasoning: "Lower urgency due to centralized control and user trust."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -129,7 +142,7 @@ contract SafeLendingPool is Pausable, Ownable {
 ```markdown
 id: TBA
 title: Lack of Pausable Functionality 
-severity: M 
+severity: H 
 score:
 impact: 4  
 exploitability: 2 

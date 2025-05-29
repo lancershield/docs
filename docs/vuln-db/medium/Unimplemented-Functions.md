@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unimplemented Functions
-severity: M
+baseSeverity: M
 category: interface-violation
 language: solidity
 blockchain: [ethereum]
@@ -80,6 +80,20 @@ contract SafeStrategy is IStrategy {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "May cause integration failure, but unlikely to result in fund loss."
+- context: "Token claiming to follow ERC interfaces like ERC20 or ERC721"
+  severity: H
+  reasoning: "Could cause widespread wallet, dApp, and protocol breakage or fund lock."
+- context: "Internal system with well-scoped interface usage"
+  severity: L
+  reasoning: "Error is localized and can be caught during internal testing."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -103,7 +117,7 @@ contract SafeStrategy is IStrategy {
 
 - **Name:** FakeERC20s in Aggregators 
 - **Date:** 2021 
-- **Loss:** ~$500K in failed trades via dummy contract with unimplemented transfer 
+- **Loss:** ~$500K  
 - **Post-mortem:** [Link to post-mortem](https://medium.com/1inch-network)
   
 ## 📚 Further Reading

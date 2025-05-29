@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Missing Input Validation 
-severity: H
+baseSeverity: H
 category: input-validation
 language: solidity
 blockchain: [ethereum, polygon, optimism, arbitrum, bsc]

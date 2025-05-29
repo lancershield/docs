@@ -105,7 +105,7 @@ contract SafeNaming {
 - **Loss:** Unexpected behavior due to shadowed state variables in inheritance 
 - **Post-mortem:** [Link to post-mortem](https://medium.com/@joichiro.sai/solidity-attack-vector-25-shadowed-state-variables-c5ccc2944c16) 
   
-📚 Further Reading
+## 📚 Further Reading
 
 - [SWC-135: Incorrect Logic](https://swcregistry.io/docs/SWC-135/) 
 - [Slither – Shadowing Detection](https://github.com/crytic/slither/wiki/Detector-Documentation#variable-shadowing)

@@ -1,9 +1,9 @@
-# Storage Signed Integer Array Misuse Can Cause Logic Errors and Underflows
+# Storage Signed Integer 
 
 ```YAML
 id: TBA
-title: Storage Signed Integer Array Misuse Can Cause Logic Errors and Underflows
-severity: M
+title: Storage Signed Integer 
+baseSeverity: M
 category: storage
 language: solidity
 blockchain: [ethereum]
@@ -81,6 +81,20 @@ contract SafeSignedArray {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Signed storage misuse leads to logic bugs and underflows."
+- context: "DeFi protocol managing collateral and debt"
+  severity: H
+  reasoning: "Debt-based systems relying on signed math may grant unearned access or rewards."
+- context: "Token contract with restricted mint/burn rules"
+  severity: L
+  reasoning: "Risk mitigated due to fewer signed variables and tighter controls."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -107,7 +121,6 @@ contract SafeSignedArray {
 - **Loss:** Potential data corruption in contracts using signed integer arrays 
 - **Post-mortem:** [Link to post-mortem](https://soliditylang.org/blog/2019/06/25/solidity-storage-array-bugs/) 
 
-
 ## 📚 Further Reading
 
 - [SWC-101: Integer Overflow and Underflow](https://swcregistry.io/docs/SWC-101/) 
@@ -120,7 +133,7 @@ contract SafeSignedArray {
 
 ```markdown
 id: TBA
-title: Storage Signed Integer Array Misuse Can Cause Logic Errors and Underflows
+title: Storage Signed Integer 
 severity: M
 score:
 impact: 3         

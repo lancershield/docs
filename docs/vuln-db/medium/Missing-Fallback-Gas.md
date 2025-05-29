@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Missing Fallback Gas 
-severity: M
+baseSeverity: M
 category: ether-transfer
 language: solidity
 blockchain: [ethereum]
@@ -73,6 +73,20 @@ contract SafeRewarder {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Transfer failures cause inconsistencies but no direct theft."
+- context: "High-throughput airdrop or treasury contract"
+  severity: H
+  reasoning: "Numerous silent failures may accumulate, causing major fund misallocation."
+- context: "Minimal contract-to-contract interaction"
+  severity: L
+  reasoning: "Low risk if interacting only with EOAs or gasless contracts."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -95,11 +109,11 @@ contract SafeRewarder {
 
 - **Name:** King of the Ether Throne 
 - **Date:** 2016 
-- **Loss:** Approximately 1,000 ETH lost due to failed Ether transfers caused by fallback function gas limitations 
+- **Loss:** Approximately 1,000 ETH  
 - **Post-mortem:** [Link to post-mortem](https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/known_attacks/) 
 - **Name:** Uniswap v1 Token Transfer Failures 
 - **Date:** 2018 
-- **Loss:** Estimated $50,000 in failed token transfers due to fallback function gas constraints 
+- **Loss:** Estimated $50,000  
 - **Post-mortem:** [Link to post-mortem](https://stackoverflow.com/questions/74930609/solidity-fallback-function-gas-limit)
   
 ## 📚 Further Reading

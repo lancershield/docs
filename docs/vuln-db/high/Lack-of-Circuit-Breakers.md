@@ -1,20 +1,20 @@
-# Lack of Circuit Breakers for Secondary Features 
+# Lack of Circuit Breakers
 
 ```YAML
 id: TBA
-title: Lack of Circuit Breakers for Secondary Features 
-severity: M
-category: resilience
+title: Lack of Circuit Breakers
+baseSeverity: H
+category: emergency-control
 language: solidity
 blockchain: [ethereum]
-impact: Inability to disable faulty or abused features during emergencies
+impact: Uncontrollable protocol drain or failure under duress
 status: draft
-complexity: medium
+complexity: low
 attack_vector: external
 mitigation_difficulty: easy
-versions: [">=0.6.0", "<latest"]
+versions: [">=0.5.0", "<latest"]
 cwe: CWE-693
-swc: SWC-136
+swc: SWC-131
 ```
 
 ## 📝 Description
@@ -88,6 +88,20 @@ contract SafeFeatureControl is Pausable, Ownable {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Without pause, any bug may drain the protocol irreversibly."
+- context: "Governance-controlled DeFi protocol"
+  severity: C
+  reasoning: "Failure to halt critical operations can lead to systemic loss."
+- context: "Private contract with limited usage"
+  severity: L
+  reasoning: "Lower risk due to trusted actors and limited exposure."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -128,8 +142,8 @@ contract SafeFeatureControl is Pausable, Ownable {
 
 ```markdown
 id: TBA
-title: Lack of Circuit Breakers for Secondary Features 
-severity: M
+title: Lack of Circuit Breakers  
+severity: H
 score:
 impact: 4         
 exploitability: 2 

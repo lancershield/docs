@@ -1,21 +1,20 @@
-# Deprecated Solidity Functions 
-
+# Deprecated Solidity Functions
 
 ```YAML
 id: TBA
-title: Deprecated Solidity Functions Leading to Undefined Behavior or Upgrade Failures
-severity: M
-category: language-usage
+title: Deprecated Solidity Functions
+baseSeverity: L
+category: language-compatibility
 language: solidity
 blockchain: [ethereum]
-impact: Execution inconsistencies, forward-compatibility issues, or security flaws
+impact: Functionality mismatch or unexpected execution behavior
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
-cwe: CWE-676
-swc: SWC-130
+cwe: CWE-477
+swc: SWC-135
 ```
 
 ## 📝 Description
@@ -75,6 +74,20 @@ contract ModernContract {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Minor bugs or failed deployments, but unlikely to cause major loss."
+- context: "Upgradable or shared library code"
+  severity: M
+  reasoning: "Breakage in upgrades or forks may lead to unpatchable bugs or frozen contracts."
+- context: "Archived contracts on legacy chains"
+  severity: I
+  reasoning: "Has no runtime impact if contracts are frozen and never executed again."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -115,8 +128,8 @@ contract ModernContract {
 
 ```markdown
 id: TBA
-title: Deprecated Solidity Functions Leading to Undefined Behavior 
-severity: M
+title: Deprecated Solidity Functions 
+severity: L
 score:
 impact: 3         
 exploitability: 2 

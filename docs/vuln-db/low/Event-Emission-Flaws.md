@@ -2,21 +2,20 @@
 
 ```YAML
 id: TBA
-title: Event Emission Flaws Leading to Mismatched or Missing On-Chain Logs
-severity: M
-category: event-logging
+title: Event Emission Flaws
+baseSeverity: L
+category: auditability
 language: solidity
 blockchain: [ethereum]
-impact: Off-chain systems misinterpret state changes or user actions
+impact: Inaccurate off-chain tracking and transparency
 status: draft
 complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
-versions: [">=0.4.0", "<0.8.21"]
-cwe: CWE-749
+versions: [">=0.6.0", "<latest"]
+cwe: CWE-778
 swc: SWC-136
 ```
-
 ## 📝 Description
 
 - Event Emission Flaws occur when a smart contract fails to emit important events, emits them with incorrect data, or emits them in the wrong order. 
@@ -69,6 +68,21 @@ function transfer(address to, uint256 amount) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: L
+  reasoning: "Affects auditability and indexing but not on-chain execution."
+- context: "Protocols relying on event-based sync"
+  severity: M
+  reasoning: "Breaks user experience and off-chain logic like The Graph."
+- context: "Private system with internal recordkeeping"
+  severity: I
+  reasoning: "Impact negligible if no off-chain dependencies exist."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -109,7 +123,7 @@ function transfer(address to, uint256 amount) external {
 ```markdown
 id: TBA
 title: Event Emission Flaws 
-severity: M
+severity: L
 score:
 impact: 3         
 exploitability: 2 

@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Improper Error Handling Leading to Silent Failures 
-severity: M
+title: Improper Error Handling  
+baseSeverity: M
 category: error-handling
 language: solidity
 blockchain: [ethereum]
@@ -65,6 +65,19 @@ contract SafeErrorHandling {
         // Safe to continue logic only if transfer succeeds
     }
 }
+```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Commonly causes confusing failures, especially in DeFi protocols."
+- context: "Critical protocol logic (staking, funds management)"
+  severity: H
+  reasoning: "Can lead to corrupted state or funds mismatch if failures are silently ignored."
+- context: "Non-critical external call (logging or analytics)"
+  severity: L
+  reasoning: "Limited impact if only auxiliary behavior is affected."
 ```
 
 ## 🛡️ Prevention

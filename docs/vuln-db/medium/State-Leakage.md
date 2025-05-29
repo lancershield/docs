@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: State Leakage 
-severity: M
+baseSeverity: M
 category: information-disclosure
 language: solidity
 blockchain: [ethereum]
@@ -75,6 +75,20 @@ contract SecureReferralSystem {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Common mistake in multi-stage logic; impact limited to session."
+- context: "Upgradeable contract using shared storage"
+  severity: H
+  reasoning: "Shared variables may lead to critical cross-function logic errors."
+- context: "Access-controlled payout with tight validation"
+  severity: L
+  reasoning: "Low-risk if contract performs full checks and resets state."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -97,7 +111,7 @@ contract SecureReferralSystem {
 
 - **Name:** Vulseye Discovery of State Leakage Vulnerabilities 
 - **Date:** 2024 
-- **Loss:** Identification of 4,845 vulnerabilities across 42,738 smart contracts, including state leakage issues 
+- **Loss:** 42,738 smart contracts
 - **Post-mortem:** [Link to post-mortem](https://arxiv.org/html/2408.10116v1)
   
 ## 📚 Further Reading

@@ -1,9 +1,9 @@
-# Dangerous Strict Equalities Introduce Fragile Logic and Invariant Failures
+# Dangerous Strict Equalities 
 
 ```YAML
 id: TBA
-title: Dangerous Strict Equalities Introduce Fragile Logic and Invariant Failures
-severity: M
+title: Dangerous Strict Equalities 
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,21 @@ contract SafeVault {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Logic failure without financial theft, but may block contract use."
+- context: "DeFi claim logic or withdrawal unlock conditions"
+  severity: H
+  reasoning: "Funds may be permanently locked or inaccessible."
+- context: "Internal DAO setting or testnet use"
+  severity: L
+  reasoning: "Impact limited due to access controls or testing scope."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -101,7 +116,6 @@ contract SafeVault {
 
 - [SWC-135: Incorrect Authorization (includes logic flaws)](https://swcregistry.io/docs/SWC-135/) 
 - [Solidity Docs – Comparison Operators](https://docs.soliditylang.org/en/latest/control-structures.html#comparison-operators)
-- [Trail of Bits: Solidity Gotchas](https://github.com/crytic/solidity-security-blog) 
 - [ChainSecurity Audit Notes on Strict Equalities](https://chainsecurity.com/) 
 
 ---
@@ -110,7 +124,7 @@ contract SafeVault {
 
 ```markdown
 id: TBA
-title: Dangerous Strict Equalities Introduce Fragile Logic and Invariant Failures
+title: Dangerous Strict Equalities 
 severity: M
 score:
 impact: 3         

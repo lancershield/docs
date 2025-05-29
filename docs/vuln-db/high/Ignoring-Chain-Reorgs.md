@@ -1,19 +1,19 @@
-# Ignoring Chain Reorgs in Non-Critical Logic
+# Ignoring Chain Reorgs
 
 ```YAML
 id: TBA
-title: Ignoring Chain Reorgs in Non-Critical Logic 
-severity: M
-category: chain-reorg
+title: Ignoring Chain Reorgs
+baseSeverity: H
+category: consensus-assumptions
 language: solidity
 blockchain: [ethereum]
-impact: Off-chain systems or app logic may reflect false data after reorg
+impact: Inconsistent or reversible state leading to double execution or invalid assumptions
 status: draft
 complexity: medium
-attack_vector: blockchain
+attack_vector: external
 mitigation_difficulty: medium
-versions: [">=0.6.0", "<latest"]
-cwe: CWE-668
+versions: [">=0.6.0", "<0.8.24"]
+cwe: CWE-345
 swc: SWC-136
 ```
 
@@ -65,6 +65,19 @@ contract ReorgSafe {
     }
 }
 ```
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: H
+  reasoning: "Finality assumption in recent blocks opens up reward inconsistency or false randomness."
+- context: "Oracle-integrated DeFi Protocol"
+  severity: C
+  reasoning: "Reorgs can break oracle-backed assumptions, trigger liquidations, or reward manipulation."
+- context: "Post-finalized chains (e.g., L2 rollups with challenge periods)"
+  severity: M
+  reasoning: "Reorgs are rare, but window exists during challenge/finalization."
+```
 
 ## 🛡️ Prevention
 
@@ -93,7 +106,6 @@ contract ReorgSafe {
 - **Loss:** Network instability and transaction reversals 
 - **Post-mortem:** [Link to post-mortem](https://consensys.net/blog/blockchain-explained/understanding-ethereum-reorgs/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-136: Unexpected Behavior due to Environmental Assumptions](https://swcregistry.io/docs/SWC-136) 
@@ -106,8 +118,8 @@ contract ReorgSafe {
 
 ```markdown
 id: TBA
-title: Ignoring Chain Reorgs in Non-Critical Logic 
-severity: M
+title: Ignoring Chain Reorgs  
+severity: H
 score:
 impact: 3         
 exploitability: 1 

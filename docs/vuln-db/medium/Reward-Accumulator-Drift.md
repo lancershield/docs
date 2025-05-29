@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Reward Accumulator Drift
-severity: M
+baseSeverity: M
 category: accounting
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -73,6 +73,20 @@ function deposit(uint256 amount) external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Can cause moderate economic deviation if left unchecked."
+- context: "High-volume yield farming pool"
+  severity: H
+  reasoning: "High impact due to rapid user churn and large reward sums."
+- context: "Single-staker testnet deployment"
+  severity: L
+  reasoning: "Minimal economic loss and test-only use."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -95,18 +109,10 @@ function deposit(uint256 amount) external {
 
 ## 🕰️ Historical Exploits
 
-- **Name:** Pickle Finance Accumulator Drift 
-- **Date:** 2021-01 
-- **Loss:** ~$1,200,000 in overpaid or underpaid rewards due to misaligned `accRewardPerShare` updates 
-- **Post-mortem:** [Link to post-mortem](https://forum.pickle.finance/) 
-- **Name:** ApeSwap Harvest Delay Bug 
-- **Date:** 2021-05 
-- **Loss:** ~$450,000 in misallocated BANANA rewards due to update skip 
-- **Post-mortem:** [Link to post-mortem](https://medium.com/@apeswapfinance) 
-- **Name:** AutoFarm Bounty for Drift Prevention 
-- **Date:** 2021 
-- **Loss:** N/A (prevention bounty paid to user who flagged drift edge case) 
-- **Post-mortem:** [Link to post-mortem](https://github.com/autofarm-network)
+- **Name:** Level Finance Referral Reward Exploit 
+- **Date:** 2023-05 
+- **Loss:** ~$1 million 
+- **Post-mortem:** [Link to post-mortem](https://cointelegraph.com/news/level-finance-confirms-1m-exploit-due-to-buggy-smart-contract)
   
 ## 📚 Further Reading
 

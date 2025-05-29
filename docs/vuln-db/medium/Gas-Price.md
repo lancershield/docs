@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Gas Price Dependent Logic
-severity: M
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum, polygon, bsc, arbitrum, optimism]
@@ -61,6 +61,20 @@ function claim() external {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "General misuse leads to unpredictable behavior but limited direct loss."
+- context: "Protocols relying on gas-based randomness"
+  severity: H
+  reasoning: "Randomness becomes manipulable, leading to jackpot exploits or loss of fairness."
+- context: "Logging or statistical use only"
+  severity: L
+  reasoning: "Minimal impact if tx.gasprice is not used in decision-making logic."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -98,6 +112,7 @@ function claim() external {
 --- 
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Gas Price Dependent Logic

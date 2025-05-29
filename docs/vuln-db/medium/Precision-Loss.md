@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Precision Loss 
-severity: M
+baseSeverity: M
 category: arithmetic
 language: solidity
 blockchain: [ethereum, optimism, arbitrum, polygon, bsc]
@@ -82,6 +82,19 @@ contract PreciseRewardVault {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Precision issues may cause unfairness or small loss without full breakage."
+- context: "Public DeFi protocol with rewards, fees, or voting"
+  severity: H
+  reasoning: "Critical in staking, DAO voting, and fee splits—may lead to measurable financial loss."
+- context: "Private utility contract with limited scope"
+  severity: L
+  reasoning: "Impact is minor, affecting only non-critical outcomes or simulations."
+```
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -104,7 +117,7 @@ contract PreciseRewardVault {
 
 - **Name:** Synthetix SNX Rewards Distribution Drift 
 - **Date:** 2019-10 
-- **Loss:** ~$7,000 in misallocated rewards over time due to rounding errors 
+- **Loss:** ~$7,000 
 - **Post-mortem:** [Link to post-mortem](https://sips.synthetix.io/sips/sip-12/)  
   
 ## 📚 Further Reading

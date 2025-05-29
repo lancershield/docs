@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Gas Griefing via Forced Reverts or Refund Denial
-severity: M
+title: Gas Griefing 
+baseSeverity: M
 category: gas-griefing
 language: solidity
 blockchain: [ethereum]
@@ -73,6 +73,21 @@ function claim(address[] calldata recipients) external {
         }
     }
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Can block execution, but not a direct exploit unless critical paths are affected."
+- context: "Reward distribution in yield protocols"
+  severity: H
+  reasoning: "Stuck funds and failed distributions lead to major user impact and protocol failure."
+- context: "Non-critical analytics or reporting loop"
+  severity: L
+  reasoning: "Only informational breakdown without asset or control consequences."
 ```
 
 ## 🛡️ Prevention

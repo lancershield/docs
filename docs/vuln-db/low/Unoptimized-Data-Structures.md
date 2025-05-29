@@ -2,14 +2,14 @@
 
 ```YAML
 id: TBA
-title: Unoptimized Data Structures 
-severity: M
+title: Unoptimized Data Structures
+baseSeverity: L
 category: gas-inefficiency
 language: solidity
 blockchain: [ethereum]
-impact: Higher gas fees, degraded scalability, and unnecessary storage bloat
+impact: Increased gas cost and potential for OOG failures
 status: draft
-complexity: medium
+complexity: low
 attack_vector: internal
 mitigation_difficulty: easy
 versions: [">=0.4.0", "<latest"]
@@ -77,6 +77,20 @@ contract Efficient {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: L
+  reasoning: "Results in avoidable gas waste, but does not affect correctness."
+- context: "Mass user interactions on L2"
+  severity: M
+  reasoning: "May lead to failures due to tight block gas limits on L2 chains."
+- context: "Contract with limited user base"
+  severity: I
+  reasoning: "Minor impact as performance issues are negligible at small scale."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -105,13 +119,11 @@ contract Efficient {
 - **Impact:** Requiring higher gas for trading; later optimized in V2 
 - **Post-mortem:** [Link to post-mortem](https://uniswap.org/blog/uniswap-v2) 
 
-
 ## 📚 Further Reading
 
 - [SWC-135: Code With No Effects or Inefficient Logic](https://swcregistry.io/docs/SWC-135) 
 - [Solidity Docs – Storage Layout and Packing](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html) 
 - [Slither Optimization Detectors](https://github.com/crytic/slither) 
-
 
 ---
 
@@ -120,7 +132,7 @@ contract Efficient {
 ```markdown
 id: TBA
 title: Unoptimized Data Structures 
-severity: M
+severity: L
 score:
 impact: 3         
 exploitability: 0 

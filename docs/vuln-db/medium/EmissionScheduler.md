@@ -163,7 +163,7 @@ contract SafeEmissionScheduler is Ownable {
 ```markdown
 id: TBA
 title: EmissionScheduler 
-severity: H
+severity: M
 score:
 impact: 4   
 exploitability: 4 

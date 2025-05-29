@@ -2,8 +2,8 @@
 
 ```YAML
 id: TBA
-title: Dangerous Unary Expressions Cause Incorrect State Mutations and Logic Errors
-severity: M
+title: Dangerous Unary Expressions 
+baseSeverity: M
 category: logic
 language: solidity
 blockchain: [ethereum]
@@ -72,6 +72,21 @@ contract SafeCounter {
 }
 ```
 
+## 🧭 Contextual Severity
+
+```yaml
+
+- context: "Default"
+  severity: M
+  reasoning: "Common logic bug leading to skipped updates or miscounted state."
+- context: "Reward distribution or vote limits"
+  severity: H
+  reasoning: "Can cause partial payouts or exploit permission logic."
+- context: "Testnet or private/internal functions"
+  severity: L
+  reasoning: "Limited risk in isolated or non-production environments."
+```
+
 ## 🛡️ Prevention
 
 ### Primary Defenses
@@ -108,7 +123,7 @@ contract SafeCounter {
 
 ```markdown
 id: TBA
-title: Dangerous Unary Expressions Cause Incorrect State Mutations and Logic Errors
+title: Dangerous Unary Expressions 
 severity: M
 score:
 impact: 3        

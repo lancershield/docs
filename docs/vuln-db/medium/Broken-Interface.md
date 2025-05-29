@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Broken Interface Compatibility 
-severity: M
+baseSeverity: M
 category: interface-mismatch
 language: solidity
 blockchain: [ethereum]
@@ -61,6 +61,20 @@ function safeTransferFrom(address from, address to, uint256 tokenId) public over
     _transfer(from, to, tokenId);
     require(_checkOnERC721Received(from, to, tokenId), "ERC721: transfer to non-ERC721Receiver");
 }
+```
+
+## 🧭 Contextual Severity
+
+```yaml
+- context: "Default"
+  severity: M
+  reasoning: "Causes functional failures but not direct asset loss."
+- context: "DeFi protocol using third-party token integrations"
+  severity: H
+  reasoning: "Interoperability failure could block user funds or enable griefing."
+- context: "Private dApp with tightly coupled modules"
+  severity: L
+  reasoning: "Failure likely caught in testing, less user-facing impact."
 ```
 
 ## 🛡️ Prevention

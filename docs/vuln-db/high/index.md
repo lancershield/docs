@@ -1,15 +1,21 @@
-# 🔥 High Severity 
-- Critical flaws that can cause direct loss of funds, protocol failure, or admin takeovers.
-Must be fixed immediately.
+# 🟠 High Severity
 
-- A single exploit can compromise entire contract balances or drain user assets.
+## 🧾 Definition:
 
-- Often publicly detectable and quickly exploitable once deployed.
+- Represents major vulnerabilities that could be exploited under certain conditions, resulting in financial loss, protocol disruption, or security bypass. These require urgent attention but may have contextual safeguards.
 
-- Can undermine trust in the protocol and result in legal or reputational damage.
+## 🔐 Key Characteristics:
 
-- Exploits are typically non-reversible on-chain once triggered.
+- **Conditional Exploitability**: Requires attacker effort, setup, or timing, but is practically exploitable.
+- **Significant Loss Risk**: Can drain user rewards, bypass role checks, or misconfigure sensitive parameters.
+- **Protocol-Specific Impact**: Often impacts tokenomics, governance, vaults, or price-sensitive flows.
+- **External Dependency Abuse**: May stem from or impact third-party contracts, oracles, or integrations.
+- **Elevated Trust Risk**: Weakens user trust or protocol integrity, even without direct loss.
+- **Can Be Mitigated On-Chain**: Sometimes manageable through upgrades, role transfers, or parameter changes.
 
-- May allow attackers to escalate privileges, gaining unauthorized control over sensitive functions.
+## 🚨 Required Response:
 
-- Examples: Reentrancy, access control bugs, oracle manipulation, flash loan abuse, proxy upgrade misuse.
+- **Patch Required Before Production**: Must be fixed before going live.
+- **On-Chain Mitigation (if live)**: Use timelocks, pause guards, or reconfiguration if fix isn’t immediate.
+- **Monitoring & Alerts**: Track usage of affected components until resolution.
+

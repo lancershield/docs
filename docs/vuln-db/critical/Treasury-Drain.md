@@ -87,13 +87,13 @@ function execute(uint proposalId) external onlyGovernance {
 
 ## 🛡️ Prevention
 
-## Primary Defenses
+### Primary Defenses
 
 - Introduce time-locks before execution of high-risk proposals.
 - Whitelist executable function signatures or target addresses.
 - Require multi-signature confirmation for treasury transfers.
 
-## Additional Safeguards
+### Additional Safeguards
 
 - Enforce quorum and minimum participation thresholds.
 - Restrict execution authority to trusted governance modules.

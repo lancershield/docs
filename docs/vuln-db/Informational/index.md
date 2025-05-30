@@ -1,13 +1,20 @@
-## ⚪ Informational Severity
+# ⚪ Informational Severity
 
-- Poses no security risk or functional impact on the protocol.
-- Typically related to readability, code structure, naming, or style inconsistencies.
-- May include public variables exposing non-sensitive data, misleading comments, or unnecessary getters.
-- Often flags non-standard patterns or deviations from best practices that might cause confusion.
-- Cannot be exploited for gain, but may reduce developer trust or complicate audits.
-- Fixes are optional but help maintain professionalism and audit credibility.
-- Useful for clean codebases, long-term maintenance, and easing onboarding of new developers.
-- Provides early warnings for potential future bugs as the codebase evolves.
-- Often reported to ensure the contract meets industry conventions and audit readiness.
-- Common examples: dead code, shadowed variables, improper naming, unused imports.
+## 🧾 Definition:
+
+- Informational findings are non-security observations that have no impact on logic or execution. Their value is in improving audit clarity, long-term maintainability, and developer confidence.
+
+## 🔐 Key Characteristics:
+
+- **No Functional Risk**: Changing or ignoring the issue does not affect contract behavior.
+- **Developer Clarity Issues**: Examples include unclear comments, redundant logic, or lack of NatSpec.
+- **Useful for External Review**: Helps future auditors, integrators, or contributors understand intent.
+- **May Signal Future Bugs**: Could become relevant if the logic changes over time.
+- **Low Effort Cleanup**: Usually fixable in minutes or during documentation review.
+
+## 🚨  Required Response:
+
+- **Fix is Discretionary**: No required action unless aligned with internal standards.
+- **Helpful for Reputation**: Cleaning these up reflects well on code quality and audit readiness.
+- **Log for Devs**: Track in backlog or GitHub issues to revisit post-deployment.
 

@@ -1,13 +1,20 @@
-# 🟢 Low Severity #
+# 🟢 Low Severity 
 
-- Minor issues that do not result in immediate financial loss or protocol compromise.
+## 🧾 Definition:
 
-- Often related to code quality, developer best practices, or non-critical inefficiencies.
+- Low severity findings do not pose any realistic threat to protocol safety or function. They typically represent clean code issues, missed optimizations, or minor UX inconsistencies.
 
-- May include things like improper event logging, unused variables, or lack of input validation on non-sensitive functions.
+## 🔐 Key Characteristics:
 
-- Generally non-exploitable or only exploitable under rare, controlled conditions.
+- **Non-Exploitable**: No financial impact or permission leakage, even with malicious intent.
+- **Code Quality-Related**: Unused variables, redundant modifiers, confusing naming, or minor gas waste.
+- **Affects Maintainability**: Can lead to long-term tech debt or misunderstandings.
+- **No User Impact**: Users won’t experience risk or error if left unpatched.
+- **Best Practices**: Often goes against solidity style guides or audit guidelines.
 
-- Fixes are recommended to improve maintainability, audit clarity, or prevent future escalation.
+## 🚨 Required Response:
 
-- Low severity issues do not impact core logic or asset flows, but cleaning them up contributes to long-term protocol security hygiene.
+- **Fix is Optional, but Encouraged:** Improves professionalism and future code safety.
+- **Add to Refactor Backlog**: Recommended for next version or during audit clean-up.
+- **No Disclosure Needed**: Doesn’t need to be highlighted unless requested by stakeholders.
+

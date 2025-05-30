@@ -1,21 +1,23 @@
-# 🟠 Medium Severity
+# 🟡 Medium Severity
 
-- May result in limited financial impact under specific conditions but usually not catastrophic.
+## 🧾 Definition:
 
-- Exploitation often requires multiple conditions to align, such as specific user behavior or system state.
+- Medium vulnerabilities do not lead to direct loss but can be abused under specific edge cases, impact economic fairness, or weaken system robustness. Often involve misconfigurations or incomplete checks.
 
-- Might affect functionality or reliability without directly causing fund loss.
+## 🔐 Key Characteristics:
 
-- Could lead to privilege escalation or indirect manipulation if chained with other vulnerabilities.
+- **Exploitability Requires Context**: Often needs specific timing, user error, or third-party behavior.
+- **Impacts Protocol Fairness or Accuracy**: Affects reward math, staking behavior, or accounting.
+- **Mild Trust Erosion**: Reduces trust if exploited, even if no financial loss occurs.
+- **Integration Risk**: May break assumptions for dApps, wallets, or external tools.
+- **Inconsistency or Drift**: Causes logic to degrade over time without proper resets or corrections.
+- **Fixable With Minimal Impact**: Usually fixable with a small contract update or config patch.
 
-- Not easily exploitable on its own, but might be used in multi-step attacks.
+## 🚨 Required Response:
 
-- Fixes are important but may not require immediate emergency response.
+- **Fix Strongly Recommended**: Should be addressed before production, but may be queued if documented.
+- **Add Monitoring or Failsafes**: Track drift or limit access to reduce exposure while patching.
+- **Mention in Public Docs**: If unpatched in production, must be disclosed transparently.
 
-- Often discovered during thorough audits, not immediately obvious in casual reviews.
 
-- May degrade user trust if exploited, even if impact is moderate.
 
-- Includes misconfigurations, improper checks, and outdated logic that could become critical over time.
-
-- Should be prioritized for patching after high severity issues are addressed to reduce compound risk.

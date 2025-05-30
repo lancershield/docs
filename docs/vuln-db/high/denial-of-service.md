@@ -82,7 +82,7 @@ function withdrawBatch(uint start, uint end) external {
   reasoning: "No impact on funds or control flow"
 ```
 
-### 🛡️ Prevention
+## 🛡️ Prevention
 
 ### Primary Defenses
 

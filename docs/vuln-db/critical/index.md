@@ -1,21 +1,22 @@
-# 🔥 Critical Severity
+# 🔴 Critical Severity
 
-- Represents the highest risk level in vulnerability classification.
+## 🧾 Definition:
 
-- Exploits can lead to complete loss of funds, contract bricking, or governance takeover.
+- Indicates the highest possible risk category within the LancerShield Severity Framework (LSF). These vulnerabilities represent immediate, system-wide threats with the potential for catastrophic impact.
 
-- Vulnerabilities are often immediately exploitable post-deployment.
+## 🔐 Key Characteristics:
 
-- Impact affects not only individual users but entire protocols and ecosystems.
+- **Immediate Exploitability**: Can be actively exploited as-is without modification or delay.
+- **Irreversible Impact**: Results in permanent loss—e.g., fund drains, bricked contracts, or governance compromise.
+- **Systemic Scope**: Affects not just the target contract, but also dependent protocols, integrations, and users.
+- **Privilege Escalation**: Often enables attackers to gain full admin rights or bypass all user permissions.
+- **Cascading Failures**: May force emergency shutdowns, forks, paused services, or community interventions.
+- **Legal & Regulatory Risk**: Triggers potential litigation, investigations, or brand damage.
+- **No Workarounds**: Cannot be mitigated by off-chain measures or runtime configuration changes.
 
-- These issues must be patched immediately—delays can be catastrophic.
+## 🚨 Required Response:
 
-- Exploits are typically irreversible on-chain, leading to permanent damage.
+- **Patch Required**: Must be remediated prior to deployment. No exceptions.
+- **Full Disclosure Logging**: Overrides must be justified and cryptographically logged for audit trails.
+- **Security Freeze (if live)**: Recommend halting affected systems until resolved.
 
-- Attackers may gain full admin control or bypass all user restrictions.
-
-- Often result in protocol shutdowns, forks, or emergency withdrawals.
-
-- May attract legal, regulatory, or reputational fallout.
-
-- Examples: reentrancy flaws, logic bugs in withdrawal functions, broken access control.

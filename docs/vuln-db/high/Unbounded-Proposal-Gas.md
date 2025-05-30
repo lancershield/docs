@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Unbounded Proposal Gas 
-severity: H
+baseSeverity: H
 category: governance
 language: solidity
 blockchain: [ethereum, optimism, arbitrum, polygon, avalanche]

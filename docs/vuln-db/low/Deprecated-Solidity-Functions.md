@@ -110,12 +110,11 @@ contract ModernContract {
 
 ## 🕰️ Historical Exploits
 
- - **Name:** Proof of Weak Hands Coin (PoWHCoin) Exploit 
- - **Date:** 2018-03-09 
- - **Loss:** Approximately 866 ETH 
- - **Post-mortem:** [Link to post-mortem](https://101blockchains.com/integer-overflow-attacks/) 
+- **Name:** Proof of Weak Hands Coin (PoWHCoin) Exploit 
+- **Date:** 2018-03-09 
+- **Loss:** Approximately 866 ETH 
+- **Post-mortem:** [Link to post-mortem](https://101blockchains.com/integer-overflow-attacks/) 
   
-
 ## 📚 Further Reading
 
 - [SWC-130: Deprecated/Unused Code](https://swcregistry.io/docs/SWC-130) 

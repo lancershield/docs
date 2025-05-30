@@ -78,7 +78,7 @@ function participateInPresale() external {
 
 ## 🛡️ Prevention
 
-## Primary Defenses
+### Primary Defenses
 
 - Always enforce require(whitelist[msg.sender]) or equivalent checks before protected logic.
 - Do not rely on tx.origin, emitted events, or frontend logic for access control.
@@ -114,7 +114,7 @@ function participateInPresale() external {
 
 ```markdown
 id: TBA
-title: Whitelist Bypass via Faulty Authorization Logic
+title: Whitelist Bypass 
 severity: H
 score:
 impact: 4        

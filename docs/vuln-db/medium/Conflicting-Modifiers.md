@@ -132,12 +132,12 @@ contract SafeModifiers is Ownable, Pausable {
 - Avoid combining modifiers that assume contradictory state conditions.
 - Ensure modifier order of application is explicitly understood and documented.
 
-## Additional Safeguards
+### Additional Safeguards
 
 - Write unit tests for all composite modifier paths.
 - Create modifier variants for edge cases (onlyOwnerWhenPaused, onlyRecoveryAdmin, etc.).
 
-## Detection Methods
+### Detection Methods
 
 - Review all externally callable functions with multiple modifiers.
 - Analyze modifier logic for shared state mutation or dependency.

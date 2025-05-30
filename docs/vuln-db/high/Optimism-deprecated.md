@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Deprecated Optimism Interfaces Lead to Insecure 
-severity: H
+baseSeverity: H
 category: l2-interop
 language: solidity
 blockchain: [optimism]

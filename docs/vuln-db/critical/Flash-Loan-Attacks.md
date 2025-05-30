@@ -128,7 +128,7 @@ function withdraw() external {
 
 - [SWC-108: Untrusted Delegate Call](https://swcregistry.io/docs/SWC-108/) 
 - [OpenZeppelin: Flash Loans and the Advent of Episodic Finance](https://blog.openzeppelin.com/flash-loans-and-the-advent-of-episodic-finance) 
-- [Certora: Proof of Optimality of Balancer V2's Flash Loan Bug](https://medium.com/certora/proof-of-optimality-of-balancer-v2s-flash-loan-bug-2eea00b908e2) - [Hacken: Flash Loan Attacks – Risks & Prevention](https://hacken.io/discover/flash-loan-attacks/) 
+- [Certora: Proof of Optimality of Balancer V2's Flash Loan Bug](https://medium.com/certora/proof-of-optimality-of-balancer-v2s-flash-loan-bug-2eea00b908e2)  
 - [Stader Labs: Understanding Flash Loan Attacks](https://www.staderlabs.com/blogs/staking-basics/flash-loan-attack/) 
 
 ---

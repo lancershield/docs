@@ -85,12 +85,12 @@ function calculateFee(uint256 amount) public pure returns (uint256) {
 - Always use descriptive, domain-specific names (e.g., MAX_SUPPLY, FEE_RATE_DENOMINATOR).
 - Document purpose and units using NatSpec on constants.
 
-## Additional Safeguards
+### Additional Safeguards
 
 - Use module-specific constants to prevent cross-context misuse.
 - Apply strict linting for naming conventions across teams and forks.
 
-## Detection Methods
+### Detection Methods
 
 - Review for constants named MAX, ONE, RATE, LIMIT without clarifying suffixes or comments.
 - Check whether such constants are reused across different functions or inherited contracts.

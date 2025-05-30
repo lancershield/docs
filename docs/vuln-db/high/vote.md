@@ -126,7 +126,7 @@ function lockTokens(uint256 amount, uint256 duration) external {
 
 ```markdown
 id: TBA
-title: Vote Escrow Exploits via Flash Voting or Vote Boosting
+title: Vote Escrow Exploits 
 severity: H
 score:
 impact: 5         

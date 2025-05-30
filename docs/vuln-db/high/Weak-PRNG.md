@@ -73,7 +73,6 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 ## 🧭 Contextual Severity
 
 ```yaml
-
 - context: "Default"
   severity: H
   reasoning: "Randomness predictability results in critical protocol abuse like lottery or gaming manipulation."

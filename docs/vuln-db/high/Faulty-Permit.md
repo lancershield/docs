@@ -131,7 +131,7 @@ contract SafePermitToken is ERC20Permit {
 
 ```markdown
 id: TBA
-title: Faulty Permit Implementation Enabling Unauthorized Token Transfers
+title: Faulty Permit Implementation 
 severity: H
 score:
 impact: 5         

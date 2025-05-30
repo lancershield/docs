@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Incorrect Exponentiation 
-severity: H
+baseSeverity: H
 category: arithmetic
 language: solidity
 blockchain: [ethereum]
@@ -131,7 +131,7 @@ contract CorrectPower {
 
 ```markdown
 id: TBA
-title: Incorrect Exponentiation 
+title: Incorrect Exponentiation
 severity: H
 score:
 impact: 4         

@@ -104,7 +104,7 @@ function transferFrom(address from, address to, uint256 amount) public returns (
 
 - **Name:** Visor Finance vVISR Staking Contract Exploit
 - **Date:** 2021-12-21
-- **Loss:** Approximately 8.8 million VISR tokens
+- **Loss:** Approximately 8.8 million 
 - **Post-mortem:** [Link to post-mortem](https://medium.com/visorfinance/post-mortem-for-vvisr-staking-contract-exploit-and-upcoming-migration-7920e1dee55a)
 
 ## 📚 Further Reading

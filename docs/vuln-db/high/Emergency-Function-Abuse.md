@@ -127,7 +127,7 @@ contract SafeEmergency is Ownable {
 
 ```markdown
 id: TBA
-title: Emergency Function Abuse Enabling Unauthorized Asset Seizure 
+title: Emergency Function Abuse 
 severity: H
 score:
 impact: 5         

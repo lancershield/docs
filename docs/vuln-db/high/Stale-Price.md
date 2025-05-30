@@ -128,7 +128,7 @@ function buy() external payable {
 
 ```markdown
 id: TBA
-title: Stale Price Usage Leading to Exploitable Financial Operations
+title: Stale Price Usage 
 severity: H
 score:
 impact: 5         

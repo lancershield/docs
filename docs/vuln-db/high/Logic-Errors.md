@@ -77,7 +77,7 @@ function claimReward() external {
 
 ## 🛡️ Prevention
 
-## Primary Defenses
+### Primary Defenses
 
 - Carefully order operations (read before write).
 - Use clear variable naming and intermediate variables for clarity.

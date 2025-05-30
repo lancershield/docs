@@ -3,7 +3,7 @@
 ```YAML
 id: TBA
 title: Incomplete Event Logging 
-severity: L
+baseSeverity: L
 category: observability
 language: solidity
 blockchain: [ethereum]

@@ -117,6 +117,7 @@ contract FixedCompare {
 ---
 
 ## ✅ Vulnerability Report
+
 ```markdown
 id: TBA
 title: Tautological 

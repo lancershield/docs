@@ -225,8 +225,6 @@ nav:
           - Missing NatSpec: vuln-db/Informational/Missing-NatSpec.md
           - Redundant Code Logic: vuln-db/Informational/Redundant-Code-Logic.md
           - Tautological: vuln-db/Informational/Tautological.md
-      - Gas:
-          - Overview: vuln-db/Gas/index.md
   - Contributing Guide: contributing/index.md
 
 plugins:

@@ -1,7 +1,7 @@
 # Imbalanced Liquidity
 
 ```YAML
-id: TBA
+id: LS38H
 title: Imbalanced Liquidity 
 baseSeverity: H
 category: amm-liquidity
@@ -154,7 +154,7 @@ contract BalancedPool {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS38H
 title: Imbalanced Liquidity 
 severity: H
 score:

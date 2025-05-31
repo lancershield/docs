@@ -1,7 +1,7 @@
 # Front-Running NFT Minting
 
 ```YAML
-id: TBA
+id: LS21H
 title: Front-Running NFT Minting 
 baseSeverity: H
 category: front-running
@@ -132,7 +132,7 @@ function reveal(uint256 salt, uint256 amount) external {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS21H
 title: Front-Running NFT Minting 
 severity: H
 score:

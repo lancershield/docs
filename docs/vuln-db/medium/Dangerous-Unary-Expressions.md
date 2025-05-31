@@ -1,7 +1,7 @@
 # Dangerous Unary Expressions
 
 ```YAML
-id: TBA
+id: LS16M
 title: Dangerous Unary Expressions 
 baseSeverity: M
 category: logic
@@ -122,7 +122,7 @@ contract SafeCounter {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS16M
 title: Dangerous Unary Expressions 
 severity: M
 score:

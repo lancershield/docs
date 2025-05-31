@@ -1,7 +1,7 @@
 # Unoptimized Data Structures
 
 ```YAML
-id: TBA
+id: LS07L
 title: Unoptimized Data Structures
 baseSeverity: L
 category: gas-inefficiency
@@ -130,7 +130,7 @@ contract Efficient {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS07L
 title: Unoptimized Data Structures 
 severity: L
 score:

@@ -1,7 +1,7 @@
 # Unsafe Mint to Non-Receiver
 
 ```YAML
-id: TBA
+id: LS27M
 title: Unsafe Mint to Non-Receiver
 baseSeverity: M
 category: erc721
@@ -116,7 +116,7 @@ function safeMint(address to, uint256 tokenId) public onlyOwner {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS27M
 title: Unsafe Mint to Non-Receiver
 severity: M
 score:

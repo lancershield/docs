@@ -1,7 +1,7 @@
 # Inflation Amplification
 
 ```YAML
-id: TBA
+id: LS40H
 title: Inflation Amplification 
 baseSeverity: H
 category: tokenomics
@@ -148,7 +148,7 @@ contract CappedStaking {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS40H
 title: Inflation Amplification 
 severity: H
 score:

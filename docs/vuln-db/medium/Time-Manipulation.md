@@ -1,7 +1,7 @@
 # Time Manipulation vulnerability
 
 ```YAML
-id: TBA
+id: LS03M
 title: Time Manipulation Vulnerabilities 
 baseSeverity: M
 category: time-manipulation
@@ -122,7 +122,7 @@ contract TimeLock {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS03M
 title: Time Manipulation Vulnerabilities 
 severity: M
 score:

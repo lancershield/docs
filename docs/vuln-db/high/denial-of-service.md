@@ -1,7 +1,7 @@
 # Denial of Service
 
 ```YAML
-id: TBA
+id: LS01H
 title: Denial of Service 
 baseSeverity: H
 category: denial-of-service
@@ -119,7 +119,7 @@ function withdrawBatch(uint start, uint end) external {
 ## ✅ Vulnerability Report 
 
 ```
-id: TBA
+id: LS01H
 title: Denial of Service
 severity: H
 score:

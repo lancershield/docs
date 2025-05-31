@@ -1,7 +1,7 @@
 # LayerZero Trusted Remote Not Locked
 
 ```YAML
-id: TBA
+id: LS12C
 title: LayerZero Trusted Remote Not Locked 
 baseSeverity: C
 category: cross-chain
@@ -156,7 +156,7 @@ contract SecureBridge is NonblockingLzApp {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS12C
 title: LayerZero Trusted Remote Not Locked 
 severity: C  
 score:

@@ -1,7 +1,7 @@
 # Public Mappings 
 
 ```YAML
-id: TBA
+id: LS13M
 title: Public Mappings
 baseSeverity: M
 category: data-leakage
@@ -126,7 +126,7 @@ contract SecureVoteTracker {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS13M
 title: Public Mappings 
 severity: M
 score:

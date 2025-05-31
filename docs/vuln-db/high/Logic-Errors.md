@@ -1,7 +1,7 @@
 # Logic Errors in Contract
 
 ```YAML
-id: TBA
+id: LS57H
 title: Logic Errors in Contract
 baseSeverity: H
 category: logic
@@ -113,7 +113,7 @@ function claimReward() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS57H
 title: Logic Errors in Contract 
 severity: H
 score:

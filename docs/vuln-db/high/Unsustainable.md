@@ -1,7 +1,7 @@
 # Pump and Dump Tokenomics
 
 ```YAML
-id: TBA
+id: LS26H
 title: Unsustainable Pump and Dump Tokenomics
 baseSeverity: H
 category: economic-manipulation
@@ -134,7 +134,7 @@ function lockTaxes() external onlyOwner {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS26H
 title: Unsustainable Pump and Dump Tokenomics
 severity: H
 score:

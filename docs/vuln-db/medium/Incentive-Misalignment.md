@@ -1,7 +1,7 @@
 # Incentive Misalignment in Staking
 
 ```YAML
-id: TBA
+id: LS24M
 title: Incentive Misalignment in Staking
 baseSeverity: M
 category: economic
@@ -125,7 +125,7 @@ function claimReward() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS24M
 title: Incentive Misalignment in Staking
 severity: M
 score:

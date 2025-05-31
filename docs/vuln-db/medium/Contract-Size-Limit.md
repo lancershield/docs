@@ -1,7 +1,7 @@
 # Contract Size Limit Violations
 
 ```YAML
-id: TBA
+id: LS05M
 title: Contract Size Limit Violations 
 baseSeverity: M
 category: deployment
@@ -130,7 +130,7 @@ contract Proxy {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS05M
 title: Contract Size Limit Violations 
 severity: M
 score:

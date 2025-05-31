@@ -1,7 +1,7 @@
 # Gelato Unprotected Randomness
 
 ```YAML
-id: TBA
+id: LS30H
 title: Gelato Unprotected Randomness 
 baseSeverity: H
 category: randomness
@@ -150,7 +150,7 @@ contract SecureRandomGame {
 ## ✅ Vulnerability Report
 
 ```markdown 
-id: TBA
+id: LS30H
 title: Gelato Unprotected Randomness
 severity: H
 score:

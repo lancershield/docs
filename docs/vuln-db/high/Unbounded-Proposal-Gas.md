@@ -1,7 +1,7 @@
 # Unbounded Proposal Gas
 
 ```YAML
-id: TBA
+id: LS37H
 title: Unbounded Proposal Gas 
 baseSeverity: H
 category: governance
@@ -146,7 +146,7 @@ contract ResilientGovernor {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS37H
 title: Unbounded Proposal Gas 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Arbitrary Storage Write
 
 ```YAML
-id: TBA
+id: LS03C
 title: Arbitrary Storage Write 
 baseSeverity: C
 category: storage-corruption
@@ -122,7 +122,7 @@ contract SafeStorage {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS03C
 title: Arbitrary Storage Write 
 severity: C
 score:

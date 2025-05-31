@@ -1,7 +1,7 @@
 # Stuck Swap Pools
 
 ```YAML
-id: TBA
+id: LS44M
 title: Stuck Swap Pools
 baseSeverity: M
 category: liquidity
@@ -125,7 +125,7 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS44M
 title: Stuck Swap Pools 
 severity: M
 score:

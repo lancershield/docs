@@ -1,7 +1,7 @@
 # Inadherence to Standards
 
 ```YAML
-id: TBA
+id: LS40M
 title: Inadherence to Standards
 baseSeverity: M
 category: interoperability
@@ -114,7 +114,7 @@ function transfer(address to, uint256 amount) public returns (bool) {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS40M
 title: Inadherence to Standards
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Token Whitelisting Flaws
 
 ```YAML
-id: TBA
+id: LS48H
 title: Token Whitelisting Flaws
 baseSeverity: H
 category: validation
@@ -118,7 +118,7 @@ function deposit(address token, uint256 amount) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS48H
 title: Token Whitelisting Flaws
 severity: H
 score:

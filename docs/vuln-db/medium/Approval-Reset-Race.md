@@ -1,7 +1,7 @@
 # Approval Reset Race Condition
 
 ```YAML
-id: TBA
+id: LS07M
 title: Approval Reset Race Condition 
 baseSeverity: M
 category: token-approval
@@ -110,7 +110,7 @@ function safeUpdateApproval(IERC20 token, address spender, uint256 newAmount) ex
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS07M
 title: Approval Reset Race Condition 
 severity: M
 score:

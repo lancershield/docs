@@ -1,7 +1,7 @@
 # Missing NatSpec
 
 ```YAML
-id: TBA
+id: LS01I
 title: Missing NatSpec
 baseSeverity: I
 category: documentation
@@ -115,7 +115,7 @@ function calculateFee(uint256 amount) public pure returns (uint256) {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS01I
 title: Ambiguous Constant Names
 severity: I
 score:

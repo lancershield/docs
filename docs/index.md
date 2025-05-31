@@ -2,6 +2,43 @@
 
 Welcome to the official documentation hub for **LancerShield** - your AI-powered platform for smart contract auditing, vulnerability detection, and secure development.
 
+## How LancerShield Is Unique
+
+**LancerShield isn’t just a scanner — it’s a security co-pilot built for real-world smart contract development**.
+Here’s what sets us apart from traditional audit tools and generic static analyzers:
+
+- **AI-Augmented Vulnerability Detection**
+  Goes beyond signatures and regex by reasoning through code execution paths using a context-aware AI engine.
+
+- **LancerShield Severity Framework (LSF)**
+  Proprietary, weighted scoring system that standardizes severity evaluation across audits — fully explainable, adaptable, and override-aware.
+
+- **Zero-Trust Override Logging**
+  Every manual severity override is logged cryptographically with user ID, timestamp, and diff — building trust through transparency.
+
+- **Continuously-Evolving Threat Intelligence**
+  Our vulnerability engine is enriched with real-world exploit data, bug bounty insights, and ecosystem telemetry — constantly learning.
+  
+- **Token + Protocol Specificity**
+  LancerShield adapts to ERC patterns, DeFi primitives, upgradeable contracts, and even cross-chain trust assumptions.
+
+## Our Mission & Goals
+
+**Our mission is to modernize smart contract security for the speed and scale of today’s web3 development**.
+We believe security should be:
+
+- **Shifted Left**– empowering devs to catch critical bugs before audits or mainnet deployment.
+- **Explainable by Default** – offering clear reasoning for each flagged issue, not just raw findings.
+- **Open & Evolving** – shaped by contributors, external researchers, and production-grade insights.
+- **Developer-Centric** – bridging the gap between raw vulnerability data and actionable code fixes.
+  
+### Our Strategic Goals
+
+- **Cut Time-to-Remediation by 50%** for high-impact bugs through automated prioritization.
+- **Standardize Risk Across Audits** with the LSF scoring engine adopted by multiple teams.
+- **Power Ecosystem Trust** by maintaining a transparent, collaborative, and up-to-date vulnerability knowledge base.
+- **Enable Continuous Security** — not once-per-release audits, but embedded detection in every commit.
+  
 ## What You'll Find Here
 
 - 🔍 **Severity Framework**  

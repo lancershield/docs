@@ -1,7 +1,7 @@
 # Minting to Burn Address 
 
 ```YAML
-id: TBA
+id: LS06M
 title: Minting to Burn Address 
 baseSeverity: M
 category: tokenomics
@@ -110,7 +110,7 @@ function mintTo(address recipient, uint256 amount) external onlyMinter {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS06M
 title: Minting to Burn Address 
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Read-Only Reentrancy
 
 ```YAML
-id: TBA
+id: LS44H
 title: Read-Only Reentrancy
 baseSeverity: H
 category: reentrancy
@@ -119,7 +119,7 @@ function claimReward() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS44H
 title: Read-Only Reentrancy
 severity: H
 score:

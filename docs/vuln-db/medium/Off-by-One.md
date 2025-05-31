@@ -1,7 +1,7 @@
 # Off-by-One Errors 
 
 ```YAML
-id: TBA
+id: LS10M
 title: Off-by-One Errors 
 baseSeverity: M
 category: logic
@@ -116,7 +116,7 @@ function distributeRewards() external payable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS10M
 title: Off-by-One Errors 
 severity: M
 score:

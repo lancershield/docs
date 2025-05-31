@@ -1,7 +1,7 @@
 # Upgrade Bricking
 
 ```YAML
-id: TBA
+id: LS10H
 title: Upgrade Bricking 
 baseSeverity: H
 category: upgradeability
@@ -143,7 +143,7 @@ contract SafeLogic is Initializable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS10H
 title: Upgrade Bricking  
 severity: H
 score:

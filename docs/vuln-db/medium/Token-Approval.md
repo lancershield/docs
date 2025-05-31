@@ -1,7 +1,7 @@
 # Token Approval Without Spending Limits
 
 ```YAML
-id: TBA
+id: LS45M
 title: Token Approval Without Spending Limits
 baseSeverity: M
 category: approvals
@@ -111,7 +111,7 @@ function safeApprove(IERC20 token, address spender, uint256 amount) external {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS45M
 title: Token Approval Without Spending Limits 
 severity: M
 score:

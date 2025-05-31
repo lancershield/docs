@@ -1,7 +1,7 @@
 # Missing Input Validation 
 
 ```YAML
-id: TBA
+id: LS39H
 title: Missing Input Validation 
 baseSeverity: H
 category: input-validation
@@ -127,7 +127,7 @@ contract Registry {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS39H
 title: Missing Input Validation 
 severity: H
 score:

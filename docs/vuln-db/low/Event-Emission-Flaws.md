@@ -1,7 +1,7 @@
 # Event Emission Flaws
 
 ```YAML
-id: TBA
+id: LS06L
 title: Event Emission Flaws
 baseSeverity: L
 category: auditability
@@ -121,7 +121,7 @@ function transfer(address to, uint256 amount) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS06L
 title: Event Emission Flaws 
 severity: L
 score:

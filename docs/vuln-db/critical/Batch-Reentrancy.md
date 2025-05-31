@@ -1,7 +1,7 @@
 # Batch Reentrancy with Incomplete State
 
 ```YAML
-id: TBA
+id: LS11C
 title: Batch Reentrancy with Incomplete State 
 baseSeverity: C
 category: reentrancy
@@ -146,7 +146,7 @@ contract SafeBatchPayout is ReentrancyGuard {
 
 ## ✅ Vulnerability Report
 ```markdown
-id: TBA
+id: LS11C
 title: Batch Reentrancy with Incomplete State 
 severity: C
 score:

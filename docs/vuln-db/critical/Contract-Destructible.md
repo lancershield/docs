@@ -1,7 +1,7 @@
 # Contract Destructible
 
 ```YAML
-id: TBA
+id: LS10C
 title: Contract Destructible 
 baseSeverity: C
 category: access-control
@@ -120,7 +120,7 @@ contract SafeKillable is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS10C
 title: Contract Destructible 
 severity: C
 score:

@@ -1,7 +1,7 @@
 # Insufficient Fee Logic in DEXs
 
 ```YAML
-id: TBA
+id: LS49H
 title: Insufficient Fee Logic in DEXs
 baseSeverity: H
 category: economic
@@ -116,7 +116,7 @@ function swap(uint256 amountIn, address tokenIn, address tokenOut) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS49H
 title: Insufficient Fee Logic in DEXs
 severity: H
 score:

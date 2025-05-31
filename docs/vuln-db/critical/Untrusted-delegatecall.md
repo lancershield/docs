@@ -1,7 +1,7 @@
 # Untrusted delegatecall
 
 ```YAML
-id: TBA
+id: LS08C
 title: Untrusted delegatecall 
 baseSeverity: C
 category: delegatecall
@@ -154,7 +154,7 @@ contract SecureProxy {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS08C
 title: Untrusted delegatecall 
 severity: C
 score:

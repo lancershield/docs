@@ -1,7 +1,7 @@
 # Ignoring SafeERC20
 
 ```YAML
-id: TBA
+id: LS54H
 title: Ignoring SafeERC20
 baseSeverity: H
 category: token-integration
@@ -128,7 +128,7 @@ contract SafeTokenTransfer {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS54H
 title: Ignoring SafeERC20 
 severity: H
 score:

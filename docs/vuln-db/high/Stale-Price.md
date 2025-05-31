@@ -1,7 +1,7 @@
 # Stale Price Usage 
 
 ```YAML
-id: TBA
+id: LS15H
 title: Stale Price Usage 
 baseSeverity: H
 category: oracle-manipulation
@@ -127,7 +127,7 @@ function buy() external payable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS15H
 title: Stale Price Usage 
 severity: H
 score:

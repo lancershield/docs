@@ -1,7 +1,7 @@
 # Access Control Vulnerabilities
 
 ``` YAML
-id: TBA
+id: LS16C
 title: Access Control Vulnerabilities
 baseSeverity: C
 category: access-control
@@ -129,7 +129,7 @@ contract SecureVault is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS16C
 title: Access Control Vulnerabilities
 severity: C
 score:

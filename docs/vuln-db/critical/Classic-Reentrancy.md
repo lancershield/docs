@@ -1,7 +1,7 @@
 # Classic Reentrancy
 
 ```YAML
-id: TBA
+id: LS09C
 title: Classic Reentrancy
 baseSeverity: C
 category: reentrancy
@@ -135,7 +135,7 @@ contract SafeVault {
 
 ## ✅ Vulnerability Report 
 ```markdown
-id: TBA
+id: LS09C
 title: Classic Reentrancy
 severity: C
 score:

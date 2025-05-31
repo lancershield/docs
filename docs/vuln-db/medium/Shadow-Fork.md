@@ -1,7 +1,7 @@
 # Shadow Fork Confusion
 
 ```YAML
-id: TBA
+id: LS18M
 title: Shadow Fork Confusion 
 baseSeverity: M
 category: environment-confusion
@@ -130,7 +130,7 @@ contract SafeTestSender {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS18M
 title: Shadow Fork Confusion 
 severity: M
 score:

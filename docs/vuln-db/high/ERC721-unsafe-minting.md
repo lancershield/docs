@@ -1,7 +1,7 @@
 # ERC721 Unsafe Minting 
 
 ```YAML
-id: TBA
+id: LS35H
 title: ERC721 Unsafe Minting 
 baseSeverity: H
 category: minting
@@ -127,7 +127,7 @@ contract SafeERC721 is ERC721, Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS35H
 title: ERC721 Unsafe Minting 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Privileged Role Migration Loophole
 
 ```YAML
-id: TBA
+id: LS51H
 title: Privileged Role Migration Loophole 
 baseSeverity: H
 category: access-control
@@ -160,7 +160,7 @@ contract SecureRoleManager is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS51H
 title: Privileged Role Migration Loophole 
 severity: H
 score:

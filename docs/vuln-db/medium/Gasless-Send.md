@@ -1,7 +1,7 @@
 # Gasless Send
 
 ```YAML
-id: TBA
+id: LS38M
 title: Gasless Send
 baseSeverity: M
 category: ether-transfer
@@ -118,7 +118,7 @@ function refund(address payable recipient) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS38M
 title: Gasless Send
 severity: M
 score:

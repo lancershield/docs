@@ -1,7 +1,7 @@
 # Force-Feeding Attacks
 
 ```YAML
-id: TBA
+id: LS22M
 title: Force-Feeding Attacks 
 baseSeverity: M
 category: ether-injection
@@ -130,7 +130,7 @@ contract SafeVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS22M
 title: Force-Feeding Attacks 
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Unintended Reentrancy
 
 ```YAML
-id: TBA
+id: LS13C
 title: Unintended Reentrancy
 baseSeverity: C
 category: reentrancy
@@ -121,7 +121,7 @@ function withdraw(uint256 amount) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS13C
 title: Unintended Reentrancy
 severity: C
 score:

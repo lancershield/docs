@@ -1,7 +1,7 @@
 # Mutable On-Chain Metadata
 
 ```YAML
-id: TBA
+id: LS29M
 title: Mutable On-Chain Metadata
 baseSeverity: M
 category: metadata
@@ -121,7 +121,7 @@ function freezeMetadata() external onlyOwner {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS29M
 title: Mutable On-Chain Metadata
 severity: M
 score:

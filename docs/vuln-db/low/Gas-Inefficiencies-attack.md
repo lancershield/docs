@@ -1,7 +1,7 @@
 # Gas Inefficiencies 
 
 ```YAML
-id: TBA
+id: LS01L
 title: Gas Inefficiencies 
 baseSeverity: L
 category: gas-optimization
@@ -114,7 +114,7 @@ function updateTotal(uint[] calldata nums) external {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS01L
 title: Gas Inefficiencies
 severity: L
 score:

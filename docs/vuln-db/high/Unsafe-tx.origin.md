@@ -1,7 +1,7 @@
 # Unsafe tx.origin Usage 
 
 ```YAML
-id: TBA
+id: LS16H
 title: Unsafe tx.origin Usage 
 baseSeverity: H
 category: access-control
@@ -128,7 +128,7 @@ contract SafeAuth {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS16H
 title: Unsafe tx.origin Usage 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Faulty Permit Implementation 
 
 ```YAML
-id: TBA
+id: LS13H
 title: Faulty Permit Implementation 
 baseSeverity: H
 category: signature-verification
@@ -130,7 +130,7 @@ contract SafePermitToken is ERC20Permit {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS13H
 title: Faulty Permit Implementation 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Precision Loss 
 
 ```YAML
-id: TBA
+id: LS21M
 title: Precision Loss 
 baseSeverity: M
 category: arithmetic
@@ -131,7 +131,7 @@ contract PreciseRewardVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS21M
 title: Precision Loss 
 severity: M
 score:

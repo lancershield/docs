@@ -1,7 +1,7 @@
 # Insecure executeTransaction
 
 ```YAML
-id: TBA
+id: LS14C
 title: Insecure executeTransaction
 baseSeverity: C
 category: access-control
@@ -111,7 +111,7 @@ function executeTransaction(address target, uint256 value, bytes calldata data) 
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS14C
 title: Insecure executeTransaction Function
 severity: C
 score:

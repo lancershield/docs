@@ -1,7 +1,7 @@
 # Cross-Contract Execution 
 
 ```YAML
-id: TBA
+id: LS05H
 title: Cross-Contract Execution 
 baseSeverity: H
 category: external-call
@@ -146,7 +146,7 @@ contract SafeAuction is ReentrancyGuard {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS05H
 title: Cross-Contract Execution
 severity: H
 score:

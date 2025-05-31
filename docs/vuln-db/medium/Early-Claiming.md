@@ -1,7 +1,7 @@
 # Early Claiming of Rewards
 
 ```YAML
-id: TBA
+id: LS23M
 title: Early Claiming of Rewards
 baseSeverity: M
 category: timing
@@ -128,7 +128,7 @@ function claim() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS23M
 title: Early Claiming of Rewards
 severity: M
 score:

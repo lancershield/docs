@@ -1,7 +1,7 @@
 # Gas Fee Arbitrage
 
 ```YAML
-id: TBA
+id: LS37M
 title: Gas Fee Arbitrage 
 baseSeverity: M
 category: economic
@@ -141,7 +141,7 @@ contract SafeGasReward {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS37M
 title: Gas Fee Arbitrage 
 severity: M
 score:

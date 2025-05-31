@@ -1,7 +1,7 @@
 # Overlapping Function
 
 ```YAML
-id: TBA
+id: LS42M
 title: Overlapping Function
 baseSeverity: M
 category: compiler-misinterpretation
@@ -121,7 +121,7 @@ function diamondCut(
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS42M
 title: Overlapping Function 
 severity: M
 score:

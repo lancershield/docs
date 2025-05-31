@@ -1,7 +1,7 @@
 # Vesting Shortcut Exploits 
 
 ```YAML
-id: TBA
+id: LS23H
 title: Vesting Shortcut Exploits 
 baseSeverity: H
 category: tokenomics
@@ -123,7 +123,7 @@ function vestedAmount(address user) public view returns (uint256) {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS23H
 title: Vesting Shortcut Exploits 
 severity: H
 score:

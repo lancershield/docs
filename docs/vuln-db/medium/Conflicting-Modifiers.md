@@ -1,7 +1,7 @@
 # Conflicting Modifiers
 
 ```YAML
-id: TBA
+id: LS32M
 title: Conflicting Modifiers 
 baseSeverity: M
 category: access-control
@@ -165,7 +165,7 @@ contract SafeModifiers is Ownable, Pausable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS32M
 title: Conflicting Modifiers 
 severity: M
 score:

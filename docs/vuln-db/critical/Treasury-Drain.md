@@ -1,7 +1,7 @@
 # Treasury Drain 
 
 ```YAML
-id: TBA
+id: LS06C
 title: Treasury Drain via Governance Exploit
 baseSeverity: C
 category: governance-manipulation
@@ -128,7 +128,7 @@ function execute(uint proposalId) external onlyGovernance {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS06C
 title: Treasury Drain via Governance Exploit
 severity: C
 score:

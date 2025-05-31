@@ -1,7 +1,7 @@
 # Unprotected setMintFeeRecipient
 
 ```YAML
-id: TBA
+id: LS52H
 title: Unprotected setMintFeeRecipient 
 baseSeverity: H
 category: access-control
@@ -132,7 +132,7 @@ contract SecureNFTMinter is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS52H
 title: Unprotected setMintFeeRecipient
 severity: H
 score:

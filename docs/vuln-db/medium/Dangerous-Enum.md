@@ -1,7 +1,7 @@
 # Dangerous Enum Conversion
 
 ```YAML
-id: TBA
+id: LS33M
 title: Dangerous Enum Conversion 
 baseSeverity: M
 category: type-conversion
@@ -136,7 +136,7 @@ contract SafeEnumExample {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS33M
 title: Dangerous Enum Conversion
 severity: M
 score:

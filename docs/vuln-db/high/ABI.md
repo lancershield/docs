@@ -2,7 +2,7 @@
 
 ```YAML
 id: TBA
-title: ABI encodePacked Collision 
+title: LS29H encodePacked Collision 
 baseSeverity: H
 category: encoding
 language: solidity
@@ -125,7 +125,7 @@ contract SafeHasher {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS29H
 title: ABI encodePacked Collision 
 severity: H
 score:

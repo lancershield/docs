@@ -1,7 +1,7 @@
 # Weak Encryption
 
 ```YAML
-id: TBA
+id: LS43H
 title: Weak Encryption
 baseSeverity: H
 category: cryptography
@@ -116,7 +116,7 @@ function unlock(bytes32 messageHash, bytes memory signature) public {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS43H
 title: Weak Encryption
 severity: H
 score:

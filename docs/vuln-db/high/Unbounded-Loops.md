@@ -1,7 +1,7 @@
 # Unbounded Loops
 
 ```YAML
-id: TBA
+id: LS47H
 title: Unbounded Loops
 baseSeverity: H
 category: gas
@@ -115,7 +115,7 @@ function distributeRewardsBatch(uint256 start, uint256 end) external onlyOwner {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS47H
 title: Unbounded Loops
 severity: H
 score:

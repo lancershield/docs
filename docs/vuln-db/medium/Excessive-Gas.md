@@ -1,7 +1,7 @@
 # Excessive Gas Refund Abuse 
 
 ```YAML
-id: TBA
+id: LS36M
 title: Excessive Gas Refund Abuse 
 baseSeverity: M
 category: gas-refund
@@ -137,7 +137,7 @@ contract SafeStorage {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS36M
 title: Excessive Gas Refund Abuse 
 severity: M
 score:

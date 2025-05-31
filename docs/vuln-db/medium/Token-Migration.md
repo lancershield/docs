@@ -1,7 +1,7 @@
 # Token Migration Inconsistency
 
 ```YAML
-id: TBA
+id: LS46M
 title: Token Migration Inconsistency
 baseSeverity: M
 category: tokenomics
@@ -128,7 +128,7 @@ contract TokenV2 is ERC20 {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS46M
 title: Token Migration Inconsistency 
 severity: M
 score:

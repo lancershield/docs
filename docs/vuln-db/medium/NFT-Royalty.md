@@ -1,7 +1,7 @@
 # NFT Royalty Enforcement Bypass 
 
 ```YAML
-id: TBA
+id: LS43M
 title: NFT Royalty Enforcement Bypass 
 baseSeverity: M
 category: economic-attack
@@ -113,7 +113,7 @@ function royaltyEnforcedTransfer(address from, address to, uint256 tokenId) exte
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS43M
 title: NFT Royalty Bypass 
 severity: M
 score:

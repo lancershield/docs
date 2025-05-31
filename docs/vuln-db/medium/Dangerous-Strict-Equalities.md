@@ -1,7 +1,7 @@
 # Dangerous Strict Equalities 
 
 ```YAML
-id: TBA
+id: LS14M
 title: Dangerous Strict Equalities 
 baseSeverity: M
 category: logic
@@ -123,7 +123,7 @@ contract SafeVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS14M
 title: Dangerous Strict Equalities 
 severity: M
 score:

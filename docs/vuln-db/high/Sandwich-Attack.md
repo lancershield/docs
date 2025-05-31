@@ -1,7 +1,7 @@
 # Sandwich Attack
 
 ```YAML
-id: TBA
+id: LS32H
 title: Sandwich Attack
 baseSeverity: H
 category: mev
@@ -158,7 +158,7 @@ contract SafeDEX {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS32H
 title: Sandwich Attack
 severity: H
 score:

@@ -66,7 +66,6 @@ nav:
           - Denial of Service: vuln-db/high/denial-of-service.md
           - Improper-Upgrade: vuln-db/high/Improper-Upgradeability.md
           - Insecure-Randomness: vuln-db/high/Insecure-Randomness.md
-          - Gas-Limit: vuln-db/high/Gas-Limit.md
           - Ownership-Vulnerability: vuln-db/high/Ownership.md
           - Cross-Contract: vuln-db/high/cross-contract.md
           - Blockhash Dependence: vuln-db/high/Blockhash-Dependence.md
@@ -93,7 +92,6 @@ nav:
           - Vote Escrow Exploits: vuln-db/high/vote.md
           - Token URI Hijacking: vuln-db/high/Token-URI.md
           - ABI encodePacked: vuln-db/high/ABI.md
-          - Uninitialized State Variables: vuln-db/high/Uninitialized-State-Variables.md 
           - Gelato Unprotected: vuln-db/high/Gelato-Unprotected.md 
           - Miner Extractable Value: vuln-db/high/Miner-Extractable.md
           - Sandwich Attack: vuln-db/high/Sandwich-Attack.md
@@ -186,6 +184,16 @@ nav:
           - Missing NatSpec: vuln-db/Informational/Missing-NatSpec.md
           - Redundant Code Logic: vuln-db/Informational/Redundant-Code-Logic.md
           - Tautological: vuln-db/Informational/Tautological.md
+          - Unused Imports: vuln-db/Informational/Unused-Imports.md
+          - Unreferenced Variables: vuln-db/Informational/Unreferenced-Variables.md
+          - Ambiguous Naming: vuln-db/Informational/Ambiguous-Naming.md
+          - Non-Indexed Events: vuln-db/Informational/Non-Indexed-Events.md
+          - Excessive Comments: vuln-db/Informational/Excessive-Comments.md
+          - Improper Function Grouping: vuln-db/Informational/Improper-Function-Grouping.md
+          - Inconsistent Style: vuln-db/Informational/Inconsistent-Style.md
+          - Lack of Fallback Function: vuln-db/Informational/Lack-of-Fallback-Function.md
+          - Unsorted Imports: vuln-db/Informational/Unsorted-Imports.md
+          - Debug Statements Left: vuln-db/Informational/Debug-Statements-Left.md
   - Contributing Guide: contributing/index.md
 
 plugins:

@@ -1,7 +1,7 @@
 # Ambiguous Constant Names
 
 ```YAML
-id: TBA
+id: LS03L
 title: Ambiguous Constant Names 
 baseSeverity: L
 category: naming
@@ -122,7 +122,7 @@ contract ClearConstants {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS03L
 title: Ambiguous Constant Names 
 severity: L
 score:

@@ -1,7 +1,7 @@
 # Unrestricted Withdrawals
 
 ```YAML
-id: TBA
+id: LS15C
 title: Unrestricted Withdrawals
 baseSeverity: C
 category: access-control
@@ -129,7 +129,7 @@ function withdraw() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS15C
 title: Unrestricted Withdrawals
 severity: C
 score:

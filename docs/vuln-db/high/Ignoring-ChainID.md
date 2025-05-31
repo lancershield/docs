@@ -1,7 +1,7 @@
 # Ignoring ChainID in Signatures
 
 ```YAML
-id: TBA
+id: LS18H
 title: Ignoring ChainID in Signatures 
 baseSeverity: H
 category: signature-verification
@@ -123,7 +123,7 @@ function executeMetaTx(address user, bytes calldata data, uint256 nonce, bytes c
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS18H
 title: Ignoring ChainID in Signatures 
 severity: H
 score:

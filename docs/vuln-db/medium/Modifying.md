@@ -1,7 +1,7 @@
 # Modifying Storage Array 
 
 ```YAML
-id: TBA
+id: LS11M
 title: Modifying Storage Array 
 baseSeverity: M
 category: storage
@@ -138,7 +138,7 @@ contract SafeUserRegistry {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS11M
 title: Modifying Storage Array
 severity: M
 score:

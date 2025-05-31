@@ -1,7 +1,7 @@
 #  Internal Accounting Drift
 
 ```YAML
-id: TBA
+id: LS12H
 title: Internal Accounting Drift 
 baseSeverity: H
 category: accounting
@@ -135,7 +135,7 @@ function withdraw(uint256 amount) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS12H
 title: Internal Accounting Drift 
 severity: H
 score:

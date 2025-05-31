@@ -1,7 +1,7 @@
 # Admin Key Misuse
 
 ```YAML
-id: TBA
+id: LS50H
 title: Admin Key Misuse
 baseSeverity: H
 category: access-control
@@ -130,7 +130,7 @@ contract Vault is Ownable {
 ## ✅ Vulnerability Report Template
 
 ```markdown
-id: TBA
+id: LS50H
 title: Admin Key Misuse
 severity: H
 score:

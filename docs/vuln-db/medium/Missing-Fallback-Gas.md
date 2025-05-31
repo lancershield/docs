@@ -1,7 +1,7 @@
 # Missing Fallback Gas
 
 ```YAML
-id: TBA
+id: LS20M
 title: Missing Fallback Gas 
 baseSeverity: M
 category: ether-transfer
@@ -125,7 +125,7 @@ contract SafeRewarder {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS20M
 title: Missing Fallback Gas 
 severity: M
 score:

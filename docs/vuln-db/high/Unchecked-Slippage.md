@@ -1,7 +1,7 @@
 #  Unchecked Slippage in Multi-Hop Swaps 
 
 ```YAML
-id: TBA
+id: LS17H
 title: Unchecked Slippage in Multi-Hop Swaps 
 baseSeverity: H
 category: dex-integrations
@@ -132,7 +132,7 @@ function swap(address[] calldata path, uint256 amountIn, uint256 amountOutMin) e
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS17H
 title: Unchecked Slippage in Multi-Hop Swaps 
 severity: H
 score:

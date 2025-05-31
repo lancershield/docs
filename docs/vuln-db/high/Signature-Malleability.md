@@ -1,7 +1,7 @@
 # Signature Malleability
 
 ```YAML
-id: TBA
+id: LS33H
 title: Signature Malleability 
 baseSeverity: H
 category: cryptography
@@ -161,7 +161,7 @@ contract SafeSignatureVerifier {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS33H
 title: Signature Malleability 
 severity: H
 score:

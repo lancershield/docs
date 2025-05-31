@@ -1,7 +1,7 @@
 # State Leakage 
 
 ```YAML
-id: TBA
+id: LS19M
 title: State Leakage 
 baseSeverity: M
 category: information-disclosure
@@ -126,7 +126,7 @@ contract SecureReferralSystem {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS19M
 title: State Leakage 
 severity: M 
 score:

@@ -1,7 +1,7 @@
 # Vote Escrow Exploits
 
 ```YAML
-id: TBA
+id: LS27H
 title: Vote Escrow Exploits 
 baseSeverity: H
 category: governance
@@ -125,7 +125,7 @@ function lockTokens(uint256 amount, uint256 duration) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS27H
 title: Vote Escrow Exploits 
 severity: H
 score:

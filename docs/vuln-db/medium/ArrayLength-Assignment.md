@@ -1,7 +1,7 @@
 # Array Length Assignment
 
 ```YAML
-id: TBA
+id: LS31M
 title: Array Length Assignment
 baseSeverity: M
 category: memory-corruption
@@ -130,7 +130,7 @@ contract SafeArray {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS31M
 title: Array Length Assignment
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Merkle Proof Misuse
 
 ```YAML
-id: TBA
+id: LS07H
 title: Merkle Proof Misuse 
 baseSeverity: H
 category: merkle-proof
@@ -127,7 +127,7 @@ function claim(bytes32[] calldata proof, uint256 amount) external {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS07H
 title: Merkle Proof Misuse 
 severity: H
 score:

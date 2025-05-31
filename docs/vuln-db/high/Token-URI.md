@@ -1,7 +1,7 @@
 # Token URI Hijacking
 
 ```YAML
-id: TBA
+id: LS28H
 title: Token URI Hijacking 
 baseSeverity: H
 category: nft-metadata
@@ -130,7 +130,7 @@ contract NFT is ERC721 {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS28H
 title: Token URI Hijacking Enables Metadata Manipulation
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Contracts That Lock Ether Permanently 
 
 ```YAML
-id: TBA
+id: LS15M
 title: Contracts That Lock Ether Permanently
 baseSeverity: M
 category: funds-locking
@@ -123,7 +123,7 @@ contract RecoverableEther {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS15M
 title: Contracts That Lock Ether Permanently Due to Missing Withdrawal Logic
 severity: M
 score:

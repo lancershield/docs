@@ -1,7 +1,7 @@
 # Fallback Function Misuse
 
 ```YAML
-id: TBA
+id: LS01M
 title: Fallback Function Misuse
 baseSeverity: M
 category: fallback-function
@@ -119,7 +119,7 @@ receive() external payable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS01M
 title: Fallback Function Misuse
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Insufficient Signature Verification
 
 ```YAML
-id: TBA
+id: LS18C
 title: Insufficient Signature Verification
 baseSeverity: C
 category: authentication
@@ -137,7 +137,7 @@ contract SecureSigner {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS18C
 title: Insufficient Signature Verification 
 severity: H
 score:

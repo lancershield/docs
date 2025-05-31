@@ -1,7 +1,7 @@
 # Improperly Initialized UUPS Proxy 
 
 ```YAML
-id: TBA
+id: LS04C
 title: Improperly Initialized UUPS Proxy 
 baseSeverity: C
 category: upgradeability
@@ -127,7 +127,7 @@ contract UUPSLogic is UUPSUpgradeable, OwnableUpgradeable {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS04C
 title: Improperly Initialized UUPS Proxy 
 severity: C
 score:

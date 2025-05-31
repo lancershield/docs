@@ -1,7 +1,7 @@
 # Emergency Function Abuse
 
 ```YAML
-id: TBA
+id: LS11H
 title: Emergency Function Abuse 
 baseSeverity: H
 category: privileged-function
@@ -126,7 +126,7 @@ contract SafeEmergency is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS11H
 title: Emergency Function Abuse 
 severity: H
 score:

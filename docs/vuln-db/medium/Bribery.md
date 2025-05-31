@@ -1,7 +1,7 @@
 # Bribery Through Vote Delegation
 
 ```YAML
-id: TBA
+id: LS08M
 title: Bribery Through Vote Delegation 
 baseSeverity: M
 category: governance
@@ -119,7 +119,7 @@ function delegate(address delegatee) public {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS08M
 title: Bribery Through Vote Delegation 
 severity: M
 score:

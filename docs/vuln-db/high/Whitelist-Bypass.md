@@ -1,7 +1,7 @@
 # Whitelist Bypass
 
 ```YAML
-id: TBA
+id: LS25H
 title: Whitelist Bypass 
 severity: H
 category: access-control
@@ -113,7 +113,7 @@ function participateInPresale() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS25H
 title: Whitelist Bypass 
 severity: H
 score:

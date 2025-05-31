@@ -1,7 +1,7 @@
 # Inconsistent ETH Handling
 
 ```YAML
-id: TBA
+id: LS39M
 title: Inconsistent ETH Handling
 baseSeverity: M
 category: ether-transfer
@@ -140,7 +140,7 @@ contract SafeProxy {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS39M
 title: Inconsistent ETH Handling 
 severity: M
 score:

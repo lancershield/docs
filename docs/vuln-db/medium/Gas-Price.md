@@ -1,7 +1,7 @@
 # Gas Price Dependent Logic
 
 ```YAML
-id: TBA
+id: LS28M
 title: Gas Price Dependent Logic
 baseSeverity: M
 category: logic
@@ -114,7 +114,7 @@ function claim() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS28M
 title: Gas Price Dependent Logic
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Flawed Slashing Conditions
 
 ```YAML
-id: TBA
+id: LS24H
 title: Flawed Slashing Conditions 
 baseSeverity: H
 category: consensus-mechanism
@@ -124,7 +124,7 @@ function validateEvidence(bytes calldata data, address validator) internal view 
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS24H
 title: Flawed Slashing Conditions 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Hardcoded Non-Essential Parameters
 
 ```YAML
-id: TBA
+id: LS02L
 title: Hardcoded Non-Essential Parameters 
 baseSeverity: L
 category: maintainability
@@ -138,7 +138,7 @@ contract Configurable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS02L
 title: Hardcoded Non-Essential Parameters 
 severity: L
 score:

@@ -1,7 +1,7 @@
 # Deletion on Mapping
 
 ```YAML
-id: TBA
+id: LS05L
 title: Deletion on Mapping
 baseSeverity: L
 category: storage
@@ -146,7 +146,7 @@ contract SafeStructDelete {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS05L
 title: Deletion on Mapping 
 severity: L
 score:

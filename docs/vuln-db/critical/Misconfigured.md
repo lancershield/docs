@@ -1,7 +1,7 @@
 # Misconfigured Role-Based Access Control
 
 ```YAML
-id: TBA
+id: LS19C
 title: Misconfigured Role-Based Access Control (RBAC)
 baseSeverity: C
 category: access-control
@@ -130,7 +130,7 @@ contract Token is AccessControl {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS19C
 title: Misconfigured Role-Based Access Control (RBAC) 
 severity: C
 score:

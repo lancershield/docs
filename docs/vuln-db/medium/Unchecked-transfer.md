@@ -1,7 +1,7 @@
 # Unchecked transfer
 
 ```YAML
-id: TBA
+id: LS47M
 title: Unchecked transfer
 baseSeverity: M
 category: ether-transfer
@@ -123,7 +123,7 @@ contract SafeTransfer {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS47M
 title: Unchecked transfer
 severity: M
 score:

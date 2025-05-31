@@ -1,7 +1,7 @@
 # Lack of Circuit Breakers
 
 ```YAML
-id: TBA
+id: LS55H
 title: Lack of Circuit Breakers
 baseSeverity: H
 category: emergency-control
@@ -141,7 +141,7 @@ contract SafeFeatureControl is Pausable, Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS55H
 title: Lack of Circuit Breakers  
 severity: H
 score:

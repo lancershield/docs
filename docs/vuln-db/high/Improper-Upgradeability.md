@@ -1,7 +1,7 @@
 # Improper Upgradeability
 
 ```YAML
-id: TBA
+id: LS02H
 title: Improper Upgradeability
 baseSeverity: H
 category: upgradeability
@@ -126,7 +126,7 @@ contract SafeProxyAdmin is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS02H
 title: Improper Upgradeability
 severity: H
 score:

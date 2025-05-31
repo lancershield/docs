@@ -1,7 +1,7 @@
 # Liquidity Rug  
 
 ```YAML
-id: TBA
+id: LS05C
 title: Liquidity Rug  
 baseSeverity: C
 category: access-control
@@ -122,7 +122,7 @@ function emergencyWithdraw() external onlyGovernance {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS05C
 title: Liquidity Rug  
 severity: C
 score:

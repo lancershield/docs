@@ -1,7 +1,7 @@
 # Price Oracle Manipulation
 
 ```YAML
-id: TBA
+id:  LS01C
 title: Price Oracle Manipulation
 baseSeverity: C
 category: oracle-manipulation
@@ -140,7 +140,7 @@ contract SaferLending {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id:  LS01C
 title: Price Oracle Manipulation
 severity: C
 score:

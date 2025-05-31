@@ -1,7 +1,7 @@
 # Sybil Attack Vectors 
 
 ```YAML
-id: TBA
+id: LS58H
 title: Sybil Attack Vectors 
 baseSeverity: H
 category: economic-attack
@@ -120,7 +120,7 @@ function claimAirdrop(bytes32 zkProofRoot) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS58H
 title: Sybil Attack Vectors
 severity: H
 score:

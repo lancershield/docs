@@ -1,7 +1,7 @@
 # Redundant Code Logic 
 
 ```YAML
-id: TBA
+id: LS02I
 title: Redundant Code Logic 
 baseSeverity: I
 category: code-quality
@@ -122,7 +122,7 @@ contract OptimizedExample {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS02I
 title: Redundant Code Logic 
 severity: I
 score:

@@ -1,7 +1,7 @@
 # Insecure Randomness
 
 ```YAML
-id: TBA
+id: LS03H
 title: Insecure Randomness 
 baseSeverity: H
 category: randomness
@@ -134,7 +134,7 @@ contract SecureLottery is VRFConsumerBase {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS03H
 title: Insecure Randomness 
 severity: H
 score:

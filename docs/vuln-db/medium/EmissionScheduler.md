@@ -1,7 +1,7 @@
 # EmissionScheduler 
 
 ```YAML
-id: TBA
+id: LS34M
 title: EmissionScheduler 
 baseSeverity: M
 category: emission-logic
@@ -161,7 +161,7 @@ contract SafeEmissionScheduler is Ownable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS34M
 title: EmissionScheduler 
 severity: M
 score:

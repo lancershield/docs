@@ -1,7 +1,7 @@
 # Async Withdraw Race Condition
 
 ```YAML
-id: TBA
+id: LS08H
 title: Async Withdraw Race Condition 
 baseSeverity: H
 category: race-condition
@@ -134,7 +134,7 @@ contract SecureVault is ReentrancyGuard {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS08H
 title: Async Withdraw Race Condition 
 severity: H
 score:

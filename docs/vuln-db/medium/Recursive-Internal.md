@@ -1,7 +1,7 @@
 # Recursive Internal Function Calls
 
 ```YAML
-id: TBA
+id: LS26M
 title: Recursive Internal Function Calls
 baseSeverity: M
 category: logic
@@ -127,7 +127,7 @@ function _getReferrals(address user, uint256 depth, uint256 maxDepth) internal v
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS26M
 title: Recursive Internal Function Calls
 severity: M
 score:

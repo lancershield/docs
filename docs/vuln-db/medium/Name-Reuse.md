@@ -1,7 +1,7 @@
 # Contract Name Reuse Confusion
 
 ```YAML
-id: TBA
+id: LS12M
 title: Contract Name Reuse Confusion
 baseSeverity: M
 category: naming
@@ -117,7 +117,7 @@ contract ERC20TokenB {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS12M
 title: Contract Name Reuse Confusion
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Flash Loan Exploit
 
 ```YAML
-id: TBA
+id: LS02C
 title: Flash Loan Exploit 
 baseSeverity: C
 category: flash-loan
@@ -136,7 +136,7 @@ function withdraw() external {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS02C
 title: Flash Loan Exploit
 severity: C
 score:

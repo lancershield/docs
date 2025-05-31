@@ -1,7 +1,7 @@
 # NFT Metadata Tampering
 
 ```YAML
-id: TBA
+id: LS22H
 title: NFT Metadata Tampering 
 baseSeverity: H
 category: metadata-integrity
@@ -131,7 +131,7 @@ contract ImmutableNFT is ERC721 {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS22H
 title: NFT Metadata Tampering 
 severity: H
 score:

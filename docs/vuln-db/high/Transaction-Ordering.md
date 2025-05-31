@@ -1,7 +1,7 @@
 # Transaction Ordering Dependence
 
 ```YAML
-id: TBA
+id: LS45H
 title: Transaction Ordering Dependence 
 baseSeverity: H
 category: ordering
@@ -123,7 +123,7 @@ function claim() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS45H
 title: Transaction Ordering Dependence 
 severity: H
 score:

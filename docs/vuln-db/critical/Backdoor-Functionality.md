@@ -1,7 +1,7 @@
 # Backdoor Functionality
 
 ```YAML
-id: TBA
+id: LS07C
 title: Backdoor Functionality 
 baseSeverity: C
 category: access-control
@@ -133,7 +133,7 @@ contract Token {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS07C
 title: Backdoor Functionality
 severity: C
 score:

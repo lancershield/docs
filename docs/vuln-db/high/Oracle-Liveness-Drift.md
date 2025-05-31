@@ -1,7 +1,7 @@
 # Oracle Liveness Drift 
 
 ```YAML
-id: TBA
+id: LS36H
 title: Oracle Liveness Drift 
 baseSeverity: H
 category: oracle
@@ -147,7 +147,7 @@ contract SafeOracleVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS36H
 title: Oracle Liveness Drift 
 severity: H
 score:

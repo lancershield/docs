@@ -1,7 +1,7 @@
 # Zero Fee Manipulation
 
 ```YAML
-id: TBA
+id: LS09M
 title: Zero Fee Manipulation 
 baseSeverity: M
 category: fee-evasion
@@ -109,7 +109,7 @@ function mint() external payable {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS09M
 title: Zero Fee Manipulation 
 severity: M
 score:

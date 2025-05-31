@@ -1,7 +1,7 @@
 # Non-Reverting Functions 
 
 ```YAML
-id: TBA
+id: LS41M
 title: Non-Reverting Functions 
 baseSeverity: M
 category: error-handling
@@ -123,7 +123,7 @@ contract SafeVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS41M
 title: Non-Reverting Functions
 severity: M
 score:

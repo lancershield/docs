@@ -1,7 +1,7 @@
 # LP Token Burn 
 
 ```YAML
-id: TBA
+id: LS46H
 title: LP Token Burn 
 baseSeverity: H
 category: liquidity
@@ -130,7 +130,7 @@ function burnLiquidity() external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS46H
 title: LP Token Burn 
 severity: H
 score:

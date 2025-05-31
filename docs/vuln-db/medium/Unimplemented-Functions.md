@@ -1,7 +1,7 @@
 # Unimplemented Functions
 
 ```YAML
-id: TBA
+id: LS17M
 title: Unimplemented Functions
 baseSeverity: M
 category: interface-violation
@@ -130,7 +130,7 @@ contract SafeStrategy is IStrategy {
 
 ## ✅ Vulnerability Report
 ```markdown
-id: TBA
+id: LS17M
 title: Unimplemented Functions
 severity: M
 score:

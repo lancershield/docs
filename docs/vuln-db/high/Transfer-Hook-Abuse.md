@@ -1,7 +1,7 @@
 # Transfer Hook Abuse
 
 ```YAML
-id: TBA
+id: LS19H
 title: Transfer Hook Abuse 
 baseSeverity: H
 category: token-logic
@@ -122,7 +122,7 @@ contract SafeHookedToken is ERC20, ReentrancyGuard {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS19H
 title: Transfer Hook Abuse 
 severity: H
 score:

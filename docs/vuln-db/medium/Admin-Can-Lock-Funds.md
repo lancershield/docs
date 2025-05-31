@@ -1,7 +1,7 @@
 # Admin Can Lock Funds
 
 ```YAML
-id: TBA
+id: LS30M
 title: Admin Can Lock Funds 
 baseSeverity: M
 category: access-control
@@ -160,7 +160,7 @@ contract SafeVault is Ownable, Pausable {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS30M
 title: Admin Can Lock Funds 
 severity: M
 score:

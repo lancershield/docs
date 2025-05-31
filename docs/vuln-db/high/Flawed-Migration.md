@@ -1,7 +1,7 @@
 # Flawed Migration Contracts
 
 ```YAML
-id: TBA
+id: LS20H
 title: Flawed Migration Contracts 
 baseSeverity: H
 category: migration
@@ -124,7 +124,7 @@ contract SafeMigrator {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS20H
 title: Flawed Migration Contracts 
 severity: H
 score:

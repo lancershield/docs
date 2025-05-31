@@ -1,7 +1,7 @@
 # Malicious Third-Party Vulnerabilities
 
 ```YAML
-id: TBA
+id: LS42H
 title: Malicious Third-Party Vulnerabilities
 baseSeverity: H
 category: third-party
@@ -139,7 +139,7 @@ contract SafeVault {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS42H
 title: Malicious Third-Party Vulnerabilities
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Ownership Vulnerabilities 
 
 ```YAML
-id: TBA
+id: LS04H
 title: Ownership Vulnerabilities 
 baseSeverity: H
 category: access-control
@@ -121,7 +121,7 @@ contract SecureAdmin is Ownable {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS04H
 title: Ownership Vulnerabilities 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Miner Extractable Value 
  
 ```YAML
-id: TBA
+id: LS31H
 title: Miner Extractable Value
 baseSeverity: H
 category: mev
@@ -146,7 +146,7 @@ contract AntiMEVDEX {
 
 ## ✅ Vulnerability Report
 ```markdown
-id: TBA
+id: LS31H
 title: Miner Extractable Value 
 severity: H
 score:

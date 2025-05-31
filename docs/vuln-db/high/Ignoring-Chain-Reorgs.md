@@ -1,7 +1,7 @@
 # Ignoring Chain Reorgs
 
 ```YAML
-id: TBA
+id: LS53H
 title: Ignoring Chain Reorgs
 baseSeverity: H
 category: consensus-assumptions
@@ -117,7 +117,7 @@ contract ReorgSafe {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS53H
 title: Ignoring Chain Reorgs  
 severity: H
 score:

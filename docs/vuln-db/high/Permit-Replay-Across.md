@@ -1,7 +1,7 @@
 # Permit Replay Across Chains
 
 ```YAML
-id: TBA
+id: LS41H
 title: Permit Replay Across Chains 
 baseSeverity: H
 category: signature-authentication
@@ -146,7 +146,7 @@ function DOMAIN_SEPARATOR() public view returns (bytes32) {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS41H
 title: Permit Replay Across Chains 
 severity: H
 score:

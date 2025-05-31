@@ -1,7 +1,7 @@
 # Reward Accumulator Drift
 
 ```YAML
-id: TBA
+id: LS25M
 title: Reward Accumulator Drift
 baseSeverity: M
 category: accounting
@@ -126,7 +126,7 @@ function deposit(uint256 amount) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS25M
 title: Reward Accumulator Drift
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Tautological
 
 ```YAML
-id: TBA
+id: LS03I
 title: Tautological 
 baseSeverity: I
 category: logic
@@ -119,7 +119,7 @@ contract FixedCompare {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS03I
 title: Tautological 
 severity: I
 score:

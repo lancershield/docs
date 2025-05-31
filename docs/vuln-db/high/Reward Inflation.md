@@ -1,7 +1,7 @@
 # Reward Inflation Bugs
 
 ```YAML
-id: TBA
+id: LS09H
 title: Reward Inflation Bugs 
 baseSeverity: H
 category: tokenomics
@@ -136,7 +136,7 @@ function updatePool() public {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS09H
 title: Reward Inflation Bugs 
 severity: H
 score:

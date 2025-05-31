@@ -1,7 +1,7 @@
 # Lack of Pausable Functionality
 
 ```YAML
-id: TBA
+id: LS56H
 title: Lack of Pausable Functionality
 baseSeverity: H
 category: emergency-control
@@ -140,7 +140,7 @@ contract SafeLendingPool is Pausable, Ownable {
 
 ## ✅ Vulnerability Report
 ```markdown
-id: TBA
+id: LS56H
 title: Lack of Pausable Functionality 
 severity: H 
 score:

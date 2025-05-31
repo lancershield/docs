@@ -1,7 +1,7 @@
 # Gas Griefing 
 
 ```YAML
-id: TBA
+id: LS02M
 title: Gas Griefing 
 baseSeverity: M
 category: gas-griefing
@@ -129,7 +129,7 @@ function claim(address[] calldata recipients) external {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS02M
 title: Gas Griefing 
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Blockhash Dependence
 
 ```YAML
-id: TBA
+id: LS06H
 title: Blockhash Dependence for Randomness 
 baseSeverity: H
 category: randomness
@@ -130,7 +130,7 @@ contract SecureLottery is VRFConsumerBase {
 
 ## ✅ Vulnerability Report
 ```markdown
-id: TBA
+id: LS06H
 title: Blockhash Dependence for Randomness 
 severity: H
 score:

@@ -1,7 +1,7 @@
 # Counter Overflow 
 
 ```YAML
-id: TBA
+id: LS14H
 title: Counter Overflow 
 baseSeverity: H
 category: arithmetic
@@ -120,7 +120,7 @@ contract SafeCounter {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS14H
 title: Counter Overflow 
 severity: H
 score:

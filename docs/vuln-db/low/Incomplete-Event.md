@@ -1,7 +1,7 @@
 # Incomplete Event Logging
 
 ```YAML
-id: TBA
+id: LS04L
 title: Incomplete Event Logging 
 baseSeverity: L
 category: observability
@@ -123,7 +123,7 @@ contract CompleteLogging {
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS04L
 title: Incomplete Event Logging 
 severity: L
 score:

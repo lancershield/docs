@@ -1,7 +1,7 @@
 # Improper Error Handling
 
 ```YAML
-id: TBA
+id: LS04M
 title: Improper Error Handling  
 baseSeverity: M
 category: error-handling
@@ -119,7 +119,7 @@ contract SafeErrorHandling {
 ## ✅ Vulnerability Report
 
 ```markdown
-id: TBA
+id: LS04M
 title: Improper Error Handling 
 severity: M
 score:

@@ -1,7 +1,7 @@
 # Arbitrary from in transferFrom
 
 ```YAML
-id: TBA
+id: LS17C
 title: Arbitrary from in transferFrom
 baseSeverity: C
 category: authorization-bypass
@@ -119,7 +119,7 @@ function transferFrom(address from, address to, uint256 amount) public returns (
 ## ✅ Vulnerability Report 
 
 ```markdown
-id: TBA
+id: LS17C
 title: Arbitrary from in transferFrom
 severity: C
 score:

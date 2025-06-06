@@ -99,7 +99,7 @@ function execute(uint proposalId) external onlyGovernance {
 - Restrict execution authority to trusted governance modules.
 - Monitor and flag large or suspicious fund movements via governance.
 
-## Detection Methods
+### Detection Methods
 
 - Slither rules for arbitrary-call, dangerous delegatecall, or governance risk.
 - Static analysis for unrestricted .call() usage inside proposal execution logic.

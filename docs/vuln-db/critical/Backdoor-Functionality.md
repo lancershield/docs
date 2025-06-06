@@ -2,7 +2,7 @@
 
 ```YAML
 id: LS07C
-title: Backdoor Functionality 
+title: Backdoor Functionality
 baseSeverity: C
 category: access-control
 language: solidity
@@ -58,7 +58,7 @@ Step-by-step exploit process:
 3. At a chosen moment, the deployer calls rugPull() to drain funds and resetBalance() to zero out wallets.
 4. Users are left with worthless tokens or empty balances.
 
-## Assumptions:
+**Assumptions:**
 
 - Users did not audit or notice the hidden logic.
 - Functions are gated behind admin checks or obfuscated names.

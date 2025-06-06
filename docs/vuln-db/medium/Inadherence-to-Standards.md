@@ -25,7 +25,7 @@ swc: SWC-112
 - Loss of funds due to misaligned expectations between interfaces
 - Such bugs are dangerous because they silently affect cross-protocol interactions, often bypassing security audits if tests assume standard behavior.
 
-## 🚨 Vulnerable Code (ERC20 Return Omission)
+## 🚨 Vulnerable Code 
 
 ```solidity
 

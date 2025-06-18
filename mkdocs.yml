@@ -194,8 +194,42 @@ nav:
           - Lack of Fallback Function: vuln-db/Informational/Lack-of-Fallback-Function.md
           - Unsorted Imports: vuln-db/Informational/Unsorted-Imports.md
           - Debug Statements Left: vuln-db/Informational/Debug-Statements-Left.md
+  - Hacks Database:
+      - Overview: hacks-db/index.md
+      - Template: hacks-db/template.md 
+      - Critical:
+          - Overview: hacks-db/critical/index.md
+          - Alpha-Homora: hacks-db/critical/Alpha-Homora.md
+          - Uranium Finance: hacks-db/critical/Uranium-Finance.md
+          - Poly Network: hacks-db/critical/Poly-Network.md
+          - Cream Finance: hacks-db/critical/Cream-Finance.md
+          - BadgerDAO: hacks-db/critical/BadgerDAO.md
+          - Wormhole: hacks-db/critical/Wormhole.md
+          - Ronin Network: hacks-db/critical/Ronin-Network.md
+          - Nomad Bridge: hacks-db/critical/Nomad-Bridge.md
+          - BNB Chain: hacks-db/critical/BNB-Chain.md
+          - Ankr Protocol: hacks-db/critical/Ankr-Protocol.md
+          - TempleDAO: hacks-db/critical/TempleDAO.md
+          - Transit Swap: hacks-db/critical/Transit-Swap.md
+          - PancakeBunny: hacks-db/critical/PancakeBunny.md
+          - Yam Finance: hacks-db/critical/Yam-Finance.md
+          - Snowdog DAO: hacks-db/critical/Snowdog-DAO.md
+          - Saddle Finance: hacks-db/critical/Saddle-Finance.md
+          - Meerkat Finance: hacks-db/critical/Meerkat-Finance.md
+          - Hundred Finance: hacks-db/critical/Hundred-Finance.md
+          - LendHub: hacks-db/critical/LendHub.md
+          - Linode Infrastructure: hacks-db/critical/Linode-Infrastructure.md
+          - CryptoNova: hacks-db/critical/CryptoNova.md
+          - Velodrome: hacks-db/critical/Velodrome.md
+          - Beanstalk Protocol: hacks-db/critical/Beanstalk-Protocol.md
+          - LaunchZone: hacks-db/critical/LaunchZone.md
+          - Gala Games: hacks-db/critical/Gala-Games.md
+      - High:
+          - Overview: hacks-db/high/index.md
+          - Reflexer Finance: hacks-db/high/Reflexer-Finance.md
+          - ParaSwap: hacks-db/high/ParaSwap.md
+          - Blur NFT: hacks-db/high/Blur-NFT.md
   - Contributing Guide: contributing/index.md
-
 plugins:
   - search:
       separator: '[\s\-\.]+'

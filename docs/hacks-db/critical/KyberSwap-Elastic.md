@@ -1,0 +1,21 @@
+# KyberSwap Elastic Pool Exploit
+
+- **Project**: KyberSwap Elastic (Concentrated Liquidity AMM)
+- **Exploit_type**: Precision Rounding Bug in Tick-Crossing Logic
+- **Loss**: ~$55 million stolen from user liquidity pools 
+- **Entry_point**: computeSwapStep() in SwapMath within the Pool contract
+- **Exploit_vector**: Attackers exploited a rounding error in the tick-cross calculation to manipulate liquidity accounting, enabling them to withdraw more assets than they deposited.
+- **Severity**: Critical
+- **Attack_steps**:
+    - Borrowed large flash loans (e.g., 500 WETH) to prepare the attack. 
+    - Executed a swap that crossed price ticks, triggering computeSwapStep() without updating liquidity due to inconsistent rounding. 
+    - Minted new LP positions around the manipulated tick boundary to capture inflated virtual liquidity. 
+    - Performed reverse swap to exploit the over-accounted liquidity and extract excess tokens. 
+    - Repeat across multiple pools and networks, totaling ~$55M in drained funds.
+    - Front-run bots mimicked actions, causing additional ~$6.56M loss; ~2.3K LPs affected; ~$24K locked. 
+- **Impact**:
+    - ~$48.7M taken by primary exploiter; $6.6M by copycat bots ($55M total).
+    - Over 2,367 LPs affected; liquidity pools partially drained or locked.
+- **Exploitability**: High — exploit leveraged deterministic rounding logic and flash loans
+- **Root_cause**: Double rounding error in estimateIncrementalLiquidity() within computeSwapStep() — caused nextSqrtP to exceed tick boundary without liquidity update, enabling double-liquidity accounting. 
+- **Resource**:[Link](https://blog.kyberswap.com/post-mortem-kyberswap-elastic-exploit/)

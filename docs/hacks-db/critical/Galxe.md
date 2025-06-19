@@ -1,0 +1,21 @@
+# Galxe DNS/API Attack & Wallet Drain 
+
+- **Project**: Galxe
+- **Exploit_type**: DNS Hijacking → Frontend Phishing → Malicious API Calls
+- **Loss**: ~$270,000 
+- **Entry_point**: Galxe.com front-end API via attacker-controlled phishing domain
+- **Exploit_vector**: Attackers compromised Galxe’s DNS records, rerouted traffic to a cloned frontend, and leveraged API endpoints to steal funds once users signed malicious transactions.
+- **Severity**: Critical
+- **Attack_steps**:
+    - Via social engineering, attackers gained access to Galxe’s registrar account (Dynadot) and modified DNS to point to a phishing domain 
+    - Users visiting Galxe.com between 06:02–11:23 PDT saw a cloned frontend prompting wallet connections and malicious signatures.
+    - Those who signed were unknowingly granting token approvals draining their wallets via API-driven transfer calls.
+    - The attacker immediately extracted assets (~$270k) from ~1,120 impacted wallets 
+    - Once the breach was detected, Galxe revoked API tokens, disabled the front end, restored DNS, and issued warnings.
+    - Affected users eventually received 110% reimbursement ($396k) in USDT as part of Galxe’s compensation commitment 
+- **Impact**:~$270,000 stolen initially, later reimbursed with 110% in USDT ($396k).~1,120 users affected; temporary trust and UI-integrity damage.
+- **Exploitability**: High
+- **Root_cause**:
+    - Lack of secure domain management — no registrar-level 2FA or fraud-detection on DNS changes.
+    - No integrity verification for front-end or API endpoints — assumed domain-to-user trust without validation.
+- **Resource**:[Link](https://blog.galxe.com/oct-6th-dns-security-incident-statement-0cfc789bf9dc)

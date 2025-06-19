@@ -224,11 +224,55 @@ nav:
           - Beanstalk Protocol: hacks-db/critical/Beanstalk-Protocol.md
           - LaunchZone: hacks-db/critical/LaunchZone.md
           - Gala Games: hacks-db/critical/Gala-Games.md
+          - Harmony Horizon: hacks-db/critical/Harmony-Horizon.md
+          - Multichain: hacks-db/critical/Multichain.md
+          - Zunami Protocol: hacks-db/critical/Zunami-Protocol.md
+          - Exactly Protocol: hacks-db/critical/Exactly-Protocol.md
+          - Galxe: hacks-db/critical/Galxe.md
+          - Arcadia Finance: hacks-db/critical/Arcadia-Finance.md
+          - Sturdy Finance: hacks-db/critical/Sturdy-Finance.md
+          - Curve Finance:  hacks-db/critical/Curve-Finance.md
+          - Balancer Frontend: hacks-db/critical/Balancer-Frontend.md
+          - Velocore: hacks-db/critical/Velocore.md
+          - zkSync: hacks-db/critical/zkSync.md
+          - Merlin DEX: hacks-db/critical/Merlin-DEX.md 
+          - Kokomo Finance: hacks-db/critical/Kokomo-Finance.md
+          - Defrost Finance: hacks-db/critical/Defrost-Finance.md
+          - Onyx Protocol: hacks-db/critical/Onyx-Protocol.md
+          - Radiant Capital: hacks-db/critical/Radiant-Capital.md
+          - Sonne Finance: hacks-db/critical/Sonne-Finance.md
+          - Dolomite: hacks-db/critical/Dolomite.md
+          - Orbit Bridge: hacks-db/critical/Orbit-Bridge.md
+          - Super Sushi: hacks-db/critical/Super-Sushi.md
+          - KyberSwap Elastic: hacks-db/critical/KyberSwap-Elastic.md
+          - THORChain: hacks-db/critical/THORChain.md
+          - LeetSwap: hacks-db/critical/LeetSwap.md
+          - KiloEx: hacks-db/critical/KiloEx.md
+          - El Dorado: hacks-db/critical/El-Dorado.md
+          - Euler Finance: hacks-db/critical/Euler-Finance.md
+          - dForce Lendf:  hacks-db/critical/dForce-Lendf.md
+          - WOOFi: hacks-db/critical/WOOFi.md
+          - Convergence Finance: hacks-db/critical/Convergence-Finance.md
+          - Eminence Finance: hacks-db/critical/Eminence-Finance.md
+          - vETH Token: hacks-db/critical/vETH-Token.md
+          - Curio: hacks-db/critical/Curio.md
+          - Yearn Finance: hacks-db/critical/Yearn-Finance.md
+          - DAO: hacks-db/critical/DAO.md
+          - Parity Multisig Wallet: hacks-db/critical/Parity-Multisig-Wallet.md
+          - Synthetix: hacks-db/critical/Synthetix.md
+          - Uniswap v1: hacks-db/critical/Uniswap-v1.md
       - High:
           - Overview: hacks-db/high/index.md
           - Reflexer Finance: hacks-db/high/Reflexer-Finance.md
           - ParaSwap: hacks-db/high/ParaSwap.md
           - Blur NFT: hacks-db/high/Blur-NFT.md
+          - Raccoon Stealer: hacks-db/high/Raccoon-Stealer.md
+          - LayerZero: hacks-db/high/LayerZero.md
+          - BeautyChain: hacks-db/high/BeautyChain.md
+          - Opyn: hacks-db/high/Opyn.md
+      - Medium:
+          - Overview: hacks-db/Medium/index.md
+          - Kelp DAO: hacks-db/Medium/Kelp-DAO.md
   - Contributing Guide: contributing/index.md
 plugins:
   - search:

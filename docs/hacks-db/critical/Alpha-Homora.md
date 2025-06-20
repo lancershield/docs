@@ -16,4 +16,4 @@
 - **Impact**: USDC, USDT, and other assets were drained from Alpha Homora v2 via Iron Bank credit lines
 - **exploitability**: High
 - **Root_cause**: Improper validation of cross-protocol credit delegation between Alpha Homora and Iron Bank, allowing recursive loan abuse without real collateral.
-- **Resource**:[Link](https://immunebytes.com/blog/alpha-homora-hack-feb-13-2023-detailed-analysis/)
+- **Resource**:[Link](https://blog.alphaventuredao.io/alpha-homora-v2-post-mortem/)

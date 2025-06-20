@@ -261,6 +261,11 @@ nav:
           - Parity Multisig Wallet: hacks-db/critical/Parity-Multisig-Wallet.md
           - Synthetix: hacks-db/critical/Synthetix.md
           - Uniswap v1: hacks-db/critical/Uniswap-v1.md
+          - Harvest Finance: hacks-db/critical/Harvest-Finance.md
+          - Inverse Finance: hacks-db/critical/Inverse-Finance.md
+          - Belt Finance: hacks-db/critical/Belt-Finance.md
+          - StableMagnet: hacks-db/critical/StableMagnet.md
+          - Rari Capital: hacks-db/critical/Rari-Capital.md
       - High:
           - Overview: hacks-db/high/index.md
           - Reflexer Finance: hacks-db/high/Reflexer-Finance.md
@@ -270,9 +275,14 @@ nav:
           - LayerZero: hacks-db/high/LayerZero.md
           - BeautyChain: hacks-db/high/BeautyChain.md
           - Opyn: hacks-db/high/Opyn.md
+          - DODO: hacks-db/high/DODO.md
+          - Akropolis: hacks-db/high/Akropolis.md
+          - bZx Oracle: hacks-db/high/bZx-Oracle.md
+          - Bogged Finance: hacks-db/high/Bogged-Finance.md
       - Medium:
           - Overview: hacks-db/Medium/index.md
           - Kelp DAO: hacks-db/Medium/Kelp-DAO.md
+          - Hegic: hacks-db/Medium/Hegic.md
   - Contributing Guide: contributing/index.md
 plugins:
   - search:

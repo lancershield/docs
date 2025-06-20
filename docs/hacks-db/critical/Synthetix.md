@@ -16,4 +16,4 @@
 - **Impact**: Massive synthetic asset imbalance; trading halted temporarily; potential $1B exploit avoided through coordination
 - **Exploitability**: High – oracle had no fallback or anomaly detection logic
 - **Root_cause**: Failure to implement robust oracle aggregation logic and lack of redundancy; trusted centralized price feeds without validating correctness
-- **Resource**:[Link](https://docs.modefi.io/general-information/history-of-oracle-based-hacks-exploits/synthetix-usd1-billion-exploit)
+- **Resource**:[Link](https://messari.io/report/synthetix-suffers-an-oracle-attack-that-lost-roughly-37-million)

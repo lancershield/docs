@@ -1,0 +1,23 @@
+# Cetus DEX exploit 
+
+- **Project**: Cetus
+- **Exploit_type**: Arithmetic Overflow in Tick Liquidity Math
+- **Loss**: ~$220–260 million (≈$223 M confirmed)
+- **Entry_point**: get_delta_a logic in CLMM math (checked_shlw and left-shift overflow)
+- **Exploit_vector**:
+    - Flash-loan funds used to create ultra-narrow tick range liquidity
+    - Overflow bypassed due to flawed checked_shlw overflow check
+    - Attacker minted massive liquidity credit using minimal tokens
+    - Repeated across pools, draining assets
+- **Severity**: Critical
+- **Attack_steps**:
+    - Obtain flash loan (~10 M haSUI)
+    - Add liquidity in narrow tick range → triggers silent overflow
+    - Receive large liquidity share for tiny deposit
+    - Remove liquidity → drains pools
+    - Repeat across ~46 pairs
+    - Bridge ~ $60 M USDC to Ethereum and swap for ETH
+- **Impact**: ~$223M assets drained (SUI, USDC, HaSUI, and others); ~162M frozen by validators
+- **Exploitability**: High
+- **Root_cause**: Improper overflow check logic (masking issue in checked_shlw) causing unchecked left-shift overflow
+- **Resource**:[Link](https://cointelegraph.com/explained/how-220m-was-stolen-in-minutes-understanding-the-cetus-dex-exploit-on-sui)

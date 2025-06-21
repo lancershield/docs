@@ -266,6 +266,23 @@ nav:
           - Belt Finance: hacks-db/critical/Belt-Finance.md
           - StableMagnet: hacks-db/critical/StableMagnet.md
           - Rari Capital: hacks-db/critical/Rari-Capital.md
+          - EtherDelta: hacks-db/critical/EtherDelta.md
+          - CoinDash: hacks-db/critical/CoinDash.md
+          - Veritaseum: hacks-db/critical/Veritaseum.md
+          - Cryptopia Exchange: hacks-db/critical/Cryptopia-Exchange.md
+          - EXMO Exchange: hacks-db/critical/EXMO-Exchange.md
+          - KuCoin Exchange: hacks-db/critical/KuCoin-Exchange.md
+          - Zoth: hacks-db/critical/Zoth.md
+          - Wemix: hacks-db/critical/Wemix.md
+          - Cetus: hacks-db/critical/Cetus.md
+          - Wintermute: hacks-db/critical/Wintermute.md
+          - FTX: hacks-db/critical/FTX.md
+          - Vee Finance: hacks-db/critical/Vee-Finance.md
+          - Vulcan Forged: hacks-db/critical/Vulcan-Forged.md
+          - Qubit Finance: hacks-db/critical/Qubit-Finance.md
+          - Spartan Protocol: hacks-db/critical/Spartan-Protocol.md
+          - Swerve Finance: hacks-db/critical/Swerve-Finance.md
+          - Zaif Exchange: hacks-db/critical/Zaif Exchange.md 
       - High:
           - Overview: hacks-db/high/index.md
           - Reflexer Finance: hacks-db/high/Reflexer-Finance.md
@@ -279,10 +296,13 @@ nav:
           - Akropolis: hacks-db/high/Akropolis.md
           - bZx Oracle: hacks-db/high/bZx-Oracle.md
           - Bogged Finance: hacks-db/high/Bogged-Finance.md
+          - KingDice: hacks-db/high/KingDice.md
+          - SpankChain: hacks-db/high/SpankChain.md
       - Medium:
           - Overview: hacks-db/Medium/index.md
           - Kelp DAO: hacks-db/Medium/Kelp-DAO.md
           - Hegic: hacks-db/Medium/Hegic.md
+          - Golem Network: hacks-db/Medium/Golem-Network.md
   - Contributing Guide: contributing/index.md
 plugins:
   - search:

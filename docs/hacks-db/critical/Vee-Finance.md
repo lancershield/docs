@@ -1,0 +1,21 @@
+# Vee Finance hack
+
+- **Project**: Vee Finance
+- **Exploit_type**: Price Oracle Manipulation (single-oracle reliance & decimal bug) 
+- **Loss**: ~$34–35 million (approx. 8,805 ETH + 214 BTC) 
+- **Entry_point**: createOrderERC20ToERC20() / leveraged trade function in VeeProxyController 
+- **Exploit_vector**: Manipulated Pangolin pool price to trigger faulty oracle refresh and bypass slippage check due to decimal mishandling 
+- **Severity**: Critical
+- **Attack_steps**:
+    - Manipulate Pangolin pool liquidity to shift price >3%
+    - Oracle refreshes based only on this pool
+    - Decimal bug leads to incorrect slippage thresholds
+    - Create leveraged trade with inflated price check
+    - Drain ~$35M in ETH/BTC
+- **Impact**: 8,804 ETH + 213.93 BTC stolen (~$35M); stablecoin vaults unaffected 
+- **Exploitability**: High — relied on basic oracle design flaw & math bug
+- **Root_cause**:
+    - Single oracle dependency without redundancy
+    - Improper decimal normalization in price calculations
+    - No whitelist or multi-source validation for price feeds 
+- **Resource**:[Link](https://www.halborn.com/blog/post/explained-the-vee-finance-hack-september-2021)

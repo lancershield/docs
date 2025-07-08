@@ -1,0 +1,7679 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lancershield.github.io/docs/vuln-db/medium/State-Leakage.html">
+      
+      
+        <link rel="prev" href="Shadow-Fork.html">
+      
+      
+        <link rel="next" href="Missing-Fallback-Gas.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>State Leakage - Lancer Shield Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#state-leakage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="Lancer Shield Docs" class="md-header__button md-logo" aria-label="Lancer Shield Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lancer Shield Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              State Leakage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../severity-framework/index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Severity Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Vulnerability Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hacks-db/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hacks Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing/index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contributing Guide
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Lancer Shield Docs" class="md-nav__button md-logo" aria-label="Lancer Shield Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Lancer Shield Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../severity-framework/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Severity Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Vulnerability Database
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Vulnerability Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../critical/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Critical
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Critical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Price-oracle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Price-Oracle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Flash-Loan-Attacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flash-Loan-Attack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Arbitrary-Storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arbitrary Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Improperly-Initialized.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improperly Initialized
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Liquidity-Rug.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Liquidity Rug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Treasury-Drain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Treasury Drain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Backdoor-Functionality.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backdoor Functionality
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Untrusted-delegatecall.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Untrusted delegatecall
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Classic-Reentrancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Classic Reentrancy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Contract-Destructible.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contract Destructible
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Batch-Reentrancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Batch Reentrancy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/LayerZero-Trusted.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LayerZero Trusted
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Unintended-Reentrancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unintended Reentrancy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Insecure-executeTransaction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Insecure executeTransaction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Unrestricted-Withdrawals.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unrestricted Withdrawals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Access-Control.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Access Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Arbitrary-from.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arbitrary from in transferFrom
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Insufficient.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Insufficient Signature Verification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Misconfigured.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Misconfigured Role-Based
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../critical/Oracle-Feed-Delay-Exploits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oracle Feed Delay Exploits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../high/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    High
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            High
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/denial-of-service.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Denial of Service
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Improper-Upgradeability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improper-Upgrade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Insecure-Randomness.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Insecure-Randomness
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Ownership.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ownership-Vulnerability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/cross-contract.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cross-Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Blockhash-Dependence.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blockhash Dependence
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Merkle-proof.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    merkle-proof
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Async%20Withdraw.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Async Withdraw
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Reward%20Inflation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reward Inflation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Upgrade-Bricking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrade Bricking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Emergency-Function-Abuse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Emergency Function Abuse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Internal-Accounting-Drif.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internal Accounting Drift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Faulty-Permit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Faulty Permit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Counter-Overflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Counter Overflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Stale-Price.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stale Price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unsafe-tx.origin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unsafe tx.origin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unchecked-Slippage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unchecked Slippage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Ignoring-ChainID.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ignoring ChainID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Transfer-Hook-Abuse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transfer Hook Abuse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Flawed-Migration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flawed Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Front-Running-NFT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Front-Running NFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/NFT-Metadata-Tampering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NFT Metadata Tampering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Vesting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vesting Shortcut Exploits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Flawed-Slashing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flawed Slashing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Whitelist-Bypass.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Whitelist Bypass
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unsustainable.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unsustainable Pump and Dump
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/vote.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vote Escrow Exploits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Token-URI.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Token URI Hijacking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/ABI.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ABI encodePacked
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Gelato-Unprotected.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gelato Unprotected
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Miner-Extractable.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Miner Extractable Value
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Sandwich-Attack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sandwich Attack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Signature-Malleability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Signature Malleability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/ERC4626.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ERC4626 Calculation Bugs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/ERC721-unsafe-minting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ERC721 Unsafe Minting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Oracle-Liveness-Drift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Oracle Liveness Drift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unbounded-Proposal-Gas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unbounded Proposal Gas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Imbalanced-Liquidity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Imbalanced Liquidity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Missing-Input-Validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Missing Input Validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Inflation-Amplification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inflation Amplification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Permit-Replay-Across.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Permit Replay Across
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Malicious-Third-Party.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malicious Third-Party Vulnerabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Weak-Encryption.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Weak Encryption
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Read-Only-Reentrancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Read-Only Reentrancy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Transaction-Ordering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transaction Ordering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/LP-Token-Burn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LP Token Burn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unbounded-Loops.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unbounded Loops
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Token-Whitelisting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Token Whitelisting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Insufficient-Fee-Logic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Insufficient Fee Logic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Admin-Key-Misuse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Key Misuse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Privileged.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Privileged Role Migration Loophole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Unprotected-setMintFeeRecipient.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unprotected setMintFeeRecipient
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Ignoring-Chain-Reorgs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ignoring Chain Reorgs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Ignoring-SafeERC20.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ignoring SafeERC20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Lack-of-Circuit-Breakers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lack of Circuit Breakers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Lack-of-Pausable-Functionality.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lack of Pausable Functionality
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Logic-Errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Logic Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../high/Sybil-Attack-Vectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sybil Attack Vectors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Medium
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Medium
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Fallback-Function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fallback-Function-Misuse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Gas-Griefing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gas Griefing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Time-Manipulation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Time Manipulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Improper-Error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improper Error
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Contract-Size-Limit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contract Size Limit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Minting-to-Burn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Minting to Burn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Approval-Reset-Race.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Approval Reset Race Condition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Bribery.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bribery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Zero-Fee.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zero Fee Manipulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Off-by-One.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Off-by-One Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Modifying.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modifying Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Name-Reuse.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Name Reuse
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Public-Mappings.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Mappings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Dangerous-Strict-Equalities.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dangerous Strict Equalities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Contracts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contracts That Lock Ether
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Dangerous-Unary-Expressions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dangerous Unary Expressions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Unimplemented-Functions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unimplemented Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Shadow-Fork.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Shadow Fork Confusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    State Leakage
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="State-Leakage.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    State Leakage
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vulnerable-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Vulnerable Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploit-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Exploit Scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixed-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Fixed Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contextual-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧭 Contextual Severity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Prevention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛡️ Prevention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-defenses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Defenses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-safeguards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Safeguards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detection-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historical-exploits" class="md-nav__link">
+    <span class="md-ellipsis">
+      🕰️ Historical Exploits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Further Reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vulnerability-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Vulnerability Report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#justifications-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Justifications &amp; Analysis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Missing-Fallback-Gas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Missing Fallback Gas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Precision-Loss.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Precision Loss
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Force-Feeding-Attacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Force-Feeding Attacks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Early-Claiming.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Early Claiming
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Incentive-Misalignment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incentive Misalignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Reward-Accumulator-Drift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reward Accumulator Drift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Recursive-Internal.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Recursive Internal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Unsafe-Mint.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unsafe Mint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Gas-Price.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gas Price Dependent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Mutable-On-Chain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mutable On-Chain Metadata
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Admin-Can-Lock-Funds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Admin Can Lock Funds
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ArrayLength-Assignment.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Array Length Assignment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Conflicting-Modifiers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conflicting Modifiers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Dangerous-Enum.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dangerous Enum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EmissionScheduler.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EmissionScheduler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ERC1155.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ERC1155
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Excessive-Gas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Excessive Gas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Gas-Fee-Arbitrage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gas Fee Arbitrage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Gasless-Send.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gasless Send
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Inconsistent-ETH-Handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inconsistent ETH Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Inadherence-to-Standards.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inadherence to Standards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Non-Reverting.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-Reverting Functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Overlapping-Function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overlapping Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="NFT-Royalty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NFT Royalty
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Stuck-Swap-Pools.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stuck Swap Pools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Token-Approval.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Token Approval
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Token-Migration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Token Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Unchecked-transfer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unchecked transfer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../low/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Low
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Low
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Gas-Inefficiencies-attack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gas-Inefficient
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Hardcoded.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hardcoded
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Ambiguous-Constant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambiguous Constant
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Incomplete-Event.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incomplete Event
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Deletion-on-Mapping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deletion on Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Event-Emission-Flaws.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event Emission Flaws
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low/Unoptimized-Data-Structures.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unoptimized Data Structures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Informational/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Informational
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Informational
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Missing-NatSpec.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Missing NatSpec
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Redundant-Code-Logic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redundant Code Logic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Tautological.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tautological
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Unused-Imports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unused Imports
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Unreferenced-Variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unreferenced Variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Ambiguous-Naming.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ambiguous Naming
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Non-Indexed-Events.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Non-Indexed Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Excessive-Comments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Excessive Comments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Improper-Function-Grouping.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Improper Function Grouping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Inconsistent-Style.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inconsistent Style
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Lack-of-Fallback-Function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lack of Fallback Function
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Unsorted-Imports.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unsorted Imports
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Informational/Debug-Statements-Left.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debug Statements Left
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hacks-db/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Hacks Database
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Hacks Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Template
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hacks-db/critical/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Critical
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Critical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Alpha-Homora.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpha-Homora
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Uranium-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uranium Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Poly-Network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Poly Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Cream-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cream Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/BadgerDAO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BadgerDAO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Wormhole.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wormhole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Ronin-Network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ronin Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Nomad-Bridge.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nomad Bridge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/BNB-Chain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BNB Chain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Ankr-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ankr Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/TempleDAO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TempleDAO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Transit-Swap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transit Swap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/PancakeBunny.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PancakeBunny
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Yam-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yam Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Snowdog-DAO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Snowdog DAO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Saddle-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Saddle Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Meerkat-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Meerkat Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Hundred-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hundred Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/LendHub.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LendHub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Linode-Infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linode Infrastructure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/CryptoNova.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CryptoNova
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Velodrome.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Velodrome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Beanstalk-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Beanstalk Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/LaunchZone.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LaunchZone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Gala-Games.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gala Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Harmony-Horizon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harmony Horizon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Multichain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multichain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Zunami-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zunami Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Exactly-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Exactly Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Galxe.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Galxe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Arcadia-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arcadia Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Sturdy-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sturdy Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Curve-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curve Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Balancer-Frontend.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Balancer Frontend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Velocore.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Velocore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/zkSync.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    zkSync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Merlin-DEX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Merlin DEX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Kokomo-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kokomo Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Defrost-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Defrost Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Onyx-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Onyx Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Radiant-Capital.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Radiant Capital
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Sonne-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sonne Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Dolomite.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dolomite
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Orbit-Bridge.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Orbit Bridge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Super-Sushi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Super Sushi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/KyberSwap-Elastic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KyberSwap Elastic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/THORChain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    THORChain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/LeetSwap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeetSwap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/KiloEx.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KiloEx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/El-Dorado.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    El Dorado
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Euler-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Euler Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/dForce-Lendf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    dForce Lendf
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/WOOFi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WOOFi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Convergence-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Convergence Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Eminence-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eminence Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/vETH-Token.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vETH Token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Curio.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Yearn-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Yearn Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/DAO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DAO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Parity-Multisig-Wallet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parity Multisig Wallet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Synthetix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synthetix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Uniswap-v1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uniswap v1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Harvest-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harvest Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Inverse-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inverse Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Belt-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Belt Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/StableMagnet.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    StableMagnet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Rari-Capital.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rari Capital
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/EtherDelta.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EtherDelta
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/CoinDash.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CoinDash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Veritaseum.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Veritaseum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Cryptopia-Exchange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cryptopia Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/EXMO-Exchange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EXMO Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/KuCoin-Exchange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KuCoin Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Zoth.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zoth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Wemix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wemix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Cetus.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cetus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Wintermute.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wintermute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/FTX.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FTX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Vee-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vee Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Vulcan-Forged.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vulcan Forged
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Qubit-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Qubit Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Spartan-Protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Spartan Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Swerve-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Swerve Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/critical/Zaif%20Exchange.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Zaif Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hacks-db/high/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    High
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            High
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Reflexer-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reflexer Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/ParaSwap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ParaSwap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Blur-NFT.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blur NFT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Raccoon-Stealer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raccoon Stealer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/LayerZero.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LayerZero
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/BeautyChain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BeautyChain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Opyn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Opyn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/DODO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DODO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Akropolis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Akropolis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/bZx-Oracle.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    bZx Oracle
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/Bogged-Finance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bogged Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/KingDice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KingDice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/high/SpankChain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SpankChain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hacks-db/Medium/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Medium
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Medium
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/Medium/Kelp-DAO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kelp DAO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/Medium/Hegic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hegic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hacks-db/Medium/Golem-Network.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Golem Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="state-leakage">State Leakage</h1>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS19M</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">State Leakage</span><span class="w"> </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">baseSeverity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">M</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">information-disclosure</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">solidity</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">blockchain</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">ethereum</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">impact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sensitive state data visible to anyone via public view calls</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">draft</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">complexity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">low</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nt">attack_vector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">mitigation_difficulty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">easy</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nt">versions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&gt;=0.4.0&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;&lt;=0.8.25&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nt">cwe</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CWE-200</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nt">swc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SWC-136</span>
+</code></pre></div>
+<h2 id="description">📝 Description</h2>
+<ul>
+<li>In Solidity, public state variables are automatically assigned a getter function, which exposes the underlying data on-chain and off-chain. </li>
+<li>If developers mark sensitive mappings, arrays, or structs as public, they unintentionally reveal:</li>
+<li>Private financial positions</li>
+<li>Referral structures or user roles</li>
+<li>Whitelists/blacklists</li>
+<li>related metadata</li>
+<li>Because public mappings and arrays allow per-index queries, even partial exposure can enable systematic enumeration, profiling, and targeted exploitation.</li>
+</ul>
+<h2 id="vulnerable-code">🚨 Vulnerable Code</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.0</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">contract</span><span class="w"> </span><span class="ni">ReferralSystem</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">address</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>referrer<span class="p">;</span><span class="w"> </span><span class="c1">// ❌ reveals user relationship</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>claimedAmounts<span class="p">;</span><span class="w"> </span><span class="c1">// ❌ exposes earnings</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">claimReward</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="c1">// internal logic using claimedAmounts and referrer</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="exploit-scenario">🧪 Exploit Scenario</h2>
+<ol>
+<li>A dApp uses a public mapping referrer[address] to track user affiliations.</li>
+<li>A competitor queries this mapping across known addresses to scrape the referral graph.</li>
+<li>They run a social engineering campaign against top referrers or impersonate them on alternative chains.</li>
+<li>Alternatively, they monitor claimedAmounts() to profile profitable users and deploy targeted phishing or incentive campaigns.</li>
+</ol>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>public keyword is used on internal or sensitive mappings.</li>
+<li>Project assumes "view" functions are harmless or invisible (they are not).</li>
+</ul>
+<h2 id="fixed-code">✅ Fixed Code</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.0</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">contract</span><span class="w"> </span><span class="ni">SecureReferralSystem</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">address</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>_referrer<span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>_claimedAmounts<span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getMyReferrer</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>_referrer<span class="p">[</span><span class="k">msg.sender</span><span class="p">];</span><span class="w"> </span><span class="c1">// ✅ returns only caller&#39;s own data</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getMyClaimedAmount</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>_claimedAmounts<span class="p">[</span><span class="k">msg.sender</span><span class="p">];</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="contextual-severity">🧭 Contextual Severity</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Default&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">M</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">reasoning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Common</span><span class="nv"> </span><span class="s">mistake</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">multi-stage</span><span class="nv"> </span><span class="s">logic;</span><span class="nv"> </span><span class="s">impact</span><span class="nv"> </span><span class="s">limited</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">session.&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Upgradeable</span><span class="nv"> </span><span class="s">contract</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">shared</span><span class="nv"> </span><span class="s">storage&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">reasoning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Shared</span><span class="nv"> </span><span class="s">variables</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">lead</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">critical</span><span class="nv"> </span><span class="s">cross-function</span><span class="nv"> </span><span class="s">logic</span><span class="nv"> </span><span class="s">errors.&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Access-controlled</span><span class="nv"> </span><span class="s">payout</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">tight</span><span class="nv"> </span><span class="s">validation&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nt">reasoning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Low-risk</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">contract</span><span class="nv"> </span><span class="s">performs</span><span class="nv"> </span><span class="s">full</span><span class="nv"> </span><span class="s">checks</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">resets</span><span class="nv"> </span><span class="s">state.&quot;</span>
+</code></pre></div>
+<h2 id="prevention">🛡️ Prevention</h2>
+<h3 id="primary-defenses">Primary Defenses</h3>
+<ul>
+<li>Never declare mappings, arrays, or structs as public if they contain sensitive data.</li>
+<li>Use private and define explicit getter functions with access control.</li>
+</ul>
+<h3 id="additional-safeguards">Additional Safeguards</h3>
+<ul>
+<li>Implement access roles for data views using Ownable, AccessControl, or similar.</li>
+<li>Consider obfuscating off-chain views for analytics via subgraphs, not contracts.</li>
+</ul>
+<h3 id="detection-methods">Detection Methods</h3>
+<ul>
+<li>Scan for public mapping(...) or public struct ....</li>
+<li>Review storage declarations that imply relationships or financial state.</li>
+<li>Tools: Slither (public-data-leak), manual audit, Semgrep</li>
+</ul>
+<h2 id="historical-exploits">🕰️ Historical Exploits</h2>
+<ul>
+<li><strong>Name:</strong> Vulseye Discovery of State Leakage Vulnerabilities </li>
+<li><strong>Date:</strong> 2024 </li>
+<li><strong>Loss:</strong> 42,738 smart contracts</li>
+<li><strong>Post-mortem:</strong> <a href="https://arxiv.org/html/2408.10116v1">Link to post-mortem</a></li>
+</ul>
+<h2 id="further-reading">📚 Further Reading</h2>
+<ul>
+<li><a href="https://swcregistry.io/docs/SWC-136/">SWC-136: Unobservable or Improperly Observed Behavior</a> </li>
+<li><a href="https://docs.soliditylang.org/en/latest/contracts.html#visibility-and-getters">Solidity Docs – Variable Visibility</a> </li>
+<li><a href="https://docs.openzeppelin.com/contracts/4.x/access-control">OpenZeppelin Contracts – AccessControl</a> </li>
+<li><a href="https://github.com/crytic/slither/wiki/Detector-Documentation#public-state-variable">Slither – Public Data Leak Detector</a></li>
+</ul>
+<hr />
+<h2 id="vulnerability-report">✅ Vulnerability Report</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>id: LS19M
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>title: State Leakage 
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>severity: M 
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>score:
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>impact: 3 
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>exploitability: 2 
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>reachability: 4 
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>complexity: 1   
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>detectability: 5 
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>finalScore: 3.0
+</code></pre></div>
+<hr />
+<h2 id="justifications-analysis">📄 Justifications &amp; Analysis</h2>
+<ul>
+<li><strong>Impact</strong>: User data and relationships are exposed on-chain and can be profiled.</li>
+<li><strong>Exploitability</strong>: Anyone can scan public mappings and access historical states.</li>
+<li><strong>Reachability</strong>: Common in staking, referral, whitelist, and claim systems.</li>
+<li><strong>Complexity</strong>: Very low; caused by use of public visibility.</li>
+<li><strong>Detectability</strong>: Easy to catch with Slither or even a visual code scan.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 21, 2025 12:57:38 UTC">June 21, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/lancershield"  target="_blank" rel="noopener">Lancer Shield</a>
+
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lancershield" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/lancer-shield" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+    
+  </body>
+</html>
